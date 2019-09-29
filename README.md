@@ -1,1 +1,1 @@
-# lego-vpn-xng
+lego vpn X-NG
