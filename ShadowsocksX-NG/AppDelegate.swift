@@ -53,6 +53,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     var local_country: String = ""
     var local_private_key: String = ""
     var local_account_id: String = ""
+    var use_smart_route: Bool = false
     
     func ensureLaunchAgentsDirOwner () {
         let dirPath = NSHomeDirectory() + "/Library/LaunchAgents"
@@ -123,6 +124,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             "LocalHTTP.FollowGlobal": false,
             "ProxyExceptions": "127.0.0.1, localhost, 192.168.0.0/16, 10.0.0.0/8, FE80::/64, ::1, FD00::/8",
             "ExternalPACURL": "",
+            "use_smart_route": false,
+            "route_ip": "",
+            "route_port": 0,
+            "vpn_ip": "",
+            "vpn_port": 0,
+            "seckey": "",
+            "pubkey": ""
             ])
         
         statusItem = NSStatusBar.system.statusItem(withLength: AppDelegate.StatusItemIconWidth)
@@ -130,11 +138,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         image.isTemplate = true
         statusItem.image = image
         statusItem.menu = statusMenu
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of 6319210... reset UI
         
         let notifyCenter = NotificationCenter.default
         
@@ -157,11 +160,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                 }
                 self.updateServersMenu()
                 self.updateRunningModeMenu()
-<<<<<<< HEAD
-                SyncSSLocal()
-=======
                 SyncSSLocal(choosed_country: "US", local_country: self.local_country, smart_route: self.use_smart_route)
->>>>>>> parent of 6319210... reset UI
             }
         )
         _ = notifyCenter.rx.notification(NOTIFY_TOGGLE_RUNNING_SHORTCUT)
@@ -223,10 +222,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
         // Register global hotkey
         ShortcutsController.bindShortcuts()
-<<<<<<< HEAD
->>>>>>> parent of 3f9eea2... add ss local config with p2p node
-=======
->>>>>>> parent of 6319210... reset UI
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -237,7 +232,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     }
 
     func applyConfig() {
-        SyncSSLocal()
+        SyncSSLocal(choosed_country: "US", local_country: self.local_country, smart_route: self.use_smart_route)
         
         let defaults = UserDefaults.standard
         let isOn = defaults.bool(forKey: "ShadowsocksOn")
@@ -272,11 +267,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         self.updateMainMenu()
         self.applyConfig()
         
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of 6319210... reset UI
         if showToast {
             if isOn {
                 self.makeToast("Shadowsocks: On".localized)
@@ -415,11 +405,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         if newProfile.uuid != spMgr.activeProfileId {
             spMgr.setActiveProfiledId(newProfile.uuid)
             updateServersMenu()
-<<<<<<< HEAD
-            SyncSSLocal()
-=======
             SyncSSLocal(choosed_country: "US", local_country: self.local_country, smart_route: self.use_smart_route)
->>>>>>> parent of 6319210... reset UI
             applyConfig()
         }
         updateRunningModeMenu()
@@ -537,10 +523,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             }
         }
         serversMenuItem.title = serverMenuText
-<<<<<<< HEAD
->>>>>>> parent of 3f9eea2... add ss local config with p2p node
-=======
->>>>>>> parent of 6319210... reset UI
     }
     
     func updateStatusMenuImage() {
