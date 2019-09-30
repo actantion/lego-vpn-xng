@@ -50,6 +50,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
     var statusItem: NSStatusItem!
     static let StatusItemIconWidth: CGFloat = NSStatusItem.variableLength
+    var local_country: String = ""
+    var local_private_key: String = ""
+    var local_account_id: String = ""
     
     func ensureLaunchAgentsDirOwner () {
         let dirPath = NSHomeDirectory() + "/Library/LaunchAgents"
@@ -80,6 +83,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         NSUserNotificationCenter.default.delegate = self
         
         self.ensureLaunchAgentsDirOwner()
+        
+        let local_ip = TenonP2pLib.sharedInstance.getIFAddresses()[0]
+        print("local ip:" + local_ip)
+        let res = TenonP2pLib.sharedInstance.InitP2pNetwork(local_ip, 7981)
+        
+        local_country = res.local_country as String
+        local_private_key = res.prikey as String
+        local_account_id = res.account_id as String
+              
+        print("local country:" + res.local_country)
+        print("private key:" + res.prikey)
+        print("account id:" + res.account_id)
         
         // Prepare ss-local
         InstallSSLocal()
