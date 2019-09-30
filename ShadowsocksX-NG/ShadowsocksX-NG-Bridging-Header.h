@@ -6,7 +6,6 @@
 
 #import "LaunchAtLoginController.h"
 #import "SWBQRCodeWindowController.h"
-#import "TenonVPNMainWindowController.h"
 #import "ShortcutsController.h"
 #import "Utils.h"
 #import "ProxyConfHelper.h"

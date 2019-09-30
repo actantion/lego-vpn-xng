@@ -14,12 +14,37 @@ import RxSwift
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
     
-    var tenonMainWndController:TenonVPNMainWindowController!
+    var shareWinCtrl: ShareServerProfilesWindowController!
+    var qrcodeWinCtrl: SWBQRCodeWindowController!
+    var preferencesWinCtrl: PreferencesWindowController!
+    var editUserRulesWinCtrl: UserRulesController!
+    var allInOnePreferencesWinCtrl: PreferencesWinController!
+    var toastWindowCtrl: ToastWindowController!
+    var importWinCtrl: ImportWindowController!
 
+    @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var statusMenu: NSMenu!
     
     @IBOutlet weak var runningStatusMenuItem: NSMenuItem!
     @IBOutlet weak var toggleRunningMenuItem: NSMenuItem!
+    @IBOutlet weak var autoModeMenuItem: NSMenuItem!
+    @IBOutlet weak var globalModeMenuItem: NSMenuItem!
+    @IBOutlet weak var manualModeMenuItem: NSMenuItem!
+    @IBOutlet weak var externalPACModeMenuItem: NSMenuItem!
+    
+    @IBOutlet weak var serversMenuItem: NSMenuItem!
+    @IBOutlet var showQRCodeMenuItem: NSMenuItem!
+    @IBOutlet var scanQRCodeMenuItem: NSMenuItem!
+    @IBOutlet var serverProfilesBeginSeparatorMenuItem: NSMenuItem!
+    @IBOutlet var serverProfilesEndSeparatorMenuItem: NSMenuItem!
+    
+    @IBOutlet weak var copyHttpProxyExportCmdLineMenuItem: NSMenuItem!
+    
+    @IBOutlet weak var lanchAtLoginMenuItem: NSMenuItem!
+
+    @IBOutlet weak var hudWindow: NSPanel!
+    @IBOutlet weak var panelView: NSView!
+    @IBOutlet weak var isNameTextField: NSTextField!
 
     let kProfileMenuItemIndexBase = 100
 
@@ -55,6 +80,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         
         _ = LaunchAtLoginController()// Ensure set when launch
         
+        NSUserNotificationCenter.default.delegate = self
+        
         self.ensureLaunchAgentsDirOwner()
         
         let local_ip = TenonP2pLib.sharedInstance.getIFAddresses()[0]
@@ -69,7 +96,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         print("private key:" + res.prikey)
         print("account id:" + res.account_id)
         
+        // Prepare ss-local
         InstallSSLocal()
+        InstallPrivoxy()
+        InstallSimpleObfs()
+        InstallKcptun()
+        InstallV2rayPlugin()
         
         // Prepare defaults
         let defaults = UserDefaults.standard
@@ -99,7 +131,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         statusItem.image = image
         statusItem.menu = statusMenu
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 6319210... reset UI
         
         let notifyCenter = NotificationCenter.default
         
@@ -122,7 +157,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                 }
                 self.updateServersMenu()
                 self.updateRunningModeMenu()
+<<<<<<< HEAD
                 SyncSSLocal()
+=======
+                SyncSSLocal(choosed_country: "US", local_country: self.local_country, smart_route: self.use_smart_route)
+>>>>>>> parent of 6319210... reset UI
             }
         )
         _ = notifyCenter.rx.notification(NOTIFY_TOGGLE_RUNNING_SHORTCUT)
@@ -184,7 +223,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
         // Register global hotkey
         ShortcutsController.bindShortcuts()
+<<<<<<< HEAD
 >>>>>>> parent of 3f9eea2... add ss local config with p2p node
+=======
+>>>>>>> parent of 6319210... reset UI
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -218,14 +260,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
     // MARK: - UI Methods
     @IBAction func toggleRunning(_ sender: NSMenuItem) {
-//        self.doToggleRunning(showToast: false)
-        tenonMainWndController = TenonVPNMainWindowController(windowNibName: NSNib.Name(rawValue: "TenonVPNMainWindowController"))
-        tenonMainWndController.showWindow(self)
-        NSApp.activate(ignoringOtherApps: true)
-        tenonMainWndController.window?.makeKeyAndOrderFront(nil)
+        self.doToggleRunning(showToast: false)
     }
     
-    // MARK：连接vpn
     func doToggleRunning(showToast: Bool) {
         let defaults = UserDefaults.standard
         var isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
@@ -236,7 +273,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         self.applyConfig()
         
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 6319210... reset UI
         if showToast {
             if isOn {
                 self.makeToast("Shadowsocks: On".localized)
@@ -375,7 +415,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         if newProfile.uuid != spMgr.activeProfileId {
             spMgr.setActiveProfiledId(newProfile.uuid)
             updateServersMenu()
+<<<<<<< HEAD
             SyncSSLocal()
+=======
+            SyncSSLocal(choosed_country: "US", local_country: self.local_country, smart_route: self.use_smart_route)
+>>>>>>> parent of 6319210... reset UI
             applyConfig()
         }
         updateRunningModeMenu()
@@ -493,7 +537,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             }
         }
         serversMenuItem.title = serverMenuText
+<<<<<<< HEAD
 >>>>>>> parent of 3f9eea2... add ss local config with p2p node
+=======
+>>>>>>> parent of 6319210... reset UI
     }
     
     func updateStatusMenuImage() {
@@ -542,6 +589,96 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         updateStatusMenuImage()
     }
     
+    func updateCopyHttpProxyExportMenu() {
+        let defaults = UserDefaults.standard
+        let isOn = defaults.bool(forKey: "LocalHTTPOn")
+        copyHttpProxyExportCmdLineMenuItem.isHidden = !isOn
+    }
+    
+    func updateServersMenu() {
+        guard let menu = serversMenuItem.submenu else { return }
+
+        let mgr = ServerProfileManager.instance
+        let profiles = mgr.profiles
+
+        // Remove all profile menu items
+        let beginIndex = menu.index(of: serverProfilesBeginSeparatorMenuItem) + 1
+        let endIndex = menu.index(of: serverProfilesEndSeparatorMenuItem)
+        // Remove from end to begin, so the index won't change :)
+        for index in (beginIndex..<endIndex).reversed() {
+            menu.removeItem(at: index)
+        }
+
+        // Insert all profile menu items
+        for (i, profile) in profiles.enumerated().reversed() {
+            let item = NSMenuItem()
+            item.tag = i + kProfileMenuItemIndexBase
+            item.title = profile.title()
+            item.state = (mgr.activeProfileId == profile.uuid) ? .on : .off
+            item.isEnabled = profile.isValid()
+            item.action = #selector(AppDelegate.selectServer)
+            
+            menu.insertItem(item, at: beginIndex)
+        }
+
+        // End separator is redundant if profile section is empty
+        serverProfilesEndSeparatorMenuItem.isHidden = profiles.isEmpty
+    }
+    
+    @objc func handleURLEvent(_ event: NSAppleEventDescriptor, withReplyEvent replyEvent: NSAppleEventDescriptor) {
+        if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue {
+            if let url = URL(string: urlString) {
+                NotificationCenter.default.post(
+                    name: NOTIFY_FOUND_SS_URL, object: nil
+                    , userInfo: [
+                        "urls": [url],
+                        "source": "url",
+                        ])
+            }
+        }
+    }
+    
+    func handleFoundSSURL(_ note: Notification) {
+        let sendNotify = {
+            (title: String, subtitle: String, infoText: String) in
+            
+            let userNote = NSUserNotification()
+            userNote.title = title
+            userNote.subtitle = subtitle
+            userNote.informativeText = infoText
+            userNote.soundName = NSUserNotificationDefaultSoundName
+            
+            NSUserNotificationCenter.default
+                .deliver(userNote);
+        }
+        
+        if let userInfo = (note as NSNotification).userInfo {
+            let urls: [URL] = userInfo["urls"] as! [URL]
+            
+            let mgr = ServerProfileManager.instance
+            let addCount = mgr.addServerProfileByURL(urls: urls)
+            
+            if addCount > 0 {
+                var subtitle: String = ""
+                if userInfo["source"] as! String == "qrcode" {
+                    subtitle = "By scan QR Code".localized
+                } else if userInfo["source"] as! String == "url" {
+                    subtitle = "By handle SS URL".localized
+                } else if userInfo["source"] as! String == "pasteboard" {
+                    subtitle = "By import from pasteboard".localized
+                }
+                
+                sendNotify("Add \(addCount) Shadowsocks Server Profile".localized, subtitle, "")
+            } else {
+                if userInfo["source"] as! String == "qrcode" {
+                    sendNotify("", "", "Not found valid QRCode of shadowsocks profile".localized)
+                } else if userInfo["source"] as! String == "url" {
+                    sendNotify("", "", "Not found valid URL of shadowsocks profile".localized)
+                }
+            }
+        }
+    }
+    
     //------------------------------------------------------------
     // NSUserNotificationCenterDelegate
     
@@ -550,5 +687,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         return true
     }
     
+    
+    func makeToast(_ message: String) {
+        if toastWindowCtrl != nil {
+            toastWindowCtrl.close()
+        }
+        toastWindowCtrl = ToastWindowController(windowNibName: NSNib.Name(rawValue: "ToastWindowController"))
+        toastWindowCtrl.message = message
+        toastWindowCtrl.showWindow(self)
+        //NSApp.activate(ignoringOtherApps: true)
+        //toastWindowCtrl.window?.makeKeyAndOrderFront(self)
+        toastWindowCtrl.fadeInHud()
+    }
 }
 
