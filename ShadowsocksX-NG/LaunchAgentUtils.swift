@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import libp2p
 
 let SS_LOCAL_VERSION = "3.2.5"
 let KCPTUN_CLIENT_VERSION = "v20190905"
@@ -20,7 +19,7 @@ let LAUNCH_AGENT_DIR = "/Library/LaunchAgents/"
 let LAUNCH_AGENT_CONF_SSLOCAL_NAME = "com.qiuyuzhou.shadowsocksX-NG.local.plist"
 let LAUNCH_AGENT_CONF_PRIVOXY_NAME = "com.qiuyuzhou.shadowsocksX-NG.http.plist"
 let LAUNCH_AGENT_CONF_KCPTUN_NAME = "com.qiuyuzhou.shadowsocksX-NG.kcptun.plist"
-let iCon:[String] = ["us", "sg", "br","de","fr","kr", "jp", "ca","au","hk", "in", "gb","cn"]
+
 
 func getFileSHA1Sum(_ filepath: String) -> String {
     if let data = try? Data(contentsOf: URL(fileURLWithPath: filepath)) {
@@ -166,98 +165,13 @@ func removeSSLocalConfFile() {
     }
 }
 
-func randomCustom(min: Int, max: Int) -> Int {
-    let y = arc4random() % UInt32(max) + UInt32(min)
-    return Int(y)
-}
-
-func getOneRouteNode(country: String) -> (ip: String, port: String) {
-    let res_str = LibP2P.getVpnNodes(country, true) as String
-    if (res_str.isEmpty) {
-        return ("", "")
-    }
-    
-    let node_arr: Array = res_str.components(separatedBy: ",")
-    if (node_arr.count <= 0) {
-        return ("", "")
-    }
-    
-    let rand_pos = randomCustom(min: 0, max: node_arr.count)
-    let node_info_arr = node_arr[rand_pos].components(separatedBy: ":")
-    if (node_info_arr.count < 5) {
-        return ("", "")
-    }
-    
-    return (node_info_arr[0], node_info_arr[2])
-}
-
-func getOneVpnNode(country: String) -> (ip: String, port: String, passwd: String) {
-    let res_str = LibP2P.getVpnNodes(country, false) as String
-    if (res_str.isEmpty) {
-        return ("", "", "")
-    }
-    
-    let node_arr: Array = res_str.components(separatedBy: ",")
-    if (node_arr.count <= 0) {
-        return ("", "", "")
-    }
-    
-    let rand_pos = randomCustom(min: 0, max: node_arr.count)
-    let node_info_arr = node_arr[rand_pos].components(separatedBy: ":")
-    if (node_info_arr.count < 5) {
-        return ("", "", "")
-    }
-    
-    return (node_info_arr[0], node_info_arr[1], node_info_arr[3])
-}
-
-func SyncSSLocal(choosed_country: String, local_country: String, smart_route: Bool) {
-    var route_node = getOneRouteNode(country: choosed_country)
-    if (route_node.ip.isEmpty) {
-        route_node = getOneRouteNode(country: local_country)
-        if (route_node.ip.isEmpty) {
-            for country in iCon {
-                route_node = getOneRouteNode(country: country)
-                if (!route_node.ip.isEmpty) {
-                    break
-                }
-            }
-        }
-    }
-
-    var vpn_node = getOneVpnNode(country: choosed_country)
-    if (vpn_node.ip.isEmpty) {
-        for country in iCon {
-            vpn_node = getOneVpnNode(country: country)
-            if (!vpn_node.ip.isEmpty) {
-                break
-            }
-        }
-    }
-    
-    print("rotue: \(route_node.ip):\(route_node.port)")
-    print("vpn: \(vpn_node.ip):\(vpn_node.port),\(vpn_node.passwd)")
-    
-    let route_ip_int = LibP2P.changeStrIp(route_node.ip)
-    let vpn_ip_int = LibP2P.changeStrIp(vpn_node.ip)
-    print("vpn_ip_int: \(vpn_ip_int)")
-    
-    var pubkey = LibP2P.getPublicKey() as String;
-    
+func SyncSSLocal() {
     var changed: Bool = false
     changed = changed || generateSSLocalLauchAgentPlist()
     let mgr = ServerProfileManager.instance
     if mgr.activeProfileId != nil {
         if let profile = mgr.getActiveProfile() {
-            changed = changed || writeSSLocalConfFile((profile.toJsonConfig(
-                use_smart_route: smart_route,
-                route_ip: route_ip_int,
-                route_port: Int32(route_node.port) as! Int32,
-                vpn_ip: vpn_ip_int,
-                vpn_port: Int32(vpn_node.port) as! Int32,
-                seckey: vpn_node.passwd,
-                pubkey: pubkey,
-                method: "aes-128-cfb")))
+            changed = changed || writeSSLocalConfFile((profile.toJsonConfig()))
         }
         
         let on = UserDefaults.standard.bool(forKey: "ShadowsocksOn")

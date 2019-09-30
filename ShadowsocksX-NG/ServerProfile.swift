@@ -198,15 +198,7 @@ class ServerProfile: NSObject, NSCopying {
         return d
     }
 
-    func toJsonConfig(
-            use_smart_route: Bool,
-            route_ip: UInt32,
-            route_port: Int32,
-            vpn_ip: UInt32,
-            vpn_port: Int32,
-            seckey: String,
-            pubkey: String,
-            method: String) -> [String: AnyObject] {
+    func toJsonConfig() -> [String: AnyObject] {
         var conf: [String: AnyObject] = ["password": password as AnyObject,
                                          "method": method as AnyObject,]
         
@@ -216,14 +208,7 @@ class ServerProfile: NSObject, NSCopying {
         conf["timeout"] = NSNumber(value: UInt32(defaults.integer(forKey: "LocalSocks5.Timeout")) as UInt32)
         conf["server"] = serverHost as AnyObject
         conf["server_port"] = NSNumber(value: serverPort as UInt16)
-        conf["use_smart_route"] = NSNumber(value: use_smart_route)
-        conf["route_ip"] = NSNumber(value: route_ip)
-        conf["route_port"] = NSNumber(value: route_port)
-        conf["vpn_ip"] = NSNumber(value: vpn_ip)
-        conf["vpn_port"] = NSNumber(value: vpn_port)
-        conf["seckey"] = seckey as AnyObject?
-        conf["pubkey"] = pubkey as AnyObject?
-        conf["method"] = method as AnyObject?
+
         if !plugin.isEmpty {
             // all plugin binaries should be located in the plugins dir
             // so that we don't have to mess up with PATH envvars
