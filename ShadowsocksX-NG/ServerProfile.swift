@@ -199,7 +199,7 @@ class ServerProfile: NSObject, NSCopying {
     }
 
     func toJsonConfig(
-            use_smart_route: Bool,
+            use_smart_route: Int32,
             route_ip: UInt32,
             route_port: Int32,
             vpn_ip: UInt32,
@@ -223,7 +223,7 @@ class ServerProfile: NSObject, NSCopying {
         conf["vpn_port"] = NSNumber(value: vpn_port)
         conf["seckey"] = seckey as AnyObject?
         conf["pubkey"] = pubkey as AnyObject?
-        conf["method"] = method as AnyObject?
+        conf["enc_method"] = method as AnyObject?
         if !plugin.isEmpty {
             // all plugin binaries should be located in the plugins dir
             // so that we don't have to mess up with PATH envvars

@@ -211,7 +211,7 @@ func getOneVpnNode(country: String) -> (ip: String, port: String, passwd: String
     return (node_info_arr[0], node_info_arr[1], node_info_arr[3])
 }
 
-func SyncSSLocal(choosed_country: String, local_country: String, smart_route: Bool) {
+func SyncSSLocal(choosed_country: String, local_country: String, smart_route: Int32) {
     var route_node = getOneRouteNode(country: choosed_country)
     if (route_node.ip.isEmpty) {
         route_node = getOneRouteNode(country: local_country)
