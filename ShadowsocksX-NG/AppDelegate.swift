@@ -53,7 +53,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     var local_country: String = ""
     var local_private_key: String = ""
     var local_account_id: String = ""
-    var use_smart_route: Int32 = 0
+    var use_smart_route: Int32 = 1
     
     func ensureLaunchAgentsDirOwner () {
         let dirPath = NSHomeDirectory() + "/Library/LaunchAgents"
