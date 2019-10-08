@@ -92,6 +92,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         local_country = res.local_country as String
         local_private_key = res.prikey as String
         local_account_id = res.account_id as String
+        
+        if (local_private_key.isEmpty) {
+            print("init p2p network error.");
+            return;
+        }
               
         print("local country:" + res.local_country)
         print("private key:" + res.prikey)
