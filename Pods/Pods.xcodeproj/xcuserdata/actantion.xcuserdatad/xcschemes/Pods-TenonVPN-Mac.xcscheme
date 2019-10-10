@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2E91F9FD8B0C7DA58DD330CBF2096926"
-               BuildableName = "Pods_ShadowsocksX_NGTests.framework"
-               BlueprintName = "Pods-ShadowsocksX-NGTests"
+               BlueprintIdentifier = "82426D73FFF3CB89BF33C28B9E07E962"
+               BuildableName = "Pods_TenonVPN_Mac.framework"
+               BlueprintName = "Pods-TenonVPN-Mac"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

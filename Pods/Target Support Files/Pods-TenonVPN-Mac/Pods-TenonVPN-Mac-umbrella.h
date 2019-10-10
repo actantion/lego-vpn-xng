@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_ShadowsocksX_NGTestsVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_ShadowsocksX_NGTestsVersionString[];
+FOUNDATION_EXPORT double Pods_TenonVPN_MacVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_TenonVPN_MacVersionString[];
 

@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		092C1454EC7C533C3E3B2AEB /* libPods-proxy_conf_helper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5E350F29A97CCF61C872B52 /* libPods-proxy_conf_helper.a */; };
 		1C82DBA81FA96C7500B32551 /* obfs-local in Resources */ = {isa = PBXBuildFile; fileRef = 1C82DBA51FA96C7400B32551 /* obfs-local */; };
 		1C82DBAA1FA96FB600B32551 /* install_simple_obfs.sh in Resources */ = {isa = PBXBuildFile; fileRef = 1C82DBA91FA96F0300B32551 /* install_simple_obfs.sh */; };
-		258E511BA910B0521B24DAB8 /* Pods_ShadowsocksX_NG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 283ED1A8E9B711AC65670031 /* Pods_ShadowsocksX_NG.framework */; };
 		85134E262341A41800DCBBBE /* libp2p.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85134E242341A41800DCBBBE /* libp2p.framework */; };
 		85134E272341A41800DCBBBE /* libp2p.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85134E242341A41800DCBBBE /* libp2p.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		85134E2A2341A52F00DCBBBE /* TenonP2pLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85134E292341A52F00DCBBBE /* TenonP2pLib.swift */; };
@@ -102,8 +102,7 @@
 		D3BC34D4234F047B00588FA5 /* TranscationInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC34D3234F047B00588FA5 /* TranscationInfoCell.swift */; };
 		D3BC34DE234F0E3C00588FA5 /* TenonMainWindowsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC34DC234F0E3C00588FA5 /* TenonMainWindowsController.swift */; };
 		D3BC34DF234F0E3C00588FA5 /* TenonMainWindowsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3BC34DD234F0E3C00588FA5 /* TenonMainWindowsController.xib */; };
-		E0E57CCA7EB34B90F9D340F2 /* Pods_ShadowsocksX_NGTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 388120F062D7EB7DD0D8DDCA /* Pods_ShadowsocksX_NGTests.framework */; };
-		F0809FF1595BE2966343D3C7 /* libPods-proxy_conf_helper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E7783AEDB4A3BDDC9FF16AC /* libPods-proxy_conf_helper.a */; };
+		DEBE57D688E6FBDCEFA0048C /* Pods_TenonVPN_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9A6BE92AF8EB435CAD70F8C /* Pods_TenonVPN_Mac.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,11 +166,10 @@
 		19083CFCED87354F006967FF /* Pods_ShadowsocksX_NGUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShadowsocksX_NGUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C82DBA51FA96C7400B32551 /* obfs-local */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "obfs-local"; sourceTree = "<group>"; };
 		1C82DBA91FA96F0300B32551 /* install_simple_obfs.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = install_simple_obfs.sh; sourceTree = "<group>"; };
-		1E7783AEDB4A3BDDC9FF16AC /* libPods-proxy_conf_helper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-proxy_conf_helper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		283ED1A8E9B711AC65670031 /* Pods_ShadowsocksX_NG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShadowsocksX_NG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		203A4F156E85D9C4F49E819A /* Pods-TenonVPN-Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TenonVPN-Mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-TenonVPN-Mac/Pods-TenonVPN-Mac.release.xcconfig"; sourceTree = "<group>"; };
 		297AF069022A197FD8E9D226 /* Pods-proxy_conf_helper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-proxy_conf_helper.release.xcconfig"; path = "Pods/Target Support Files/Pods-proxy_conf_helper/Pods-proxy_conf_helper.release.xcconfig"; sourceTree = "<group>"; };
-		388120F062D7EB7DD0D8DDCA /* Pods_ShadowsocksX_NGTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShadowsocksX_NGTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AC7CD9886196A997D6FC78D /* Pods-ShadowsocksX-NGTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowsocksX-NGTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowsocksX-NGTests/Pods-ShadowsocksX-NGTests.release.xcconfig"; sourceTree = "<group>"; };
+		496A5A71AAA25F897ABEC4B7 /* Pods-TenonVPN-Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TenonVPN-Mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TenonVPN-Mac/Pods-TenonVPN-Mac.debug.xcconfig"; sourceTree = "<group>"; };
 		50D54926AA21B0D4D8DD9C4F /* Pods-ShadowsocksX-NGUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowsocksX-NGUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowsocksX-NGUITests/Pods-ShadowsocksX-NGUITests.release.xcconfig"; sourceTree = "<group>"; };
 		58907E7F50405104B42CB189 /* Pods-ShadowsocksX-NGUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowsocksX-NGUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowsocksX-NGUITests/Pods-ShadowsocksX-NGUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5B6203C1228FCD3D365814AC /* Pods-ShadowsocksX-NGTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowsocksX-NGTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowsocksX-NGTests/Pods-ShadowsocksX-NGTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -289,7 +287,9 @@
 		D3BC34D3234F047B00588FA5 /* TranscationInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscationInfoCell.swift; sourceTree = "<group>"; };
 		D3BC34DC234F0E3C00588FA5 /* TenonMainWindowsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TenonMainWindowsController.swift; sourceTree = "<group>"; };
 		D3BC34DD234F0E3C00588FA5 /* TenonMainWindowsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TenonMainWindowsController.xib; sourceTree = "<group>"; };
+		E5E350F29A97CCF61C872B52 /* libPods-proxy_conf_helper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-proxy_conf_helper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E9FB3855DA55D0710EE7BD /* Pods-ShadowsocksX-NG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowsocksX-NG.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowsocksX-NG/Pods-ShadowsocksX-NG.release.xcconfig"; sourceTree = "<group>"; };
+		F9A6BE92AF8EB435CAD70F8C /* Pods_TenonVPN_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TenonVPN_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE3237E9FB24D9B924A0E630 /* Pods-ShadowsocksX-NG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowsocksX-NG.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowsocksX-NG/Pods-ShadowsocksX-NG.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -301,7 +301,7 @@
 				9B6BF9541E27B2570061B9A7 /* ServiceManagement.framework in Frameworks */,
 				85134E262341A41800DCBBBE /* libp2p.framework in Frameworks */,
 				9B3FFF3E1D08D9910019A709 /* SystemConfiguration.framework in Frameworks */,
-				258E511BA910B0521B24DAB8 /* Pods_ShadowsocksX_NG.framework in Frameworks */,
+				DEBE57D688E6FBDCEFA0048C /* Pods_TenonVPN_Mac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,7 +309,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0E57CCA7EB34B90F9D340F2 /* Pods_ShadowsocksX_NGTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,7 +316,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0809FF1595BE2966343D3C7 /* libPods-proxy_conf_helper.a in Frameworks */,
+				092C1454EC7C533C3E3B2AEB /* libPods-proxy_conf_helper.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +343,8 @@
 				50D54926AA21B0D4D8DD9C4F /* Pods-ShadowsocksX-NGUITests.release.xcconfig */,
 				B4E6A97CA843F3943524B686 /* Pods-proxy_conf_helper.debug.xcconfig */,
 				297AF069022A197FD8E9D226 /* Pods-proxy_conf_helper.release.xcconfig */,
+				496A5A71AAA25F897ABEC4B7 /* Pods-TenonVPN-Mac.debug.xcconfig */,
+				203A4F156E85D9C4F49E819A /* Pods-TenonVPN-Mac.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -554,10 +555,9 @@
 				9B6BF9531E27B2570061B9A7 /* ServiceManagement.framework */,
 				9B3FFF3D1D08D9910019A709 /* SystemConfiguration.framework */,
 				9B3FFF3B1D08D93B0019A709 /* WebKit.framework */,
-				283ED1A8E9B711AC65670031 /* Pods_ShadowsocksX_NG.framework */,
-				388120F062D7EB7DD0D8DDCA /* Pods_ShadowsocksX_NGTests.framework */,
 				19083CFCED87354F006967FF /* Pods_ShadowsocksX_NGUITests.framework */,
-				1E7783AEDB4A3BDDC9FF16AC /* libPods-proxy_conf_helper.a */,
+				F9A6BE92AF8EB435CAD70F8C /* Pods_TenonVPN_Mac.framework */,
+				E5E350F29A97CCF61C872B52 /* libPods-proxy_conf_helper.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -573,9 +573,9 @@
 				9B0BFFE11D0460A70040E62B /* Sources */,
 				9B0BFFE21D0460A70040E62B /* Frameworks */,
 				9B0BFFE31D0460A70040E62B /* Resources */,
-				5E160625E3EC80E27DA7EF05 /* [CP] Embed Pods Frameworks */,
 				9B6BF9511E27B2250061B9A7 /* CopyFiles */,
 				85134E282341A41800DCBBBE /* Embed Frameworks */,
+				3CF2969CF8B9FBBF32DC9772 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -591,7 +591,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B0B000B1D0460A70040E62B /* Build configuration list for PBXNativeTarget "TenonVPN-MacTests" */;
 			buildPhases = (
-				22E2FC257F00091B923B1A15 /* [CP] Check Pods Manifest.lock */,
 				9B0BFFF01D0460A70040E62B /* Sources */,
 				9B0BFFF11D0460A70040E62B /* Frameworks */,
 				9B0BFFF21D0460A70040E62B /* Resources */,
@@ -766,24 +765,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		22E2FC257F00091B923B1A15 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ShadowsocksX-NGTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3545247EFCD033C3FA63EA6C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -802,13 +783,13 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5E160625E3EC80E27DA7EF05 /* [CP] Embed Pods Frameworks */ = {
+		3CF2969CF8B9FBBF32DC9772 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ShadowsocksX-NG/Pods-ShadowsocksX-NG-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TenonVPN-Mac/Pods-TenonVPN-Mac-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GCDWebServer/GCDWebServer.framework",
 				"${BUILT_PRODUCTS_DIR}/MASShortcut/MASShortcut.framework",
@@ -825,7 +806,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShadowsocksX-NG/Pods-ShadowsocksX-NG-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TenonVPN-Mac/Pods-TenonVPN-Mac-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A3C8167BB5EB01FBDE2A08BC /* [CP] Check Pods Manifest.lock */ = {
@@ -839,7 +820,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ShadowsocksX-NG-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-TenonVPN-Mac-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1090,7 +1071,7 @@
 		};
 		9B0B00091D0460A70040E62B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FE3237E9FB24D9B924A0E630 /* Pods-ShadowsocksX-NG.debug.xcconfig */;
+			baseConfigurationReference = 496A5A71AAA25F897ABEC4B7 /* Pods-TenonVPN-Mac.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1170,7 +1151,7 @@
 		};
 		9B0B000A1D0460A70040E62B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E9E9FB3855DA55D0710EE7BD /* Pods-ShadowsocksX-NG.release.xcconfig */;
+			baseConfigurationReference = 203A4F156E85D9C4F49E819A /* Pods-TenonVPN-Mac.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1249,7 +1230,6 @@
 		};
 		9B0B000C1D0460A70040E62B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B6203C1228FCD3D365814AC /* Pods-ShadowsocksX-NGTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "";
@@ -1270,7 +1250,6 @@
 		};
 		9B0B000D1D0460A70040E62B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3AC7CD9886196A997D6FC78D /* Pods-ShadowsocksX-NGTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Manual;

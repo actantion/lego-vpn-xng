@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_ShadowsocksX_NGVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_ShadowsocksX_NGVersionString[];
+FOUNDATION_EXPORT double Pods_proxy_conf_helperVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_proxy_conf_helperVersionString[];
 
