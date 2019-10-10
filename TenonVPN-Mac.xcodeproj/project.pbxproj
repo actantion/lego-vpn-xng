@@ -98,10 +98,10 @@
 		D358B389234DD5E100B9F809 /* FWPopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D358B387234DD5E100B9F809 /* FWPopMenu.swift */; };
 		D358B391234DE43300B9F809 /* AcountSettingWndController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D358B38F234DE43300B9F809 /* AcountSettingWndController.swift */; };
 		D358B392234DE43300B9F809 /* AcountSettingWndController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D358B390234DE43300B9F809 /* AcountSettingWndController.xib */; };
-		D39D52C8234C7C6200A3CEEB /* TenonMainWindowsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D52C6234C7C6200A3CEEB /* TenonMainWindowsController.swift */; };
-		D39D52C9234C7C6200A3CEEB /* TenonMainWindowsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D39D52C7234C7C6200A3CEEB /* TenonMainWindowsController.xib */; };
 		D3BC34D0234F03E400588FA5 /* TranscationInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3BC34CF234F03E400588FA5 /* TranscationInfoCell.xib */; };
 		D3BC34D4234F047B00588FA5 /* TranscationInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC34D3234F047B00588FA5 /* TranscationInfoCell.swift */; };
+		D3BC34DE234F0E3C00588FA5 /* TenonMainWindowsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC34DC234F0E3C00588FA5 /* TenonMainWindowsController.swift */; };
+		D3BC34DF234F0E3C00588FA5 /* TenonMainWindowsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3BC34DD234F0E3C00588FA5 /* TenonMainWindowsController.xib */; };
 		E0E57CCA7EB34B90F9D340F2 /* Pods_ShadowsocksX_NGTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 388120F062D7EB7DD0D8DDCA /* Pods_ShadowsocksX_NGTests.framework */; };
 		F0809FF1595BE2966343D3C7 /* libPods-proxy_conf_helper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E7783AEDB4A3BDDC9FF16AC /* libPods-proxy_conf_helper.a */; };
 /* End PBXBuildFile section */
@@ -285,10 +285,10 @@
 		D358B387234DD5E100B9F809 /* FWPopMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FWPopMenu.swift; sourceTree = "<group>"; };
 		D358B38F234DE43300B9F809 /* AcountSettingWndController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcountSettingWndController.swift; sourceTree = "<group>"; };
 		D358B390234DE43300B9F809 /* AcountSettingWndController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AcountSettingWndController.xib; sourceTree = "<group>"; };
-		D39D52C6234C7C6200A3CEEB /* TenonMainWindowsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenonMainWindowsController.swift; sourceTree = "<group>"; };
-		D39D52C7234C7C6200A3CEEB /* TenonMainWindowsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TenonMainWindowsController.xib; sourceTree = "<group>"; };
 		D3BC34CF234F03E400588FA5 /* TranscationInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TranscationInfoCell.xib; sourceTree = "<group>"; };
 		D3BC34D3234F047B00588FA5 /* TranscationInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscationInfoCell.swift; sourceTree = "<group>"; };
+		D3BC34DC234F0E3C00588FA5 /* TenonMainWindowsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TenonMainWindowsController.swift; sourceTree = "<group>"; };
+		D3BC34DD234F0E3C00588FA5 /* TenonMainWindowsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TenonMainWindowsController.xib; sourceTree = "<group>"; };
 		E9E9FB3855DA55D0710EE7BD /* Pods-ShadowsocksX-NG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowsocksX-NG.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowsocksX-NG/Pods-ShadowsocksX-NG.release.xcconfig"; sourceTree = "<group>"; };
 		FE3237E9FB24D9B924A0E630 /* Pods-ShadowsocksX-NG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowsocksX-NG.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowsocksX-NG/Pods-ShadowsocksX-NG.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -431,6 +431,8 @@
 		9B3FFF0B1D05D8B80019A709 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				D3BC34DC234F0E3C00588FA5 /* TenonMainWindowsController.swift */,
+				D3BC34DD234F0E3C00588FA5 /* TenonMainWindowsController.xib */,
 				9B3FFF331D08CEF70019A709 /* SWBQRCodeWindowController.xib */,
 				9B3FFF301D08CEE40019A709 /* SWBQRCodeWindowController.h */,
 				9B3FFF311D08CEE40019A709 /* SWBQRCodeWindowController.m */,
@@ -448,8 +450,6 @@
 				9B72FB60232782A300C6AAAE /* ImportWindowController.swift */,
 				9B74B5EB232949B100DEA386 /* ImportWindowController.xib */,
 				D358B387234DD5E100B9F809 /* FWPopMenu.swift */,
-				D39D52C6234C7C6200A3CEEB /* TenonMainWindowsController.swift */,
-				D39D52C7234C7C6200A3CEEB /* TenonMainWindowsController.xib */,
 				D358B38F234DE43300B9F809 /* AcountSettingWndController.swift */,
 				D358B390234DE43300B9F809 /* AcountSettingWndController.xib */,
 				D3BC34CF234F03E400588FA5 /* TranscationInfoCell.xib */,
@@ -720,13 +720,13 @@
 				9BAA663423295FAC00F5CC99 /* menu_icon.png in Resources */,
 				9BEEF06A1D04D4D500FC52B3 /* start_ss_local.sh in Resources */,
 				9B3546731E802B1200B510B4 /* ToastWindowController.xib in Resources */,
+				D3BC34DF234F0E3C00588FA5 /* TenonMainWindowsController.xib in Resources */,
 				9B7725EA232E54A20062299F /* menu_e_icon.png in Resources */,
 				9BAA662923295FAB00F5CC99 /* menu_p_icon.png in Resources */,
 				C6D429941DA75988002A5711 /* privoxy in Resources */,
 				C6D429991DA76FBC002A5711 /* privoxy.template.config in Resources */,
 				9BEEF06B1D04D4D500FC52B3 /* stop_ss_local.sh in Resources */,
 				9B3FFF341D08CEF70019A709 /* SWBQRCodeWindowController.xib in Resources */,
-				D39D52C9234C7C6200A3CEEB /* TenonMainWindowsController.xib in Resources */,
 				D3BC34D0234F03E400588FA5 /* TranscationInfoCell.xib in Resources */,
 				9B3FFF231D088E8D0019A709 /* abp.js in Resources */,
 				9BAFE2E21E83ED7F00F71CCE /* PreferencesWinController.xib in Resources */,
@@ -862,12 +862,12 @@
 				9B3FFF1E1D0732660019A709 /* Utils.m in Sources */,
 				9B7297EA214D7C6B00FD24AA /* ShareServerProfilesWindowController.swift in Sources */,
 				9B3FFF321D08CEE40019A709 /* SWBQRCodeWindowController.m in Sources */,
-				D39D52C8234C7C6200A3CEEB /* TenonMainWindowsController.swift in Sources */,
 				9B3FFF211D08826E0019A709 /* PACUtils.swift in Sources */,
 				D358B389234DD5E100B9F809 /* FWPopMenu.swift in Sources */,
 				9B3FFF141D0705810019A709 /* Notifications.swift in Sources */,
 				9BEEF0701D04DDB100FC52B3 /* ServerProfileManager.swift in Sources */,
 				9BEEF06E1D04DCE400FC52B3 /* ServerProfile.swift in Sources */,
+				D3BC34DE234F0E3C00588FA5 /* TenonMainWindowsController.swift in Sources */,
 				9B72FB62232782A300C6AAAE /* ImportWindowController.swift in Sources */,
 				9B3FFF0D1D05FEB30019A709 /* Utils.swift in Sources */,
 				9BEEF0751D04EF3E00FC52B3 /* PreferencesWindowController.swift in Sources */,
