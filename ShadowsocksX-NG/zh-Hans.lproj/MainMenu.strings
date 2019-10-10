@@ -63,7 +63,7 @@
 "fzk-mE-CEV.title" = "Showsocks: On";
 
 /* Class = "NSMenuItem"; title = "PAC自动模式"; ObjectID = "r07-Gu-aEz"; */
-"r07-Gu-aEz.title" = "Tenon 设置";
+"r07-Gu-aEz.title" = "PAC自动模式";
 
 /* Class = "NSMenuItem"; title = "Auto Mode By External PAC"; ObjectID = "U9N-QS-BwB"; */
 "U9N-QS-BwB.title" = "外部PAC自动模式";

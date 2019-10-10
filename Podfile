@@ -2,7 +2,7 @@
 # platform :ios, '9.0'
 platform :macos, '10.12'
 
-target 'TenonVPN-Mac' do
+target 'ShadowsocksX-NG' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
@@ -14,6 +14,11 @@ target 'TenonVPN-Mac' do
   # https://github.com/ReactiveX/RxSwift/blob/master/Documentation/GettingStarted.md
   pod 'RxSwift',    '~> 4.5.0'
   pod 'RxCocoa',    '~> 4.5.0'
+
+  target 'ShadowsocksX-NGTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
 
 end
 

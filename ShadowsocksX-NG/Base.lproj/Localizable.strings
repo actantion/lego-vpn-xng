@@ -24,11 +24,11 @@
 
 "Manual Mode" = "Manual Mode";
 
-"Auto Mode By PAC" = "Tenon Setting";
+"Auto Mode By PAC" = "Auto Mode By PAC";
 
-"TenonVPN: On" = "TenonVPN: On";
+"Shadowsocks: On" = "Shadowsocks: On";
 
-"TenonVPN: Off" = "TenonVPN: Off";
+"Shadowsocks: Off" = "Shadowsocks: Off";
 
 "Export Command Copied." = "Export Command Copied.";
 
@@ -36,9 +36,9 @@
 
 "Servers" = "Servers";
 
-"Turn TenonVPN Off" = "Turn TenonVPN Off";
+"Turn Shadowsocks Off" = "Turn Shadowsocks Off";
 
-"Turn TenonVPN On" = "Turn TenonVPN On";
+"Turn Shadowsocks On" = "Turn Shadowsocks On";
 
 "By scan QR Code" = "By scan QR Code";
 

@@ -26,7 +26,7 @@
 
 "Manual Mode" = "手动模式";
 
-"Auto Mode By PAC" = "Tenon 设置";
+"Auto Mode By PAC" = "PAC自动模式";
 
 "Add \(addCount) Shadowsocks Server Profile" = "已添加\(addCount)个Shadowsocks服务器配置";
 
@@ -34,13 +34,13 @@
 
 "By scan QR Code" = "通过扫描二维码";
 
-"TenonVPN: On" = "TenonVPN: On";
+"Shadowsocks: On" = "Shadowsocks: On";
 
-"Turn TenonVPN Off" = "关闭 TenonVPN";
+"Turn Shadowsocks Off" = "关闭 Shadowsocks";
 
-"TenonVPN: Off" = "TenonVPN: Off";
+"Shadowsocks: Off" = "Shadowsocks: Off";
 
-"Turn TenonVPN On" = "打开 TenonVPN";
+"Turn Shadowsocks On" = "打开 Shadowsocks";
 
 "Servers" = "服务器";
 
