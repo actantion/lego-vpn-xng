@@ -133,7 +133,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         
         statusItem = NSStatusBar.system.statusItem(withLength: AppDelegate.StatusItemIconWidth)
         let image : NSImage = NSImage(named: NSImage.Name(rawValue: "menu_icon"))!
-        image.isTemplate = true
+        image.isTemplate = false
         statusItem.image = image
         statusItem.menu = statusMenu
         
@@ -540,11 +540,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                         statusItem.image = NSImage(named: NSImage.Name(rawValue: "menu_e_icon"))
                 default: break
                 }
-                statusItem.image?.isTemplate = true
+                statusItem.image?.isTemplate = false
             }
         } else {
             statusItem.image = NSImage(named: NSImage.Name(rawValue: "menu_icon_disabled"))
-            statusItem.image?.isTemplate = true
+            statusItem.image?.isTemplate = false
         }
     }
     
@@ -564,7 +564,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             let image = NSImage(named: NSImage.Name(rawValue: "menu_icon_disabled"))
             statusItem.image = image
         }
-        statusItem.image?.isTemplate = true
+        statusItem.image?.isTemplate = false
         
         updateStatusMenuImage()
     }
