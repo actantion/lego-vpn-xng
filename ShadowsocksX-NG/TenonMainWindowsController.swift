@@ -8,7 +8,10 @@
 
 import Cocoa
 let APP_COLOR:NSColor = NSColor(red: 9/255, green: 222/255, blue: 202/255, alpha: 1)
-class TenonMainWindowsController: NSWindowController {
+class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTableViewDataSource,NSGestureRecognizerDelegate {
+    @IBOutlet weak var popMenuTableView: NSTableView!
+    @IBOutlet weak var popMenu: NSView!
+    @IBOutlet weak var baseView: NSView!
     @IBOutlet weak var btnChoseCountry: NSButton!
     @IBOutlet weak var lbConnect: NSTextField!
     @IBOutlet weak var imgConnect: NSImageView!
@@ -20,6 +23,7 @@ class TenonMainWindowsController: NSWindowController {
     @IBOutlet weak var lbNodeCount: NSTextField!
     @IBOutlet weak var imgCountry: NSImageView!
     @IBOutlet weak var vwLine: NSView!
+    var isSelect: Bool = false
     var accountSettingWndCtrl:AcountSettingWndController!
     
     override func windowDidLoad() {
@@ -27,6 +31,49 @@ class TenonMainWindowsController: NSWindowController {
 
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
         updateUI()
+        popMenuTableView.delegate = self
+        popMenuTableView.dataSource = self
+        popMenuTableView.register(NSNib(nibNamed: NSNib.Name(rawValue: "CountryChoseCell"), bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CountryChoseCell"))
+        popMenuTableView.reloadData()
+        
+//        let tap:NSClickGestureRecognizer = NSClickGestureRecognizer.init()
+//        tap.numberOfClicksRequired = 1 //轻点次数
+//        tap.delegate = self
+//        tap.action = #selector(tapAction)
+//        popMenu.addGestureRecognizer(tap)
+        
+    }
+//    @objc func tapAction() {
+//        print("隐藏")
+//    }
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return 10
+    }
+
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return 70
+    }
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let cellView:CountryChoseCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CountryChoseCell"), owner: self) as! CountryChoseCell
+        cellView.imgIcon.image = NSImage.init(imageLiteralResourceName:"us")
+        cellView.lbCountryName.stringValue = "China"
+        cellView.lbNodes.stringValue = String(row) + " nodes"
+        return cellView
+    }
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool{
+        if isSelect == false {
+            
+            let myRowView:NSTableRowView = tableView.rowView(atRow: row, makeIfNecessary: false)!
+            myRowView.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.none
+            myRowView.isEmphasized = false
+            print("select row at index = " + String(row))
+            isSelect = true
+            btnChoseCountry.state = NSControl.StateValue(rawValue: 0)
+            self.popMenu.isHidden = true
+            return true
+        }else{
+            return false
+        }
     }
     func updateUI() {
         // MARK: 主页面背景色
@@ -57,6 +104,7 @@ class TenonMainWindowsController: NSWindowController {
         vwLine.layer?.backgroundColor = NSColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1).cgColor
         
     }
+    
     @IBAction func clickConnect(_ sender: Any) {
         
         if self.btnConnect.state.rawValue == 0 {
@@ -89,35 +137,12 @@ class TenonMainWindowsController: NSWindowController {
         accountSettingWndCtrl.window?.makeKeyAndOrderFront(nil)
     }
     @IBAction func clickChoseCountry(_ sender: Any) {
-//        if btnChoseCountry.state.rawValue == 1{
-//            self.popMenu.removeFromSuperview()
-//        }else{
-//            self.popMenu = FWPopMenu.init(frame:CGRect(x: self.btnChoseCountry.left, y: self.btnChoseCountry.bottom, width: self.btnChoseCountry.width, height: SCREEN_HEIGHT/2))
-//            self.popMenu.loadCell("CountryTableViewCell", countryCode.count)
-//            self.popMenu.callBackBlk = {(cell,indexPath) in
-//                let tempCell:CountryTableViewCell = cell as! CountryTableViewCell
-//                tempCell.backgroundColor = APP_COLOR
-//                tempCell.lbNodeCount.text = self.countryNodes[indexPath.row]
-//                tempCell.lbCountryName.text = self.countryCode[indexPath.row]
-//                tempCell.imgIcon.image = UIImage(named:self.iCon[indexPath.row])
-//                return tempCell
-//            }
-//            self.popMenu.clickBlck = {(idx) in
-//                if idx != -1{
-//                    self.btnChoseCountry.setTitle(self.countryCode[idx], for: UIControl.State.normal)
-//                    self.imgCountryIcon.image = UIImage(named:self.iCon[idx])
-//                    self.lbNodes.text = self.countryNodes[idx]
-//                    self.choosed_country = super.getCountryShort(countryCode: self.countryCode[idx])
-//                    if VpnManager.shared.vpnStatus == .on{
-//                        self.clickConnect(self.btnConnect as Any)
-//                    }
-//                }
-//
-//                self.popMenu.removeFromSuperview()
-//                self.isClick = !self.isClick
-//            }
-//            self.view.addSubview(self.popMenu)
-//        }
+        isSelect = false
+        if btnChoseCountry.state.rawValue == 0{
+            self.popMenu.isHidden = true
+        }else{
+            self.popMenu.isHidden = false
+        }
     }
     
 }

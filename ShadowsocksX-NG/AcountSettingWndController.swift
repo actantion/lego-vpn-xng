@@ -58,20 +58,6 @@ class AcountSettingWndController: NSWindowController,NSTableViewDelegate,NSTable
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         return 40
     }
-//    -(NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
-
-//    CustomCell *cellView = [tableView makeViewWithIdentifier:@"customCell" owner:self];
-//
-//    cellView.title.stringValue = @"aaa";
-//    cellView.subTitle.stringValue = @"bbb";
-//    return cellView;
-//    }
-    
-//    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-//        let cell = tableColumn!.dataCell as! NSTextFieldCell
-//        cell.stringValue = dataSource[row]
-//        return dataSource[row]
-//    }
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let cellView:TranscationInfoCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "TranscationInfoCell"), owner: self) as! TranscationInfoCell
         cellView.lbDatatime.stringValue = dataSource[row]

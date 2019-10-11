@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TenonMainWindowsController" customModule="ShadowsocksX_NG" customModuleProvider="target">
             <connections>
+                <outlet property="baseView" destination="se5-gp-TjO" id="The-zD-bSa"/>
                 <outlet property="btnChoseCountry" destination="vYd-QT-w0w" id="rfw-Xk-VYP"/>
                 <outlet property="btnConnect" destination="lRM-QR-vwZ" id="4Tt-bu-Vfw"/>
                 <outlet property="btnSelectSmartRoute" destination="0fR-3g-MrA" id="Zh0-J0-rDH"/>
@@ -17,6 +18,8 @@
                 <outlet property="lbConnect" destination="pPf-SK-qA1" id="OAE-Ub-rfx"/>
                 <outlet property="lbCountryName" destination="Nd0-bE-XMc" id="Mw8-MP-Vlw"/>
                 <outlet property="lbNodeCount" destination="ge4-zM-iYm" id="YOq-zu-IEX"/>
+                <outlet property="popMenu" destination="kRg-iB-kMM" id="tdg-8G-lpY"/>
+                <outlet property="popMenuTableView" destination="Few-c5-kj3" id="XwR-It-j6e"/>
                 <outlet property="topView" destination="PBS-qG-b5T" id="LEv-wV-eLK"/>
                 <outlet property="vwLine" destination="Auo-my-Jwh" id="zV4-tA-9MT"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -29,8 +32,8 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="335" height="558"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
-            <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="351" height="558"/>
+            <view key="contentView" misplaced="YES" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="335" height="558"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="lRM-QR-vwZ">
@@ -228,6 +231,65 @@
                         </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="us" id="6nz-QL-93o"/>
                     </imageView>
+                    <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kRg-iB-kMM">
+                        <rect key="frame" x="0.0" y="0.0" width="351" height="558"/>
+                        <subviews>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJ6-HU-Kcs">
+                                <rect key="frame" x="30" y="198" width="291" height="235"/>
+                                <clipView key="contentView" drawsBackground="NO" id="wIk-D6-DzG">
+                                    <rect key="frame" x="1" y="1" width="289" height="233"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="Few-c5-kj3">
+                                            <rect key="frame" x="0.0" y="0.0" width="289" height="233"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" red="0.03553216159" green="0.86972624060000003" blue="0.79223710300000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn width="116" minWidth="40" maxWidth="1000" id="rhX-MS-IJn">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="2e9-90-DEx">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <prototypeCellViews>
+                                                        <tableCellView id="eJ4-aW-RXv">
+                                                            <rect key="frame" x="1" y="1" width="116" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
+                                                </tableColumn>
+                                            </tableColumns>
+                                        </tableView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.03553216159" green="0.86972624060000003" blue="0.79223710300000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="235" id="F30-CA-rk6"/>
+                                </constraints>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="ta7-ku-kub">
+                                    <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="UU7-ml-LYV">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="wJ6-HU-Kcs" secondAttribute="trailing" constant="30" id="3Jh-fb-6t9"/>
+                            <constraint firstItem="wJ6-HU-Kcs" firstAttribute="leading" secondItem="kRg-iB-kMM" secondAttribute="leading" constant="30" id="pyR-FU-Y6J"/>
+                            <constraint firstItem="wJ6-HU-Kcs" firstAttribute="top" secondItem="kRg-iB-kMM" secondAttribute="top" constant="125" id="y7u-np-2f8"/>
+                        </constraints>
+                    </customView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="pUv-sL-D4d" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Auo-my-Jwh" secondAttribute="trailing" constant="4" id="46L-Ek-VJH"/>
@@ -246,7 +308,9 @@
                     <constraint firstItem="Nd0-bE-XMc" firstAttribute="leading" secondItem="aRt-j4-5ct" secondAttribute="trailing" constant="8" id="KAW-Wp-cpV"/>
                     <constraint firstAttribute="trailing" secondItem="vYd-QT-w0w" secondAttribute="trailing" constant="30" id="Ksx-AA-aft"/>
                     <constraint firstItem="nKL-sH-jaF" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="8" id="KwY-vM-JoK"/>
+                    <constraint firstAttribute="bottom" secondItem="kRg-iB-kMM" secondAttribute="bottom" id="LrY-GO-BV8"/>
                     <constraint firstItem="Nd0-bE-XMc" firstAttribute="centerX" secondItem="vYd-QT-w0w" secondAttribute="centerX" id="S52-rn-ph5"/>
+                    <constraint firstAttribute="trailing" secondItem="kRg-iB-kMM" secondAttribute="trailing" id="SEd-50-8Z1"/>
                     <constraint firstItem="Auo-my-Jwh" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="UGV-Bp-8uj"/>
                     <constraint firstItem="pUv-sL-D4d" firstAttribute="centerX" secondItem="ywj-Z8-6UK" secondAttribute="centerX" constant="-20" id="Ucf-nu-45O"/>
                     <constraint firstItem="aRt-j4-5ct" firstAttribute="centerY" secondItem="vYd-QT-w0w" secondAttribute="centerY" id="WTN-0A-RfZ"/>
@@ -255,7 +319,9 @@
                     <constraint firstItem="Jln-0j-HDZ" firstAttribute="centerX" secondItem="lRM-QR-vwZ" secondAttribute="centerX" id="YWP-Zp-6Ph"/>
                     <constraint firstItem="Muq-y5-wIx" firstAttribute="leading" secondItem="cw3-a2-WHj" secondAttribute="trailing" id="Yho-eb-Kad"/>
                     <constraint firstItem="ge4-zM-iYm" firstAttribute="leading" secondItem="Nd0-bE-XMc" secondAttribute="leading" id="Yub-ht-Mvp"/>
+                    <constraint firstItem="kRg-iB-kMM" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="ZUW-7i-98F"/>
                     <constraint firstItem="Jln-0j-HDZ" firstAttribute="centerY" secondItem="lRM-QR-vwZ" secondAttribute="centerY" constant="-20" id="Zfg-iK-Lxj"/>
+                    <constraint firstItem="kRg-iB-kMM" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="ZqO-9E-i7G"/>
                     <constraint firstItem="Auo-my-Jwh" firstAttribute="centerY" secondItem="nKL-sH-jaF" secondAttribute="centerY" constant="-10" id="aL9-90-LkN"/>
                     <constraint firstItem="ywj-Z8-6UK" firstAttribute="centerY" secondItem="VtG-Sf-d3K" secondAttribute="centerY" id="aOY-6F-9dB"/>
                     <constraint firstItem="Nd0-bE-XMc" firstAttribute="top" secondItem="aRt-j4-5ct" secondAttribute="top" id="bLt-v6-0J1"/>
@@ -275,7 +341,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="-218" y="207"/>
+            <point key="canvasLocation" x="-218.5" y="207"/>
         </window>
     </objects>
     <resources>

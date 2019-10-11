@@ -101,6 +101,8 @@
 		D3121C0D23501700007AE9DD /* TranscationInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3121C07235016FF007AE9DD /* TranscationInfoCell.swift */; };
 		D3121C0E23501700007AE9DD /* TranscationInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3121C0823501700007AE9DD /* TranscationInfoCell.xib */; };
 		D3121C0F23501700007AE9DD /* TenonMainWindowsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3121C0923501700007AE9DD /* TenonMainWindowsController.xib */; };
+		D3121C2423507137007AE9DD /* CountryChoseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3121C2323507137007AE9DD /* CountryChoseCell.xib */; };
+		D3121C2623507191007AE9DD /* CountryChoseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3121C2523507191007AE9DD /* CountryChoseCell.swift */; };
 		E0E57CCA7EB34B90F9D340F2 /* Pods_ShadowsocksX_NGTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 388120F062D7EB7DD0D8DDCA /* Pods_ShadowsocksX_NGTests.framework */; };
 		F0809FF1595BE2966343D3C7 /* libPods-proxy_conf_helper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E7783AEDB4A3BDDC9FF16AC /* libPods-proxy_conf_helper.a */; };
 /* End PBXBuildFile section */
@@ -287,6 +289,8 @@
 		D3121C07235016FF007AE9DD /* TranscationInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranscationInfoCell.swift; sourceTree = "<group>"; };
 		D3121C0823501700007AE9DD /* TranscationInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TranscationInfoCell.xib; sourceTree = "<group>"; };
 		D3121C0923501700007AE9DD /* TenonMainWindowsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TenonMainWindowsController.xib; sourceTree = "<group>"; };
+		D3121C2323507137007AE9DD /* CountryChoseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryChoseCell.xib; sourceTree = "<group>"; };
+		D3121C2523507191007AE9DD /* CountryChoseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryChoseCell.swift; sourceTree = "<group>"; };
 		E9E9FB3855DA55D0710EE7BD /* Pods-ShadowsocksX-NG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowsocksX-NG.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowsocksX-NG/Pods-ShadowsocksX-NG.release.xcconfig"; sourceTree = "<group>"; };
 		FE3237E9FB24D9B924A0E630 /* Pods-ShadowsocksX-NG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowsocksX-NG.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowsocksX-NG/Pods-ShadowsocksX-NG.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -451,6 +455,8 @@
 				9B7297EE214DA88A00FD24AA /* ShareServerProfilesWindowController.xib */,
 				9B72FB60232782A300C6AAAE /* ImportWindowController.swift */,
 				9B74B5EB232949B100DEA386 /* ImportWindowController.xib */,
+				D3121C2323507137007AE9DD /* CountryChoseCell.xib */,
+				D3121C2523507191007AE9DD /* CountryChoseCell.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -735,6 +741,7 @@
 				9B0BFFEB1D0460A70040E62B /* Assets.xcassets in Resources */,
 				B5A2AB04221A72EC003F77B7 /* install_v2ray_plugin.sh in Resources */,
 				9BAA662B23295FAB00F5CC99 /* http.png in Resources */,
+				D3121C2423507137007AE9DD /* CountryChoseCell.xib in Resources */,
 				1C82DBA81FA96C7500B32551 /* obfs-local in Resources */,
 				9B7297EC214DA88A00FD24AA /* ShareServerProfilesWindowController.xib in Resources */,
 				9B3FFF271D0898EB0019A709 /* gfwlist.txt in Resources */,
@@ -877,6 +884,7 @@
 				9BEEF0781D04FE8A00FC52B3 /* LaunchAgentUtils.swift in Sources */,
 				9B3546721E802B1200B510B4 /* ToastWindowController.swift in Sources */,
 				C8E42A6C1D4F270A0074C7EA /* UserRulesController.swift in Sources */,
+				D3121C2623507191007AE9DD /* CountryChoseCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
