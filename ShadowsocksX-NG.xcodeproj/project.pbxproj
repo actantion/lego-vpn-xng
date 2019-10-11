@@ -177,12 +177,12 @@
 		85134E242341A41800DCBBBE /* libp2p.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libp2p.framework; path = libp2p/libp2p.framework; sourceTree = "<group>"; };
 		85134E292341A52F00DCBBBE /* TenonP2pLib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TenonP2pLib.swift; sourceTree = "<group>"; };
 		9B07EFA61D048BBB0052D9DF /* ss-local */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ss-local"; sourceTree = "<group>"; };
-		9B0BFFE51D0460A70040E62B /* TenonVPN-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TenonVPN-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B0BFFE51D0460A70040E62B /* ShadowsocksX-NG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ShadowsocksX-NG.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B0BFFE81D0460A70040E62B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B0BFFEA1D0460A70040E62B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B0BFFED1D0460A70040E62B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		9B0BFFEF1D0460A70040E62B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9B0BFFF41D0460A70040E62B /* TenonVPN-MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TenonVPN-MacTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B0BFFF41D0460A70040E62B /* ShadowsocksX-NGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ShadowsocksX-NGTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B172A601D0ADA5B00B87B9A /* genstrings.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = genstrings.py; sourceTree = "<group>"; };
 		9B172A6B1D0ADDDD00B87B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9B172A6D1D0ADDE800B87B9A /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 		9B3FFF4D1D09D9D50019A709 /* ProxyConfHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxyConfHelper.h; sourceTree = "<group>"; };
 		9B3FFF4E1D09D9D50019A709 /* ProxyConfHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProxyConfHelper.m; sourceTree = "<group>"; };
 		9B3FFF501D09DAEA0019A709 /* proxy_conf_helper_version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = proxy_conf_helper_version.h; sourceTree = "<group>"; };
-		9B3FFF511D09DBA20019A709 /* TenonVPN-Mac-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TenonVPN-Mac-Bridging-Header.h"; sourceTree = "<group>"; };
+		9B3FFF511D09DBA20019A709 /* ShadowsocksX-NG-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ShadowsocksX-NG-Bridging-Header.h"; sourceTree = "<group>"; };
 		9B5831F41E7302F8009D5B7D /* ShortcutsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortcutsController.h; sourceTree = "<group>"; };
 		9B5831F51E7302F8009D5B7D /* ShortcutsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortcutsController.m; sourceTree = "<group>"; };
 		9B5831FA1E73098F009D5B7D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -372,7 +372,7 @@
 				9B5831FA1E73098F009D5B7D /* README.md */,
 				9B172A601D0ADA5B00B87B9A /* genstrings.py */,
 				9B9F13A11E8A282C00DE4794 /* LaunchHelper.xcodeproj */,
-				9B0BFFE71D0460A70040E62B /* TenonVPN-Mac */,
+				9B0BFFE71D0460A70040E62B /* ShadowsocksX-NG */,
 				9B3FFF451D09CD3B0019A709 /* proxy_conf_helper */,
 				9B0BFFE61D0460A70040E62B /* Products */,
 				33F4F299F89330966F4526E4 /* Pods */,
@@ -383,20 +383,20 @@
 		9B0BFFE61D0460A70040E62B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9B0BFFE51D0460A70040E62B /* TenonVPN-Mac.app */,
-				9B0BFFF41D0460A70040E62B /* TenonVPN-MacTests.xctest */,
+				9B0BFFE51D0460A70040E62B /* ShadowsocksX-NG.app */,
+				9B0BFFF41D0460A70040E62B /* ShadowsocksX-NGTests.xctest */,
 				9B3FFF441D09CD3B0019A709 /* proxy_conf_helper */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9B0BFFE71D0460A70040E62B /* TenonVPN-Mac */ = {
+		9B0BFFE71D0460A70040E62B /* ShadowsocksX-NG */ = {
 			isa = PBXGroup;
 			children = (
 				85134E292341A52F00DCBBBE /* TenonP2pLib.swift */,
 				9BB706A51D1B982300551F0E /* SWBApplication.m */,
 				9BB706A61D1B982300551F0E /* SWBApplication.h */,
-				9B3FFF511D09DBA20019A709 /* TenonVPN-Mac-Bridging-Header.h */,
+				9B3FFF511D09DBA20019A709 /* ShadowsocksX-NG-Bridging-Header.h */,
 				9B3FFF151D072FDE0019A709 /* LaunchAtLoginController.h */,
 				9B3FFF161D072FDE0019A709 /* LaunchAtLoginController.m */,
 				9B3FFF0B1D05D8B80019A709 /* UI */,
@@ -423,7 +423,7 @@
 				9B5831F51E7302F8009D5B7D /* ShortcutsController.m */,
 				9B84DAEC2163A72F00DFF068 /* Diagnose.swift */,
 			);
-			path = "TenonVPN-Mac";
+			path = "ShadowsocksX-NG";
 			sourceTree = "<group>";
 		};
 		9B3FFF0B1D05D8B80019A709 /* UI */ = {
@@ -562,9 +562,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9B0BFFE41D0460A70040E62B /* TenonVPN-Mac */ = {
+		9B0BFFE41D0460A70040E62B /* ShadowsocksX-NG */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B0B00081D0460A70040E62B /* Build configuration list for PBXNativeTarget "TenonVPN-Mac" */;
+			buildConfigurationList = 9B0B00081D0460A70040E62B /* Build configuration list for PBXNativeTarget "ShadowsocksX-NG" */;
 			buildPhases = (
 				A3C8167BB5EB01FBDE2A08BC /* [CP] Check Pods Manifest.lock */,
 				9B0BFFE11D0460A70040E62B /* Sources */,
@@ -579,14 +579,14 @@
 			dependencies = (
 				9B3FFF531D09E2B30019A709 /* PBXTargetDependency */,
 			);
-			name = "TenonVPN-Mac";
+			name = "ShadowsocksX-NG";
 			productName = "ShadowsocksX-NG";
-			productReference = 9B0BFFE51D0460A70040E62B /* TenonVPN-Mac.app */;
+			productReference = 9B0BFFE51D0460A70040E62B /* ShadowsocksX-NG.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9B0BFFF31D0460A70040E62B /* TenonVPN-MacTests */ = {
+		9B0BFFF31D0460A70040E62B /* ShadowsocksX-NGTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B0B000B1D0460A70040E62B /* Build configuration list for PBXNativeTarget "TenonVPN-MacTests" */;
+			buildConfigurationList = 9B0B000B1D0460A70040E62B /* Build configuration list for PBXNativeTarget "ShadowsocksX-NGTests" */;
 			buildPhases = (
 				22E2FC257F00091B923B1A15 /* [CP] Check Pods Manifest.lock */,
 				9B0BFFF01D0460A70040E62B /* Sources */,
@@ -598,9 +598,9 @@
 			dependencies = (
 				9B0BFFF61D0460A70040E62B /* PBXTargetDependency */,
 			);
-			name = "TenonVPN-MacTests";
+			name = "ShadowsocksX-NGTests";
 			productName = "ShadowsocksX-NGTests";
-			productReference = 9B0BFFF41D0460A70040E62B /* TenonVPN-MacTests.xctest */;
+			productReference = 9B0BFFF41D0460A70040E62B /* ShadowsocksX-NGTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		9B3FFF431D09CD3B0019A709 /* proxy_conf_helper */ = {
@@ -647,7 +647,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9B0BFFE01D0460A70040E62B /* Build configuration list for PBXProject "TenonVPN-Mac" */;
+			buildConfigurationList = 9B0BFFE01D0460A70040E62B /* Build configuration list for PBXProject "ShadowsocksX-NG" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -668,8 +668,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				9B0BFFE41D0460A70040E62B /* TenonVPN-Mac */,
-				9B0BFFF31D0460A70040E62B /* TenonVPN-MacTests */,
+				9B0BFFE41D0460A70040E62B /* ShadowsocksX-NG */,
+				9B0BFFF31D0460A70040E62B /* ShadowsocksX-NGTests */,
 				9B3FFF431D09CD3B0019A709 /* proxy_conf_helper */,
 			);
 		};
@@ -900,7 +900,7 @@
 /* Begin PBXTargetDependency section */
 		9B0BFFF61D0460A70040E62B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9B0BFFE41D0460A70040E62B /* TenonVPN-Mac */;
+			target = 9B0BFFE41D0460A70040E62B /* ShadowsocksX-NG */;
 			targetProxy = 9B0BFFF51D0460A70040E62B /* PBXContainerItemProxy */;
 		};
 		9B3FFF531D09E2B30019A709 /* PBXTargetDependency */ = {
@@ -1103,7 +1103,7 @@
 					"$(SRCROOT)/libcork/include/",
 					"$(SRCROOT)/libipset/include/",
 				);
-				INFOPLIST_FILE = "TenonVPN-Mac/Info.plist";
+				INFOPLIST_FILE = "ShadowsocksX-NG/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1156,7 +1156,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.qiuyuzhou.ShadowsocksX-NG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "TenonVPN-Mac/TenonVPN-Mac-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ShadowsocksX-NG/ShadowsocksX-NG-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -1182,7 +1182,7 @@
 					"$(SRCROOT)/libcork/include/",
 					"$(SRCROOT)/libipset/include/",
 				);
-				INFOPLIST_FILE = "TenonVPN-Mac/Info.plist";
+				INFOPLIST_FILE = "ShadowsocksX-NG/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1235,7 +1235,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.qiuyuzhou.ShadowsocksX-NG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "TenonVPN-Mac/TenonVPN-Mac-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ShadowsocksX-NG/ShadowsocksX-NG-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -1258,7 +1258,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "ShadowsocksX-NG/ShadowsocksX-NG-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TenonVPN-Mac.app/Contents/MacOS/TenonVPN-Mac";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShadowsocksX-NG.app/Contents/MacOS/ShadowsocksX-NG";
 			};
 			name = Debug;
 		};
@@ -1278,7 +1278,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "ShadowsocksX-NG/ShadowsocksX-NG-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TenonVPN-Mac.app/Contents/MacOS/TenonVPN-Mac";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShadowsocksX-NG.app/Contents/MacOS/ShadowsocksX-NG";
 			};
 			name = Release;
 		};
@@ -1305,7 +1305,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9B0B00081D0460A70040E62B /* Build configuration list for PBXNativeTarget "TenonVPN-Mac" */ = {
+		9B0B00081D0460A70040E62B /* Build configuration list for PBXNativeTarget "ShadowsocksX-NG" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B0B00091D0460A70040E62B /* Debug */,
@@ -1314,7 +1314,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B0B000B1D0460A70040E62B /* Build configuration list for PBXNativeTarget "TenonVPN-MacTests" */ = {
+		9B0B000B1D0460A70040E62B /* Build configuration list for PBXNativeTarget "ShadowsocksX-NGTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B0B000C1D0460A70040E62B /* Debug */,
@@ -1323,7 +1323,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B0BFFE01D0460A70040E62B /* Build configuration list for PBXProject "TenonVPN-Mac" */ = {
+		9B0BFFE01D0460A70040E62B /* Build configuration list for PBXProject "ShadowsocksX-NG" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B0B00061D0460A70040E62B /* Debug */,

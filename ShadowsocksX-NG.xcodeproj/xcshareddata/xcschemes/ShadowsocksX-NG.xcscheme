@@ -64,11 +64,20 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B0BFFE41D0460A70040E62B"
+            BuildableName = "ShadowsocksX-NG.app"
+            BlueprintName = "ShadowsocksX-NG"
+            ReferencedContainer = "container:ShadowsocksX-NG.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "9B0BFFE41D0460A70040E62B"
             BuildableName = "TenonVPN-Mac.app"
             BlueprintName = "TenonVPN-Mac"
             ReferencedContainer = "container:TenonVPN-Mac.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
