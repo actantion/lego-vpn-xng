@@ -362,10 +362,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     }
     
     @IBAction func selectGlobalMode(_ sender: NSMenuItem) {
-        let defaults = UserDefaults.standard
-        defaults.setValue("global", forKey: "ShadowsocksRunningMode")
-        updateRunningModeMenu()
-        applyConfig()
+        NSWorkspace.shared.open(URL(string: "https://www.baidu.com")!)
+//        let defaults = UserDefaults.standard
+//        defaults.setValue("global", forKey: "ShadowsocksRunningMode")
+//        updateRunningModeMenu()
+//        applyConfig()
     }
     
     @IBAction func selectManualMode(_ sender: NSMenuItem) {

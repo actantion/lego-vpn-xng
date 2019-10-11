@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="TenonMainWindowsController" customModule="TenonVPN_Mac" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="TenonMainWindowsController" customModule="ShadowsocksX_NG" customModuleProvider="target">
             <connections>
                 <outlet property="btnChoseCountry" destination="vYd-QT-w0w" id="rfw-Xk-VYP"/>
                 <outlet property="btnConnect" destination="lRM-QR-vwZ" id="4Tt-bu-Vfw"/>
@@ -29,8 +29,8 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="335" height="558"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
-            <view key="contentView" misplaced="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="335" height="558"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="351" height="558"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="lRM-QR-vwZ">
@@ -56,7 +56,7 @@
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="connect" id="PbD-7J-bRd"/>
                     </imageView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VtG-Sf-d3K">
-                        <rect key="frame" x="-2" y="86" width="180" height="16"/>
+                        <rect key="frame" x="-2" y="56" width="180" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="VFi-39-OKc"/>
                         </constraints>
@@ -67,7 +67,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ywj-Z8-6UK">
-                        <rect key="frame" x="174" y="86" width="179" height="16"/>
+                        <rect key="frame" x="174" y="56" width="179" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="xX1-us-KTq"/>
                         </constraints>
@@ -78,7 +78,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nKL-sH-jaF">
-                        <rect key="frame" x="6" y="60" width="163" height="16"/>
+                        <rect key="frame" x="6" y="30" width="163" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="315-o6-4O0"/>
                         </constraints>
@@ -89,7 +89,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pUv-sL-D4d">
-                        <rect key="frame" x="216" y="60" width="55" height="16"/>
+                        <rect key="frame" x="216" y="30" width="55" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="J2K-ex-dnv"/>
                         </constraints>
@@ -100,7 +100,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cw3-a2-WHj">
-                        <rect key="frame" x="271" y="60" width="31" height="16"/>
+                        <rect key="frame" x="271" y="30" width="31" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="kRz-aa-ab1"/>
                         </constraints>
@@ -111,7 +111,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Muq-y5-wIx">
-                        <rect key="frame" x="298" y="60" width="17" height="16"/>
+                        <rect key="frame" x="298" y="30" width="17" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="KiI-t0-yMD"/>
                         </constraints>
@@ -122,7 +122,7 @@
                         </textFieldCell>
                     </textField>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Auo-my-Jwh">
-                        <rect key="frame" x="175" y="58" width="1" height="40"/>
+                        <rect key="frame" x="175" y="28" width="1" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="1" id="3Fp-1L-3K9"/>
                             <constraint firstAttribute="height" constant="40" id="TJi-iR-MkB"/>
@@ -232,8 +232,8 @@
                 <constraints>
                     <constraint firstItem="pUv-sL-D4d" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Auo-my-Jwh" secondAttribute="trailing" constant="4" id="46L-Ek-VJH"/>
                     <constraint firstItem="nKL-sH-jaF" firstAttribute="top" secondItem="VtG-Sf-d3K" secondAttribute="bottom" constant="10" id="4kT-gK-7M0"/>
+                    <constraint firstAttribute="bottom" secondItem="nKL-sH-jaF" secondAttribute="bottom" constant="30" id="51E-bd-SN3"/>
                     <constraint firstItem="PBS-qG-b5T" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="5Pm-Xo-arh"/>
-                    <constraint firstAttribute="bottom" secondItem="nKL-sH-jaF" secondAttribute="bottom" constant="60" id="6SX-3x-Mrp"/>
                     <constraint firstItem="pPf-SK-qA1" firstAttribute="centerX" secondItem="Jln-0j-HDZ" secondAttribute="centerX" id="7SS-du-NuN"/>
                     <constraint firstItem="ywj-Z8-6UK" firstAttribute="leading" secondItem="VtG-Sf-d3K" secondAttribute="trailing" id="91l-uM-iRv"/>
                     <constraint firstItem="vYd-QT-w0w" firstAttribute="top" secondItem="PBS-qG-b5T" secondAttribute="bottom" constant="25" id="BdB-w8-GPt"/>
@@ -275,7 +275,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="-106" y="193"/>
+            <point key="canvasLocation" x="-218" y="207"/>
         </window>
     </objects>
     <resources>

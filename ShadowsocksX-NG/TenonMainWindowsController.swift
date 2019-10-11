@@ -56,8 +56,6 @@ class TenonMainWindowsController: NSWindowController {
         vwLine.wantsLayer = true
         vwLine.layer?.backgroundColor = NSColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1).cgColor
         
-        // MARK: tableview初始化
-        
     }
     @IBAction func clickConnect(_ sender: Any) {
         
