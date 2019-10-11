@@ -21,7 +21,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     var allInOnePreferencesWinCtrl: PreferencesWinController!
     var toastWindowCtrl: ToastWindowController!
     var importWinCtrl: ImportWindowController!
-
+    var tenonWndCtrl:TenonMainWindowsController!
+    
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var statusMenu: NSMenu!
     
@@ -347,10 +348,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     }
 
     @IBAction func selectPACMode(_ sender: NSMenuItem) {
-        let defaults = UserDefaults.standard
-        defaults.setValue("auto", forKey: "ShadowsocksRunningMode")
-        updateRunningModeMenu()
-        applyConfig()
+        if tenonWndCtrl != nil {
+            tenonWndCtrl.close()
+        }
+        tenonWndCtrl = TenonMainWindowsController(windowNibName: .init(rawValue: "TenonMainWindowsController"))
+        tenonWndCtrl.showWindow(self)
+        NSApp.activate(ignoringOtherApps: true)
+        tenonWndCtrl.window?.makeKeyAndOrderFront(nil)
+//        let defaults = UserDefaults.standard
+//        defaults.setValue("auto", forKey: "ShadowsocksRunningMode")
+//        updateRunningModeMenu()
+//        applyConfig()
     }
     
     @IBAction func selectGlobalMode(_ sender: NSMenuItem) {
