@@ -10,7 +10,7 @@
 
 #import <Foundation/Foundation.h>
 #import <SystemConfiguration/SystemConfiguration.h>
-#import "../ShadowsocksX-NG/proxy_conf_helper_version.h"
+#import "../TenonVPN-Mac/proxy_conf_helper_version.h"
 
 // A library for parsing command line.
 // https://github.com/stephencelis/BRLOptionParser

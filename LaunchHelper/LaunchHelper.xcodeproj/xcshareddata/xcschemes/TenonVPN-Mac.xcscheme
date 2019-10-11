@@ -44,12 +44,21 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
+            BlueprintIdentifier = "9B0BFFE41D0460A70040E62B"
+            BuildableName = "TenonVPN-Mac.app"
+            BlueprintName = "TenonVPN-Mac"
+            ReferencedContainer = "container:../TenonVPN-Mac.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B9F138C1E8A282C00DE4794"
             BuildableName = "LaunchHelper.app"
             BlueprintName = "LaunchHelper"
             ReferencedContainer = "container:LaunchHelper.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
