@@ -22,6 +22,7 @@ class TenonP2pLib {
         let conf_path = path + "/lego.conf"
         let log_path = path + "/lego.log"
         let log_conf_path = path + "/log4cpp.properties"
+        print(conf_path)
         let res = LibP2P.initP2pNetwork(
                 local_ip,
                 local_port,

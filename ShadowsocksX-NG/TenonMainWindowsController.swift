@@ -26,7 +26,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     @IBOutlet weak var lbNodeCount: NSTextField!
     @IBOutlet weak var imgCountry: NSImageView!
     @IBOutlet weak var vwLine: NSView!
-    var choosed_country:String!
+    var choosed_country:String! = "US"
     var transcationList = [TranscationModel]()
     let appDelegate = (NSApplication.shared.delegate) as! AppDelegate
     
@@ -35,6 +35,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     var iCon:[String] = ["us", "sg", "br","de","fr","kr", "jp", "ca","au","hk", "in", "gb","cn"]
     var isSelect: Bool = false
     var accountSettingWndCtrl:AcountSettingWndController!
+    public var local_country:String!;
     
     func getCountryShort(countryCode:String) -> String {
         switch countryCode {
@@ -77,6 +78,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
 //        local_account_id = res.account_id as String
         
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+        
         updateUI()
         requestData()
         for _ in countryCode {
@@ -85,7 +87,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         self.lbCountryName.stringValue = countryCode[0]
         self.imgCountry.image = NSImage.init(imageLiteralResourceName:iCon[0])
         self.lbNodeCount.stringValue = countryNodes[0]
-        self.choosed_country = getCountryShort(countryCode: countryNodes[0])
+        self.choosed_country = getCountryShort(countryCode: countryCode[0])
         
         lbAccountAddress.stringValue = String(appDelegate.local_account_id.prefix(10)) + "..." + String(appDelegate.local_account_id.suffix(10))
         popMenuTableView.delegate = self
@@ -93,6 +95,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         popMenuTableView.tableColumns[0].width = popMenuTableView.frame.size.width
         popMenuTableView.register(NSNib(nibNamed: NSNib.Name(rawValue: "CountryChoseCell"), bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CountryChoseCell"))
         popMenuTableView.reloadData()
+      
     }
     @objc func requestData(){
         transcationList.removeAll()
@@ -150,7 +153,30 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             self.lbCountryName.stringValue = countryCode[row]
             self.imgCountry.image = NSImage.init(imageLiteralResourceName:iCon[row])
             self.lbNodeCount.stringValue = countryNodes[row]
-            self.choosed_country = getCountryShort(countryCode: countryNodes[row])
+            self.choosed_country = getCountryShort(countryCode: countryCode[row])
+
+            let defaults = UserDefaults.standard
+            var isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
+            if (!isOn) {
+                return false
+            }
+            SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route: Int32(btnSelectSmartRoute.state.rawValue))
+
+            let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
+            
+            if isOn {
+                if mode == "auto" {
+                    ProxyConfHelper.enablePACProxy()
+                } else if mode == "global" {
+                    ProxyConfHelper.enableGlobalProxy()
+                } else if mode == "manual" {
+                    ProxyConfHelper.disableProxy()
+                } else if mode == "externalPAC" {
+                    ProxyConfHelper.enableExternalPACProxy()
+                }
+            } else {
+                ProxyConfHelper.disableProxy()
+            }
             return true
         }else{
             return false
@@ -184,27 +210,71 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         vwLine.wantsLayer = true
         vwLine.layer?.backgroundColor = NSColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1).cgColor
         
+        imgConnect.image = NSImage.init(imageLiteralResourceName:"connected")
+        lbConnect.stringValue = "Connected"
+        btnConnect.layer?.backgroundColor = APP_COLOR.cgColor
+        
     }
     
-    @IBAction func clickConnect(_ sender: Any) {
+    func ResetConnect() {
+        let defaults = UserDefaults.standard
+        var isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
+        isOn = !isOn
+        defaults.set(isOn, forKey: "ShadowsocksOn")
+        SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route: Int32(btnSelectSmartRoute.state.rawValue))
+
+        let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
         
-        if self.btnConnect.state.rawValue == 0 {
-            print("connect")
+        if isOn {
+            if mode == "auto" {
+                ProxyConfHelper.enablePACProxy()
+            } else if mode == "global" {
+                ProxyConfHelper.enableGlobalProxy()
+            } else if mode == "manual" {
+                ProxyConfHelper.disableProxy()
+            } else if mode == "externalPAC" {
+                ProxyConfHelper.enableExternalPACProxy()
+            }
+        } else {
+            ProxyConfHelper.disableProxy()
+        }
+        
+        if self.btnConnect.state.rawValue == 1 {
             imgConnect.image = NSImage.init(imageLiteralResourceName:"connect")
             lbConnect.stringValue = "Connect"
             btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
         }else{
-            print("connected")
             imgConnect.image = NSImage.init(imageLiteralResourceName:"connected")
             lbConnect.stringValue = "Connected"
             btnConnect.layer?.backgroundColor = APP_COLOR.cgColor
         }
     }
+    
+    @IBAction func clickConnect(_ sender: Any) {
+        ResetConnect();
+    }
     @IBAction func clickSmartRoute(_ sender: Any) {
-        if btnSelectSmartRoute.state.rawValue == 1{
-            print("selected")
-        }else{
-            print("unselect")
+        let defaults = UserDefaults.standard
+        var isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
+        if (!isOn) {
+            return
+        }
+        SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route: Int32(btnSelectSmartRoute.state.rawValue))
+
+        let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
+        
+        if isOn {
+            if mode == "auto" {
+                ProxyConfHelper.enablePACProxy()
+            } else if mode == "global" {
+                ProxyConfHelper.enableGlobalProxy()
+            } else if mode == "manual" {
+                ProxyConfHelper.disableProxy()
+            } else if mode == "externalPAC" {
+                ProxyConfHelper.enableExternalPACProxy()
+            }
+        } else {
+            ProxyConfHelper.disableProxy()
         }
     }
     @IBAction func clickAccountSetting(_ sender: Any) {

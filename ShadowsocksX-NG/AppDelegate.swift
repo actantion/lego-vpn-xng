@@ -55,6 +55,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     var local_private_key: String = ""
     var local_account_id: String = ""
     var use_smart_route: Int32 = 1
+    var dialogShowed: Bool = false
     
     func ensureLaunchAgentsDirOwner () {
         let dirPath = NSHomeDirectory() + "/Library/LaunchAgents"
@@ -114,7 +115,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         let defaults = UserDefaults.standard
         defaults.register(defaults: [
             "ShadowsocksOn": true,
-            "ShadowsocksRunningMode": "auto",
+            "ShadowsocksRunningMode": "global",
             "LocalSocks5.ListenPort": NSNumber(value: 1086 as UInt16),
             "LocalSocks5.ListenAddress": "127.0.0.1",
             "PacServer.ListenAddress":"127.0.0.1",
@@ -136,7 +137,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         let image : NSImage = NSImage(named: NSImage.Name(rawValue: "menu_icon"))!
         image.isTemplate = false
         statusItem.image = image
-        statusItem.menu = statusMenu
+        //statusItem.menu = statusMenu
+        statusItem.action = #selector(togglePopover)
         
         let notifyCenter = NotificationCenter.default
         
@@ -176,21 +178,21 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                     defaults.setValue("global", forKey: "ShadowsocksRunningMode")
                     toastMessage = "Global Mode".localized
                 case "global":
-                    defaults.setValue("manual", forKey: "ShadowsocksRunningMode")
+                    defaults.setValue("global", forKey: "ShadowsocksRunningMode")
                     toastMessage = "Manual Mode".localized
                 case "manual":
                     if self.externalPACModeMenuItem.isEnabled {
-                        defaults.setValue("externalPAC", forKey: "ShadowsocksRunningMode")
+                        defaults.setValue("global", forKey: "ShadowsocksRunningMode")
                         toastMessage = "Auto Mode By External PAC".localized
                     } else {
-                        defaults.setValue("auto", forKey: "ShadowsocksRunningMode")
+                        defaults.setValue("global", forKey: "ShadowsocksRunningMode")
                         toastMessage = "Auto Mode By PAC".localized
                     }
                 case "externalPAC":
-                    defaults.setValue("auto", forKey: "ShadowsocksRunningMode")
+                    defaults.setValue("global", forKey: "ShadowsocksRunningMode")
                     toastMessage = "Auto Mode By PAC".localized
                 default:
-                    defaults.setValue("auto", forKey: "ShadowsocksRunningMode")
+                    defaults.setValue("global", forKey: "ShadowsocksRunningMode")
                     toastMessage = "Auto Mode By PAC".localized
                 }
                 
@@ -221,6 +223,28 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
         // Register global hotkey
         ShortcutsController.bindShortcuts()
+        togglePopover(self)
+    }
+    
+    @objc func showPopover(_ sender: AnyObject) {
+         if let button = statusItem.button {
+             print("hello show dialog now.")
+         }
+    }
+    
+    @objc func closePopover(_ sender: AnyObject) {
+         print("hello hide dialog now.")
+    }
+    
+    @objc func togglePopover(_ sender: AnyObject) {
+         if tenonWndCtrl != nil {
+            tenonWndCtrl.close()
+         }
+         tenonWndCtrl = TenonMainWindowsController(windowNibName: .init(rawValue: "TenonMainWindowsController"))
+         tenonWndCtrl.local_country = self.local_country;
+         tenonWndCtrl.showWindow(self)
+         NSApp.activate(ignoringOtherApps: true)
+         tenonWndCtrl.window?.makeKeyAndOrderFront(nil)
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -235,7 +259,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         
         let defaults = UserDefaults.standard
         let isOn = defaults.bool(forKey: "ShadowsocksOn")
-        let mode = defaults.string(forKey: "ShadowsocksRunningMode")
+        let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
         
         if isOn {
             if mode == "auto" {
@@ -352,6 +376,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             tenonWndCtrl.close()
         }
         tenonWndCtrl = TenonMainWindowsController(windowNibName: .init(rawValue: "TenonMainWindowsController"))
+        tenonWndCtrl.local_country = self.local_country;
         tenonWndCtrl.showWindow(self)
         NSApp.activate(ignoringOtherApps: true)
         tenonWndCtrl.window?.makeKeyAndOrderFront(nil)
@@ -371,14 +396,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     @IBAction func selectManualMode(_ sender: NSMenuItem) {
         let defaults = UserDefaults.standard
-        defaults.setValue("manual", forKey: "ShadowsocksRunningMode")
+        defaults.setValue("global", forKey: "ShadowsocksRunningMode")
         updateRunningModeMenu()
         applyConfig()
     }
     
     @IBAction func selectExternalPACMode(_ sender: NSMenuItem) {
         let defaults = UserDefaults.standard
-        defaults.setValue("externalPAC", forKey: "ShadowsocksRunningMode")
+        defaults.setValue("global", forKey: "ShadowsocksRunningMode")
         updateRunningModeMenu()
         applyConfig()
     }
@@ -501,7 +526,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         manualModeMenuItem.state = .off
         externalPACModeMenuItem.state = .off
         
-        let mode = defaults.string(forKey: "ShadowsocksRunningMode")
+        let mode = "global"; //defaults.string(forKey: "ShadowsocksRunningMode")
         if mode == "auto" {
             autoModeMenuItem.state = .on
         } else if mode == "global" {
@@ -534,23 +559,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     func updateStatusMenuImage() {
         let defaults = UserDefaults.standard
-        let mode = defaults.string(forKey: "ShadowsocksRunningMode")
+        let mode = "global" as String; //defaults.string(forKey: "ShadowsocksRunningMode")
         let isOn = defaults.bool(forKey: "ShadowsocksOn")
         if isOn {
-            if let m = mode {
-                switch m {
-                    case "auto":
-                        statusItem.image = NSImage(named: NSImage.Name(rawValue: "menu_p_icon"))
-                    case "global":
-                        statusItem.image = NSImage(named: NSImage.Name(rawValue: "menu_g_icon"))
-                    case "manual":
-                        statusItem.image = NSImage(named: NSImage.Name(rawValue: "menu_m_icon"))
-                    case "externalPAC":
-                        statusItem.image = NSImage(named: NSImage.Name(rawValue: "menu_e_icon"))
-                default: break
-                }
+            
+                statusItem.image = NSImage(named: NSImage.Name(rawValue: "menu_g_icon"))
+                    
                 statusItem.image?.isTemplate = false
-            }
+
         } else {
             statusItem.image = NSImage(named: NSImage.Name(rawValue: "menu_icon_disabled"))
             statusItem.image?.isTemplate = false
