@@ -14,7 +14,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="grS-37-SMk">
-                    <rect key="frame" x="67" y="40" width="96" height="16"/>
+                    <rect key="frame" x="67" y="40" width="340" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="QtZ-eP-Zp9">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -22,7 +22,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="FYV-4w-P01">
-                    <rect key="frame" x="67" y="16" width="96" height="16"/>
+                    <rect key="frame" x="67" y="16" width="340" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="c03-g5-3l9">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -41,6 +41,8 @@
             <constraints>
                 <constraint firstItem="swW-MK-Yo5" firstAttribute="top" secondItem="LwO-PU-7vd" secondAttribute="top" constant="16" id="7M6-U4-L1Y"/>
                 <constraint firstItem="swW-MK-Yo5" firstAttribute="leading" secondItem="LwO-PU-7vd" secondAttribute="leading" constant="16" id="FI3-4n-DGU"/>
+                <constraint firstAttribute="trailing" secondItem="FYV-4w-P01" secondAttribute="trailing" constant="17" id="M3Q-Kw-WTu"/>
+                <constraint firstAttribute="trailing" secondItem="grS-37-SMk" secondAttribute="trailing" constant="17" id="QUL-S5-bE3"/>
                 <constraint firstItem="FYV-4w-P01" firstAttribute="bottom" secondItem="swW-MK-Yo5" secondAttribute="bottom" id="T2u-sk-hXj"/>
                 <constraint firstItem="grS-37-SMk" firstAttribute="top" secondItem="swW-MK-Yo5" secondAttribute="top" id="dSY-fU-ZcC"/>
                 <constraint firstItem="FYV-4w-P01" firstAttribute="leading" secondItem="grS-37-SMk" secondAttribute="leading" id="fFW-LU-dcc"/>

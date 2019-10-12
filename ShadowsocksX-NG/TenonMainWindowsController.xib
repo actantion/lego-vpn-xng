@@ -15,9 +15,12 @@
                 <outlet property="cbRouteSwitch" destination="0fR-3g-MrA" id="BD4-KN-8A9"/>
                 <outlet property="imgConnect" destination="Jln-0j-HDZ" id="Vdk-IR-2Me"/>
                 <outlet property="imgCountry" destination="aRt-j4-5ct" id="910-aO-q6B"/>
+                <outlet property="lbAccountAddress" destination="nKL-sH-jaF" id="YDL-3e-gBC"/>
                 <outlet property="lbConnect" destination="pPf-SK-qA1" id="OAE-Ub-rfx"/>
                 <outlet property="lbCountryName" destination="Nd0-bE-XMc" id="Mw8-MP-Vlw"/>
                 <outlet property="lbNodeCount" destination="ge4-zM-iYm" id="YOq-zu-IEX"/>
+                <outlet property="lbTenon" destination="pUv-sL-D4d" id="N7z-SP-oR4"/>
+                <outlet property="lbUSD" destination="cw3-a2-WHj" id="ifb-Ac-DGs"/>
                 <outlet property="popMenu" destination="kRg-iB-kMM" id="tdg-8G-lpY"/>
                 <outlet property="popMenuTableView" destination="Few-c5-kj3" id="XwR-It-j6e"/>
                 <outlet property="topView" destination="PBS-qG-b5T" id="LEv-wV-eLK"/>
@@ -84,6 +87,7 @@
                         <rect key="frame" x="6" y="30" width="163" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="315-o6-4O0"/>
+                            <constraint firstAttribute="width" constant="159" id="xrg-Do-Tjk"/>
                         </constraints>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="asdfasdfasdfeqrqewfasdf" id="SOo-aI-ZbC">
                             <font key="font" metaFont="system"/>
@@ -108,17 +112,6 @@
                             <constraint firstAttribute="height" constant="16" id="kRz-aa-ab1"/>
                         </constraints>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="100" id="lhq-9T-4CM">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" red="0.55339854960000001" green="0.0" blue="6.9457251809999999e-05" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Muq-y5-wIx">
-                        <rect key="frame" x="298" y="30" width="17" height="16"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="16" id="KiI-t0-yMD"/>
-                        </constraints>
-                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="$" id="5go-WG-6b9">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" red="0.55339854960000001" green="0.0" blue="6.9457251809999999e-05" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -301,7 +294,6 @@
                     <constraint firstItem="vYd-QT-w0w" firstAttribute="top" secondItem="PBS-qG-b5T" secondAttribute="bottom" constant="25" id="BdB-w8-GPt"/>
                     <constraint firstItem="VtG-Sf-d3K" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="E3G-6E-F3j"/>
                     <constraint firstItem="pPf-SK-qA1" firstAttribute="top" secondItem="Jln-0j-HDZ" secondAttribute="bottom" constant="10" id="G54-re-wTs"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Muq-y5-wIx" secondAttribute="trailing" constant="4" id="GBH-FB-suS"/>
                     <constraint firstItem="pUv-sL-D4d" firstAttribute="centerY" secondItem="nKL-sH-jaF" secondAttribute="centerY" id="GWS-x2-EXe"/>
                     <constraint firstItem="ge4-zM-iYm" firstAttribute="top" secondItem="Nd0-bE-XMc" secondAttribute="bottom" constant="4" id="Gir-n7-UAs"/>
                     <constraint firstItem="lRM-QR-vwZ" firstAttribute="top" secondItem="vYd-QT-w0w" secondAttribute="bottom" constant="37" id="Jx1-hp-O4u"/>
@@ -317,7 +309,6 @@
                     <constraint firstItem="5gM-sU-e16" firstAttribute="centerY" secondItem="vYd-QT-w0w" secondAttribute="centerY" id="XWL-c2-GOr"/>
                     <constraint firstItem="cw3-a2-WHj" firstAttribute="centerY" secondItem="nKL-sH-jaF" secondAttribute="centerY" id="Xjd-rF-39y"/>
                     <constraint firstItem="Jln-0j-HDZ" firstAttribute="centerX" secondItem="lRM-QR-vwZ" secondAttribute="centerX" id="YWP-Zp-6Ph"/>
-                    <constraint firstItem="Muq-y5-wIx" firstAttribute="leading" secondItem="cw3-a2-WHj" secondAttribute="trailing" id="Yho-eb-Kad"/>
                     <constraint firstItem="ge4-zM-iYm" firstAttribute="leading" secondItem="Nd0-bE-XMc" secondAttribute="leading" id="Yub-ht-Mvp"/>
                     <constraint firstItem="kRg-iB-kMM" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="ZUW-7i-98F"/>
                     <constraint firstItem="Jln-0j-HDZ" firstAttribute="centerY" secondItem="lRM-QR-vwZ" secondAttribute="centerY" constant="-20" id="Zfg-iK-Lxj"/>
@@ -333,7 +324,6 @@
                     <constraint firstItem="cw3-a2-WHj" firstAttribute="leading" secondItem="pUv-sL-D4d" secondAttribute="trailing" constant="4" id="pHz-KV-3M6"/>
                     <constraint firstItem="5gM-sU-e16" firstAttribute="trailing" secondItem="vYd-QT-w0w" secondAttribute="trailing" constant="-10" id="qgD-te-rUn"/>
                     <constraint firstItem="ywj-Z8-6UK" firstAttribute="width" secondItem="VtG-Sf-d3K" secondAttribute="width" id="t1n-L6-5Br"/>
-                    <constraint firstItem="Muq-y5-wIx" firstAttribute="centerY" secondItem="nKL-sH-jaF" secondAttribute="centerY" id="uF0-sV-wxo"/>
                     <constraint firstAttribute="trailing" secondItem="PBS-qG-b5T" secondAttribute="trailing" id="wTk-hU-fdi"/>
                     <constraint firstItem="VtG-Sf-d3K" firstAttribute="top" relation="greaterThanOrEqual" secondItem="lRM-QR-vwZ" secondAttribute="bottom" constant="94" id="wuv-YJ-Uvq"/>
                 </constraints>

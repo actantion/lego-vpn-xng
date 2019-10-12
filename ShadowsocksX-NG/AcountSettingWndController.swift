@@ -16,9 +16,8 @@ class AcountSettingWndController: NSWindowController,NSTableViewDelegate,NSTable
     @IBOutlet weak var vwTranscationInfo: NSView!
     @IBOutlet weak var scrollview: NSScrollView!
     @IBOutlet weak var tableView: NSTableView!
-    
-    
-    var dataSource = Array<String>()
+    let appDelegate = (NSApplication.shared.delegate) as! AppDelegate
+    var transcationList = [TranscationModel]()
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -31,28 +30,29 @@ class AcountSettingWndController: NSWindowController,NSTableViewDelegate,NSTable
         vwTranscationInfo.layer?.masksToBounds = true
         vwTranscationInfo.layer?.cornerRadius = 4
         
-        lbPrivateKey.stringValue = "38cb8893459d7f02e06574074dadae46ad2af7a3ac0f2496a113722321fb4cd5"
-        lbAccountAddress.stringValue = "647063a6da181dc0b0645add8dd74c1ee018a47f8533db50fd4bc6bdb98852be"
+        lbPrivateKey.stringValue = appDelegate.local_private_key
+        lbAccountAddress.stringValue = appDelegate.local_account_id
+        
+        var balance = TenonP2pLib.sharedInstance.GetBalance()
+        
+        if balance == UInt64.max {
+            balance = 0
+        }
+        lbBanlanceTenon.stringValue = String(balance) + " Tenon"
+        lbBanlanceDorlar.stringValue = String(format:"%.2f $",Double(balance)*0.002)
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
         
-        dataSource.append("wuyoupeng")
-        dataSource.append("wuyoupeng1")
-        dataSource.append("wuyoupeng2")
-        dataSource.append("wuyoupeng3")
-        dataSource.append("wuyoupeng45")
-        dataSource.append("wuyoupeng5")
-        dataSource.append("wuyoupeng6")
-        dataSource.append("wuyoupeng7")
-        dataSource.append("wuyoupeng8")
-        dataSource.append("wuyoupeng9")
-        dataSource.append("wuyoupeng0")
-        dataSource.append("wuyoupeng10")
         self.tableView.register(NSNib(nibNamed: NSNib.Name(rawValue: "TranscationInfoCell"), bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "TranscationInfoCell"))
         tableView.reloadData()
     }
+    func refresh() {
+        tableView.reloadData()
+    }
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return dataSource.count
+        return transcationList.count
     }
 
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
@@ -60,7 +60,16 @@ class AcountSettingWndController: NSWindowController,NSTableViewDelegate,NSTable
     }
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let cellView:TranscationInfoCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "TranscationInfoCell"), owner: self) as! TranscationInfoCell
-        cellView.lbDatatime.stringValue = dataSource[row]
+//        cellView.lbDatatime.stringValue = dataSource[row]
+        let model:TranscationModel = self.transcationList[row]
+//        tempCell.lbDateTime.text = model.dateTime
+//        tempCell.lbType.text = model.type
+//        tempCell.lbAccount.text = model.acount
+//        tempCell.lbAmount.text = model.amount
+        cellView.lbDatatime.stringValue = model.dateTime
+        cellView.lbType.stringValue = model.type
+        cellView.lbAccount.stringValue = model.acount
+        cellView.lbAmount.stringValue = model.amount
         return cellView
     }
     

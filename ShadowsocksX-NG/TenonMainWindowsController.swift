@@ -9,6 +9,9 @@
 import Cocoa
 let APP_COLOR:NSColor = NSColor(red: 9/255, green: 222/255, blue: 202/255, alpha: 1)
 class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTableViewDataSource,NSGestureRecognizerDelegate {
+    @IBOutlet weak var lbUSD: NSTextField!
+    @IBOutlet weak var lbTenon: NSTextField!
+    @IBOutlet weak var lbAccountAddress: NSTextField!
     @IBOutlet weak var popMenuTableView: NSTableView!
     @IBOutlet weak var popMenu: NSView!
     @IBOutlet weak var baseView: NSView!
@@ -23,31 +26,102 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     @IBOutlet weak var lbNodeCount: NSTextField!
     @IBOutlet weak var imgCountry: NSImageView!
     @IBOutlet weak var vwLine: NSView!
+    var choosed_country:String!
+    var transcationList = [TranscationModel]()
+    let appDelegate = (NSApplication.shared.delegate) as! AppDelegate
+    
+    var countryCode:[String] = ["America", "Singapore", "Brazil","Germany","France","Korea", "Japan", "Canada","Australia","Hong Kong", "India", "England","China"]
+    var countryNodes:[String] = []
+    var iCon:[String] = ["us", "sg", "br","de","fr","kr", "jp", "ca","au","hk", "in", "gb","cn"]
     var isSelect: Bool = false
     var accountSettingWndCtrl:AcountSettingWndController!
     
+    func getCountryShort(countryCode:String) -> String {
+        switch countryCode {
+        case "America":
+            return "US"
+        case "Singapore":
+            return "SG"
+        case "Brazil":
+            return "BR"
+        case "Germany":
+            return "DE"
+        case "France":
+            return "FR"
+        case "Korea":
+            return "KR"
+        case "Japan":
+            return "JP"
+        case "Canada":
+            return "CA"
+        case "Australia":
+            return "AU"
+        case "Hong Kong":
+            return "HK"
+        case "India":
+            return "IN"
+        case "England":
+            return "GB"
+        case "China":
+            return "CN"
+        default:
+            return ""
+        }
+    }
+    
     override func windowDidLoad() {
         super.windowDidLoad()
-
+//        [((AppDelegate *)([UIApplication sharedApplication].delegate)) showMainViewController];
+//        local_country = res.local_country as String
+//        local_private_key = res.prikey as String
+//        local_account_id = res.account_id as String
+        
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
         updateUI()
+        requestData()
+        for _ in countryCode {
+            countryNodes.append((String)(Int(arc4random_uniform((UInt32)(900))) + 100) + " nodes")
+        }
+        self.lbCountryName.stringValue = countryCode[0]
+        self.imgCountry.image = NSImage.init(imageLiteralResourceName:iCon[0])
+        self.lbNodeCount.stringValue = countryNodes[0]
+        self.choosed_country = getCountryShort(countryCode: countryNodes[0])
+        
+        lbAccountAddress.stringValue = String(appDelegate.local_account_id.prefix(10)) + "..." + String(appDelegate.local_account_id.suffix(10))
         popMenuTableView.delegate = self
         popMenuTableView.dataSource = self
+        popMenuTableView.tableColumns[0].width = popMenuTableView.frame.size.width
         popMenuTableView.register(NSNib(nibNamed: NSNib.Name(rawValue: "CountryChoseCell"), bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CountryChoseCell"))
         popMenuTableView.reloadData()
-        
-//        let tap:NSClickGestureRecognizer = NSClickGestureRecognizer.init()
-//        tap.numberOfClicksRequired = 1 //轻点次数
-//        tap.delegate = self
-//        tap.action = #selector(tapAction)
-//        popMenu.addGestureRecognizer(tap)
-        
     }
-//    @objc func tapAction() {
-//        print("隐藏")
-//    }
+    @objc func requestData(){
+        transcationList.removeAll()
+        var balance = TenonP2pLib.sharedInstance.GetBalance()
+        
+        if balance == UInt64.max {
+            balance = 0
+        }
+        lbTenon.stringValue = String(balance) + " Tenon"
+        lbUSD.stringValue = String(format:"%.2f $",Double(balance)*0.002)
+        
+        let trascationValue:String = TenonP2pLib.sharedInstance.GetTransactions()
+        let dataArray = trascationValue.components(separatedBy: ";")
+        for value in dataArray{
+            if value == ""{
+                continue
+            }
+            let model = TranscationModel()
+            let dataDetailArray = value.components(separatedBy: ",")
+            model.dateTime = dataDetailArray[0]
+            model.type = dataDetailArray[1]
+            model.acount = dataDetailArray[2]
+            model.amount = dataDetailArray[3]
+            transcationList.append(model)
+        }
+        self.perform(#selector(requestData), with: nil, afterDelay: 3)
+    }
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return 10
+        return countryCode.count
     }
 
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
@@ -55,9 +129,11 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     }
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let cellView:CountryChoseCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CountryChoseCell"), owner: self) as! CountryChoseCell
-        cellView.imgIcon.image = NSImage.init(imageLiteralResourceName:"us")
-        cellView.lbCountryName.stringValue = "China"
-        cellView.lbNodes.stringValue = String(row) + " nodes"
+        
+        cellView.imgIcon.image = NSImage.init(imageLiteralResourceName:iCon[row])
+        cellView.lbCountryName.stringValue = countryCode[row]
+        cellView.lbNodes.stringValue = countryNodes[row]
+        
         return cellView
     }
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool{
@@ -70,6 +146,11 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             isSelect = true
             btnChoseCountry.state = NSControl.StateValue(rawValue: 0)
             self.popMenu.isHidden = true
+            
+            self.lbCountryName.stringValue = countryCode[row]
+            self.imgCountry.image = NSImage.init(imageLiteralResourceName:iCon[row])
+            self.lbNodeCount.stringValue = countryNodes[row]
+            self.choosed_country = getCountryShort(countryCode: countryNodes[row])
             return true
         }else{
             return false
@@ -133,6 +214,8 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         }
         accountSettingWndCtrl = AcountSettingWndController(windowNibName: .init(rawValue: "AcountSettingWndController"))
         accountSettingWndCtrl.showWindow(self)
+        accountSettingWndCtrl.transcationList = transcationList
+        accountSettingWndCtrl.refresh()
         NSApp.activate(ignoringOtherApps: true)
         accountSettingWndCtrl.window?.makeKeyAndOrderFront(nil)
     }
