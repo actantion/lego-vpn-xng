@@ -105,4 +105,9 @@ class TenonP2pLib {
     private init() {
         
     }
+    
+    func CheckVersion() -> String {
+        let res = LibP2P.checkVersion() as String
+        return res
+    }
 }

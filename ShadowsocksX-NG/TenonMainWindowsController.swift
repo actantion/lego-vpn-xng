@@ -7,8 +7,13 @@
 //
 
 import Cocoa
+import CircularProgress
+
 let APP_COLOR:NSColor = NSColor(red: 9/255, green: 222/255, blue: 202/255, alpha: 1)
 class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTableViewDataSource,NSGestureRecognizerDelegate {
+    @IBOutlet weak var progressCircularProgress: CircularProgress!
+    @IBOutlet weak var notConnectProgress: CircularProgress!
+    @IBOutlet weak var connectedProgress: CircularProgress!
     @IBOutlet weak var lbUpgrade: NSTextField!
     @IBOutlet weak var lbTitleBalanced: NSTextField!
     @IBOutlet weak var lbTitleAddress: NSTextField!
@@ -30,6 +35,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     @IBOutlet weak var lbNodeCount: NSTextField!
     @IBOutlet weak var imgCountry: NSImageView!
     @IBOutlet weak var vwLine: NSView!
+    
     var choosed_country:String! = "US"
     var transcationList = [TranscationModel]()
     let appDelegate = (NSApplication.shared.delegate) as! AppDelegate
@@ -40,6 +46,8 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     var isSelect: Bool = false
     var accountSettingWndCtrl:AcountSettingWndController!
     public var local_country:String!;
+    let kCurrentVersion = "1.0.5"
+
     
     func getCountryShort(countryCode:String) -> String {
         switch countryCode {
@@ -74,8 +82,26 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         }
     }
     
+    func startConnect() {
+        progressCircularProgress.isIndeterminate = true;
+        progressCircularProgress.lineWidth = 6
+        progressCircularProgress.color = NSColor(red: 19/255, green: 244/255, blue: 220/255, alpha: 1)
+        window?.contentView!.addSubview(progressCircularProgress)
+        //progressCircularProgress.isHidden = true;
+    }
+    
+    func stopConnect() {
+        progressCircularProgress.isIndeterminate = true;
+        progressCircularProgress.lineWidth = 6
+        progressCircularProgress.color = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1)
+        window?.contentView!.addSubview(progressCircularProgress)
+    }
+    
     override func windowDidLoad() {
         super.windowDidLoad()
+        
+        
+        
         updateUI()
         requestData()
         for _ in countryCode {
@@ -86,14 +112,46 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         self.lbNodeCount.stringValue = countryNodes[0]
         self.choosed_country = getCountryShort(countryCode: countryCode[0])
         
-        lbAccountAddress.stringValue = String(appDelegate.local_account_id.prefix(10)) + "..." + String(appDelegate.local_account_id.suffix(10))
+        lbAccountAddress.stringValue = String(appDelegate.local_account_id.prefix(7)).uppercased() + "..." + String(appDelegate.local_account_id.suffix(7)).uppercased()
         popMenuTableView.delegate = self
         popMenuTableView.dataSource = self
         popMenuTableView.tableColumns[0].width = popMenuTableView.frame.size.width
         popMenuTableView.register(NSNib(nibNamed: NSNib.Name(rawValue: "CountryChoseCell"), bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CountryChoseCell"))
         popMenuTableView.reloadData()
-      
+        
+        let area = NSTrackingArea.init(rect: btnConnect.bounds, options: [NSTrackingArea.Options.mouseEnteredAndExited, NSTrackingArea.Options.activeAlways], owner: self, userInfo: nil)
+        btnConnect.addTrackingArea(area)
     }
+    
+    override func mouseEntered(with theEvent: NSEvent) {
+
+        let isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
+        if (connectedProgress.isHidden && isOn) {
+            return
+        }
+        if (!isOn) {
+            btnConnect.layer?.backgroundColor = NSColor(red: 198/255, green: 196/255, blue: 197/255, alpha: 1).cgColor
+        } else {
+            btnConnect.layer?.backgroundColor = NSColor(red: 0/255, green: 194/255, blue: 170/255, alpha: 1).cgColor
+        }
+        
+    }
+        
+    override func mouseExited(with theEvent: NSEvent) {
+        
+        let isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
+        if (connectedProgress.isHidden && isOn) {
+            return
+        }
+        
+        if (!isOn) {
+            btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
+        } else {
+            btnConnect.layer?.backgroundColor = NSColor(red: 4/255, green: 204/255, blue: 190/255, alpha: 1).cgColor
+        }
+        
+    }
+    
     @objc func requestData(){
         transcationList.removeAll()
         var balance = TenonP2pLib.sharedInstance.GetBalance()
@@ -160,8 +218,15 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route: Int32(btnSelectSmartRoute.state.rawValue))
 
             let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
+                   btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
+            notConnectProgress.isHidden = false
+            connectedProgress.isHidden = true
+            notConnectProgress.progress = 0;
             
+                configureProgressBasedView();
+                
             if isOn {
+                
                 if mode == "auto" {
                     ProxyConfHelper.enablePACProxy()
                 } else if mode == "global" {
@@ -172,6 +237,8 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
                     ProxyConfHelper.enableExternalPACProxy()
                 }
             } else {
+        
+                
                 ProxyConfHelper.disableProxy()
             }
             return true
@@ -197,8 +264,8 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         lbNodeCount.font = NSFont.systemFont(ofSize: 12)
         btnUpgrade.wantsLayer = true
         btnUpgrade.layer?.backgroundColor = NSColor(red: 4/255, green: 204/255, blue: 190/255, alpha: 1).cgColor
-        btnUpgrade.layer?.masksToBounds = true
-        btnUpgrade.layer?.cornerRadius = 20
+        btnUpgrade.layer?.masksToBounds = false
+        btnUpgrade.layer?.cornerRadius = 4
         
         // MARK: connect按钮
         btnConnect.wantsLayer = true
@@ -211,33 +278,145 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         vwLine.wantsLayer = true
         vwLine.layer?.backgroundColor = NSColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1).cgColor
         
+        progressCircularProgress = CircularProgress(frame: CGRect(x: 47, y: 191, width: 256, height: 256))
+          notConnectProgress = CircularProgress(frame: CGRect(x: 47, y: 191, width: 256, height: 256))
+          notConnectProgress.lineWidth = 6
+          notConnectProgress.color = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1)
+        baseView.addSubview(notConnectProgress)
+          notConnectProgress.isHidden = true
+    
+          connectedProgress = CircularProgress(frame: CGRect(x: 47, y: 191, width: 256, height: 256))
+          connectedProgress.lineWidth = 6
+          connectedProgress.color = NSColor(red: 19/255, green: 244/255, blue: 220/255, alpha: 1)
+        baseView.addSubview(connectedProgress)
+          connectedProgress.isHidden = true
+        
+        connectedProgress.wantsLayer = true
+        notConnectProgress.wantsLayer = true
         let isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
+        
         print ("sub window is on: \(UserDefaults.standard.bool(forKey: "ShadowsocksOn"))")
         if (!isOn) {
+            notConnectProgress.isHidden = false
+            connectedProgress.isHidden = true
             return
         }
         imgConnect.image = NSImage.init(imageLiteralResourceName:"connected")
         lbConnect.stringValue = "Connected"
+        
+        
         btnConnect.layer?.backgroundColor = NSColor(red: 4/255, green: 204/255, blue: 190/255, alpha: 1).cgColor
-
+        notConnectProgress.isHidden = true
+        connectedProgress.isHidden = false
         lbTitleBalanced.font = NSFont.systemFont(ofSize: 20)
         lbTitleAddress.font = NSFont.systemFont(ofSize: 20)
         lbUpgrade.font = NSFont.systemFont(ofSize: 20)
+        if (isOn) {
+            configureProgressBasedView();
+        }
     }
+
+    func dialogOKCancel(question: String, text: String) -> Bool {
+        let alert: NSAlert = NSAlert()
+        alert.messageText = question
+        alert.informativeText = text
+        alert.alertStyle = NSAlert.Style.warning
+        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: "Cancel")
+        let res = alert.runModal()
+        if res == NSApplication.ModalResponse.alertFirstButtonReturn {
+            return true
+        }
+        return false
+    }
+
+    
+    
     @IBAction func clickUpgrade(_ sender: Any) {
-        NSWorkspace.shared.open(URL(string: "https://www.baidu.com")!)
+        let version_str = TenonP2pLib.sharedInstance.CheckVersion()
+        let plats = version_str.split(separator: ",")
+        var down_url: String = "";
+        for item in plats {
+            let item_split = item.split(separator: ";")
+            if (item_split[0] == "mac") {
+                if (item_split[1] != kCurrentVersion) {
+                    down_url = String(item_split[2])
+                }
+                break
+            }
+        }
+        
+        if (down_url.isEmpty) {
+            let answer = dialogOKCancel(question: "Ok?", text: "Already the latest version.")
+        } else {
+            NSWorkspace.shared.open(URL(string: down_url)!)
+        }
+        
+    }
+    
+    private func animateWithRandomColor(
+        _ circularProgress: CircularProgress,
+        start: @escaping (CircularProgress) -> Void,
+        tick: @escaping (CircularProgress) -> Void
+    ) {
+        var startAnimating: (() -> Void)!
+        var timer: Timer!
+
+        startAnimating = {
+            //circularProgress.color = NSColor.uniqueRandomSystemColor()
+            start(circularProgress)
+
+            timer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { _ in
+                tick(circularProgress)
+                if (circularProgress.progress > 0.95) {
+                    timer.invalidate()
+                    self.btnConnect.layer?.backgroundColor = NSColor(red: 4/255, green: 204/255, blue: 190/255, alpha: 1).cgColor
+                    self.notConnectProgress.isHidden = true
+                    self.connectedProgress.isHidden = false
+                    self.connectedProgress.progress = 100;
+                                      
+                }
+                               
+            }
+        }
+
+        startAnimating()
+    }
+
+    
+    private func configureProgressBasedView() {
+        animateWithRandomColor(
+            notConnectProgress,
+            start: { circularProgress in
+                circularProgress.resetProgress()
+
+                let progress = Progress(totalUnitCount: 50)
+                circularProgress.progressInstance = progress
+            },
+            tick: { circularProgress in
+                circularProgress.progressInstance?.completedUnitCount += 6
+            }
+        )
     }
     
     func ResetConnect() {
         let defaults = UserDefaults.standard
         var isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
         isOn = !isOn
+        btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
+        notConnectProgress.isHidden = false
+        connectedProgress.isHidden = true
+        notConnectProgress.progress = 0;
+        if (isOn) {
+            configureProgressBasedView();
+        }
         defaults.set(isOn, forKey: "ShadowsocksOn")
         SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route: Int32(btnSelectSmartRoute.state.rawValue))
 
         let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
         
         if isOn {
+ 
             if mode == "auto" {
                 ProxyConfHelper.enablePACProxy()
             } else if mode == "global" {
@@ -248,18 +427,11 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
                 ProxyConfHelper.enableExternalPACProxy()
             }
         } else {
+
             ProxyConfHelper.disableProxy()
         }
         
-        if !isOn {
-            imgConnect.image = NSImage.init(imageLiteralResourceName:"connect")
-            lbConnect.stringValue = "Connect"
-            btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
-        }else{
-            imgConnect.image = NSImage.init(imageLiteralResourceName:"connected")
-            lbConnect.stringValue = "Connected"
-            btnConnect.layer?.backgroundColor = NSColor(red: 4/255, green: 204/255, blue: 190/255, alpha: 1).cgColor
-        }
+        
     }
     
     @IBAction func clickConnect(_ sender: Any) {
@@ -275,7 +447,15 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
 
         let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
         
+        btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
+        notConnectProgress.isHidden = false
+        connectedProgress.isHidden = true
+        notConnectProgress.progress = 0;
+        
+            configureProgressBasedView();
+
         if isOn {
+           
             if mode == "auto" {
                 ProxyConfHelper.enablePACProxy()
             } else if mode == "global" {
@@ -286,6 +466,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
                 ProxyConfHelper.enableExternalPACProxy()
             }
         } else {
+            
             ProxyConfHelper.disableProxy()
         }
     }
@@ -305,8 +486,21 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         isSelect = false
         if btnChoseCountry.state.rawValue == 0{
             self.popMenu.isHidden = true
+            var isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
+            if isOn {
+                notConnectProgress.isHidden = true
+                connectedProgress.isHidden = false
+                
+            } else {
+                notConnectProgress.isHidden = false
+                connectedProgress.isHidden = true
+            }
         }else{
             self.popMenu.isHidden = false
+  
+                notConnectProgress.isHidden = true
+                connectedProgress.isHidden = true
+               
         }
     }
     

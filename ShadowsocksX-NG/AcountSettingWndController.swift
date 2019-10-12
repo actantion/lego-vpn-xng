@@ -9,8 +9,9 @@
 import Cocoa
 
 class AcountSettingWndController: NSWindowController,NSTableViewDelegate,NSTableViewDataSource {
-    @IBOutlet weak var lbPrivateKey: NSTextField!
-    @IBOutlet weak var lbAccountAddress: NSTextField!
+
+    @IBOutlet weak var prikeyEdit: NSTextField!
+    @IBOutlet weak var accountEdit: NSTextField!
     @IBOutlet weak var lbBanlanceTenon: NSTextField!
     @IBOutlet weak var lbBanlanceDorlar: NSTextField!
     @IBOutlet weak var vwTranscationInfo: NSView!
@@ -30,8 +31,6 @@ class AcountSettingWndController: NSWindowController,NSTableViewDelegate,NSTable
         vwTranscationInfo.layer?.masksToBounds = true
         vwTranscationInfo.layer?.cornerRadius = 4
         
-        lbPrivateKey.stringValue = appDelegate.local_private_key
-        lbAccountAddress.stringValue = appDelegate.local_account_id
         
         var balance = TenonP2pLib.sharedInstance.GetBalance()
         
@@ -40,8 +39,8 @@ class AcountSettingWndController: NSWindowController,NSTableViewDelegate,NSTable
         }
         lbBanlanceTenon.stringValue = String(balance) + " Tenon"
         lbBanlanceDorlar.stringValue = String(format:"%.2f $",Double(balance)*0.002)
-        
-        
+        prikeyEdit.stringValue = appDelegate.local_private_key
+        accountEdit.stringValue = appDelegate.local_account_id
         tableView.delegate = self
         tableView.dataSource = self
         
