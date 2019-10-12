@@ -137,7 +137,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         let image : NSImage = NSImage(named: NSImage.Name(rawValue: "menu_icon"))!
         image.isTemplate = false
         statusItem.image = image
-        //statusItem.menu = statusMenu
         statusItem.action = #selector(togglePopover)
         
         let notifyCenter = NotificationCenter.default
@@ -219,10 +218,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         
         ProxyConfHelper.install()
         ProxyConfHelper.startMonitorPAC()
+        defaults.set(true, forKey: "ShadowsocksOn")
         applyConfig()
 
         // Register global hotkey
         ShortcutsController.bindShortcuts()
+        print ("main window is on: \(UserDefaults.standard.bool(forKey: "ShadowsocksOn"))")
         togglePopover(self)
     }
     
@@ -260,6 +261,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         let defaults = UserDefaults.standard
         let isOn = defaults.bool(forKey: "ShadowsocksOn")
         let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
+
         
         if isOn {
             if mode == "auto" {
@@ -286,7 +288,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         var isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
         isOn = !isOn
         defaults.set(isOn, forKey: "ShadowsocksOn")
-        
+        print ("main is on: \(UserDefaults.standard.bool(forKey: "ShadowsocksOn"))")
         self.updateMainMenu()
         self.applyConfig()
         

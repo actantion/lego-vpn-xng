@@ -72,13 +72,6 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     
     override func windowDidLoad() {
         super.windowDidLoad()
-//        [((AppDelegate *)([UIApplication sharedApplication].delegate)) showMainViewController];
-//        local_country = res.local_country as String
-//        local_private_key = res.prikey as String
-//        local_account_id = res.account_id as String
-        
-        // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-        
         updateUI()
         requestData()
         for _ in countryCode {
@@ -210,6 +203,11 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         vwLine.wantsLayer = true
         vwLine.layer?.backgroundColor = NSColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1).cgColor
         
+        let isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
+        print ("sub window is on: \(UserDefaults.standard.bool(forKey: "ShadowsocksOn"))")
+        if (!isOn) {
+            return
+        }
         imgConnect.image = NSImage.init(imageLiteralResourceName:"connected")
         lbConnect.stringValue = "Connected"
         btnConnect.layer?.backgroundColor = APP_COLOR.cgColor
@@ -239,7 +237,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             ProxyConfHelper.disableProxy()
         }
         
-        if self.btnConnect.state.rawValue == 1 {
+        if !isOn {
             imgConnect.image = NSImage.init(imageLiteralResourceName:"connect")
             lbConnect.stringValue = "Connect"
             btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
