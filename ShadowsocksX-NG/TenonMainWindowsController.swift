@@ -9,6 +9,10 @@
 import Cocoa
 let APP_COLOR:NSColor = NSColor(red: 9/255, green: 222/255, blue: 202/255, alpha: 1)
 class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTableViewDataSource,NSGestureRecognizerDelegate {
+    @IBOutlet weak var lbUpgrade: NSTextField!
+    @IBOutlet weak var lbTitleBalanced: NSTextField!
+    @IBOutlet weak var lbTitleAddress: NSTextField!
+    @IBOutlet weak var btnUpgrade: NSButton!
     @IBOutlet weak var lbUSD: NSTextField!
     @IBOutlet weak var lbTenon: NSTextField!
     @IBOutlet weak var lbAccountAddress: NSTextField!
@@ -191,6 +195,10 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         btnChoseCountry.layer?.masksToBounds = true
         lbCountryName.font = NSFont.systemFont(ofSize: 17)
         lbNodeCount.font = NSFont.systemFont(ofSize: 12)
+        btnUpgrade.wantsLayer = true
+        btnUpgrade.layer?.backgroundColor = NSColor(red: 4/255, green: 204/255, blue: 190/255, alpha: 1).cgColor
+        btnUpgrade.layer?.masksToBounds = true
+        btnUpgrade.layer?.cornerRadius = 20
         
         // MARK: connect按钮
         btnConnect.wantsLayer = true
@@ -199,7 +207,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
         
         // MARK:connect label
-        lbConnect.font = NSFont.systemFont(ofSize: 17)
+        lbConnect.font = NSFont.systemFont(ofSize: 22)
         vwLine.wantsLayer = true
         vwLine.layer?.backgroundColor = NSColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1).cgColor
         
@@ -210,8 +218,14 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         }
         imgConnect.image = NSImage.init(imageLiteralResourceName:"connected")
         lbConnect.stringValue = "Connected"
-        btnConnect.layer?.backgroundColor = APP_COLOR.cgColor
-        
+        btnConnect.layer?.backgroundColor = NSColor(red: 4/255, green: 204/255, blue: 190/255, alpha: 1).cgColor
+
+        lbTitleBalanced.font = NSFont.systemFont(ofSize: 20)
+        lbTitleAddress.font = NSFont.systemFont(ofSize: 20)
+        lbUpgrade.font = NSFont.systemFont(ofSize: 20)
+    }
+    @IBAction func clickUpgrade(_ sender: Any) {
+        NSWorkspace.shared.open(URL(string: "https://www.baidu.com")!)
     }
     
     func ResetConnect() {
@@ -244,7 +258,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         }else{
             imgConnect.image = NSImage.init(imageLiteralResourceName:"connected")
             lbConnect.stringValue = "Connected"
-            btnConnect.layer?.backgroundColor = APP_COLOR.cgColor
+            btnConnect.layer?.backgroundColor = NSColor(red: 4/255, green: 204/255, blue: 190/255, alpha: 1).cgColor
         }
     }
     
