@@ -35,6 +35,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     @IBOutlet weak var lbNodeCount: NSTextField!
     @IBOutlet weak var imgCountry: NSImageView!
     @IBOutlet weak var vwLine: NSView!
+    @IBOutlet weak var exitButton: NSButton!
     
     var choosed_country:String! = "US"
     var transcationList = [TranscationModel]()
@@ -80,6 +81,14 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         default:
             return ""
         }
+    }
+    
+    @IBAction func exitClick(_ sender: Any) {
+       UserDefaults.standard.set(false, forKey: "ShadowsocksOn")
+       SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route: Int32(btnSelectSmartRoute.state.rawValue))
+
+           ProxyConfHelper.disableProxy()
+        _exit(0)
     }
     
     func startConnect() {
@@ -310,7 +319,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         connectedProgress.isHidden = false
         lbTitleBalanced.font = NSFont.systemFont(ofSize: 20)
         lbTitleAddress.font = NSFont.systemFont(ofSize: 20)
-        lbUpgrade.font = NSFont.systemFont(ofSize: 20)
+
         if (isOn) {
             configureProgressBasedView();
         }

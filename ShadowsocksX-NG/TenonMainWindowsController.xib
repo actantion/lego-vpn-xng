@@ -14,6 +14,7 @@
                 <outlet property="btnSelectSmartRoute" destination="0fR-3g-MrA" id="Zh0-J0-rDH"/>
                 <outlet property="btnUpgrade" destination="ek1-cO-Aof" id="AFi-N5-Rll"/>
                 <outlet property="cbRouteSwitch" destination="0fR-3g-MrA" id="BD4-KN-8A9"/>
+                <outlet property="exitButton" destination="MPL-K4-iNI" id="QwX-eq-zi9"/>
                 <outlet property="imgConnect" destination="Jln-0j-HDZ" id="Vdk-IR-2Me"/>
                 <outlet property="imgCountry" destination="aRt-j4-5ct" id="910-aO-q6B"/>
                 <outlet property="lbAccountAddress" destination="nKL-sH-jaF" id="YDL-3e-gBC"/>
@@ -24,7 +25,6 @@
                 <outlet property="lbTitleAddress" destination="VtG-Sf-d3K" id="WdS-Gi-a1t"/>
                 <outlet property="lbTitleBalanced" destination="ywj-Z8-6UK" id="Xvd-aJ-Ir9"/>
                 <outlet property="lbUSD" destination="cw3-a2-WHj" id="ifb-Ac-DGs"/>
-                <outlet property="lbUpgrade" destination="GYu-a2-Zwp" id="Bye-aJ-Usl"/>
                 <outlet property="popMenu" destination="kRg-iB-kMM" id="tdg-8G-lpY"/>
                 <outlet property="popMenuTableView" destination="Few-c5-kj3" id="XwR-It-j6e"/>
                 <outlet property="topView" destination="PBS-qG-b5T" id="LEv-wV-eLK"/>
@@ -157,6 +157,18 @@
                                     <action selector="clickSmartRoute:" target="-2" id="Sjv-PS-yrb"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MPL-K4-iNI">
+                                <rect key="frame" x="40" y="8" width="37" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="bevel" title="exit" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="GpX-OK-kqX">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <color key="contentTintColor" name="selectedMenuItemTextColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <action selector="exitClick:" target="-2" id="aCv-Ob-UDE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="pRY-ds-qT7" firstAttribute="centerY" secondItem="0fR-3g-MrA" secondAttribute="centerY" id="4hu-9S-fnS"/>
@@ -227,25 +239,15 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="hSD-e2-NCW"/>
                         </constraints>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="MJ9-24-MsH">
+                        <buttonCell key="cell" type="square" title="UPGRADE" bezelStyle="shadowlessSquare" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="MJ9-24-MsH">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <color key="contentTintColor" name="selectedMenuItemTextColor" catalog="System" colorSpace="catalog"/>
                         <connections>
                             <action selector="clickUpgrade:" target="-2" id="Nyp-ca-NbS"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GYu-a2-Zwp">
-                        <rect key="frame" x="143" y="32" width="66" height="16"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="UPGRADE" id="YWr-z5-HTq">
-                            <font key="font" usesAppearanceFont="YES"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <action selector="clickUpgrade:" target="-2" id="3XV-71-VVn"/>
-                        </connections>
-                    </textField>
                     <customView hidden="YES" autoresizesSubviews="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRg-iB-kMM" propertyAccessControl="none">
                         <rect key="frame" x="0.0" y="0.0" width="351" height="573"/>
                         <subviews>
@@ -339,7 +341,6 @@
                     <constraint firstItem="ywj-Z8-6UK" firstAttribute="centerY" secondItem="VtG-Sf-d3K" secondAttribute="centerY" id="aOY-6F-9dB"/>
                     <constraint firstItem="Nd0-bE-XMc" firstAttribute="top" secondItem="aRt-j4-5ct" secondAttribute="top" id="bLt-v6-0J1"/>
                     <constraint firstItem="lRM-QR-vwZ" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="biY-Np-46s"/>
-                    <constraint firstItem="GYu-a2-Zwp" firstAttribute="centerX" secondItem="ek1-cO-Aof" secondAttribute="centerX" id="ccR-Jn-PfD"/>
                     <constraint firstItem="PBS-qG-b5T" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="dpl-Bq-xd5"/>
                     <constraint firstAttribute="trailing" secondItem="ywj-Z8-6UK" secondAttribute="trailing" id="hev-QI-1oW"/>
                     <constraint firstItem="ek1-cO-Aof" firstAttribute="top" secondItem="nKL-sH-jaF" secondAttribute="bottom" constant="15" id="i6D-qv-PbY"/>
@@ -347,7 +348,6 @@
                     <constraint firstItem="ek1-cO-Aof" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="kPn-ne-iWg"/>
                     <constraint firstItem="vYd-QT-w0w" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="30" id="mOH-eH-J1Q"/>
                     <constraint firstItem="cw3-a2-WHj" firstAttribute="leading" secondItem="pUv-sL-D4d" secondAttribute="trailing" constant="4" id="pHz-KV-3M6"/>
-                    <constraint firstItem="GYu-a2-Zwp" firstAttribute="centerY" secondItem="ek1-cO-Aof" secondAttribute="centerY" id="qGN-ob-AdM"/>
                     <constraint firstItem="5gM-sU-e16" firstAttribute="trailing" secondItem="vYd-QT-w0w" secondAttribute="trailing" constant="-10" id="qgD-te-rUn"/>
                     <constraint firstItem="ywj-Z8-6UK" firstAttribute="width" secondItem="VtG-Sf-d3K" secondAttribute="width" id="t1n-L6-5Br"/>
                     <constraint firstAttribute="trailing" secondItem="ek1-cO-Aof" secondAttribute="trailing" constant="20" id="wKV-It-kZ1"/>
