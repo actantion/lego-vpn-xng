@@ -306,6 +306,12 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         
         print ("sub window is on: \(UserDefaults.standard.bool(forKey: "ShadowsocksOn"))")
         if (!isOn) {
+            imgConnect.image = NSImage.init(imageLiteralResourceName:"connect")
+            lbConnect.stringValue = "Connect"
+            btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
+            lbTitleBalanced.font = NSFont.systemFont(ofSize: 20)
+            lbTitleAddress.font = NSFont.systemFont(ofSize: 20)
+            
             notConnectProgress.isHidden = false
             connectedProgress.isHidden = true
             return
