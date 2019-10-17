@@ -10,14 +10,16 @@
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 NGDir="$HOME/Library/Application Support/ShadowsocksX-NG"
+rm -rf  "$NGDir"
 TargetDir="$NGDir/ss-local-3.2.5"
 LatestTargetDir="$NGDir/ss-local-latest"
 
 echo ngdir: ${NGDir}
 
 # 3.2.5 https://bintray.com/homebrew/bottles/shadowsocks-libev/
+
 mkdir -p "$TargetDir"
-cp -f ss-local "$TargetDir"
+cp -f tenon_local "$TargetDir"
 rm -f "$LatestTargetDir"
 ln -s "$TargetDir" "$LatestTargetDir"
 

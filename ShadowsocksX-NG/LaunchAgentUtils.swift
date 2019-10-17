@@ -35,7 +35,7 @@ func getFileSHA1Sum(_ filepath: String) -> String {
 //  MARK: sslocal
 
 func generateSSLocalLauchAgentPlist() -> Bool {
-    let sslocalPath = NSHomeDirectory() + APP_SUPPORT_DIR + "ss-local-latest/ss-local"
+    let sslocalPath = NSHomeDirectory() + APP_SUPPORT_DIR + "ss-local-latest/tenon_local"
     let logFilePath = NSHomeDirectory() + "/Library/Logs/ss-local.log"
     let launchAgentDirPath = NSHomeDirectory() + LAUNCH_AGENT_DIR
     let plistFilepath = launchAgentDirPath + LAUNCH_AGENT_CONF_SSLOCAL_NAME
@@ -114,7 +114,7 @@ func InstallSSLocal() {
     let fileMgr = FileManager.default
     let homeDir = NSHomeDirectory()
     let appSupportDir = homeDir+APP_SUPPORT_DIR
-    if !fileMgr.fileExists(atPath: appSupportDir + "ss-local-\(SS_LOCAL_VERSION)/ss-local")
+    if !fileMgr.fileExists(atPath: appSupportDir + "ss-local-\(SS_LOCAL_VERSION)/tenon_local")
        || !fileMgr.fileExists(atPath: appSupportDir + "ss-local-\(SS_LOCAL_VERSION)/libmbedcrypto.0.dylib") {
         let bundle = Bundle.main
         let installerPath = bundle.path(forResource: "install_ss_local.sh", ofType: nil)
@@ -242,7 +242,7 @@ func SyncSSLocal(choosed_country: String, local_country: String, smart_route: In
     let vpn_ip_int = LibP2P.changeStrIp(vpn_node.ip)
     print("vpn_ip_int: \(vpn_ip_int)")
     
-    var pubkey = LibP2P.getPublicKey() as String;
+    let pubkey = LibP2P.getPublicKey() as String;
     
     var changed: Bool = false
     changed = changed || generateSSLocalLauchAgentPlist()
@@ -252,9 +252,9 @@ func SyncSSLocal(choosed_country: String, local_country: String, smart_route: In
             changed = changed || writeSSLocalConfFile((profile.toJsonConfig(
                 use_smart_route: smart_route,
                 route_ip: route_ip_int,
-                route_port: Int32(route_node.port) as! Int32,
+                route_port: Int32(route_node.port)!,
                 vpn_ip: vpn_ip_int,
-                vpn_port: Int32(vpn_node.port) as! Int32,
+                vpn_port: Int32(vpn_node.port)!,
                 seckey: vpn_node.passwd,
                 pubkey: pubkey,
                 method: "aes-128-cfb")))

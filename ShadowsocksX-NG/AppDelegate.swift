@@ -87,7 +87,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         
         self.ensureLaunchAgentsDirOwner()
         
-        let local_ip = TenonP2pLib.sharedInstance.getIFAddresses()[0]
+        let local_ip = "0.0.0.0" // TenonP2pLib.sharedInstance.getIFAddresses()[0]
         print("local ip:" + local_ip)
         let res = TenonP2pLib.sharedInstance.InitP2pNetwork(local_ip, 7981)
         
@@ -228,7 +228,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     }
     
     @objc func showPopover(_ sender: AnyObject) {
-         if let button = statusItem.button {
+        if statusItem.button != nil {
              print("hello show dialog now.")
          }
     }
@@ -561,7 +561,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     func updateStatusMenuImage() {
         let defaults = UserDefaults.standard
-        let mode = "global" as String; //defaults.string(forKey: "ShadowsocksRunningMode")
+        _ = "global" as String; //defaults.string(forKey: "ShadowsocksRunningMode")
         let isOn = defaults.bool(forKey: "ShadowsocksOn")
         if isOn {
             

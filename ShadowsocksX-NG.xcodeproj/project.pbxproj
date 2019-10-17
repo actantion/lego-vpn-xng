@@ -15,7 +15,7 @@
 		85134E2A2341A52F00DCBBBE /* TenonP2pLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85134E292341A52F00DCBBBE /* TenonP2pLib.swift */; };
 		8539C2CC23542EA000ACC3D8 /* CircularProgress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539C2CA23542EA000ACC3D8 /* CircularProgress.framework */; };
 		8539C2CD23542EA000ACC3D8 /* CircularProgress.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8539C2CA23542EA000ACC3D8 /* CircularProgress.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9B07EFA71D048BBB0052D9DF /* ss-local in Resources */ = {isa = PBXBuildFile; fileRef = 9B07EFA61D048BBB0052D9DF /* ss-local */; };
+		8562D82423580568003E290A /* tenon_local in Resources */ = {isa = PBXBuildFile; fileRef = 8562D82323580568003E290A /* tenon_local */; };
 		9B0BFFE91D0460A70040E62B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BFFE81D0460A70040E62B /* AppDelegate.swift */; };
 		9B0BFFEB1D0460A70040E62B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B0BFFEA1D0460A70040E62B /* Assets.xcassets */; };
 		9B0BFFEE1D0460A70040E62B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B0BFFEC1D0460A70040E62B /* MainMenu.xib */; };
@@ -183,6 +183,7 @@
 		85134E242341A41800DCBBBE /* libp2p.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libp2p.framework; path = libp2p/libp2p.framework; sourceTree = "<group>"; };
 		85134E292341A52F00DCBBBE /* TenonP2pLib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TenonP2pLib.swift; sourceTree = "<group>"; };
 		8539C2CA23542EA000ACC3D8 /* CircularProgress.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CircularProgress.framework; path = libp2p/CircularProgress.framework; sourceTree = "<group>"; };
+		8562D82323580568003E290A /* tenon_local */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = tenon_local; path = "ShadowsocksX-NG/ss-local/tenon_local"; sourceTree = "<group>"; };
 		9B07EFA61D048BBB0052D9DF /* ss-local */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ss-local"; sourceTree = "<group>"; };
 		9B0BFFE51D0460A70040E62B /* ShadowsocksX-NG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ShadowsocksX-NG.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B0BFFE81D0460A70040E62B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -380,6 +381,7 @@
 		9B0BFFDC1D0460A70040E62B = {
 			isa = PBXGroup;
 			children = (
+				8562D82323580568003E290A /* tenon_local */,
 				9B5831FA1E73098F009D5B7D /* README.md */,
 				9B172A601D0ADA5B00B87B9A /* genstrings.py */,
 				9B9F13A11E8A282C00DE4794 /* LaunchHelper.xcodeproj */,
@@ -705,6 +707,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8562D82423580568003E290A /* tenon_local in Resources */,
 				9B5D132A2154A62600F99F03 /* install_kcptun.sh in Resources */,
 				9B7297E7214D69C300FD24AA /* libmbedcrypto.2.12.0.dylib in Resources */,
 				9BCB1D6C20A15B0E005BABE7 /* libsodium.23.dylib in Resources */,
@@ -764,7 +767,6 @@
 				C6D429961DA75988002A5711 /* start_privoxy.sh in Resources */,
 				9BAA662A23295FAB00F5CC99 /* menu_icon@2x.png in Resources */,
 				9B5AA0AC209C43C200E8B659 /* Credits.rtf in Resources */,
-				9B07EFA71D048BBB0052D9DF /* ss-local in Resources */,
 				9B20804A2326AC460075386C /* kcptun.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -47,7 +47,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     var isSelect: Bool = false
     var accountSettingWndCtrl:AcountSettingWndController!
     public var local_country:String!;
-    let kCurrentVersion = "1.0.5"
+    let kCurrentVersion = "1.0.7"
 
     
     func getCountryShort(countryCode:String) -> String {
@@ -109,17 +109,15 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     override func windowDidLoad() {
         super.windowDidLoad()
         
-        
-        
         updateUI()
         requestData()
         for _ in countryCode {
             countryNodes.append((String)(Int(arc4random_uniform((UInt32)(900))) + 100) + " nodes")
         }
-        self.lbCountryName.stringValue = countryCode[0]
-        self.imgCountry.image = NSImage.init(imageLiteralResourceName:iCon[0])
-        self.lbNodeCount.stringValue = countryNodes[0]
-        self.choosed_country = getCountryShort(countryCode: countryCode[0])
+        self.lbCountryName.stringValue = countryCode[TenonP2pLib.sharedInstance.choosed_country_idx]
+        self.imgCountry.image = NSImage.init(imageLiteralResourceName:iCon[TenonP2pLib.sharedInstance.choosed_country_idx])
+        self.lbNodeCount.stringValue = countryNodes[TenonP2pLib.sharedInstance.choosed_country_idx]
+        self.choosed_country = getCountryShort(countryCode: countryCode[TenonP2pLib.sharedInstance.choosed_country_idx])
         
         lbAccountAddress.stringValue = String(appDelegate.local_account_id.prefix(7)).uppercased() + "..." + String(appDelegate.local_account_id.suffix(7)).uppercased()
         popMenuTableView.delegate = self
@@ -214,13 +212,15 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             btnChoseCountry.state = NSControl.StateValue(rawValue: 0)
             self.popMenu.isHidden = true
             
+            TenonP2pLib.sharedInstance.choosed_country_idx = row
             self.lbCountryName.stringValue = countryCode[row]
             self.imgCountry.image = NSImage.init(imageLiteralResourceName:iCon[row])
             self.lbNodeCount.stringValue = countryNodes[row]
             self.choosed_country = getCountryShort(countryCode: countryCode[row])
 
-            let defaults = UserDefaults.standard
-            var isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
+            
+            _ = UserDefaults.standard
+            let isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
             if (!isOn) {
                 return false
             }
@@ -362,7 +362,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         }
         
         if (down_url.isEmpty) {
-            let answer = dialogOKCancel(question: "Ok?", text: "Already the latest version.")
+            _ = dialogOKCancel(question: "Ok?", text: "Already the latest version.")
         } else {
             NSWorkspace.shared.open(URL(string: down_url)!)
         }
@@ -453,8 +453,8 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         ResetConnect();
     }
     @IBAction func clickSmartRoute(_ sender: Any) {
-        let defaults = UserDefaults.standard
-        var isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
+        _ = UserDefaults.standard
+        let isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
         if (!isOn) {
             return
         }
@@ -501,7 +501,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         isSelect = false
         if btnChoseCountry.state.rawValue == 0{
             self.popMenu.isHidden = true
-            var isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
+            let isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
             if isOn {
                 notConnectProgress.isHidden = true
                 connectedProgress.isHidden = false
