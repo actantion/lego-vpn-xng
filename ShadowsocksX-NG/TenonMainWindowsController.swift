@@ -118,6 +118,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         self.imgCountry.image = NSImage.init(imageLiteralResourceName:iCon[TenonP2pLib.sharedInstance.choosed_country_idx])
         self.lbNodeCount.stringValue = countryNodes[TenonP2pLib.sharedInstance.choosed_country_idx]
         self.choosed_country = getCountryShort(countryCode: countryCode[TenonP2pLib.sharedInstance.choosed_country_idx])
+        TenonP2pLib.sharedInstance.choosed_country = self.choosed_country
         
         lbAccountAddress.stringValue = String(appDelegate.local_account_id.prefix(7)).uppercased() + "..." + String(appDelegate.local_account_id.suffix(7)).uppercased()
         popMenuTableView.delegate = self
@@ -217,7 +218,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             self.imgCountry.image = NSImage.init(imageLiteralResourceName:iCon[row])
             self.lbNodeCount.stringValue = countryNodes[row]
             self.choosed_country = getCountryShort(countryCode: countryCode[row])
-
+            TenonP2pLib.sharedInstance.choosed_country = self.choosed_country
             
             _ = UserDefaults.standard
             let isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")

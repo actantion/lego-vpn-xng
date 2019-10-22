@@ -21,6 +21,9 @@ let LAUNCH_AGENT_CONF_SSLOCAL_NAME = "com.qiuyuzhou.shadowsocksX-NG.local.plist"
 let LAUNCH_AGENT_CONF_PRIVOXY_NAME = "com.qiuyuzhou.shadowsocksX-NG.http.plist"
 let LAUNCH_AGENT_CONF_KCPTUN_NAME = "com.qiuyuzhou.shadowsocksX-NG.kcptun.plist"
 let iCon:[String] = ["us", "sg", "br","de","fr","kr", "jp", "ca","au","hk", "in", "gb","cn"]
+let defaultRoute:[String] = ["US", "SG", "IN", "GB"]
+let queue = DispatchQueue(label: "refresh_config_route_node")
+var server_stoped_by_user = false
 
 func getFileSHA1Sum(_ filepath: String) -> String {
     if let data = try? Data(contentsOf: URL(fileURLWithPath: filepath)) {
@@ -77,13 +80,33 @@ func generateSSLocalLauchAgentPlist() -> Bool {
     ]
     dict.write(toFile: plistFilepath, atomically: true)
     let Sha1Sum = getFileSHA1Sum(plistFilepath)
+    
+    print("plist file sha1sum old:\(oldSha1Sum), now: \(Sha1Sum)")
     if oldSha1Sum != Sha1Sum {
-        NSLog("generateSSLocalLauchAgentPlist - File has been changed.")
         return true
     } else {
-        NSLog("generateSSLocalLauchAgentPlist - File has not been changed.")
         return false
     }
+}
+
+func getOneRouteNode_ex(country: String) -> (ip: String, port: String) {
+    let res_str = LibP2P.getVpnNodes(country, true) as String
+    if (res_str.isEmpty) {
+        return ("", "")
+    }
+    
+    let node_arr: Array = res_str.components(separatedBy: ",")
+    if (node_arr.count <= 0) {
+        return ("", "")
+    }
+    
+    let rand_pos = randomCustom(min: 0, max: node_arr.count)
+    let node_info_arr = node_arr[rand_pos].components(separatedBy: ":")
+    if (node_info_arr.count < 5) {
+        return ("", "")
+    }
+    
+    return (node_info_arr[0], node_info_arr[2])
 }
 
 func StartSSLocal() {
@@ -92,6 +115,58 @@ func StartSSLocal() {
     let task = Process.launchedProcess(launchPath: installerPath!, arguments: [""])
     task.waitUntilExit()
     if task.terminationStatus == 0 {
+        server_stoped_by_user = false
+        queue.async {
+            while (!server_stoped_by_user) {
+                var route_node = getOneRouteNode(country: TenonP2pLib.sharedInstance.local_country)
+                if (route_node.ip.isEmpty) {
+                    route_node = getOneRouteNode(country: TenonP2pLib.sharedInstance.choosed_country)
+                    if (route_node.ip.isEmpty) {
+                        for country in defaultRoute {
+                            route_node = getOneRouteNode(country: country)
+                            if (!route_node.ip.isEmpty) {
+                                break
+                            }
+                        }
+                    }
+                }
+                
+                var vpn_node = getOneVpnNode(country: TenonP2pLib.sharedInstance.choosed_country)
+                if (vpn_node.ip.isEmpty) {
+                    for country in defaultRoute {
+                        vpn_node = getOneVpnNode(country: country)
+                        if (!vpn_node.ip.isEmpty) {
+                            break
+                        }
+                    }
+                }
+                                
+                let route_ip_int = LibP2P.changeStrIp(route_node.ip)
+                let vpn_ip_int = LibP2P.changeStrIp(vpn_node.ip)
+                if (!route_node.ip.isEmpty) {
+                    let mgr = ServerProfileManager.instance
+                    if let profile = mgr.getActiveProfile() {
+                        writeSSLocalConfFile((profile.toJsonConfig(
+                            use_smart_route: Int32(TenonP2pLib.sharedInstance.use_smart_route),
+                            route_ip: route_ip_int,
+                            route_port: Int32(route_node.port)!,
+                            vpn_ip: vpn_ip_int,
+                            vpn_port: Int32(vpn_node.port)!,
+                            seckey: vpn_node.passwd,
+                            pubkey: TenonP2pLib.sharedInstance.GetPublicKey(),
+                            method: "aes-128-cfb")))
+                    }
+                }
+                
+                let task = Process.launchedProcess(launchPath: installerPath!, arguments: [""])
+                task.waitUntilExit()
+                if task.terminationStatus != 0 {
+                    print("start local server failed!")
+                }
+                
+                sleep(3)
+            }
+        }
         NSLog("Start ss-local succeeded.")
     } else {
         NSLog("Start ss-local failed.")
@@ -104,6 +179,7 @@ func StopSSLocal() {
     let task = Process.launchedProcess(launchPath: installerPath!, arguments: [""])
     task.waitUntilExit()
     if task.terminationStatus == 0 {
+        server_stoped_by_user = true
         NSLog("Stop ss-local succeeded.")
     } else {
         NSLog("Stop ss-local failed.")
@@ -149,7 +225,6 @@ func writeSSLocalConfFile(_ conf:[String:AnyObject]) -> Bool {
             return false
         }
         
-        NSLog("writeSSLocalConfFile - File has been changed.")
         return true
     } catch {
         NSLog("Write ss-local file failed.")
@@ -216,7 +291,7 @@ func SyncSSLocal(choosed_country: String, local_country: String, smart_route: In
     if (route_node.ip.isEmpty) {
         route_node = getOneRouteNode(country: choosed_country)
         if (route_node.ip.isEmpty) {
-            for country in iCon {
+            for country in defaultRoute {
                 route_node = getOneRouteNode(country: country)
                 if (!route_node.ip.isEmpty) {
                     break
@@ -246,7 +321,8 @@ func SyncSSLocal(choosed_country: String, local_country: String, smart_route: In
     
     var changed: Bool = false
     changed = changed || generateSSLocalLauchAgentPlist()
-    let mgr = ServerProfileManager.instance
+    var mgr = ServerProfileManager.instance
+    print("get mgr instance check is nil: \(mgr.activeProfileId != nil)")
     if mgr.activeProfileId != nil {
         if let profile = mgr.getActiveProfile() {
             changed = changed || writeSSLocalConfFile((profile.toJsonConfig(
@@ -280,8 +356,8 @@ func SyncSSLocal(choosed_country: String, local_country: String, smart_route: In
         removeSSLocalConfFile()
         StopSSLocal()
     }
-    SyncPac()
-    SyncPrivoxy()
+    //SyncPac()
+    //SyncPrivoxy()
 }
 
 // --------------------------------------------------------------------------------
@@ -406,6 +482,7 @@ func StopPrivoxy() {
 }
 
 func InstallPrivoxy() {
+
     let fileMgr = FileManager.default
     let homeDir = NSHomeDirectory()
     let appSupportDir = homeDir+APP_SUPPORT_DIR
@@ -421,7 +498,7 @@ func InstallPrivoxy() {
         }
     }
     
-    let userConfigPath = homeDir + USER_CONFIG_DIR + "user-privoxy.config"
+    let userConfigPath = homeDir + USER_CONFIG_DIR + "user_privoxy.config"
     if !fileMgr.fileExists(atPath: userConfigPath) {
         let srcPath = Bundle.main.path(forResource: "user-privoxy", ofType: "config")!
         try! fileMgr.copyItem(atPath: srcPath, toPath: userConfigPath)
@@ -441,7 +518,7 @@ func writePrivoxyConfFile() -> Bool {
         template = template.replacingOccurrences(of: "{socks5}", with: defaults.string(forKey: "LocalSocks5.ListenAddress")! + ":" + String(defaults.integer(forKey: "LocalSocks5.ListenPort")))
         
         // Append the user config file to the end
-        let userConfigPath = NSHomeDirectory() + USER_CONFIG_DIR + "user-privoxy.config"
+        let userConfigPath = NSHomeDirectory() + USER_CONFIG_DIR + "user_privoxy.config"
         let userConfig = try String(contentsOfFile: userConfigPath, encoding: .utf8)
         template.append(contentsOf: userConfig)
         

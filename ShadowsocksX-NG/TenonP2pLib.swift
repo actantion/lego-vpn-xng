@@ -11,7 +11,11 @@ import libp2p
 class TenonP2pLib {
     static let sharedInstance = TenonP2pLib()
     
-    public var choosed_country_idx = 0;
+    public var choosed_country_idx = 0
+    public var choosed_country: String = "US"
+    public var local_country: String = "CN"
+    public var use_smart_route: Int32 = 1
+    
     func InitP2pNetwork (
             _ local_ip: String,
             _ local_port: Int) -> (local_country: String, prikey: String, account_id: String) {

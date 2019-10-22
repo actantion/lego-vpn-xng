@@ -100,16 +100,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             return;
         }
               
+        TenonP2pLib.sharedInstance.local_country = local_country
         print("local country:" + res.local_country)
         print("private key:" + res.prikey)
         print("account id:" + res.account_id)
         
         // Prepare ss-local
         InstallSSLocal()
-        InstallPrivoxy()
-        InstallSimpleObfs()
-        InstallKcptun()
-        InstallV2rayPlugin()
+        //InstallPrivoxy()
+        //InstallSimpleObfs()
+        //InstallKcptun()
+        //InstallV2rayPlugin()
         
         // Prepare defaults
         let defaults = UserDefaults.standard

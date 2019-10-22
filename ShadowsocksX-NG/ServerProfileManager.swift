@@ -14,8 +14,10 @@ class ServerProfileManager: NSObject {
     
     var profiles:[ServerProfile]
     var activeProfileId: String?
+    var default_profile: ServerProfile = ServerProfile(uuid: "default_profile")
     
     fileprivate override init() {
+        
         profiles = [ServerProfile]()
         
         let defaults = UserDefaults.standard
@@ -25,7 +27,12 @@ class ServerProfileManager: NSObject {
                 profiles.append(profile)
             }
         }
+        defaults.set("default_profile", forKey: "ActiveServerProfileId")
         activeProfileId = defaults.string(forKey: "ActiveServerProfileId")
+        if (activeProfileId == nil) {
+            activeProfileId = "default_profile"
+        }
+        print("ServerProfileManager activeProfileId \(String(describing: activeProfileId))")
     }
     
     func setActiveProfiledId(_ id: String) {
@@ -51,6 +58,8 @@ class ServerProfileManager: NSObject {
     }
     
     func getActiveProfile() -> ServerProfile? {
+        return default_profile
+        
         if let id = activeProfileId {
             for p in profiles {
                 if p.uuid == id {
