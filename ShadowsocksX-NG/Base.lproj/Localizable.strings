@@ -82,3 +82,13 @@
 
 "New Server" = "New Server";
 
+"Smarte Route" = "Smarte Route"
+"Intelligent routing will hide your real IP. Each session you access the network will randomly select multiple intermediate nodes for forwarding, and then go to the node of the VPN service provider. Therefore, neither the carrier nor the VPN service provider can track your data flow." = "Intelligent routing will hide your real IP. Each session you access the network will randomly select multiple intermediate nodes for forwarding, and then go to the node of the VPN service provider. Therefore, neither the carrier nor the VPN service provider can track your data flow."
+"SETTINGS" = "SETTINGS"
+"UPGRADE" = "UPGRADE"
+"Already the latest version." = "Already the latest version."
+"ACCOUNT SETTING" = "ACCOUNT SETTING"
+"Private Key" = "Private Key"
+"Account Address" = "Account Address"
+"Balance" = "Balance"
+"Transactions" = "Transactions"

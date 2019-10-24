@@ -10,6 +10,7 @@ import Cocoa
 import CircularProgress
 
 let APP_COLOR:NSColor = NSColor(red: 9/255, green: 222/255, blue: 202/255, alpha: 1)
+
 class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTableViewDataSource,NSGestureRecognizerDelegate {
     @IBOutlet weak var progressCircularProgress: CircularProgress!
     @IBOutlet weak var notConnectProgress: CircularProgress!
@@ -29,13 +30,18 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     @IBOutlet weak var imgConnect: NSImageView!
     @IBOutlet weak var cbRouteSwitch: NSButton!
     @IBOutlet weak var btnConnect: NSButton!
-    @IBOutlet weak var topView: NSView!
-    @IBOutlet weak var btnSelectSmartRoute: NSButton!
+    
     @IBOutlet weak var lbCountryName: NSTextField!
     @IBOutlet weak var lbNodeCount: NSTextField!
     @IBOutlet weak var imgCountry: NSImageView!
     @IBOutlet weak var vwLine: NSView!
     @IBOutlet weak var exitButton: NSButton!
+    @IBOutlet weak var settingsBtn: NSButton!
+    @IBOutlet weak var upgradeBtn: NSButton!
+    @IBOutlet weak var smartRouteLabel: NSTextField!
+    
+     
+    var mySwitch: JSSwitch!
     
     var choosed_country:String! = "US"
     var transcationList = [TranscationModel]()
@@ -49,6 +55,18 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     public var local_country:String!;
     let kCurrentVersion = "1.0.7"
 
+    
+    @IBAction func clickSettings(_ sender: Any) {
+        if accountSettingWndCtrl != nil {
+            accountSettingWndCtrl.close()
+        }
+        accountSettingWndCtrl = AcountSettingWndController(windowNibName: .init(rawValue: "AcountSettingWndController"))
+        accountSettingWndCtrl.showWindow(self)
+        accountSettingWndCtrl.transcationList = transcationList
+        accountSettingWndCtrl.refresh()
+        NSApp.activate(ignoringOtherApps: true)
+        accountSettingWndCtrl.window?.makeKeyAndOrderFront(nil)
+    }
     
     func getCountryShort(countryCode:String) -> String {
         switch countryCode {
@@ -85,7 +103,11 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     
     @IBAction func exitClick(_ sender: Any) {
        UserDefaults.standard.set(false, forKey: "ShadowsocksOn")
-       SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route: Int32(btnSelectSmartRoute.state.rawValue))
+        var use_st: Int32 = 0
+        if (mySwitch.on) {
+            use_st = 1
+        }
+       SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route:use_st)
 
            ProxyConfHelper.disableProxy()
         _exit(0)
@@ -225,7 +247,12 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             if (!isOn) {
                 return false
             }
-            SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route: Int32(btnSelectSmartRoute.state.rawValue))
+            
+            var use_st: Int32 = 0
+            if (mySwitch.on) {
+                use_st = 1
+            }
+            SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route:use_st)
 
             let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
                    btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
@@ -259,11 +286,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     func updateUI() {
         // MARK: 主页面背景色
         window?.backgroundColor = NSColor.white
-        
-        // MARK: 顶部黑色视图
-        topView.wantsLayer = true
-        topView.layer?.backgroundColor = NSColor.black.cgColor
-        topView.needsDisplay = true
+
         
         // MARK: 国家选择按钮
         btnChoseCountry.wantsLayer = true
@@ -272,10 +295,15 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         btnChoseCountry.layer?.masksToBounds = true
         lbCountryName.font = NSFont.systemFont(ofSize: 17)
         lbNodeCount.font = NSFont.systemFont(ofSize: 12)
-        btnUpgrade.wantsLayer = true
-        btnUpgrade.layer?.backgroundColor = NSColor(red: 4/255, green: 204/255, blue: 190/255, alpha: 1).cgColor
-        btnUpgrade.layer?.masksToBounds = false
-        btnUpgrade.layer?.cornerRadius = 4
+        upgradeBtn.wantsLayer = true
+        upgradeBtn.layer?.backgroundColor = NSColor(red: 4/255, green: 204/255, blue: 190/255, alpha: 1).cgColor
+        upgradeBtn.layer?.masksToBounds = false
+        upgradeBtn.layer?.cornerRadius = 4
+        
+        settingsBtn.wantsLayer = true
+        settingsBtn.layer?.backgroundColor = NSColor(red: 4/255, green: 204/255, blue: 190/255, alpha: 1).cgColor
+        settingsBtn.layer?.masksToBounds = false
+        settingsBtn.layer?.cornerRadius = 4
         
         // MARK: connect按钮
         btnConnect.wantsLayer = true
@@ -288,14 +316,21 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         vwLine.wantsLayer = true
         vwLine.layer?.backgroundColor = NSColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1).cgColor
         
-        progressCircularProgress = CircularProgress(frame: CGRect(x: 47, y: 191, width: 256, height: 256))
-          notConnectProgress = CircularProgress(frame: CGRect(x: 47, y: 191, width: 256, height: 256))
+        
+        mySwitch = JSSwitch(frame: CGRect(x: smartRouteLabel.frame.maxX, y: smartRouteLabel.frame.minY + 4, width: 70, height: 22));
+        baseView.addSubview(mySwitch)
+        mySwitch.callback_smart_route = click_smart_route
+        mySwitch.on = true
+        print(mySwitch.on) // true
+        
+        progressCircularProgress = CircularProgress(frame: CGRect(x: 43, y: 191, width: 256, height: 256))
+          notConnectProgress = CircularProgress(frame: CGRect(x: 43, y: 191, width: 256, height: 256))
           notConnectProgress.lineWidth = 6
           notConnectProgress.color = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1)
         baseView.addSubview(notConnectProgress)
           notConnectProgress.isHidden = true
-    
-          connectedProgress = CircularProgress(frame: CGRect(x: 47, y: 191, width: 256, height: 256))
+        smartRouteLabel.textColor = APP_COLOR
+          connectedProgress = CircularProgress(frame: CGRect(x: 43, y: 191, width: 256, height: 256))
           connectedProgress.lineWidth = 6
           connectedProgress.color = NSColor(red: 19/255, green: 244/255, blue: 220/255, alpha: 1)
         baseView.addSubview(connectedProgress)
@@ -427,7 +462,11 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             configureProgressBasedView();
         }
         defaults.set(isOn, forKey: "ShadowsocksOn")
-        SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route: Int32(btnSelectSmartRoute.state.rawValue))
+        var use_st: Int32 = 0
+        if (mySwitch.on) {
+            use_st = 1
+        }
+        SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route:use_st)
 
         let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
         
@@ -453,13 +492,55 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     @IBAction func clickConnect(_ sender: Any) {
         ResetConnect();
     }
-    @IBAction func clickSmartRoute(_ sender: Any) {
-        _ = UserDefaults.standard
+    
+    public func click_smart_route() {
         let isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
         if (!isOn) {
             return
         }
-        SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route: Int32(btnSelectSmartRoute.state.rawValue))
+        
+        var use_smart_route: Int32 = 0;
+        if (mySwitch.on) {
+            use_smart_route = 1
+        }
+        SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route: use_smart_route)
+
+        let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
+        
+        btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
+        notConnectProgress.isHidden = false
+        connectedProgress.isHidden = true
+        notConnectProgress.progress = 0;
+        
+            configureProgressBasedView();
+
+        if isOn {
+           
+            if mode == "auto" {
+                ProxyConfHelper.enablePACProxy()
+            } else if mode == "global" {
+                ProxyConfHelper.enableGlobalProxy()
+            } else if mode == "manual" {
+                ProxyConfHelper.disableProxy()
+            } else if mode == "externalPAC" {
+                ProxyConfHelper.enableExternalPACProxy()
+            }
+        } else {
+            
+            ProxyConfHelper.disableProxy()
+        }
+    }
+    @IBAction func clickSmartRoute(_ sender: Any) {
+        let isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
+        if (!isOn) {
+            return
+        }
+        
+        var use_st: Int32 = 0
+        if (mySwitch.on) {
+            use_st = 1
+        }
+        SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route:use_st)
 
         let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
         
