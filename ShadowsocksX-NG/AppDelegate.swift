@@ -220,8 +220,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         
         ProxyConfHelper.install()
         ProxyConfHelper.startMonitorPAC()
-        defaults.set(true, forKey: "ShadowsocksOn")
-        applyConfig()
+        defaults.set(false, forKey: "ShadowsocksOn")
+        // applyConfig()
 
         // Register global hotkey
         ShortcutsController.bindShortcuts()
