@@ -82,6 +82,9 @@
 
 "New Server" = "新建服务器";
 
+/*
+* ./ShadowsocksX-NG/TenonMainWindowsController.swift
+*/
 
 "Smarte Route" = "智能路由"
 "Intelligent routing will hide your real IP. Each session you access the network will randomly select multiple intermediate nodes for forwarding, and then go to the node of the VPN service provider. Therefore, neither the carrier nor the VPN service provider can track your data flow." = "智能路由将会把你的真实IP进行隐藏，你访问网络的每次会话，都会随机选择多个中间节点进行转发，然后才到VPN服务提供商的节点，不管是运营商还是VPN服务提供商都无法跟踪你的数据流向。"

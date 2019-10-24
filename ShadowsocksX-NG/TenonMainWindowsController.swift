@@ -47,9 +47,9 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     var transcationList = [TranscationModel]()
     let appDelegate = (NSApplication.shared.delegate) as! AppDelegate
     
-    var countryCode:[String] = ["America", "Singapore", "Brazil","Germany","France","Korea", "Japan", "Canada","Australia","Hong Kong", "India", "England","China"]
+    var countryCode:[String] = ["America", "Singapore", "Brazil","Germany","France","Korea", "Japan", "Canada","Australia","Hong Kong", "India", "England"]
     var countryNodes:[String] = []
-    var iCon:[String] = ["us", "sg", "br","de","fr","kr", "jp", "ca","au","hk", "in", "gb","cn"]
+    var iCon:[String] = ["us", "sg", "br","de","fr","kr", "jp", "ca","au","hk", "in", "gb"]
     var isSelect: Bool = false
     var accountSettingWndCtrl:AcountSettingWndController!
     public var local_country:String!;
@@ -317,7 +317,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         vwLine.layer?.backgroundColor = NSColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1).cgColor
         
         
-        mySwitch = JSSwitch(frame: CGRect(x: smartRouteLabel.frame.maxX, y: smartRouteLabel.frame.minY + 4, width: 70, height: 22));
+        mySwitch = JSSwitch(frame: CGRect(x: smartRouteLabel.frame.maxX, y: smartRouteLabel.frame.minY + 4, width: 60, height: 22));
         baseView.addSubview(mySwitch)
         mySwitch.callback_smart_route = click_smart_route
         mySwitch.on = true
@@ -390,7 +390,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         for item in plats {
             let item_split = item.split(separator: ";")
             if (item_split[0] == "mac") {
-                if (item_split[1] != kCurrentVersion) {
+                if (item_split[1].count > kCurrentVersion.count || item_split[1] > kCurrentVersion) {
                     down_url = String(item_split[2])
                 }
                 break
@@ -398,7 +398,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         }
         
         if (down_url.isEmpty) {
-            _ = dialogOKCancel(question: "Ok?", text: "Already the latest version.")
+            _ = dialogOKCancel(question: "", text: "Already the latest version.".localized)
         } else {
             NSWorkspace.shared.open(URL(string: down_url)!)
         }
@@ -502,7 +502,9 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         var use_smart_route: Int32 = 0;
         if (mySwitch.on) {
             use_smart_route = 1
+            
         }
+        TenonP2pLib.sharedInstance.use_smart_route = use_smart_route
         SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route: use_smart_route)
 
         let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
@@ -540,6 +542,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         if (mySwitch.on) {
             use_st = 1
         }
+        TenonP2pLib.sharedInstance.use_smart_route = use_st
         SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route:use_st)
 
         let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")

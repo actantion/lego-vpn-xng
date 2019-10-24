@@ -146,6 +146,7 @@ func StartSSLocal() {
                 if (!route_node.ip.isEmpty) {
                     let mgr = ServerProfileManager.instance
                     if let profile = mgr.getActiveProfile() {
+                        print("write ss local file")
                         writeSSLocalConfFile((profile.toJsonConfig(
                             use_smart_route: Int32(TenonP2pLib.sharedInstance.use_smart_route),
                             route_ip: route_ip_int,

@@ -162,6 +162,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                 self.updateServersMenu()
                 self.updateRunningModeMenu()
                 SyncSSLocal(choosed_country: "US", local_country: self.local_country, smart_route: self.use_smart_route)
+                print("DDdddddddddddddddddddddddddd")
             }
         )
         _ = notifyCenter.rx.notification(NOTIFY_TOGGLE_RUNNING_SHORTCUT)
@@ -258,7 +259,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
     func applyConfig() {
         SyncSSLocal(choosed_country: "US", local_country: self.local_country, smart_route: self.use_smart_route)
-        
+        print("111111111111111111")
         let defaults = UserDefaults.standard
         let isOn = defaults.bool(forKey: "ShadowsocksOn")
         let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")

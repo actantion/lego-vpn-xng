@@ -174,5 +174,6 @@ public class JSSwitch: NSControl {
         pressed = false
         on = !on
         callback_smart_route()
+        
     }
 }

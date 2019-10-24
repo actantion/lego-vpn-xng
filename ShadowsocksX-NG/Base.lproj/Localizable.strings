@@ -82,6 +82,10 @@
 
 "New Server" = "New Server";
 
+/*
+* ./ShadowsocksX-NG/TenonMainWindowsController.swift
+*/
+
 "Smarte Route" = "Smarte Route"
 "Intelligent routing will hide your real IP. Each session you access the network will randomly select multiple intermediate nodes for forwarding, and then go to the node of the VPN service provider. Therefore, neither the carrier nor the VPN service provider can track your data flow." = "Intelligent routing will hide your real IP. Each session you access the network will randomly select multiple intermediate nodes for forwarding, and then go to the node of the VPN service provider. Therefore, neither the carrier nor the VPN service provider can track your data flow."
 "SETTINGS" = "SETTINGS"
