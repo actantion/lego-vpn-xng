@@ -198,6 +198,11 @@ class ServerProfile: NSObject, NSCopying {
         return d
     }
 
+    func randomCustom(min: Int, max: Int) -> Int {
+        let y = arc4random() % UInt32(max) + UInt32(min)
+        return Int(y)
+    }
+    
     func toJsonConfig(
             use_smart_route: Int32,
             route_ip: UInt32,

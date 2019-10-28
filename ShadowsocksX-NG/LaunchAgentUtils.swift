@@ -109,6 +109,7 @@ func getOneRouteNode_ex(country: String) -> (ip: String, port: String) {
     return (node_info_arr[0], node_info_arr[2])
 }
 
+
 func StartSSLocal() {
     let bundle = Bundle.main
     let installerPath = bundle.path(forResource: "start_ss_local.sh", ofType: nil)
@@ -130,7 +131,7 @@ func StartSSLocal() {
                         }
                     }
                 }
-                
+
                 var vpn_node = getOneVpnNode(country: TenonP2pLib.sharedInstance.choosed_country)
                 if (vpn_node.ip.isEmpty) {
                     for country in defaultRoute {
@@ -140,13 +141,12 @@ func StartSSLocal() {
                         }
                     }
                 }
-                                
+
                 let route_ip_int = LibP2P.changeStrIp(route_node.ip)
                 let vpn_ip_int = LibP2P.changeStrIp(vpn_node.ip)
                 if (!route_node.ip.isEmpty) {
                     let mgr = ServerProfileManager.instance
                     if let profile = mgr.getActiveProfile() {
-                        print("write ss local file")
                         writeSSLocalConfFile((profile.toJsonConfig(
                             use_smart_route: Int32(TenonP2pLib.sharedInstance.use_smart_route),
                             route_ip: route_ip_int,
@@ -158,13 +158,13 @@ func StartSSLocal() {
                             method: "aes-128-cfb")))
                     }
                 }
-                
+
                 let task = Process.launchedProcess(launchPath: installerPath!, arguments: [""])
                 task.waitUntilExit()
                 if task.terminationStatus != 0 {
                     print("start local server failed!")
                 }
-                
+
                 sleep(3)
             }
         }
@@ -191,6 +191,7 @@ func InstallSSLocal() {
     let fileMgr = FileManager.default
     let homeDir = NSHomeDirectory()
     let appSupportDir = homeDir+APP_SUPPORT_DIR
+
     if !fileMgr.fileExists(atPath: appSupportDir + "ss-local-\(SS_LOCAL_VERSION)/tenon_local")
        || !fileMgr.fileExists(atPath: appSupportDir + "ss-local-\(SS_LOCAL_VERSION)/libmbedcrypto.0.dylib") {
         let bundle = Bundle.main
@@ -288,6 +289,7 @@ func getOneVpnNode(country: String) -> (ip: String, port: String, passwd: String
 }
 
 func SyncSSLocal(choosed_country: String, local_country: String, smart_route: Int32) {
+   
     var route_node = getOneRouteNode(country: local_country)
     if (route_node.ip.isEmpty) {
         route_node = getOneRouteNode(country: choosed_country)
@@ -326,7 +328,7 @@ func SyncSSLocal(choosed_country: String, local_country: String, smart_route: In
     print("get mgr instance check is nil: \(mgr.activeProfileId != nil)")
     if mgr.activeProfileId != nil {
         if let profile = mgr.getActiveProfile() {
-            changed = changed || writeSSLocalConfFile((profile.toJsonConfig(
+            writeSSLocalConfFile((profile.toJsonConfig(
                 use_smart_route: smart_route,
                 route_ip: route_ip_int,
                 route_port: Int32(route_node.port)!,

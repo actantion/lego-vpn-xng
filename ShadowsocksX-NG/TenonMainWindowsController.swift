@@ -53,7 +53,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     var isSelect: Bool = false
     var accountSettingWndCtrl:AcountSettingWndController!
     public var local_country:String!;
-    let kCurrentVersion = "1.0.7"
+    let kCurrentVersion = "1.0.8"
 
     
     @IBAction func clickSettings(_ sender: Any) {
