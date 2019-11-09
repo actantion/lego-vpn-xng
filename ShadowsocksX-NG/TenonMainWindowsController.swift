@@ -53,7 +53,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     var isSelect: Bool = false
     var accountSettingWndCtrl:AcountSettingWndController!
     public var local_country:String!;
-    let kCurrentVersion = "1.0.8"
+    let kCurrentVersion = "2.0.2"
 
     
     @IBAction func clickSettings(_ sender: Any) {
@@ -121,12 +121,12 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         //progressCircularProgress.isHidden = true;
     }
     
-    func stopConnect() {
-        progressCircularProgress.isIndeterminate = true;
-        progressCircularProgress.lineWidth = 6
-        progressCircularProgress.color = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1)
-        window?.contentView!.addSubview(progressCircularProgress)
-    }
+//    func stopConnect() {
+//        progressCircularProgress.isIndeterminate = true;
+//        progressCircularProgress.lineWidth = 6
+//        progressCircularProgress.color = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1)
+//        window?.contentView!.addSubview(progressCircularProgress)
+//    }
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -252,32 +252,34 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             if (mySwitch.on) {
                 use_st = 1
             }
-            SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route:use_st)
-
-            let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
-                   btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
-            notConnectProgress.isHidden = false
-            connectedProgress.isHidden = true
-            notConnectProgress.progress = 0;
             
-                configureProgressBasedView();
-                
-            if isOn {
-                
-                if mode == "auto" {
-                    ProxyConfHelper.enablePACProxy()
-                } else if mode == "global" {
-                    ProxyConfHelper.enableGlobalProxy()
-                } else if mode == "manual" {
-                    ProxyConfHelper.disableProxy()
-                } else if mode == "externalPAC" {
-                    ProxyConfHelper.enableExternalPACProxy()
-                }
-            } else {
-        
-                
-                ProxyConfHelper.disableProxy()
-            }
+            stopConnect()
+//            SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route:use_st)
+//
+//            let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
+//                   btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
+//            notConnectProgress.isHidden = false
+//            connectedProgress.isHidden = true
+//            notConnectProgress.progress = 0;
+//
+//                configureProgressBasedView();
+//
+//            if isOn {
+//
+//                if mode == "auto" {
+//                    ProxyConfHelper.enablePACProxy()
+//                } else if mode == "global" {
+//                    ProxyConfHelper.enableGlobalProxy()
+//                } else if mode == "manual" {
+//                    ProxyConfHelper.disableProxy()
+//                } else if mode == "externalPAC" {
+//                    ProxyConfHelper.enableExternalPACProxy()
+//                }
+//            } else {
+//
+//
+//                ProxyConfHelper.disableProxy()
+//            }
             return true
         }else{
             return false
@@ -489,6 +491,32 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         
     }
     
+    private func stopConnect() {
+        let defaults = UserDefaults.standard
+        var isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
+        if (!isOn) {
+            return;
+        }
+        
+        isOn = !isOn
+        btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
+        notConnectProgress.isHidden = false
+        connectedProgress.isHidden = true
+        notConnectProgress.progress = 0;
+        if (isOn) {
+           configureProgressBasedView();
+        }
+        
+        defaults.set(isOn, forKey: "ShadowsocksOn")
+        var use_st: Int32 = 0
+        if (mySwitch.on) {
+           use_st = 1
+        }
+        
+        SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route:use_st)
+        ProxyConfHelper.disableProxy()
+    }
+    
     @IBAction func clickConnect(_ sender: Any) {
         ResetConnect();
     }
@@ -505,32 +533,34 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             
         }
         TenonP2pLib.sharedInstance.use_smart_route = use_smart_route
-        SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route: use_smart_route)
-
-        let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
-        
-        btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
-        notConnectProgress.isHidden = false
-        connectedProgress.isHidden = true
-        notConnectProgress.progress = 0;
-        
-            configureProgressBasedView();
-
-        if isOn {
-           
-            if mode == "auto" {
-                ProxyConfHelper.enablePACProxy()
-            } else if mode == "global" {
-                ProxyConfHelper.enableGlobalProxy()
-            } else if mode == "manual" {
-                ProxyConfHelper.disableProxy()
-            } else if mode == "externalPAC" {
-                ProxyConfHelper.enableExternalPACProxy()
-            }
-        } else {
-            
-            ProxyConfHelper.disableProxy()
-        }
+        stopConnect()
+//
+//        SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route: use_smart_route)
+//
+//        let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
+//
+//        btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
+//        notConnectProgress.isHidden = false
+//        connectedProgress.isHidden = true
+//        notConnectProgress.progress = 0;
+//
+//            configureProgressBasedView();
+//
+//        if isOn {
+//
+//            if mode == "auto" {
+//                ProxyConfHelper.enablePACProxy()
+//            } else if mode == "global" {
+//                ProxyConfHelper.enableGlobalProxy()
+//            } else if mode == "manual" {
+//                ProxyConfHelper.disableProxy()
+//            } else if mode == "externalPAC" {
+//                ProxyConfHelper.enableExternalPACProxy()
+//            }
+//        } else {
+//
+//            ProxyConfHelper.disableProxy()
+//        }
     }
     @IBAction func clickSmartRoute(_ sender: Any) {
         let isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
@@ -543,32 +573,34 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             use_st = 1
         }
         TenonP2pLib.sharedInstance.use_smart_route = use_st
-        SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route:use_st)
-
-        let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
-        
-        btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
-        notConnectProgress.isHidden = false
-        connectedProgress.isHidden = true
-        notConnectProgress.progress = 0;
-        
-            configureProgressBasedView();
-
-        if isOn {
-           
-            if mode == "auto" {
-                ProxyConfHelper.enablePACProxy()
-            } else if mode == "global" {
-                ProxyConfHelper.enableGlobalProxy()
-            } else if mode == "manual" {
-                ProxyConfHelper.disableProxy()
-            } else if mode == "externalPAC" {
-                ProxyConfHelper.enableExternalPACProxy()
-            }
-        } else {
-            
-            ProxyConfHelper.disableProxy()
-        }
+        stopConnect()
+//
+//        SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route:use_st)
+//
+//        let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
+//
+//        btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
+//        notConnectProgress.isHidden = false
+//        connectedProgress.isHidden = true
+//        notConnectProgress.progress = 0;
+//
+//            configureProgressBasedView();
+//
+//        if isOn {
+//
+//            if mode == "auto" {
+//                ProxyConfHelper.enablePACProxy()
+//            } else if mode == "global" {
+//                ProxyConfHelper.enableGlobalProxy()
+//            } else if mode == "manual" {
+//                ProxyConfHelper.disableProxy()
+//            } else if mode == "externalPAC" {
+//                ProxyConfHelper.enableExternalPACProxy()
+//            }
+//        } else {
+//
+//            ProxyConfHelper.disableProxy()
+//        }
     }
     @IBAction func clickAccountSetting(_ sender: Any) {
         
@@ -582,6 +614,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         NSApp.activate(ignoringOtherApps: true)
         accountSettingWndCtrl.window?.makeKeyAndOrderFront(nil)
     }
+    
     @IBAction func clickChoseCountry(_ sender: Any) {
         isSelect = false
         if btnChoseCountry.state.rawValue == 0{

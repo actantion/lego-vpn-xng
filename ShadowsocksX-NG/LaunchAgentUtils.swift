@@ -305,7 +305,8 @@ func SyncSSLocal(choosed_country: String, local_country: String, smart_route: In
 
     var vpn_node = getOneVpnNode(country: choosed_country)
     if (vpn_node.ip.isEmpty) {
-        for country in iCon {
+        for country in defaultRoute {
+            print("get vpn node from coutnry: \(country)")
             vpn_node = getOneVpnNode(country: country)
             if (!vpn_node.ip.isEmpty) {
                 break
@@ -328,7 +329,7 @@ func SyncSSLocal(choosed_country: String, local_country: String, smart_route: In
     print("get mgr instance check is nil: \(mgr.activeProfileId != nil)")
     if mgr.activeProfileId != nil {
         if let profile = mgr.getActiveProfile() {
-            writeSSLocalConfFile((profile.toJsonConfig(
+            changed = changed || writeSSLocalConfFile((profile.toJsonConfig(
                 use_smart_route: smart_route,
                 route_ip: route_ip_int,
                 route_port: Int32(route_node.port)!,

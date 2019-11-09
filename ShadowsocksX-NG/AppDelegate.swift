@@ -100,6 +100,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             return;
         }
               
+        let routes = res.def_route.split(separator: ";")
+        for item in routes {
+            let item_split = item.split(separator: ":");
+            if item_split.count != 2 {
+                continue
+            }
+            
+            if item_split[0] == local_country {
+                local_country = String(item_split[1])
+            }
+        }
+        
         TenonP2pLib.sharedInstance.local_country = local_country
         print("local country:" + res.local_country)
         print("private key:" + res.prikey)
