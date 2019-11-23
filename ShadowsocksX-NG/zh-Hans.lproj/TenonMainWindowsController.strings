@@ -28,9 +28,9 @@
 
 /* Class = "NSTextFieldCell"; title = "Balance"; ObjectID = "Wav-9u-8KD"; */
 "Wav-9u-8KD.title" = "账户余额";
-
+"cf8-ah-Qze.title" = "账户余额";
 /* Class = "NSTextFieldCell"; title = "        Intelligent routing will hide your real IP. Each session you access the network will randomly select multiple intermediate nodes for forwarding, and then go to the node of the VPN service provider. Therefore, neither the carrier nor the VPN service provider can track your data flow."; ObjectID = "aQM-mA-PI6"; */
-"aQM-mA-PI6.title" = "        智能路由将会把你的真实IP进行隐藏，你访问网络的每次会话，都会随机选择多个中间节点进行转发，然后才到VPN服务提供商的节点，不管是运营商还是VPN服务提供商都无法跟踪你的数据流向。";
+"aQM-mA-PI6.title" = "Tenon p2p 网络正在保护你的IP和隐私";
 
 /* Class = "NSButtonCell"; title = "SETTINGS"; ObjectID = "aRg-yh-rQr"; */
 "aRg-yh-rQr.title" = "账号设置";
@@ -43,3 +43,4 @@
 
 /* Class = "NSTextFieldCell"; title = "100"; ObjectID = "lhq-9T-4CM"; */
 "lhq-9T-4CM.title" = "100";
+

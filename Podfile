@@ -10,7 +10,7 @@ target 'ShadowsocksX-NG' do
   pod 'Alamofire', '~> 4.7.2'
   pod "GCDWebServer", "~> 3.0"
   pod 'MASShortcut', '~> 2'
-  
+  pod 'UIKit'  
   # https://github.com/ReactiveX/RxSwift/blob/master/Documentation/GettingStarted.md
   pod 'RxSwift',    '~> 4.5.0'
   pod 'RxCocoa',    '~> 4.5.0'

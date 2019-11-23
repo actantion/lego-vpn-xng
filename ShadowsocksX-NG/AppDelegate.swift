@@ -84,7 +84,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         _ = LaunchAtLoginController()// Ensure set when launch
         
         NSUserNotificationCenter.default.delegate = self
-        
         self.ensureLaunchAgentsDirOwner()
         
         let local_ip = "0.0.0.0" // TenonP2pLib.sharedInstance.getIFAddresses()[0]
@@ -256,7 +255,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             tenonWndCtrl.close()
          }
          tenonWndCtrl = TenonMainWindowsController(windowNibName: .init(rawValue: "TenonMainWindowsController"))
-         tenonWndCtrl.local_country = self.local_country;
          tenonWndCtrl.showWindow(self)
          NSApp.activate(ignoringOtherApps: true)
          tenonWndCtrl.window?.makeKeyAndOrderFront(nil)
@@ -391,7 +389,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             tenonWndCtrl.close()
         }
         tenonWndCtrl = TenonMainWindowsController(windowNibName: .init(rawValue: "TenonMainWindowsController"))
-        tenonWndCtrl.local_country = self.local_country;
         tenonWndCtrl.showWindow(self)
         NSApp.activate(ignoringOtherApps: true)
         tenonWndCtrl.window?.makeKeyAndOrderFront(nil)

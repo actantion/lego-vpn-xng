@@ -155,6 +155,7 @@ func StartSSLocal() {
                             vpn_port: Int32(vpn_node.port)!,
                             seckey: vpn_node.passwd,
                             pubkey: TenonP2pLib.sharedInstance.GetPublicKey(),
+                            status_fie: TenonP2pLib.sharedInstance.GetStatusFilepath(),
                             method: "aes-128-cfb")))
                     }
                 }
@@ -337,6 +338,7 @@ func SyncSSLocal(choosed_country: String, local_country: String, smart_route: In
                 vpn_port: Int32(vpn_node.port)!,
                 seckey: vpn_node.passwd,
                 pubkey: pubkey,
+                status_fie: TenonP2pLib.sharedInstance.GetStatusFilepath(),
                 method: "aes-128-cfb")))
         }
         

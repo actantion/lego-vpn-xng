@@ -91,6 +91,7 @@
 		853B6201233E312C00645BD4 /* libnetwork.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnetwork.a; path = lib/libnetwork.a; sourceTree = "<group>"; };
 		853B6202233E312C00645BD4 /* liblog4cpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblog4cpp.a; path = lib/liblog4cpp.a; sourceTree = "<group>"; };
 		853B6203233E312C00645BD4 /* libcryptopp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcryptopp.a; path = lib/libcryptopp.a; sourceTree = "<group>"; };
+		85701C682388DAC9003E69BE /* libcontract.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcontract.a; path = lib/libcontract.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +184,7 @@
 		853B61E6233E312B00645BD4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				85701C682388DAC9003E69BE /* libcontract.a */,
 				853B61EC233E312B00645BD4 /* libbft.a */,
 				853B61FD233E312C00645BD4 /* libblock.a */,
 				853B61F8233E312C00645BD4 /* libbroadcast.a */,
@@ -424,6 +426,7 @@
 					"-lprotobuf",
 					"-luv",
 					"-luuid",
+					"-lcontract",
 				);
 				SDKROOT = macosx;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -501,6 +504,7 @@
 					"-lprotobuf",
 					"-luv",
 					"-luuid",
+					"-lcontract",
 				);
 				SDKROOT = macosx;
 				VERSIONING_SYSTEM = "apple-generic";

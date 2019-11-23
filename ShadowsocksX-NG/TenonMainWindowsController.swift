@@ -16,12 +16,8 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     @IBOutlet weak var notConnectProgress: CircularProgress!
     @IBOutlet weak var connectedProgress: CircularProgress!
     @IBOutlet weak var lbUpgrade: NSTextField!
-    @IBOutlet weak var lbTitleBalanced: NSTextField!
-    @IBOutlet weak var lbTitleAddress: NSTextField!
     @IBOutlet weak var btnUpgrade: NSButton!
-    @IBOutlet weak var lbUSD: NSTextField!
     @IBOutlet weak var lbTenon: NSTextField!
-    @IBOutlet weak var lbAccountAddress: NSTextField!
     @IBOutlet weak var popMenuTableView: NSTableView!
     @IBOutlet weak var popMenu: NSView!
     @IBOutlet weak var baseView: NSView!
@@ -34,16 +30,12 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     @IBOutlet weak var lbCountryName: NSTextField!
     @IBOutlet weak var lbNodeCount: NSTextField!
     @IBOutlet weak var imgCountry: NSImageView!
-    @IBOutlet weak var vwLine: NSView!
     @IBOutlet weak var exitButton: NSButton!
     @IBOutlet weak var settingsBtn: NSButton!
     @IBOutlet weak var upgradeBtn: NSButton!
-    @IBOutlet weak var smartRouteLabel: NSTextField!
+    @IBOutlet var vipStatusLable: NSTextField!
+    @IBOutlet var noticeLabel: NSTextField!
     
-     
-    var mySwitch: JSSwitch!
-    
-    var choosed_country:String! = "US"
     var transcationList = [TranscationModel]()
     let appDelegate = (NSApplication.shared.delegate) as! AppDelegate
     
@@ -52,9 +44,8 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     var iCon:[String] = ["us", "sg", "br","de","fr","kr", "jp", "ca","au","hk", "in", "gb"]
     var isSelect: Bool = false
     var accountSettingWndCtrl:AcountSettingWndController!
-    public var local_country:String!;
-    let kCurrentVersion = "2.0.2"
 
+    var check_vip_times: Int32 = 0;
     
     @IBAction func clickSettings(_ sender: Any) {
         if accountSettingWndCtrl != nil {
@@ -103,11 +94,10 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     
     @IBAction func exitClick(_ sender: Any) {
        UserDefaults.standard.set(false, forKey: "ShadowsocksOn")
-        var use_st: Int32 = 0
-        if (mySwitch.on) {
-            use_st = 1
-        }
-       SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route:use_st)
+        let use_st: Int32 = 1
+        SyncSSLocal(choosed_country: TenonP2pLib.sharedInstance.choosed_country,
+                    local_country: TenonP2pLib.sharedInstance.local_country,
+                    smart_route:use_st)
 
            ProxyConfHelper.disableProxy()
         _exit(0)
@@ -121,16 +111,14 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         //progressCircularProgress.isHidden = true;
     }
     
-//    func stopConnect() {
-//        progressCircularProgress.isIndeterminate = true;
-//        progressCircularProgress.lineWidth = 6
-//        progressCircularProgress.color = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1)
-//        window?.contentView!.addSubview(progressCircularProgress)
-//    }
+    
+    @IBAction func buyTenon(_ sender: Any) {
+        NSWorkspace.shared.open(URL(string: "http://39.105.125.37:7744/chongzhi/" + TenonP2pLib.sharedInstance.account_id_)!)
+    }
     
     override func windowDidLoad() {
         super.windowDidLoad()
-        
+        TenonP2pLib.sharedInstance.ResetBackgroundStatus()
         updateUI()
         requestData()
         for _ in countryCode {
@@ -139,10 +127,9 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         self.lbCountryName.stringValue = countryCode[TenonP2pLib.sharedInstance.choosed_country_idx]
         self.imgCountry.image = NSImage.init(imageLiteralResourceName:iCon[TenonP2pLib.sharedInstance.choosed_country_idx])
         self.lbNodeCount.stringValue = countryNodes[TenonP2pLib.sharedInstance.choosed_country_idx]
-        self.choosed_country = getCountryShort(countryCode: countryCode[TenonP2pLib.sharedInstance.choosed_country_idx])
-        TenonP2pLib.sharedInstance.choosed_country = self.choosed_country
+        TenonP2pLib.sharedInstance.choosed_country = getCountryShort(countryCode: countryCode[TenonP2pLib.sharedInstance.choosed_country_idx])
+        TenonP2pLib.sharedInstance.choosed_country = TenonP2pLib.sharedInstance.choosed_country
         
-        lbAccountAddress.stringValue = String(appDelegate.local_account_id.prefix(7)).uppercased() + "..." + String(appDelegate.local_account_id.suffix(7)).uppercased()
         popMenuTableView.delegate = self
         popMenuTableView.dataSource = self
         popMenuTableView.tableColumns[0].width = popMenuTableView.frame.size.width
@@ -160,11 +147,14 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             return
         }
         if (!isOn) {
+            imgConnect.image = NSImage.init(imageLiteralResourceName:"connect")
+            lbConnect.stringValue = "Connect"
             btnConnect.layer?.backgroundColor = NSColor(red: 198/255, green: 196/255, blue: 197/255, alpha: 1).cgColor
         } else {
+            imgConnect.image = NSImage.init(imageLiteralResourceName:"connected")
+            lbConnect.stringValue = "Connected"
             btnConnect.layer?.backgroundColor = NSColor(red: 0/255, green: 194/255, blue: 170/255, alpha: 1).cgColor
         }
-        
     }
         
     override func mouseExited(with theEvent: NSEvent) {
@@ -175,22 +165,42 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         }
         
         if (!isOn) {
+            imgConnect.image = NSImage.init(imageLiteralResourceName:"connect")
+            lbConnect.stringValue = "Connect"
             btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
         } else {
+            imgConnect.image = NSImage.init(imageLiteralResourceName:"connected")
+            lbConnect.stringValue = "Connected"
             btnConnect.layer?.backgroundColor = NSColor(red: 4/255, green: 204/255, blue: 190/255, alpha: 1).cgColor
         }
-        
     }
     
     @objc func requestData(){
-        transcationList.removeAll()
-        var balance = TenonP2pLib.sharedInstance.GetBalance()
-        
-        if balance == UInt64.max {
-            balance = 0
+        if TenonP2pLib.sharedInstance.GetBackgroudStatus() != "ok" {
+            if TenonP2pLib.sharedInstance.GetBackgroudStatus() == "cni" {
+                noticeLabel.stringValue = "Agent service is not supported in your country or region.".localized
+            }
+            
+            if TenonP2pLib.sharedInstance.GetBackgroudStatus() == "cnn" {
+                noticeLabel.stringValue = "Connect p2p vpn network failed.".localized
+            }
+            
+            if TenonP2pLib.sharedInstance.GetBackgroudStatus() == "bwo" {
+                noticeLabel.stringValue = "Free 100M/day used up, buy tenon or use tomorrow.".localized
+            }
+            
+            if TenonP2pLib.sharedInstance.GetBackgroudStatus() == "oul" {
+                noticeLabel.stringValue = "Your account is logged in elsewhere.".localized
+            }
+            stopConnect()
         }
-        lbTenon.stringValue = String(balance) + " Tenon"
-        lbUSD.stringValue = String(format:"%.2f $",Double(balance)*0.002)
+        
+        transcationList.removeAll()
+        let balance = TenonP2pLib.sharedInstance.GetBalance()
+        if balance != UInt64.max {
+            lbTenon.stringValue = String(balance) + " Tenon"
+            TenonP2pLib.sharedInstance.now_balance = Int64(balance)
+        }
         
         let trascationValue:String = TenonP2pLib.sharedInstance.GetTransactions()
         let dataArray = trascationValue.components(separatedBy: ";")
@@ -202,10 +212,36 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             let dataDetailArray = value.components(separatedBy: ",")
             model.dateTime = dataDetailArray[0]
             model.type = dataDetailArray[1]
-            model.acount = dataDetailArray[2]
+            let acc = dataDetailArray[2]
+            model.acount = acc.prefix(5).uppercased() + ".." + acc.suffix(5).uppercased()
             model.amount = dataDetailArray[3]
             transcationList.append(model)
         }
+        
+        if check_vip_times < 10 {
+            let tm = TenonP2pLib.sharedInstance.CheckVip()
+            if TenonP2pLib.sharedInstance.payfor_timestamp == 0 || tm != Int64.max {
+                if tm != Int64.max && tm != 0 {
+                    check_vip_times = 11
+                }
+                
+                TenonP2pLib.sharedInstance.payfor_timestamp = tm
+            }
+            check_vip_times += 1
+        } else {
+            TenonP2pLib.sharedInstance.PayforVpn()
+        }
+        
+        if TenonP2pLib.sharedInstance.vip_left_days == -1 &&
+                TenonP2pLib.sharedInstance.now_balance != -1 &&
+                TenonP2pLib.sharedInstance.payfor_timestamp == Int64.max {
+            vipStatusLable.stringValue = "Free 100M/day".localized
+        }
+        
+        if TenonP2pLib.sharedInstance.vip_left_days >= 0 {
+            vipStatusLable.stringValue = "Due in ".localized + (String)(TenonP2pLib.sharedInstance.vip_left_days) + "days".localized
+        }
+        
         self.perform(#selector(requestData), with: nil, afterDelay: 3)
     }
     func numberOfRows(in tableView: NSTableView) -> Int {
@@ -239,8 +275,8 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             self.lbCountryName.stringValue = countryCode[row]
             self.imgCountry.image = NSImage.init(imageLiteralResourceName:iCon[row])
             self.lbNodeCount.stringValue = countryNodes[row]
-            self.choosed_country = getCountryShort(countryCode: countryCode[row])
-            TenonP2pLib.sharedInstance.choosed_country = self.choosed_country
+            TenonP2pLib.sharedInstance.choosed_country = getCountryShort(countryCode: countryCode[row])
+            TenonP2pLib.sharedInstance.choosed_country = TenonP2pLib.sharedInstance.choosed_country
             
             _ = UserDefaults.standard
             let isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
@@ -248,38 +284,6 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
                 return false
             }
             
-            var use_st: Int32 = 0
-            if (mySwitch.on) {
-                use_st = 1
-            }
-            
-            stopConnect()
-//            SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route:use_st)
-//
-//            let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
-//                   btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
-//            notConnectProgress.isHidden = false
-//            connectedProgress.isHidden = true
-//            notConnectProgress.progress = 0;
-//
-//                configureProgressBasedView();
-//
-//            if isOn {
-//
-//                if mode == "auto" {
-//                    ProxyConfHelper.enablePACProxy()
-//                } else if mode == "global" {
-//                    ProxyConfHelper.enableGlobalProxy()
-//                } else if mode == "manual" {
-//                    ProxyConfHelper.disableProxy()
-//                } else if mode == "externalPAC" {
-//                    ProxyConfHelper.enableExternalPACProxy()
-//                }
-//            } else {
-//
-//
-//                ProxyConfHelper.disableProxy()
-//            }
             return true
         }else{
             return false
@@ -289,7 +293,8 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         // MARK: 主页面背景色
         window?.backgroundColor = NSColor.white
 
-        
+        vipStatusLable.stringValue = ""
+        lbTenon.stringValue = "waiting server".localized
         // MARK: 国家选择按钮
         btnChoseCountry.wantsLayer = true
         btnChoseCountry.layer?.backgroundColor = APP_COLOR.cgColor
@@ -315,24 +320,16 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         
         // MARK:connect label
         lbConnect.font = NSFont.systemFont(ofSize: 22)
-        vwLine.wantsLayer = true
-        vwLine.layer?.backgroundColor = NSColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1).cgColor
         
         
-        mySwitch = JSSwitch(frame: CGRect(x: smartRouteLabel.frame.maxX, y: smartRouteLabel.frame.minY + 4, width: 60, height: 22));
-        baseView.addSubview(mySwitch)
-        mySwitch.callback_smart_route = click_smart_route
-        mySwitch.on = true
-        print(mySwitch.on) // true
-        
-        progressCircularProgress = CircularProgress(frame: CGRect(x: 43, y: 191, width: 256, height: 256))
-          notConnectProgress = CircularProgress(frame: CGRect(x: 43, y: 191, width: 256, height: 256))
+        progressCircularProgress = CircularProgress(frame: CGRect(x: 43, y: 170, width: 256, height: 256))
+          notConnectProgress = CircularProgress(frame: CGRect(x: 43, y: 170, width: 256, height: 256))
           notConnectProgress.lineWidth = 6
           notConnectProgress.color = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1)
         baseView.addSubview(notConnectProgress)
           notConnectProgress.isHidden = true
-        smartRouteLabel.textColor = APP_COLOR
-          connectedProgress = CircularProgress(frame: CGRect(x: 43, y: 191, width: 256, height: 256))
+        
+          connectedProgress = CircularProgress(frame: CGRect(x: 43, y: 170, width: 256, height: 256))
           connectedProgress.lineWidth = 6
           connectedProgress.color = NSColor(red: 19/255, green: 244/255, blue: 220/255, alpha: 1)
         baseView.addSubview(connectedProgress)
@@ -347,8 +344,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             imgConnect.image = NSImage.init(imageLiteralResourceName:"connect")
             lbConnect.stringValue = "Connect"
             btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
-            lbTitleBalanced.font = NSFont.systemFont(ofSize: 20)
-            lbTitleAddress.font = NSFont.systemFont(ofSize: 20)
+            
             
             notConnectProgress.isHidden = false
             connectedProgress.isHidden = true
@@ -356,13 +352,10 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         }
         imgConnect.image = NSImage.init(imageLiteralResourceName:"connected")
         lbConnect.stringValue = "Connected"
-        
-        
         btnConnect.layer?.backgroundColor = NSColor(red: 4/255, green: 204/255, blue: 190/255, alpha: 1).cgColor
         notConnectProgress.isHidden = true
         connectedProgress.isHidden = false
-        lbTitleBalanced.font = NSFont.systemFont(ofSize: 20)
-        lbTitleAddress.font = NSFont.systemFont(ofSize: 20)
+        //lbTitleBalanced.font = NSFont.systemFont(ofSize: 20)
 
         if (isOn) {
             configureProgressBasedView();
@@ -392,7 +385,8 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         for item in plats {
             let item_split = item.split(separator: ";")
             if (item_split[0] == "mac") {
-                if (item_split[1].count > kCurrentVersion.count || item_split[1] > kCurrentVersion) {
+                if (item_split[1].count > TenonP2pLib.sharedInstance.kCurrentVersion.count ||
+                        item_split[1] > TenonP2pLib.sharedInstance.kCurrentVersion) {
                     down_url = String(item_split[2])
                 }
                 break
@@ -423,13 +417,13 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
                 tick(circularProgress)
                 if (circularProgress.progress > 0.95) {
                     timer.invalidate()
+                    self.imgConnect.image = NSImage.init(imageLiteralResourceName:"connected")
+                    self.lbConnect.stringValue = "Connected"
                     self.btnConnect.layer?.backgroundColor = NSColor(red: 4/255, green: 204/255, blue: 190/255, alpha: 1).cgColor
                     self.notConnectProgress.isHidden = true
                     self.connectedProgress.isHidden = false
                     self.connectedProgress.progress = 100;
-                                      
                 }
-                               
             }
         }
 
@@ -456,6 +450,8 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         let defaults = UserDefaults.standard
         var isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
         isOn = !isOn
+        imgConnect.image = NSImage.init(imageLiteralResourceName:"connect")
+        lbConnect.stringValue = "Connect"
         btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
         notConnectProgress.isHidden = false
         connectedProgress.isHidden = true
@@ -464,11 +460,8 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             configureProgressBasedView();
         }
         defaults.set(isOn, forKey: "ShadowsocksOn")
-        var use_st: Int32 = 0
-        if (mySwitch.on) {
-            use_st = 1
-        }
-        SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route:use_st)
+        var use_st: Int32 = 1
+        SyncSSLocal(choosed_country: TenonP2pLib.sharedInstance.choosed_country, local_country: TenonP2pLib.sharedInstance.local_country, smart_route:use_st)
 
         let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
         
@@ -499,6 +492,8 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         }
         
         isOn = !isOn
+        imgConnect.image = NSImage.init(imageLiteralResourceName:"connect")
+        lbConnect.stringValue = "Connect"
         btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
         notConnectProgress.isHidden = false
         connectedProgress.isHidden = true
@@ -508,100 +503,18 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         }
         
         defaults.set(isOn, forKey: "ShadowsocksOn")
-        var use_st: Int32 = 0
-        if (mySwitch.on) {
-           use_st = 1
-        }
-        
-        SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route:use_st)
+        let use_st: Int32 = 1
+        SyncSSLocal(choosed_country: TenonP2pLib.sharedInstance.choosed_country, local_country: TenonP2pLib.sharedInstance.local_country, smart_route:use_st)
         ProxyConfHelper.disableProxy()
     }
     
     @IBAction func clickConnect(_ sender: Any) {
+        TenonP2pLib.sharedInstance.ResetBackgroundStatus()
+        noticeLabel.stringValue = ""
         ResetConnect();
     }
     
-    public func click_smart_route() {
-        let isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
-        if (!isOn) {
-            return
-        }
-        
-        var use_smart_route: Int32 = 0;
-        if (mySwitch.on) {
-            use_smart_route = 1
-            
-        }
-        TenonP2pLib.sharedInstance.use_smart_route = use_smart_route
-        stopConnect()
-//
-//        SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route: use_smart_route)
-//
-//        let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
-//
-//        btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
-//        notConnectProgress.isHidden = false
-//        connectedProgress.isHidden = true
-//        notConnectProgress.progress = 0;
-//
-//            configureProgressBasedView();
-//
-//        if isOn {
-//
-//            if mode == "auto" {
-//                ProxyConfHelper.enablePACProxy()
-//            } else if mode == "global" {
-//                ProxyConfHelper.enableGlobalProxy()
-//            } else if mode == "manual" {
-//                ProxyConfHelper.disableProxy()
-//            } else if mode == "externalPAC" {
-//                ProxyConfHelper.enableExternalPACProxy()
-//            }
-//        } else {
-//
-//            ProxyConfHelper.disableProxy()
-//        }
-    }
-    @IBAction func clickSmartRoute(_ sender: Any) {
-        let isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
-        if (!isOn) {
-            return
-        }
-        
-        var use_st: Int32 = 0
-        if (mySwitch.on) {
-            use_st = 1
-        }
-        TenonP2pLib.sharedInstance.use_smart_route = use_st
-        stopConnect()
-//
-//        SyncSSLocal(choosed_country: self.choosed_country, local_country: self.local_country, smart_route:use_st)
-//
-//        let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
-//
-//        btnConnect.layer?.backgroundColor = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1).cgColor
-//        notConnectProgress.isHidden = false
-//        connectedProgress.isHidden = true
-//        notConnectProgress.progress = 0;
-//
-//            configureProgressBasedView();
-//
-//        if isOn {
-//
-//            if mode == "auto" {
-//                ProxyConfHelper.enablePACProxy()
-//            } else if mode == "global" {
-//                ProxyConfHelper.enableGlobalProxy()
-//            } else if mode == "manual" {
-//                ProxyConfHelper.disableProxy()
-//            } else if mode == "externalPAC" {
-//                ProxyConfHelper.enableExternalPACProxy()
-//            }
-//        } else {
-//
-//            ProxyConfHelper.disableProxy()
-//        }
-    }
+   
     @IBAction func clickAccountSetting(_ sender: Any) {
         
         if accountSettingWndCtrl != nil {

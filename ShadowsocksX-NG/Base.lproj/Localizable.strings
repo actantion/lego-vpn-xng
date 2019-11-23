@@ -86,13 +86,22 @@
 * ./ShadowsocksX-NG/TenonMainWindowsController.swift
 */
 
-"Smarte Route" = "Smarte Route"
-"Intelligent routing will hide your real IP. Each session you access the network will randomly select multiple intermediate nodes for forwarding, and then go to the node of the VPN service provider. Therefore, neither the carrier nor the VPN service provider can track your data flow." = "Intelligent routing will hide your real IP. Each session you access the network will randomly select multiple intermediate nodes for forwarding, and then go to the node of the VPN service provider. Therefore, neither the carrier nor the VPN service provider can track your data flow."
-"SETTINGS" = "SETTINGS"
-"UPGRADE" = "UPGRADE"
-"Already the latest version." = "Already the latest version."
-"ACCOUNT SETTING" = "ACCOUNT SETTING"
-"Private Key" = "Private Key"
-"Account Address" = "Account Address"
-"Balance" = "Balance"
-"Transactions" = "Transactions"
+"Smarte Route" = "Smarte Route";
+"Tenon p2p protecting your IP and privacy." = "Tenon p2p protecting your IP and privacy.";
+"SETTINGS" = "SETTINGS";
+"UPGRADE" = "UPGRADE";
+"Already the latest version." = "Already the latest version.";
+"ACCOUNT SETTING" = "ACCOUNT SETTING";
+"Private Key" = "Private Key";
+"Account Address" = "Account Address";
+"Balance" = "Balance";
+"Transactions" = "Transactions";
+"waiting server" = "waiting server...";
+
+"Agent service is not supported in your country or region." = "Agent service is not supported in your country or region.";
+"Free 100M/day used up, buy tenon or use tomorrow." = "Free 100M/day used up, buy tenon or use tomorrow.";
+"Free 100M/day" = "Free 100M/day";
+"Connect p2p vpn network failed." = "Connect p2p vpn network failed.";
+"Your account is logged in elsewhere." = "Your account is logged in elsewhere.";
+"Due in " = "Due in ";
+"days" = " days";

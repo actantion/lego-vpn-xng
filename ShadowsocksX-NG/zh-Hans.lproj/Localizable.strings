@@ -86,13 +86,23 @@
 * ./ShadowsocksX-NG/TenonMainWindowsController.swift
 */
 
-"Smarte Route" = "智能路由"
-"Intelligent routing will hide your real IP. Each session you access the network will randomly select multiple intermediate nodes for forwarding, and then go to the node of the VPN service provider. Therefore, neither the carrier nor the VPN service provider can track your data flow." = "智能路由将会把你的真实IP进行隐藏，你访问网络的每次会话，都会随机选择多个中间节点进行转发，然后才到VPN服务提供商的节点，不管是运营商还是VPN服务提供商都无法跟踪你的数据流向。"
-"SETTINGS" = "账号设置"
-"UPGRADE" = "升级更新"
-"Already the latest version." = "已经是最新版本。"
-"ACCOUNT SETTING" = "账号设置"
-"Private Key" = "安全私钥"
-"Account Address" = "账号地址"
-"Balance" = "账户余额"
-"Transactions" = "交易记录"
+"Smarte Route" = "智能路由";
+"Tenon p2p protecting your IP and privacy." = "Tenon p2p 网络正在保护你的IP和隐私";
+"SETTINGS" = "账号设置";
+"UPGRADE" = "升级更新";
+"Already the latest version." = "已经是最新版本。";
+"ACCOUNT SETTING" = "账号设置";
+"Private Key" = "安全私钥";
+"Account Address" = "账号地址";
+"Balance" = "账户余额";
+"Transactions" = "交易记录";
+"waiting server" = "等待数据...";
+
+
+"Agent service is not supported in your country or region." = "所在国家或地区不支持代理服务";
+"Free 100M/day used up, buy tenon or use tomorrow." = "今天免费 100M 流量已经用完，购买套餐或者明天继续使用。";
+"Free 100M/day" = "每天免费使用100M";
+"Connect p2p vpn network failed." = "连接P2P网络失败!";
+"Your account is logged in elsewhere." = "你的账号在其他地方登陆.";
+"Due in " = "";
+"days" = " 天后到期";

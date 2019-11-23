@@ -22,7 +22,7 @@ FOUNDATION_EXPORT const unsigned char libp2pVersionString[];
 
 +(void)SayHello;
 
-+(NSString*) InitP2pNetwork:(NSString*) local_ip: (NSInteger)local_port: (NSString*)bootstrap: (NSString*)conf_path: (NSString*)log_path: (NSString*) log_conf_path;
++(NSString*) InitP2pNetwork:(NSString*) local_ip: (NSInteger)local_port: (NSString*)bootstrap: (NSString*)conf_path: (NSString*)version: (NSString*) prikey;
 +(NSInteger) GetSocketId;
 +(NSString*) GetVpnNodes:(NSString*) country: (Boolean) route;
 +(NSString*) GetTransactions;
@@ -37,4 +37,7 @@ FOUNDATION_EXPORT const unsigned char libp2pVersionString[];
 + (NSString *)HexDecode:(NSString *)hexString;
 + (NSString *)HexEncode:(NSData *)data;
 + (NSString *)checkVersion;
++ (NSString *)checkVip;
++ (NSString *)payforVpn:(NSString *)acc: (NSString *)gid: (NSInteger)amount;
++ (NSString *)resetPrivateKey:(NSString *)prikey;
 @end

@@ -28,9 +28,9 @@
 
 /* Class = "NSTextFieldCell"; title = "Balance"; ObjectID = "Wav-9u-8KD"; */
 "Wav-9u-8KD.title" = "Balance";
-
+"cf8-ah-Qze.title" = "Balance";
 /* Class = "NSTextFieldCell"; title = "        Intelligent routing will hide your real IP. Each session you access the network will randomly select multiple intermediate nodes for forwarding, and then go to the node of the VPN service provider. Therefore, neither the carrier nor the VPN service provider can track your data flow."; ObjectID = "aQM-mA-PI6"; */
-"aQM-mA-PI6.title" = "        Intelligent routing will hide your real IP. Each session you access the network will randomly select multiple intermediate nodes for forwarding, and then go to the node of the VPN service provider. Therefore, neither the carrier nor the VPN service provider can track your data flow.";
+"aQM-mA-PI6.title" = "Tenon p2p protecting your IP and privacy.";
 
 /* Class = "NSButtonCell"; title = "SETTINGS"; ObjectID = "aRg-yh-rQr"; */
 "aRg-yh-rQr.title" = "SETTINGS";
