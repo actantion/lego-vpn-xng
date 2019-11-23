@@ -119,7 +119,7 @@ class AcountSettingWndController: NSWindowController,NSTableViewDelegate,NSTable
         
         _ = dialogOKCancel(question: "", text: "after success reset private key, must restart program.".localized)
         UserDefaults.standard.set(false, forKey: "ShadowsocksOn")
-        var use_st: Int32 = 1
+        let use_st: Int32 = 1
         SyncSSLocal(choosed_country: TenonP2pLib.sharedInstance.choosed_country, local_country: TenonP2pLib.sharedInstance.local_country, smart_route:use_st)
         ProxyConfHelper.disableProxy()
          _exit(0)
