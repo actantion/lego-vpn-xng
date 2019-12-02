@@ -58,6 +58,15 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="AFJ-wk-guP">
+                        <rect key="frame" x="69" y="126" width="250" height="20"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" selectable="YES" alignment="center" title="Share a friend to get one day free traffic." allowsEditingTextAttributes="YES" id="FIy-Hk-ns7">
+                            <font key="font" metaFont="cellTitle"/>
+                            <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="NcS-Pc-IaO">
                         <rect key="frame" x="55" y="144" width="230" height="40"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -82,10 +91,10 @@
                         </connections>
                     </button>
                     <button ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C5J-cz-UxO">
-                        <rect key="frame" x="203" y="98" width="49" height="50"/>
+                        <rect key="frame" x="203" y="79" width="49" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="49" id="QnA-Az-lSR"/>
-                            <constraint firstAttribute="height" constant="49" id="muo-IW-9DY"/>
+                            <constraint firstAttribute="height" constant="40" id="muo-IW-9DY"/>
                         </constraints>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="course_btn_shopping" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="1hv-CM-M1d">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -93,6 +102,20 @@
                         </buttonCell>
                         <connections>
                             <action selector="buyTenon:" target="-2" id="QiF-My-Ise"/>
+                        </connections>
+                    </button>
+                    <button ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sck-Ne-BpO">
+                        <rect key="frame" x="42" y="124" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="6It-vn-InM"/>
+                            <constraint firstAttribute="width" constant="30" id="kME-Ok-XJh"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="setting" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="GAD-5r-aOo">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="copySharedLink:" target="-2" id="GKX-sW-PRT"/>
                         </connections>
                     </button>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jln-0j-HDZ">
@@ -104,7 +127,7 @@
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="connect" id="PbD-7J-bRd"/>
                     </imageView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mjK-Wc-QPc">
-                        <rect key="frame" x="88" y="102" width="56" height="23"/>
+                        <rect key="frame" x="88" y="91" width="56" height="23"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" alignment="left" title="Balance" id="cf8-ah-Qze">
                             <font key="font" metaFont="system" size="14"/>
                             <color key="textColor" red="0.058213774340000003" green="0.73569057640000002" blue="0.55026902119999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -112,7 +135,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fPq-b5-S2t">
-                        <rect key="frame" x="219" y="67" width="65" height="16"/>
+                        <rect key="frame" x="219" y="57" width="65" height="16"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="vip_status" id="NUC-Ur-lGA">
                             <font key="font" usesAppearanceFont="YES"/>
                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -120,7 +143,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pUv-sL-D4d">
-                        <rect key="frame" x="60" y="67" width="55" height="16"/>
+                        <rect key="frame" x="60" y="57" width="55" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="J2K-ex-dnv"/>
                         </constraints>
@@ -343,7 +366,8 @@
         <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
         <image name="arrow_left_icon" width="100" height="100"/>
         <image name="connect" width="173" height="174"/>
-        <image name="course_btn_shopping" width="100" height="100"/>
+        <image name="course_btn_shopping" width="55" height="55"/>
+        <image name="setting" width="100.5" height="100.5"/>
         <image name="us" width="254.5" height="191.5"/>
     </resources>
 </document>

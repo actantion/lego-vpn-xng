@@ -39,9 +39,9 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     var transcationList = [TranscationModel]()
     let appDelegate = (NSApplication.shared.delegate) as! AppDelegate
     
-    var countryCode:[String] = ["America", "Singapore", "Brazil","Germany","France","Korea", "Japan", "Canada","Australia","Hong Kong", "India", "England"]
+    var countryCode:[String] = ["America", "Singapore", "Brazil","Germany","France","Korea", "Japan", "Canada","Australia","Hong Kong", "India", "England", "China"]
     var countryNodes:[String] = []
-    var iCon:[String] = ["us", "sg", "br","de","fr","kr", "jp", "ca","au","hk", "in", "gb"]
+    var iCon:[String] = ["us", "sg", "br","de","fr","kr", "jp", "ca","au","hk", "in", "gb", "cn"]
     var isSelect: Bool = false
     var accountSettingWndCtrl:AcountSettingWndController!
 
@@ -90,6 +90,13 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         default:
             return ""
         }
+    }
+    
+    @IBAction func copySharedLink(_ sender: Any) {
+        let pasteboard = NSPasteboard.general
+        pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
+        pasteboard.setString("Decentralized VPN, safe, reliable and high speed.".localized + "\n  http://39.107.46.245?id=" + TenonP2pLib.sharedInstance.account_id_, forType: NSPasteboard.PasteboardType.string)
+        _ = dialogOKCancel(question: "", text: "copy sharing link succeeded.".localized)
     }
     
     @IBAction func exitClick(_ sender: Any) {
@@ -179,20 +186,23 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         if TenonP2pLib.sharedInstance.GetBackgroudStatus() != "ok" {
             if TenonP2pLib.sharedInstance.GetBackgroudStatus() == "cni" {
                 noticeLabel.stringValue = "Agent service is not supported in your country or region.".localized
+                stopConnect()
             }
-            
-            if TenonP2pLib.sharedInstance.GetBackgroudStatus() == "cnn" {
-                noticeLabel.stringValue = "Connect p2p vpn network failed.".localized
-            }
+//
+//            if TenonP2pLib.sharedInstance.GetBackgroudStatus() == "cnn" {
+//                noticeLabel.stringValue = "Connect p2p vpn network failed.".localized
+//            }
             
             if TenonP2pLib.sharedInstance.GetBackgroudStatus() == "bwo" {
                 noticeLabel.stringValue = "Free 100M/day used up, buy tenon or use tomorrow.".localized
+                stopConnect()
             }
             
             if TenonP2pLib.sharedInstance.GetBackgroudStatus() == "oul" {
                 noticeLabel.stringValue = "Your account is logged in elsewhere.".localized
+                stopConnect()
             }
-            stopConnect()
+            
         }
         
         transcationList.removeAll()

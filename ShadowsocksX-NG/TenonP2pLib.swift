@@ -20,7 +20,7 @@ extension Date {
 class TenonP2pLib {
     static let sharedInstance = TenonP2pLib()
     
-    public let kCurrentVersion = "3.0.0"
+    public let kCurrentVersion = "3.0.2"
     public var choosed_country_idx = 0
     public var choosed_country: String = "US"
     public var local_country: String = "CN"
@@ -28,10 +28,11 @@ class TenonP2pLib {
     private let bootstrap: String = "id:139.59.91.63:9001,id:39.105.125.37:9001,id:139.59.47.229:9001,id:46.101.152.5:9001,id:165.227.18.179:9001,id:165.227.60.177:9001,id:39.107.46.245:9001,id:39.97.224.47:9001"
     
     public var payfor_timestamp: Int64 = 0
+    public var payfor_amount: Int64 = 0
     private var payfor_gid: String = ""
     public var vip_left_days: Int32 = -1
     public var now_balance: Int64 = -1
-    public let min_payfor_vpn_tenon: Int64 = 2000
+    public let min_payfor_vpn_tenon: Int64 = 66
     var payfor_vpn_accounts_arr:[String] = [
         "dc161d9ab9cd5a031d6c5de29c26247b6fde6eb36ed3963c446c1a993a088262",
         "5595b040cdd20984a3ad3805e07bad73d7bf2c31e4dc4b0a34bc781f53c3dff7",
@@ -163,7 +164,14 @@ class TenonP2pLib {
     
     func CheckVip() -> Int64 {
         let res: String = LibP2P.checkVip()
-        return (Int64)(res) ?? Int64.max
+        let res_split = res.split(separator: ",")
+        if (res_split.count != 2) {
+            return Int64.max
+        }
+        
+        payfor_amount = (Int64)(res_split[1]) ?? 0
+        payfor_timestamp = (Int64)(res_split[0]) ?? Int64.max
+        return payfor_timestamp
     }
     
     func ResetPrivateKey(prikey: String) -> Bool {
@@ -184,9 +192,10 @@ class TenonP2pLib {
         let days_timestamp = payfor_timestamp / day_msec;
         let cur_timestamp = Date().milliStamp
         let days_cur = cur_timestamp / day_msec;
-        if (payfor_timestamp != Int64.max && days_timestamp + 30 >= days_cur) {
+        let vip_days = payfor_amount / min_payfor_vpn_tenon
+        if (payfor_timestamp != Int64.max && days_timestamp + vip_days > days_cur) {
             payfor_gid = "";
-            vip_left_days = Int32((days_timestamp + 30 - days_cur)) + (Int32)(now_balance / min_payfor_vpn_tenon) * 30;
+            vip_left_days = Int32((days_timestamp + vip_days - days_cur)) + (Int32)(now_balance / min_payfor_vpn_tenon);
             return;
         } else {
             if (payfor_gid.isEmpty && payfor_timestamp != 0) {
@@ -197,7 +206,7 @@ class TenonP2pLib {
         }
 
         if (!payfor_gid.isEmpty) {
-            payfor_timestamp = (Int64)(LibP2P.checkVip()) ?? Int64.max;
+            _ = CheckVip()
         }
     }
     

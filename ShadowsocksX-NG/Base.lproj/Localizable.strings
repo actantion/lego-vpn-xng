@@ -105,3 +105,6 @@
 "Your account is logged in elsewhere." = "Your account is logged in elsewhere.";
 "Due in " = "Due in ";
 "days" = " days";
+"after success reset private key, must restart program." = "after success reset private key, must restart program.";
+"copy sharing link succeeded." = "copy sharing link succeeded.";
+"Decentralized VPN, safe, reliable and high speed." = "Decentralized VPN, safe, reliable and high speed.";
