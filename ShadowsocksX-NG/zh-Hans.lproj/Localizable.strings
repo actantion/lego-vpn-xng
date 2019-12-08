@@ -101,7 +101,7 @@
 
 "Agent service is not supported in your country or region." = "所在国家或地区不支持代理服务";
 "Free 100M/day used up, buy tenon or use tomorrow." = "今天免费 100M 流量已经用完，购买套餐或者明天继续使用。";
-"Free 100M/day" = "每天免费使用100M";
+"Free 100M/day" = "";
 "Connect p2p vpn network failed." = "连接P2P网络失败!";
 "Your account is logged in elsewhere." = "你的账号在其他地方登陆.";
 "Due in " = "";

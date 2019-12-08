@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -57,7 +57,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="h94-r0-vhZ">
-                        <rect key="frame" x="162" y="265" width="57" height="16"/>
+                        <rect key="frame" x="162" y="265" width="100" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="0 Tenon" id="FYk-QH-HpC">
                             <font key="font" usesAppearanceFont="YES"/>
@@ -232,7 +232,7 @@
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="8lT-i5-Xwl">
-                        <rect key="frame" x="301" y="265" width="40" height="16"/>
+                        <rect key="frame" x="286" y="265" width="63" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="0.00$" id="GZz-eS-ZiQ">
                             <font key="font" usesAppearanceFont="YES"/>
@@ -250,6 +250,6 @@
         <userDefaultsController representsSharedInstance="YES" id="FMe-Sd-s9B"/>
     </objects>
     <resources>
-        <image name="course_btn_shopping" width="100" height="100"/>
+        <image name="course_btn_shopping" width="55" height="55"/>
     </resources>
 </document>

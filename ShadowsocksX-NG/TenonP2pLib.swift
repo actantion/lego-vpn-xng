@@ -20,7 +20,7 @@ extension Date {
 class TenonP2pLib {
     static let sharedInstance = TenonP2pLib()
     
-    public let kCurrentVersion = "3.0.2"
+    public let kCurrentVersion = "3.0.5"
     public var choosed_country_idx = 0
     public var choosed_country: String = "US"
     public var local_country: String = "CN"
@@ -159,6 +159,7 @@ class TenonP2pLib {
     
     func CheckVersion() -> String {
         let res = LibP2P.checkVersion() as String
+        print("now version: \(res)")
         return res
     }
     
@@ -221,7 +222,17 @@ class TenonP2pLib {
         if (acc.isEmpty) {
             return;
         }
-        payfor_gid = LibP2P.payforVpn(acc, payfor_gid, Int(min_payfor_vpn_tenon));
+        
+        var days = now_balance / min_payfor_vpn_tenon
+        if days > 30 {
+            days = 30
+        }
+          
+        let amount = days * min_payfor_vpn_tenon
+        if amount <= 0 || amount > now_balance {
+            return
+        }
+        payfor_gid = LibP2P.payforVpn(acc, payfor_gid, Int(amount));
     }
 
     func createFile(name:String, fileBaseUrl:URL){

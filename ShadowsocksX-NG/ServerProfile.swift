@@ -209,6 +209,8 @@ class ServerProfile: NSObject, NSCopying {
             route_port: Int32,
             vpn_ip: UInt32,
             vpn_port: Int32,
+            ex_route_ip: UInt32,
+            ex_route_port: Int32,
             seckey: String,
             pubkey: String,
             status_fie: String,
@@ -227,6 +229,8 @@ class ServerProfile: NSObject, NSCopying {
         conf["route_port"] = NSNumber(value: route_port)
         conf["vpn_ip"] = NSNumber(value: vpn_ip)
         conf["vpn_port"] = NSNumber(value: vpn_port)
+        conf["ex_route_ip"] = NSNumber(value: ex_route_ip)
+        conf["ex_route_port"] = NSNumber(value: ex_route_port)
         conf["seckey"] = seckey as AnyObject?
         conf["pubkey"] = pubkey as AnyObject?
         conf["enc_method"] = method as AnyObject?

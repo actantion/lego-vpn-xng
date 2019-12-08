@@ -21,7 +21,7 @@ let LAUNCH_AGENT_CONF_SSLOCAL_NAME = "com.qiuyuzhou.shadowsocksX-NG.local.plist"
 let LAUNCH_AGENT_CONF_PRIVOXY_NAME = "com.qiuyuzhou.shadowsocksX-NG.http.plist"
 let LAUNCH_AGENT_CONF_KCPTUN_NAME = "com.qiuyuzhou.shadowsocksX-NG.kcptun.plist"
 let iCon:[String] = ["us", "sg", "br","de","fr","kr", "jp", "ca","au","hk", "in", "gb","cn"]
-let defaultRoute:[String] = ["US", "SG", "IN", "GB"]
+let defaultRoute:[String] = ["US", "DE", "IN", "CA", "AU"]
 let queue = DispatchQueue(label: "refresh_config_route_node")
 var server_stoped_by_user = false
 
@@ -109,6 +109,9 @@ func getOneRouteNode_ex(country: String) -> (ip: String, port: String) {
     return (node_info_arr[0], node_info_arr[2])
 }
 
+func initRouteNode() -> (ip: String, port: String) {
+    return ("", "")
+}
 
 func StartSSLocal() {
     let bundle = Bundle.main
@@ -132,6 +135,22 @@ func StartSSLocal() {
                     }
                 }
 
+                var ex_route_node = initRouteNode()
+                if (TenonP2pLib.sharedInstance.local_country == "CN" &&
+                        (TenonP2pLib.sharedInstance.choosed_country == "SG" ||
+                            TenonP2pLib.sharedInstance.choosed_country == "JP")) {
+                    ex_route_node = getOneRouteNode(country: "US")
+                    if (ex_route_node.ip.isEmpty) {
+                        for country in defaultRoute {
+                            ex_route_node = getOneRouteNode(country: country)
+                            if (!ex_route_node.ip.isEmpty) {
+                                break
+                            }
+                        }
+                    }
+                }
+                
+                
                 var vpn_node = getOneVpnNode(country: TenonP2pLib.sharedInstance.choosed_country)
                 if (vpn_node.ip.isEmpty) {
                     for country in defaultRoute {
@@ -142,8 +161,16 @@ func StartSSLocal() {
                     }
                 }
 
+                
                 let route_ip_int = LibP2P.changeStrIp(route_node.ip)
                 let vpn_ip_int = LibP2P.changeStrIp(vpn_node.ip)
+                var ex_route_ip_int: UInt32 = 0;
+                var ex_route_port_int: Int32 = 0;
+                if !ex_route_node.ip.isEmpty {
+                    ex_route_ip_int = LibP2P.changeStrIp(ex_route_node.ip)
+                    ex_route_port_int = Int32(ex_route_node.port) ?? 0
+                }
+                
                 if (!route_node.ip.isEmpty) {
                     let mgr = ServerProfileManager.instance
                     if let profile = mgr.getActiveProfile() {
@@ -153,6 +180,8 @@ func StartSSLocal() {
                             route_port: Int32(route_node.port)!,
                             vpn_ip: vpn_ip_int,
                             vpn_port: Int32(vpn_node.port)!,
+                            ex_route_ip: ex_route_ip_int,
+                            ex_route_port: ex_route_port_int,
                             seckey: vpn_node.passwd,
                             pubkey: TenonP2pLib.sharedInstance.GetPublicKey(),
                             status_fie: TenonP2pLib.sharedInstance.GetStatusFilepath(),
@@ -304,6 +333,21 @@ func SyncSSLocal(choosed_country: String, local_country: String, smart_route: In
         }
     }
 
+    var ex_route_node = initRouteNode()
+    if (TenonP2pLib.sharedInstance.local_country == "CN" &&
+            (TenonP2pLib.sharedInstance.choosed_country == "SG" ||
+                TenonP2pLib.sharedInstance.choosed_country == "JP")) {
+        ex_route_node = getOneRouteNode(country: "US")
+        if (ex_route_node.ip.isEmpty) {
+            for country in defaultRoute {
+                ex_route_node = getOneRouteNode(country: country)
+                if (!ex_route_node.ip.isEmpty) {
+                    break
+                }
+            }
+        }
+    }
+    
     var vpn_node = getOneVpnNode(country: choosed_country)
     if (vpn_node.ip.isEmpty) {
         for country in defaultRoute {
@@ -321,6 +365,12 @@ func SyncSSLocal(choosed_country: String, local_country: String, smart_route: In
     let route_ip_int = LibP2P.changeStrIp(route_node.ip)
     let vpn_ip_int = LibP2P.changeStrIp(vpn_node.ip)
     print("vpn_ip_int: \(vpn_ip_int)")
+    var ex_route_ip_int: UInt32 = 0;
+    var ex_route_port_int: Int32 = 0;
+    if !ex_route_node.ip.isEmpty {
+        ex_route_ip_int = LibP2P.changeStrIp(ex_route_node.ip)
+        ex_route_port_int = Int32(ex_route_node.port) ?? 0
+    }
     
     let pubkey = LibP2P.getPublicKey() as String;
     
@@ -336,6 +386,8 @@ func SyncSSLocal(choosed_country: String, local_country: String, smart_route: In
                 route_port: Int32(route_node.port)!,
                 vpn_ip: vpn_ip_int,
                 vpn_port: Int32(vpn_node.port)!,
+                ex_route_ip: ex_route_ip_int,
+                ex_route_port: ex_route_port_int,
                 seckey: vpn_node.passwd,
                 pubkey: pubkey,
                 status_fie: TenonP2pLib.sharedInstance.GetStatusFilepath(),

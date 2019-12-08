@@ -100,7 +100,7 @@
 
 "Agent service is not supported in your country or region." = "Agent service is not supported in your country or region.";
 "Free 100M/day used up, buy tenon or use tomorrow." = "Free 100M/day used up, buy tenon or use tomorrow.";
-"Free 100M/day" = "Free 100M/day";
+"Free 100M/day" = "";
 "Connect p2p vpn network failed." = "Connect p2p vpn network failed.";
 "Your account is logged in elsewhere." = "Your account is logged in elsewhere.";
 "Due in " = "Due in ";

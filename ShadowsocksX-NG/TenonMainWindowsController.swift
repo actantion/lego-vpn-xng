@@ -44,6 +44,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     var iCon:[String] = ["us", "sg", "br","de","fr","kr", "jp", "ca","au","hk", "in", "gb", "cn"]
     var isSelect: Bool = false
     var accountSettingWndCtrl:AcountSettingWndController!
+    var buyWindow: PreferencesWindowController!
 
     var check_vip_times: Int32 = 0;
     
@@ -57,6 +58,23 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         accountSettingWndCtrl.refresh()
         NSApp.activate(ignoringOtherApps: true)
         accountSettingWndCtrl.window?.makeKeyAndOrderFront(nil)
+    }
+    
+    @IBAction func clickShare(_ sender: Any) {
+        let pasteboard = NSPasteboard.general
+        pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
+        pasteboard.setString("Decentralized VPN, safe, reliable and high speed.".localized + "\n  http://39.107.46.245?id=" + TenonP2pLib.sharedInstance.account_id_, forType: NSPasteboard.PasteboardType.string)
+        _ = dialogOKCancel(question: "", text: "copy sharing link succeeded.".localized)
+    }
+    
+    func openBuyWindow() {
+        if buyWindow != nil {
+            buyWindow.close()
+        }
+        buyWindow = PreferencesWindowController(windowNibName: .init(rawValue: "PreferencesWindowController"))
+        buyWindow.showWindow(self)
+        NSApp.activate(ignoringOtherApps: true)
+        buyWindow.window?.makeKeyAndOrderFront(nil)
     }
     
     func getCountryShort(countryCode:String) -> String {
@@ -194,7 +212,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
 //            }
             
             if TenonP2pLib.sharedInstance.GetBackgroudStatus() == "bwo" {
-                noticeLabel.stringValue = "Free 100M/day used up, buy tenon or use tomorrow.".localized
+                //noticeLabel.stringValue = "Free 100M/day used up, buy tenon or use tomorrow.".localized
                 stopConnect()
             }
             
@@ -519,8 +537,12 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     }
     
     @IBAction func clickConnect(_ sender: Any) {
-        TenonP2pLib.sharedInstance.ResetBackgroundStatus()
         noticeLabel.stringValue = ""
+        if TenonP2pLib.sharedInstance.GetBackgroudStatus() == "bwo" {
+            TenonP2pLib.sharedInstance.ResetBackgroundStatus()
+            openBuyWindow()
+            return;
+        }
         ResetConnect();
     }
     
