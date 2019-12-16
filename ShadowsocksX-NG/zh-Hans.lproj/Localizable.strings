@@ -104,7 +104,7 @@
 "Free 100M/day" = "";
 "Connect p2p vpn network failed." = "连接P2P网络失败!";
 "Your account is logged in elsewhere." = "你的账号在其他地方登陆.";
-"Due in " = "";
+"VIP due in " = "VIP ";
 "days" = " 天后到期";
 "after success reset private key, must restart program." = "账号设置完成后裔，需要重启程序";
 "copy sharing link succeeded." = "拷贝分享链接成功";

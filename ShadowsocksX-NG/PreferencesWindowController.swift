@@ -12,6 +12,6 @@ class PreferencesWindowController: NSWindowController
     }
     
     @IBAction func clickBuy(_ sender: Any) {
-        NSWorkspace.shared.open(URL(string: "http://39.105.125.37:7744/chongzhi/" + TenonP2pLib.sharedInstance.account_id_)!)
+        NSWorkspace.shared.open(URL(string: "http://" + TenonP2pLib.sharedInstance.buy_tenon_ip + "/chongzhi/" + TenonP2pLib.sharedInstance.account_id_)!)
     }
 }

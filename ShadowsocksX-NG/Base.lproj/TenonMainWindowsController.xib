@@ -18,11 +18,13 @@
                 <outlet property="lbCountryName" destination="Nd0-bE-XMc" id="Mw8-MP-Vlw"/>
                 <outlet property="lbNodeCount" destination="ge4-zM-iYm" id="YOq-zu-IEX"/>
                 <outlet property="lbTenon" destination="pUv-sL-D4d" id="k0G-Y4-xRL"/>
+                <outlet property="noVipButton" destination="Jis-ij-73l" id="iED-s8-qKl"/>
                 <outlet property="noticeLabel" destination="NcS-Pc-IaO" id="vnP-BY-rEm"/>
                 <outlet property="popMenu" destination="kRg-iB-kMM" id="tdg-8G-lpY"/>
                 <outlet property="popMenuTableView" destination="Few-c5-kj3" id="XwR-It-j6e"/>
                 <outlet property="settingsBtn" destination="3k0-8d-Rp7" id="5pB-YQ-u8I"/>
                 <outlet property="upgradeBtn" destination="tCc-cA-AwJ" id="69y-pP-TAg"/>
+                <outlet property="vipButton" destination="cyc-fg-pwJ" id="NDJ-G6-Qp7"/>
                 <outlet property="vipStatusLable" destination="fPq-b5-S2t" id="UrV-RH-dsV"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -49,8 +51,41 @@
                             <action selector="exitClick:" target="-2" id="G29-wP-iAR"/>
                         </connections>
                     </button>
+                    <button id="k2H-zO-5pR">
+                        <rect key="frame" x="249" y="432" width="61" height="34"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="setting" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="l1j-yh-3UN">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="clickJoinUs:" target="-2" id="450-Qe-kUR"/>
+                        </connections>
+                    </button>
+                    <button hidden="YES" id="cyc-fg-pwJ" userLabel="vipbutton">
+                        <rect key="frame" x="20" y="164" width="82" height="55"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ic_action_tick1" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="3Wr-eS-TT0">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="clickVipButton:" target="-2" id="Wut-Z5-77U"/>
+                        </connections>
+                    </button>
+                    <button hidden="YES" id="Jis-ij-73l" userLabel="novipbutton">
+                        <rect key="frame" x="20" y="164" width="82" height="55"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ic_action_tick" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Ik3-HB-REW">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="clickNoVipButton:" target="-2" id="LZo-yW-YCe"/>
+                        </connections>
+                    </button>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="xD8-rv-NaX">
-                        <rect key="frame" x="21" y="415" width="300" height="20"/>
+                        <rect key="frame" x="21" y="415" width="234" height="40"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" selectable="YES" alignment="center" title="Tenon p2p network protecting your IP and privacy." allowsEditingTextAttributes="YES" id="aQM-mA-PI6">
                             <font key="font" metaFont="cellTitle"/>
@@ -59,7 +94,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="NcS-Pc-IaO">
-                        <rect key="frame" x="55" y="144" width="230" height="40"/>
+                        <rect key="frame" x="55" y="135" width="230" height="40"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" selectable="YES" alignment="center" allowsEditingTextAttributes="YES" id="c9G-IE-Ijt">
                             <font key="font" metaFont="cellTitle"/>
@@ -82,7 +117,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" id="3gs-MY-4Ca">
-                        <rect key="frame" x="25" y="106" width="284" height="21"/>
+                        <rect key="frame" x="25" y="106" width="284" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" title="Share to friends and earn the tenon coin." bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="iG8-JN-n1A">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -137,7 +172,7 @@
                         </textFieldCell>
                     </textField>
                     <button autoresizesSubviews="NO" canDrawConcurrently="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vYd-QT-w0w">
-                        <rect key="frame" x="30" y="455" width="282" height="60"/>
+                        <rect key="frame" x="30" y="475" width="282" height="60"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="W7j-it-k4F"/>
                         </constraints>
@@ -150,7 +185,7 @@
                         </connections>
                     </button>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5gM-sU-e16">
-                        <rect key="frame" x="277" y="473" width="25" height="25"/>
+                        <rect key="frame" x="277" y="493" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="25" id="86C-ur-hwX"/>
                             <constraint firstAttribute="height" constant="25" id="UzU-3V-a6f"/>
@@ -158,7 +193,7 @@
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="arrow_left_icon" id="E6r-jI-4uZ"/>
                     </imageView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ge4-zM-iYm">
-                        <rect key="frame" x="144" y="469" width="69" height="16"/>
+                        <rect key="frame" x="144" y="489" width="69" height="16"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" title="522 nodes" id="ldx-i5-PRw">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="selectedMenuItemTextColor" catalog="System" colorSpace="catalog"/>
@@ -166,7 +201,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nd0-bE-XMc">
-                        <rect key="frame" x="144" y="489" width="54" height="16"/>
+                        <rect key="frame" x="144" y="509" width="54" height="16"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" title="America" id="Gem-Xo-obl">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="selectedMenuItemTextColor" catalog="System" colorSpace="catalog"/>
@@ -174,7 +209,7 @@
                         </textFieldCell>
                     </textField>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aRt-j4-5ct">
-                        <rect key="frame" x="98" y="465" width="40" height="40"/>
+                        <rect key="frame" x="98" y="485" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="7d3-oI-89r"/>
                             <constraint firstAttribute="height" constant="40" id="BMN-dM-IBw"/>
@@ -295,7 +330,7 @@
                     <constraint firstItem="ge4-zM-iYm" firstAttribute="top" secondItem="Nd0-bE-XMc" secondAttribute="bottom" constant="4" id="Gir-n7-UAs"/>
                     <constraint firstItem="pUv-sL-D4d" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="100" id="HUI-A1-d0Q"/>
                     <constraint firstItem="mjK-Wc-QPc" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="30" id="Izn-1d-h9E"/>
-                    <constraint firstItem="lRM-QR-vwZ" firstAttribute="top" secondItem="vYd-QT-w0w" secondAttribute="bottom" constant="57" id="Jx1-hp-O4u"/>
+                    <constraint firstItem="lRM-QR-vwZ" firstAttribute="top" secondItem="vYd-QT-w0w" secondAttribute="bottom" constant="77" id="Jx1-hp-O4u"/>
                     <constraint firstItem="Nd0-bE-XMc" firstAttribute="leading" secondItem="aRt-j4-5ct" secondAttribute="trailing" constant="8" id="KAW-Wp-cpV"/>
                     <constraint firstAttribute="trailing" secondItem="vYd-QT-w0w" secondAttribute="trailing" constant="30" id="Ksx-AA-aft"/>
                     <constraint firstAttribute="bottom" secondItem="kRg-iB-kMM" secondAttribute="bottom" id="LrY-GO-BV8"/>
@@ -343,6 +378,9 @@
         <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
         <image name="arrow_left_icon" width="100" height="100"/>
         <image name="connect" width="173" height="174"/>
+        <image name="ic_action_tick" width="191" height="145.5"/>
+        <image name="ic_action_tick1" width="122" height="82"/>
+        <image name="setting" width="122" height="68"/>
         <image name="us" width="254.5" height="191.5"/>
     </resources>
 </document>

@@ -20,7 +20,7 @@ extension Date {
 class TenonP2pLib {
     static let sharedInstance = TenonP2pLib()
     
-    public let kCurrentVersion = "3.0.5"
+    public let kCurrentVersion = "3.0.8"
     public var choosed_country_idx = 0
     public var choosed_country: String = "US"
     public var local_country: String = "CN"
@@ -33,6 +33,9 @@ class TenonP2pLib {
     public var vip_left_days: Int32 = -1
     public var now_balance: Int64 = -1
     public let min_payfor_vpn_tenon: Int64 = 66
+    public var share_ip: String = "39.107.46.245"
+    public var buy_tenon_ip: String = "222.186.170.72"
+    
     var payfor_vpn_accounts_arr:[String] = [
         "dc161d9ab9cd5a031d6c5de29c26247b6fde6eb36ed3963c446c1a993a088262",
         "5595b040cdd20984a3ad3805e07bad73d7bf2c31e4dc4b0a34bc781f53c3dff7",
@@ -199,16 +202,12 @@ class TenonP2pLib {
             vip_left_days = Int32((days_timestamp + vip_days - days_cur)) + (Int32)(now_balance / min_payfor_vpn_tenon);
             return;
         } else {
-            if (payfor_gid.isEmpty && payfor_timestamp != 0) {
-                if (now_balance >= min_payfor_vpn_tenon) {
-                    PayforVipTrans();
-                }
+            if (now_balance >= min_payfor_vpn_tenon) {
+                PayforVipTrans();
             }
         }
 
-        if (!payfor_gid.isEmpty) {
-            _ = CheckVip()
-        }
+        _ = CheckVip()
     }
     
     func randomCustom(min: Int, max: Int) -> Int {

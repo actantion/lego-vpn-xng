@@ -35,6 +35,8 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     @IBOutlet weak var upgradeBtn: NSButton!
     @IBOutlet var vipStatusLable: NSTextField!
     @IBOutlet var noticeLabel: NSTextField!
+    @IBOutlet var vipButton: NSButton!
+    @IBOutlet var noVipButton: NSButton!
     
     var transcationList = [TranscationModel]()
     let appDelegate = (NSApplication.shared.delegate) as! AppDelegate
@@ -47,6 +49,14 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     var buyWindow: PreferencesWindowController!
 
     var check_vip_times: Int32 = 0;
+    
+    @IBAction func clickVipButton(_ sender: Any) {
+        NSWorkspace.shared.open(URL(string: "http://" + TenonP2pLib.sharedInstance.buy_tenon_ip + "/chongzhi/" + TenonP2pLib.sharedInstance.account_id_)!)
+    }
+    
+    @IBAction func clickNoVipButton(_ sender: Any) {
+        NSWorkspace.shared.open(URL(string: "http://" + TenonP2pLib.sharedInstance.buy_tenon_ip + "/chongzhi/" + TenonP2pLib.sharedInstance.account_id_)!)
+    }
     
     @IBAction func clickSettings(_ sender: Any) {
         if accountSettingWndCtrl != nil {
@@ -63,7 +73,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     @IBAction func clickShare(_ sender: Any) {
         let pasteboard = NSPasteboard.general
         pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
-        pasteboard.setString("Decentralized VPN, safe, reliable and high speed.".localized + "\n  http://39.107.46.245?id=" + TenonP2pLib.sharedInstance.account_id_, forType: NSPasteboard.PasteboardType.string)
+        pasteboard.setString("Decentralized VPN, safe, reliable and high speed.".localized + "\n  http://" + TenonP2pLib.sharedInstance.share_ip + "?id=" + TenonP2pLib.sharedInstance.account_id_, forType: NSPasteboard.PasteboardType.string)
         _ = dialogOKCancel(question: "", text: "copy sharing link succeeded.".localized)
     }
     
@@ -113,7 +123,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     @IBAction func copySharedLink(_ sender: Any) {
         let pasteboard = NSPasteboard.general
         pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
-        pasteboard.setString("Decentralized VPN, safe, reliable and high speed.".localized + "\n  http://39.107.46.245?id=" + TenonP2pLib.sharedInstance.account_id_, forType: NSPasteboard.PasteboardType.string)
+        pasteboard.setString("Decentralized VPN, safe, reliable and high speed.".localized + "\n  http://" + TenonP2pLib.sharedInstance.share_ip + "?id=" + TenonP2pLib.sharedInstance.account_id_, forType: NSPasteboard.PasteboardType.string)
         _ = dialogOKCancel(question: "", text: "copy sharing link succeeded.".localized)
     }
     
@@ -138,7 +148,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     
     
     @IBAction func buyTenon(_ sender: Any) {
-        NSWorkspace.shared.open(URL(string: "http://39.105.125.37:7744/chongzhi/" + TenonP2pLib.sharedInstance.account_id_)!)
+        NSWorkspace.shared.open(URL(string: "http://" + TenonP2pLib.sharedInstance.buy_tenon_ip + "/chongzhi/" + TenonP2pLib.sharedInstance.account_id_)!)
     }
     
     override func windowDidLoad() {
@@ -201,6 +211,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
     }
     
     @objc func requestData(){
+        updateServerInfo(show_upgrade: false)
         if TenonP2pLib.sharedInstance.GetBackgroudStatus() != "ok" {
             if TenonP2pLib.sharedInstance.GetBackgroudStatus() == "cni" {
                 noticeLabel.stringValue = "Agent service is not supported in your country or region.".localized
@@ -246,7 +257,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             transcationList.append(model)
         }
         
-        if check_vip_times < 10 {
+        if check_vip_times < 1 {
             let tm = TenonP2pLib.sharedInstance.CheckVip()
             if TenonP2pLib.sharedInstance.payfor_timestamp == 0 || tm != Int64.max {
                 if tm != Int64.max && tm != 0 {
@@ -263,11 +274,15 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         if TenonP2pLib.sharedInstance.vip_left_days == -1 &&
                 TenonP2pLib.sharedInstance.now_balance != -1 &&
                 TenonP2pLib.sharedInstance.payfor_timestamp == Int64.max {
-            vipStatusLable.stringValue = "Free 100M/day".localized
+            vipStatusLable.stringValue = ""
+            vipButton.isHidden = true
+            noVipButton.isHidden = false
         }
         
         if TenonP2pLib.sharedInstance.vip_left_days >= 0 {
-            vipStatusLable.stringValue = "Due in ".localized + (String)(TenonP2pLib.sharedInstance.vip_left_days) + "days".localized
+            vipStatusLable.stringValue = "VIP due in ".localized + (String)(TenonP2pLib.sharedInstance.vip_left_days) + "days".localized
+            vipButton.isHidden = false
+            noVipButton.isHidden = true
         }
         
         self.perform(#selector(requestData), with: nil, afterDelay: 3)
@@ -288,6 +303,11 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         
         return cellView
     }
+    
+    @IBAction func clickJoinUs(_ sender: Any) {
+        NSWorkspace.shared.open(URL(string: "https://github.com/tenondvpn/tenonvpn-join")!)
+    }
+    
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool{
         if isSelect == false {
             
@@ -306,6 +326,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             TenonP2pLib.sharedInstance.choosed_country = getCountryShort(countryCode: countryCode[row])
             TenonP2pLib.sharedInstance.choosed_country = TenonP2pLib.sharedInstance.choosed_country
             
+            stopConnect()
             _ = UserDefaults.standard
             let isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
             if (!isOn) {
@@ -404,9 +425,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         return false
     }
 
-    
-    
-    @IBAction func clickUpgrade(_ sender: Any) {
+    func updateServerInfo(show_upgrade: Bool) {
         let version_str = TenonP2pLib.sharedInstance.CheckVersion()
         let plats = version_str.split(separator: ",")
         var down_url: String = "";
@@ -417,16 +436,28 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
                         item_split[1] > TenonP2pLib.sharedInstance.kCurrentVersion) {
                     down_url = String(item_split[2])
                 }
-                break
+            }
+            
+            if (item_split[0] == "share_ip") {
+                TenonP2pLib.sharedInstance.share_ip = String(item_split[1])
+            }
+            
+            if (item_split[0] == "buy_ip") {
+                TenonP2pLib.sharedInstance.buy_tenon_ip = String(item_split[1])
             }
         }
         
-        if (down_url.isEmpty) {
-            _ = dialogOKCancel(question: "", text: "Already the latest version.".localized)
-        } else {
-            NSWorkspace.shared.open(URL(string: down_url)!)
+        if (show_upgrade) {
+            if (down_url.isEmpty) {
+                _ = dialogOKCancel(question: "", text: "Already the latest version.".localized)
+            } else {
+                NSWorkspace.shared.open(URL(string: down_url)!)
+            }
         }
-        
+    }
+    
+    @IBAction func clickUpgrade(_ sender: Any) {
+        updateServerInfo(show_upgrade: true)
     }
     
     private func animateWithRandomColor(
@@ -568,7 +599,6 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             if isOn {
                 notConnectProgress.isHidden = true
                 connectedProgress.isHidden = false
-                
             } else {
                 notConnectProgress.isHidden = false
                 connectedProgress.isHidden = true
