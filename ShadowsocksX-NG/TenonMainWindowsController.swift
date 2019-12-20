@@ -225,6 +225,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             if TenonP2pLib.sharedInstance.GetBackgroudStatus() == "bwo" {
                 //noticeLabel.stringValue = "Free 100M/day used up, buy tenon or use tomorrow.".localized
                 stopConnect()
+                print("out of bandwidth.")
             }
             
             if TenonP2pLib.sharedInstance.GetBackgroudStatus() == "oul" {
@@ -269,6 +270,10 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
             check_vip_times += 1
         } else {
             TenonP2pLib.sharedInstance.PayforVpn()
+        }
+        
+        if TenonP2pLib.sharedInstance.now_balance == -1 {
+            TenonP2pLib.sharedInstance.CreateAccount()
         }
         
         if TenonP2pLib.sharedInstance.vip_left_days == -1 &&

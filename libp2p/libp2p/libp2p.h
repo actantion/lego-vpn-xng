@@ -40,4 +40,5 @@ FOUNDATION_EXPORT const unsigned char libp2pVersionString[];
 + (NSString *)checkVip;
 + (NSString *)payforVpn:(NSString *)acc: (NSString *)gid: (NSInteger)amount;
 + (NSString *)resetPrivateKey:(NSString *)prikey;
++ (void) createAccoun;
 @end

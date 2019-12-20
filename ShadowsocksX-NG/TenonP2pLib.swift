@@ -20,7 +20,7 @@ extension Date {
 class TenonP2pLib {
     static let sharedInstance = TenonP2pLib()
     
-    public let kCurrentVersion = "3.0.8"
+    public let kCurrentVersion = "3.1.0"
     public var choosed_country_idx = 0
     public var choosed_country: String = "US"
     public var local_country: String = "CN"
@@ -33,7 +33,7 @@ class TenonP2pLib {
     public var vip_left_days: Int32 = -1
     public var now_balance: Int64 = -1
     public let min_payfor_vpn_tenon: Int64 = 66
-    public var share_ip: String = "39.107.46.245"
+    public var share_ip: String = "103.205.5.217"
     public var buy_tenon_ip: String = "222.186.170.72"
     
     var payfor_vpn_accounts_arr:[String] = [
@@ -68,6 +68,10 @@ class TenonP2pLib {
             
             keeped_private_kyes.append(tmp_item)
         }
+    }
+    
+    func CreateAccount() {
+        LibP2P.createAccoun();
     }
     
     func InitP2pNetwork (

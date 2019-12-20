@@ -103,6 +103,11 @@ NSString* public_key_ = @"000000000000000000000000000000000";
     return res_str;
 }
 
++ (void) createAccoun {
+    std::string gid;
+    lego::client::VpnClient::Instance()->Transaction("", 0, gid);
+}
+
 +(NSInteger) GetSocketId {
     return lego::client::VpnClient::Instance()->GetSocket();
 }
