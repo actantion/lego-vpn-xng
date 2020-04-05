@@ -510,6 +510,27 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         )
     }
     
+    func SetUserRule() {
+        let str = ""
+        do {
+            try str.data(using: String.Encoding.utf8)?.write(to: URL(fileURLWithPath: PACUserRuleFilePath), options: .atomic)
+
+            if GeneratePACFile() {
+                // Popup a user notification
+//                let notification = NSUserNotification()
+//                notification.title = "PAC has been updated by User Rules.".localized
+//                NSUserNotificationCenter.default
+//                    .deliver(notification)
+            } else {
+//                let notification = NSUserNotification()
+//                notification.title = "It's failed to update PAC by User Rules.".localized
+//                NSUserNotificationCenter.default
+//                    .deliver(notification)
+            }
+        } catch {}
+        
+    }
+    
     func ResetConnect() {
         let defaults = UserDefaults.standard
         var isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")
@@ -520,14 +541,15 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         notConnectProgress.isHidden = false
         connectedProgress.isHidden = true
         notConnectProgress.progress = 0;
+        SetUserRule();
         if (isOn) {
             configureProgressBasedView();
         }
         defaults.set(isOn, forKey: "ShadowsocksOn")
         var use_st: Int32 = 1
         SyncSSLocal(choosed_country: TenonP2pLib.sharedInstance.choosed_country, local_country: TenonP2pLib.sharedInstance.local_country, smart_route:use_st)
-
-        let mode = "global";  // defaults.string(forKey: "ShadowsocksRunningMode")
+        
+        let mode = "auto";  // defaults.string(forKey: "ShadowsocksRunningMode")
         
         if isOn {
  

@@ -22,7 +22,7 @@ namespace transport {
 }  // namespace transport
 
 namespace common {
-    class Tick;
+	class Tick;
 }
 
 namespace dht {
@@ -63,6 +63,7 @@ struct VpnServerNode {
               new_get(new_node) {
         timeout = std::chrono::steady_clock::now() + std::chrono::seconds(3600);
     }
+
     std::string ip;
     uint16_t svr_port;
     uint16_t route_port;
@@ -137,12 +138,15 @@ public:
             const std::vector<std::string>& route_vec,
             std::string& login_gid);
     int VpnLogout();
-    std::string CheckVersion();
+	std::string CheckVersion();
     std::string PayForVPN(const std::string& to, const std::string& gid, uint64_t amount);
     std::string CheckVip();
     std::string CheckFreeBandwidth();
     void Destroy();
     std::string ResetPrivateKey(const std::string& prikey);
+    std::string GetClientProperty();
+    std::string GetNewBoot();
+    std::string GetIpCountry(const std::string& ip);
 
 private:
     VpnClient();
@@ -173,17 +177,24 @@ private:
     void DumpRouteNodes();
     void ReadVpnNodesFromConf();
     void ReadRouteNodesFromConf();
+
+    void VipDumpVpnNodes();
+    void VipDumpRouteNodes();
+    void VipReadVpnNodesFromConf();
+    void VipReadRouteNodesFromConf();
+
     void DumpBootstrapNodes();
     void GetNetworkNodes(const std::vector<std::string>& country_vec, uint32_t network_id);
     void InitRouteAndVpnServer();
-    void GetVpnVersion();
+    void VipInitRouteAndVpnServer();
+	void GetVpnVersion();
     int SetDefaultRouting();
     std::string GetDefaultRouting();
     void SendGetAccountAttrLastBlock(
             const std::string& attr,
             const std::string& account,
             uint64_t height);
-    void HandleCheckVipResponse(
+    void HandleGetAttrResponse(
             transport::protobuf::Header& header,
             client::protobuf::BlockMessage& block_msg);
     void SendGetBlockWithGid(const std::string& str, bool is_gid);
@@ -210,25 +221,36 @@ private:
     std::string config_path_;
     std::map<uint64_t, std::string> hight_block_map_;
     std::mutex hight_block_map_mutex_;
-    std::set<uint64_t> local_account_height_set_;
-    uint64_t vpn_version_last_height_;
-    std::string vpn_download_url_;
+	std::set<uint64_t> local_account_height_set_;
+    uint64_t vpn_version_last_height_{ 0 };
+	std::string vpn_download_url_;
     std::mutex height_set_mutex_;
     uint32_t check_times_{ 0 };
     std::map<std::string, std::deque<VpnServerNodePtr>> vpn_nodes_map_;
     std::mutex vpn_nodes_map_mutex_;
     std::map<std::string, std::deque<VpnServerNodePtr>> route_nodes_map_;
     std::mutex route_nodes_map_mutex_;
+
+    std::map<std::string, std::deque<VpnServerNodePtr>> vip_vpn_nodes_map_;
+    std::mutex vip_vpn_nodes_map_mutex_;
+    std::map<std::string, std::deque<VpnServerNodePtr>> vip_route_nodes_map_;
+    std::mutex vip_route_nodes_map_mutex_;
+
+
     LastPaiedVipInfoPtr paied_vip_info_[2];
     uint32_t paied_vip_valid_idx_{ 0 };
     int32_t today_used_bandwidth_{ -1 };
 
-    std::shared_ptr<common::Tick> check_tx_tick_{ nullptr };
-    std::shared_ptr<common::Tick>  vpn_nodes_tick_{ nullptr };
-    std::shared_ptr<common::Tick>  dump_config_tick_{ nullptr };
-    std::shared_ptr<common::Tick>  dump_bootstrap_tick_{ nullptr };
+	std::shared_ptr<common::Tick> check_tx_tick_{ nullptr };
+	std::shared_ptr<common::Tick>  vpn_nodes_tick_{ nullptr };
+	std::shared_ptr<common::Tick>  dump_config_tick_{ nullptr };
+	std::shared_ptr<common::Tick>  dump_bootstrap_tick_{ nullptr };
     bool account_created_{ false };
     std::set<std::string> vpn_committee_accounts_;
+    uint32_t vpn_vip_level_{ 0 };
+    uint32_t vpn_route_network_id_{ 0 };
+    std::string conf_path_;
+    bool ip_loaded_{ false };
 };
 
 }  // namespace client

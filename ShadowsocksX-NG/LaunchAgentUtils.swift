@@ -81,7 +81,6 @@ func generateSSLocalLauchAgentPlist() -> Bool {
     dict.write(toFile: plistFilepath, atomically: true)
     let Sha1Sum = getFileSHA1Sum(plistFilepath)
     
-    print("plist file sha1sum old:\(oldSha1Sum), now: \(Sha1Sum)")
     if oldSha1Sum != Sha1Sum {
         return true
     } else {
@@ -351,7 +350,6 @@ func SyncSSLocal(choosed_country: String, local_country: String, smart_route: In
     var vpn_node = getOneVpnNode(country: choosed_country)
     if (vpn_node.ip.isEmpty) {
         for country in defaultRoute {
-            print("get vpn node from coutnry: \(country)")
             vpn_node = getOneVpnNode(country: country)
             if (!vpn_node.ip.isEmpty) {
                 break
@@ -359,12 +357,8 @@ func SyncSSLocal(choosed_country: String, local_country: String, smart_route: In
         }
     }
     
-    print("rotue: \(route_node.ip):\(route_node.port)")
-    print("vpn: \(vpn_node.ip):\(vpn_node.port),\(vpn_node.passwd)")
-    
     let route_ip_int = LibP2P.changeStrIp(route_node.ip)
     let vpn_ip_int = LibP2P.changeStrIp(vpn_node.ip)
-    print("vpn_ip_int: \(vpn_ip_int)")
     var ex_route_ip_int: UInt32 = 0;
     var ex_route_port_int: Int32 = 0;
     if !ex_route_node.ip.isEmpty {
@@ -377,7 +371,6 @@ func SyncSSLocal(choosed_country: String, local_country: String, smart_route: In
     var changed: Bool = false
     changed = changed || generateSSLocalLauchAgentPlist()
     var mgr = ServerProfileManager.instance
-    print("get mgr instance check is nil: \(mgr.activeProfileId != nil)")
     if mgr.activeProfileId != nil {
         if let profile = mgr.getActiveProfile() {
             changed = changed || writeSSLocalConfFile((profile.toJsonConfig(

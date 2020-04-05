@@ -20,12 +20,12 @@ extension Date {
 class TenonP2pLib {
     static let sharedInstance = TenonP2pLib()
     
-    public let kCurrentVersion = "3.1.0"
+    public let kCurrentVersion = "3.2.0"
     public var choosed_country_idx = 0
     public var choosed_country: String = "US"
     public var local_country: String = "CN"
     public var use_smart_route: Int32 = 1
-    private let bootstrap: String = "id:139.59.91.63:9001,id:39.105.125.37:9001,id:139.59.47.229:9001,id:46.101.152.5:9001,id:165.227.18.179:9001,id:165.227.60.177:9001,id:39.107.46.245:9001,id:39.97.224.47:9001"
+    private let bootstrap: String = "id:95.179.217.57:9001,id:104.238.186.74:9001,id:108.61.165.101:9001,id:199.247.1.63:9001,id:104.248.45.86:9001,id:206.189.151.124:9001,id:155.138.146.247:9001,id:138.197.130.242:9001,id:144.202.34.161:9001,id:114.67.115.16:9003,id:103.205.5.163:9001,id:206.189.239.148:9001,id:222.186.170.72:9001,id:178.128.174.110:9001,id:139.59.47.229:9001,id:144.202.102.112:9001,id:128.199.38.94:9001,id:139.59.91.63:9001,id:103.205.4.28:9001,id:103.205.4.77:9001,id:8.9.31.116:9001,id:104.207.151.228:9001,id:46.101.152.5:9001,id:159.65.0.164:9001,id:206.189.226.23:9001,id:149.28.211.64:9001,id:108.61.251.121:9001,id:144.202.46.74:9001,id:103.205.5.217:9001,id:165.227.60.177:9001,id:155.138.211.202:9001,id:207.148.75.27:9001,id:114.67.112.207:9003,id:103.205.4.139:9001,id:206.189.233.88:9001,id:149.28.108.72:9001,id:45.77.188.210:9001,id:114.67.112.242:9003,id:144.202.104.64:9001,id:165.227.18.179:9001,"
     
     public var payfor_timestamp: Int64 = 0
     public var payfor_amount: Int64 = 0
@@ -166,7 +166,6 @@ class TenonP2pLib {
     
     func CheckVersion() -> String {
         let res = LibP2P.checkVersion() as String
-        print("now version: \(res)")
         return res
     }
     

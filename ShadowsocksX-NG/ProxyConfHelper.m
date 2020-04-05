@@ -144,7 +144,7 @@ GCDWebServer *webServer = nil;
     [self startPACServer: PACFilePath];
     
     NSURL* url = [NSURL URLWithString: [self getHttpPACUrl]];
-    
+    NSLog(@"TTTTTTTTTTT%s:%d someObject=%@", __func__, __LINE__, url);
     NSMutableArray* args = [@[@"--mode", @"auto", @"--pac-url", [url absoluteString]]mutableCopy];
     
     [self addArguments4ManualSpecifyNetworkServices:args];
@@ -237,6 +237,7 @@ GCDWebServer *webServer = nil;
     {
         GCDWebServerDataResponse* resp = [GCDWebServerDataResponse responseWithData:originalPACData
                                                                         contentType:@"application/x-ns-proxy-autoconfig"];
+        
         return resp;
     }
      ];
