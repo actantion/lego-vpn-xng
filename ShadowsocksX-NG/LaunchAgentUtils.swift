@@ -134,21 +134,15 @@ func StartSSLocal() {
                     }
                 }
 
-                var ex_route_node = initRouteNode()
-                if (TenonP2pLib.sharedInstance.local_country == "CN" &&
-                        (TenonP2pLib.sharedInstance.choosed_country == "SG" ||
-                            TenonP2pLib.sharedInstance.choosed_country == "JP")) {
-                    ex_route_node = getOneRouteNode(country: "US")
-                    if (ex_route_node.ip.isEmpty) {
-                        for country in defaultRoute {
-                            ex_route_node = getOneRouteNode(country: country)
-                            if (!ex_route_node.ip.isEmpty) {
-                                break
-                            }
+                var ex_route_node = getOneRouteNode(country: "US")
+                if (ex_route_node.ip.isEmpty) {
+                    for country in defaultRoute {
+                        ex_route_node = getOneRouteNode(country: country)
+                        if (!ex_route_node.ip.isEmpty) {
+                            break
                         }
                     }
                 }
-                
                 
                 var vpn_node = getOneVpnNode(country: TenonP2pLib.sharedInstance.choosed_country)
                 if (vpn_node.ip.isEmpty) {

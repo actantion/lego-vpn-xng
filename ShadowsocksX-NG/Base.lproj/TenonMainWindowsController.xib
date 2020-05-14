@@ -52,7 +52,7 @@
                         </connections>
                     </button>
                     <button id="k2H-zO-5pR">
-                        <rect key="frame" x="249" y="432" width="61" height="34"/>
+                        <rect key="frame" x="212" y="406" width="110" height="70"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="setting" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="l1j-yh-3UN">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -85,7 +85,7 @@
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="xD8-rv-NaX">
-                        <rect key="frame" x="21" y="415" width="234" height="40"/>
+                        <rect key="frame" x="21" y="415" width="204" height="40"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" selectable="YES" alignment="center" title="Tenon p2p network protecting your IP and privacy." allowsEditingTextAttributes="YES" id="aQM-mA-PI6">
                             <font key="font" metaFont="cellTitle"/>
