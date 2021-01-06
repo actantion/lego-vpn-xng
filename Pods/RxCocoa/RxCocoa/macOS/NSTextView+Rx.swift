@@ -17,7 +17,7 @@ import RxSwift
 open class RxTextViewDelegateProxy: DelegateProxy<NSTextView, NSTextViewDelegate>, DelegateProxyType, NSTextViewDelegate {
 
     /// Typed parent object.
-    public weak private(set) var textView: NSTextView?
+    public private(set) var textView: NSTextView?
 
     /// Initializes `RxTextViewDelegateProxy`
     ///

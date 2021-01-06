@@ -292,7 +292,6 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         }
         
         autoShowUpgrade()
-        print("DDDDDDDDDDD")
         self.perform(#selector(requestData), with: nil, afterDelay: 3)
     }
     func numberOfRows(in tableView: NSTableView) -> Int {
