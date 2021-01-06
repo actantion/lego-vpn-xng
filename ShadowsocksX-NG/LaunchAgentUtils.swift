@@ -89,23 +89,24 @@ func generateSSLocalLauchAgentPlist() -> Bool {
 }
 
 func getOneRouteNode_ex(country: String) -> (ip: String, port: String) {
-    let res_str = LibP2P.getVpnNodes(country, true) as String
-    if (res_str.isEmpty) {
-        return ("", "")
-    }
-    
-    let node_arr: Array = res_str.components(separatedBy: ",")
-    if (node_arr.count <= 0) {
-        return ("", "")
-    }
-    
-    let rand_pos = randomCustom(min: 0, max: node_arr.count)
-    let node_info_arr = node_arr[rand_pos].components(separatedBy: ":")
-    if (node_info_arr.count < 5) {
-        return ("", "")
-    }
-    
-    return (node_info_arr[0], node_info_arr[2])
+    return ("", "")
+//    let res_str = LibP2P.getVpnNodes(country, true) as String
+//    if (res_str.isEmpty) {
+//        return ("", "")
+//    }
+//
+//    let node_arr: Array = res_str.components(separatedBy: ",")
+//    if (node_arr.count <= 0) {
+//        return ("", "")
+//    }
+//
+//    let rand_pos = randomCustom(min: 0, max: node_arr.count)
+//    let node_info_arr = node_arr[rand_pos].components(separatedBy: ":")
+//    if (node_info_arr.count < 5) {
+//        return ("", "")
+//    }
+//
+//    return (node_info_arr[0], node_info_arr[2])
 }
 
 func initRouteNode() -> (ip: String, port: String) {
@@ -134,15 +135,15 @@ func StartSSLocal() {
                     }
                 }
 
-                var ex_route_node = getOneRouteNode(country: "US")
-                if (ex_route_node.ip.isEmpty) {
-                    for country in defaultRoute {
-                        ex_route_node = getOneRouteNode(country: country)
-                        if (!ex_route_node.ip.isEmpty) {
-                            break
-                        }
-                    }
-                }
+//                var ex_route_node = getOneRouteNode(country: "US")
+//                if (ex_route_node.ip.isEmpty) {
+//                    for country in defaultRoute {
+//                        ex_route_node = getOneRouteNode(country: country)
+//                        if (!ex_route_node.ip.isEmpty) {
+//                            break
+//                        }
+//                    }
+//                }
                 
                 var vpn_node = getOneVpnNode(country: TenonP2pLib.sharedInstance.choosed_country)
                 if (vpn_node.ip.isEmpty) {
@@ -154,7 +155,7 @@ func StartSSLocal() {
                     }
                 }
 
-                print(route_node.ip + ":" + route_node.port + "," + ex_route_node.ip + ":" + ex_route_node.port + ", " + vpn_node.ip + ":" + vpn_node.port)
+//                print(route_node.ip + ":" + route_node.port + "," + ex_route_node.ip + ":" + ex_route_node.port + ", " + vpn_node.ip + ":" + vpn_node.port)
                 let route_ip_int = LibP2P.changeStrIp(route_node.ip)
                 let vpn_ip_int = LibP2P.changeStrIp(vpn_node.ip)
                 var ex_route_ip_int: UInt32 = 0;
@@ -326,15 +327,15 @@ func SyncSSLocal(choosed_country: String, local_country: String, smart_route: In
         }
     }
 
-    var ex_route_node = getOneRouteNode(country: "US")
-    if (ex_route_node.ip.isEmpty) {
-        for country in defaultRoute {
-            ex_route_node = getOneRouteNode(country: country)
-            if (!ex_route_node.ip.isEmpty) {
-                break
-            }
-        }
-    }
+//    var ex_route_node = getOneRouteNode(country: "US")
+//    if (ex_route_node.ip.isEmpty) {
+//        for country in defaultRoute {
+//            ex_route_node = getOneRouteNode(country: country)
+//            if (!ex_route_node.ip.isEmpty) {
+//                break
+//            }
+//        }
+//    }
     
     var vpn_node = getOneVpnNode(country: choosed_country)
     if (vpn_node.ip.isEmpty) {
@@ -350,10 +351,10 @@ func SyncSSLocal(choosed_country: String, local_country: String, smart_route: In
     let vpn_ip_int = LibP2P.changeStrIp(vpn_node.ip)
     var ex_route_ip_int: UInt32 = 0;
     var ex_route_port_int: Int32 = 0;
-    if !ex_route_node.ip.isEmpty {
-        ex_route_ip_int = LibP2P.changeStrIp(ex_route_node.ip)
-        ex_route_port_int = Int32(ex_route_node.port) ?? 0
-    }
+//    if !ex_route_node.ip.isEmpty {
+//        ex_route_ip_int = LibP2P.changeStrIp(ex_route_node.ip)
+//        ex_route_port_int = Int32(ex_route_node.port) ?? 0
+//    }
     
     let pubkey = LibP2P.getPublicKey() as String;
     
