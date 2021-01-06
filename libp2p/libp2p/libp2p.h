@@ -41,4 +41,5 @@ FOUNDATION_EXPORT const unsigned char libp2pVersionString[];
 + (NSString *)payforVpn:(NSString *)acc: (NSString *)gid: (NSInteger)amount;
 + (NSString *)resetPrivateKey:(NSString *)prikey;
 + (void) createAccoun;
++(UInt16) updateVpnPort: (NSString*) dht_key;
 @end

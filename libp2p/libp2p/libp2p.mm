@@ -115,7 +115,7 @@ NSString* public_key_ = @"000000000000000000000000000000000";
 +(NSString*) GetVpnNodes:(NSString*) country: (Boolean) route {
     std::vector<lego::client::VpnServerNodePtr> nodes;
     std::string tmp_country = std::string([country UTF8String]);
-    lego::client::VpnClient::Instance()->GetVpnServerNodes(tmp_country, 16, route, nodes);
+    lego::client::VpnClient::Instance()->GetVpnServerNodes(tmp_country, "", 16, route, nodes);
     std::string vpn_svr = "";
     for (uint32_t i = 0; i < nodes.size(); ++i) {
         vpn_svr += nodes[i]->ip + ":";
@@ -178,6 +178,11 @@ NSString* public_key_ = @"000000000000000000000000000000000";
     std::string res = lego::client::VpnClient::Instance()->ResetPrivateKey(tmp_prikey);
     NSString *res_str = [NSString stringWithCString:res.c_str() encoding:[NSString defaultCStringEncoding]];
     return res_str;
+}
+
++(UInt16) updateVpnPort: (NSString*) dht_key {
+    std::string tmp_dht_key = std::string([dht_key UTF8String]);
+    return lego::client::VpnClient::Instance()->UpdateVpnPort(tmp_dht_key);
 }
 
 @end

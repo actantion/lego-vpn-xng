@@ -10,6 +10,7 @@
 #include <map>
 #include <set>
 #include <deque>
+#include <condition_variable>
 
 namespace lego {
 
@@ -46,16 +47,26 @@ namespace protobuf {
 struct VpnServerNode {
     VpnServerNode(
             const std::string& in_ip,
-            uint16_t s_port,
-            uint16_t r_port,
+            uint16_t min_s_port,
+            uint16_t max_s_port,
+            uint16_t min_r_port,
+            uint16_t max_r_port,
+            uint16_t min_u_port,
+            uint16_t max_u_port,
+            uint32_t n_weight,
             const std::string& skey,
             const std::string& dkey,
             const std::string& pkey,
             const std::string& id,
             bool new_node)
             : ip(in_ip),
-              svr_port(s_port),
-              route_port(r_port),
+              min_svr_port(min_s_port),
+              max_svr_port(max_s_port),
+              min_route_port(min_r_port),
+              max_route_port(max_r_port),
+              min_udp_port(min_u_port),
+              max_udp_port(max_u_port),
+              node_weight(n_weight),
               seckey(skey),
               dht_key(dkey),
               pubkey(pkey),
@@ -67,11 +78,19 @@ struct VpnServerNode {
     std::string ip;
     uint16_t svr_port;
     uint16_t route_port;
+    uint16_t min_svr_port;
+    uint16_t max_svr_port;
+    uint16_t min_route_port;
+    uint16_t max_route_port;
+    uint16_t min_udp_port;
+    uint16_t max_udp_port;
+    uint32_t node_weight;
     std::string seckey;
     std::string dht_key;
     std::string pubkey;
     std::string acccount_id;
     bool new_get{ false };
+    std::deque<std::shared_ptr<VpnServerNode>> relay_nodes;
     std::chrono::steady_clock::time_point timeout;
 };
 typedef std::shared_ptr<VpnServerNode> VpnServerNodePtr;
@@ -114,6 +133,7 @@ public:
             const std::string& private_key);
     std::string GetVpnServerNodes(
             const std::string& country,
+            const std::string& key,
             uint32_t count,
             bool route,
             std::vector<VpnServerNodePtr>& nodes);
@@ -147,6 +167,12 @@ public:
     std::string GetClientProperty();
     std::string GetNewBoot();
     std::string GetIpCountry(const std::string& ip);
+    uint16_t UpdateVpnPort(const std::string& dht_key);
+    std::string UpdateUseVpnNode(
+            const std::string& old_ip,
+            const std::string& ip,
+            const std::string& uid);
+    std::string VpnConnected();
 
 private:
     VpnClient();
@@ -154,12 +180,14 @@ private:
 
     void HandleMessage(transport::protobuf::Header& header);
     void HandleBlockMessage(transport::protobuf::Header& header);
-    void HandleServiceMessage(transport::protobuf::Header& header);
     void HandleContractMessage(transport::protobuf::Header& header);
-    int InitTransport();
+    void HandleUpdateVpnCountResponse(
+            transport::protobuf::Header& header,
+            client::protobuf::BlockMessage& block_msg);
+    int InitUdpTransport();
+    int InitTcpTransport();
     int SetPriAndPubKey(const std::string& prikey);
-    int InitNetworkSingleton();
-    void GetVpnNodes();
+    int InitNetworkSingleton(uint32_t init_type);
     int CreateClientUniversalNetwork();
     void CheckTxExists();
     void WriteDefaultLogConf(
@@ -169,24 +197,12 @@ private:
     void GetAccountBlockWithHeight();
     void HandleHeightResponse(const protobuf::AccountHeightResponse& height_res);
     void HandleBlockResponse(const protobuf::GetTxBlockResponse& block_res);
-    void HandleGetVpnResponse(
-            const protobuf::GetVpnInfoResponse& vpn_res,
-            const std::string& dht_key);
     void DumpNodeToConfig();
     void DumpVpnNodes();
     void DumpRouteNodes();
-    void ReadVpnNodesFromConf();
-    void ReadRouteNodesFromConf();
-
     void VipDumpVpnNodes();
     void VipDumpRouteNodes();
-    void VipReadVpnNodesFromConf();
-    void VipReadRouteNodesFromConf();
-
     void DumpBootstrapNodes();
-    void GetNetworkNodes(const std::vector<std::string>& country_vec, uint32_t network_id);
-    void InitRouteAndVpnServer();
-    void VipInitRouteAndVpnServer();
 	void GetVpnVersion();
     int SetDefaultRouting();
     std::string GetDefaultRouting();
@@ -208,7 +224,8 @@ private:
     static const uint32_t kGetVpnNodesPeriod = 3 * 1000 * 1000;
     static const uint32_t kHeightMaxSize = 1024u;
 
-    transport::TransportPtr transport_{ nullptr };
+    transport::TransportPtr udp_transport_{ nullptr };
+    transport::TransportPtr tcp_transport_{ nullptr };
     bool inited_{ false };
     std::mutex init_mutex_;
     bool root_dht_joined_{ false };
@@ -251,6 +268,9 @@ private:
     uint32_t vpn_route_network_id_{ 0 };
     std::string conf_path_;
     bool ip_loaded_{ false };
+    std::string vpn_node_info_;
+    std::mutex vpn_node_info_mutex_;
+    std::condition_variable vpn_node_info_con_;
 };
 
 }  // namespace client
