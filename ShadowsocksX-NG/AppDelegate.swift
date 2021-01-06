@@ -23,29 +23,29 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     var importWinCtrl: ImportWindowController!
     var tenonWndCtrl:TenonMainWindowsController!
     
-    @IBOutlet weak var window: NSWindow!
-    @IBOutlet weak var statusMenu: NSMenu!
+    @IBOutlet var window: NSWindow!
+    @IBOutlet var statusMenu: NSMenu!
     
-    @IBOutlet weak var runningStatusMenuItem: NSMenuItem!
-    @IBOutlet weak var toggleRunningMenuItem: NSMenuItem!
-    @IBOutlet weak var autoModeMenuItem: NSMenuItem!
-    @IBOutlet weak var globalModeMenuItem: NSMenuItem!
-    @IBOutlet weak var manualModeMenuItem: NSMenuItem!
-    @IBOutlet weak var externalPACModeMenuItem: NSMenuItem!
+    @IBOutlet var runningStatusMenuItem: NSMenuItem!
+    @IBOutlet  var toggleRunningMenuItem: NSMenuItem!
+    @IBOutlet  var autoModeMenuItem: NSMenuItem!
+    @IBOutlet  var globalModeMenuItem: NSMenuItem!
+    @IBOutlet  var manualModeMenuItem: NSMenuItem!
+    @IBOutlet  var externalPACModeMenuItem: NSMenuItem!
     
-    @IBOutlet weak var serversMenuItem: NSMenuItem!
+    @IBOutlet  var serversMenuItem: NSMenuItem!
     @IBOutlet var showQRCodeMenuItem: NSMenuItem!
     @IBOutlet var scanQRCodeMenuItem: NSMenuItem!
     @IBOutlet var serverProfilesBeginSeparatorMenuItem: NSMenuItem!
     @IBOutlet var serverProfilesEndSeparatorMenuItem: NSMenuItem!
     
-    @IBOutlet weak var copyHttpProxyExportCmdLineMenuItem: NSMenuItem!
+    @IBOutlet  var copyHttpProxyExportCmdLineMenuItem: NSMenuItem!
     
-    @IBOutlet weak var lanchAtLoginMenuItem: NSMenuItem!
+    @IBOutlet  var lanchAtLoginMenuItem: NSMenuItem!
 
-    @IBOutlet weak var hudWindow: NSPanel!
-    @IBOutlet weak var panelView: NSView!
-    @IBOutlet weak var isNameTextField: NSTextField!
+    @IBOutlet  var hudWindow: NSPanel!
+    @IBOutlet  var panelView: NSView!
+    @IBOutlet  var isNameTextField: NSTextField!
 
     let kProfileMenuItemIndexBase = 100
 

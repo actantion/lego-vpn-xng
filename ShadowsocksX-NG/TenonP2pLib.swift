@@ -20,12 +20,12 @@ extension Date {
 class TenonP2pLib {
     static let sharedInstance = TenonP2pLib()
     
-    public let kCurrentVersion = "3.2.0"
+    public let kCurrentVersion = "4.0.2"
     public var choosed_country_idx = 0
     public var choosed_country: String = "US"
     public var local_country: String = "CN"
     public var use_smart_route: Int32 = 1
-    private let bootstrap: String = "id:95.179.217.57:9001,id:104.238.186.74:9001,id:108.61.165.101:9001,id:199.247.1.63:9001,id:104.248.45.86:9001,id:206.189.151.124:9001,id:155.138.146.247:9001,id:138.197.130.242:9001,id:144.202.34.161:9001,id:114.67.115.16:9003,id:103.205.5.163:9001,id:206.189.239.148:9001,id:222.186.170.72:9001,id:178.128.174.110:9001,id:139.59.47.229:9001,id:144.202.102.112:9001,id:128.199.38.94:9001,id:139.59.91.63:9001,id:103.205.4.28:9001,id:103.205.4.77:9001,id:8.9.31.116:9001,id:104.207.151.228:9001,id:46.101.152.5:9001,id:159.65.0.164:9001,id:206.189.226.23:9001,id:149.28.211.64:9001,id:108.61.251.121:9001,id:144.202.46.74:9001,id:103.205.5.217:9001,id:165.227.60.177:9001,id:155.138.211.202:9001,id:207.148.75.27:9001,id:114.67.112.207:9003,id:103.205.4.139:9001,id:206.189.233.88:9001,id:149.28.108.72:9001,id:45.77.188.210:9001,id:114.67.112.242:9003,id:144.202.104.64:9001,id:165.227.18.179:9001,"
+    private let bootstrap: String = "id:42.51.39.113:9001,id:42.51.33.89:9001,id:42.51.41.173:9001, id:113.17.169.103:9001,id:113.17.169.105:9001,id:113.17.169.106:9001,id:113.17.169.93:9001,id:113.17.169.94:9001,id:113.17.169.95:9001,id:216.108.227.52:9001,id:216.108.231.102:9001,id:216.108.231.103:9001,id:216.108.231.105:9001,id:216.108.231.19:9001,id:3.12.73.217:9001,id:3.137.186.226:9001,id:3.22.68.200:9001,id:3.138.121.98:9001,id:18.188.190.127:9001,"
     
     public var payfor_timestamp: Int64 = 0
     public var payfor_amount: Int64 = 0
@@ -33,8 +33,8 @@ class TenonP2pLib {
     public var vip_left_days: Int32 = -1
     public var now_balance: Int64 = -1
     public let min_payfor_vpn_tenon: Int64 = 66
-    public var share_ip: String = "103.205.5.217"
-    public var buy_tenon_ip: String = "222.186.170.72"
+    public var share_ip: String = "https://www.tenonvpn.net"
+    public var buy_tenon_ip: String = "https://www.tenonvpn.net"
     
     var payfor_vpn_accounts_arr:[String] = [
         "dc161d9ab9cd5a031d6c5de29c26247b6fde6eb36ed3963c446c1a993a088262",
@@ -77,6 +77,7 @@ class TenonP2pLib {
     func InitP2pNetwork (
             _ local_ip: String,
             _ local_port: Int) -> (local_country: String, prikey: String, account_id: String, def_route: String) {
+        //return ("", "", "", "")
         let file = NSSearchPathForDirectoriesInDomains(
             FileManager.SearchPathDirectory.documentDirectory,
             FileManager.SearchPathDomainMask.userDomainMask,
@@ -84,14 +85,14 @@ class TenonP2pLib {
         let path = file!
         let res = LibP2P.initP2pNetwork(
                 local_ip,
-                local_port,
+                1,
                 bootstrap,
                 path,
                 kCurrentVersion,
                 private_key_) as String
 
         let array : Array = res.components(separatedBy: ",")
-        if (array.count != 4) {
+        if (array.count < 4) {
             return ("", "", "", "")
         }
         

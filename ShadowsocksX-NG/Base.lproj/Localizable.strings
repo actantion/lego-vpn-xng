@@ -91,6 +91,7 @@
 "SETTINGS" = "SETTINGS";
 "UPGRADE" = "UPGRADE";
 "Already the latest version." = "Already the latest version.";
+"There is an updated version, in order to ensure that your network is smooth, download the latest version." ="There is an updated version, in order to ensure that your network is smooth, download the latest version."
 "ACCOUNT SETTING" = "ACCOUNT SETTING";
 "Private Key" = "Private Key";
 "Account Address" = "Account Address";

@@ -12,8 +12,8 @@ import RxSwift
 
 class PreferencesWinController: NSWindowController {
     
-    @IBOutlet weak var toolbar: NSToolbar!
-    @IBOutlet weak var tabView: NSTabView!
+    @IBOutlet  var toolbar: NSToolbar!
+    @IBOutlet  var tabView: NSTabView!
     
     override func windowDidLoad() {
         super.windowDidLoad()

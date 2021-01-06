@@ -154,15 +154,15 @@ func StartSSLocal() {
                     }
                 }
 
-                
+                print(route_node.ip + ":" + route_node.port + "," + ex_route_node.ip + ":" + ex_route_node.port + ", " + vpn_node.ip + ":" + vpn_node.port)
                 let route_ip_int = LibP2P.changeStrIp(route_node.ip)
                 let vpn_ip_int = LibP2P.changeStrIp(vpn_node.ip)
                 var ex_route_ip_int: UInt32 = 0;
                 var ex_route_port_int: Int32 = 0;
-                if !ex_route_node.ip.isEmpty {
-                    ex_route_ip_int = LibP2P.changeStrIp(ex_route_node.ip)
-                    ex_route_port_int = Int32(ex_route_node.port) ?? 0
-                }
+//                if !ex_route_node.ip.isEmpty {
+//                    ex_route_ip_int = LibP2P.changeStrIp(ex_route_node.ip)
+//                    ex_route_port_int = Int32(ex_route_node.port) ?? 0
+//                }
                 
                 if (!route_node.ip.isEmpty) {
                     let mgr = ServerProfileManager.instance
@@ -326,17 +326,12 @@ func SyncSSLocal(choosed_country: String, local_country: String, smart_route: In
         }
     }
 
-    var ex_route_node = initRouteNode()
-    if (TenonP2pLib.sharedInstance.local_country == "CN" &&
-            (TenonP2pLib.sharedInstance.choosed_country == "SG" ||
-                TenonP2pLib.sharedInstance.choosed_country == "JP")) {
-        ex_route_node = getOneRouteNode(country: "US")
-        if (ex_route_node.ip.isEmpty) {
-            for country in defaultRoute {
-                ex_route_node = getOneRouteNode(country: country)
-                if (!ex_route_node.ip.isEmpty) {
-                    break
-                }
+    var ex_route_node = getOneRouteNode(country: "US")
+    if (ex_route_node.ip.isEmpty) {
+        for country in defaultRoute {
+            ex_route_node = getOneRouteNode(country: country)
+            if (!ex_route_node.ip.isEmpty) {
+                break
             }
         }
     }

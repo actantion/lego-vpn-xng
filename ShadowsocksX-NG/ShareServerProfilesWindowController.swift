@@ -11,16 +11,16 @@ import Cocoa
 class ShareServerProfilesWindowController: NSWindowController
     , NSTableViewDataSource, NSTableViewDelegate {
 
-    @IBOutlet weak var profilesTableView: NSTableView!
+    @IBOutlet  var profilesTableView: NSTableView!
     
-    @IBOutlet weak var qrCodeImageView: NSImageView!
+    @IBOutlet  var qrCodeImageView: NSImageView!
     
-    @IBOutlet weak var copyAllServerURLsButton: NSButton!
-    @IBOutlet weak var saveAllServerURLsAsFileButton: NSButton!
+    @IBOutlet  var copyAllServerURLsButton: NSButton!
+    @IBOutlet  var saveAllServerURLsAsFileButton: NSButton!
     
-    @IBOutlet weak var copyURLButton: NSButton!
-    @IBOutlet weak var copyQRCodeButton: NSButton!
-    @IBOutlet weak var saveQRCodeAsFileButton: NSButton!
+    @IBOutlet  var copyURLButton: NSButton!
+    @IBOutlet  var copyQRCodeButton: NSButton!
+    @IBOutlet  var saveQRCodeAsFileButton: NSButton!
     
     var defaults: UserDefaults!
     var profileMgr: ServerProfileManager!

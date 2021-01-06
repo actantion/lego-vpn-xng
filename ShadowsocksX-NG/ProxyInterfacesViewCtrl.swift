@@ -15,8 +15,8 @@ class ProxyInterfacesViewCtrl: NSViewController, NSTableViewDataSource, NSTableV
     var networkServices: NSArray!
     var selectedNetworkServices: NSMutableSet!
     
-    @IBOutlet weak var tableView: NSTableView!
-    @IBOutlet weak var autoConfigCheckBox: NSButton!
+    @IBOutlet  var tableView: NSTableView!
+    @IBOutlet  var autoConfigCheckBox: NSButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

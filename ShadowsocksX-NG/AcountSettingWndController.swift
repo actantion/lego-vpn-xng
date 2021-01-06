@@ -10,13 +10,13 @@ import Cocoa
 
 class AcountSettingWndController: NSWindowController,NSTableViewDelegate,NSTableViewDataSource {
 
-    @IBOutlet weak var prikeyEdit: NSTextField!
-    @IBOutlet weak var accountEdit: NSTextField!
-    @IBOutlet weak var lbBanlanceTenon: NSTextField!
-    @IBOutlet weak var lbBanlanceDorlar: NSTextField!
-    @IBOutlet weak var vwTranscationInfo: NSView!
-    @IBOutlet weak var scrollview: NSScrollView!
-    @IBOutlet weak var tableView: NSTableView!
+    @IBOutlet var prikeyEdit: NSTextField!
+    @IBOutlet var accountEdit: NSTextField!
+    @IBOutlet var lbBanlanceTenon: NSTextField!
+    @IBOutlet var lbBanlanceDorlar: NSTextField!
+    @IBOutlet var vwTranscationInfo: NSView!
+    @IBOutlet  var scrollview: NSScrollView!
+    @IBOutlet var tableView: NSTableView!
     let appDelegate = (NSApplication.shared.delegate) as! AppDelegate
     var transcationList = [TranscationModel]()
     
@@ -73,7 +73,7 @@ class AcountSettingWndController: NSWindowController,NSTableViewDelegate,NSTable
     }
     
     @IBAction func clickBue(_ sender: Any) {
-        NSWorkspace.shared.open(URL(string: "http://" + TenonP2pLib.sharedInstance.buy_tenon_ip + "/chongzhi/" + TenonP2pLib.sharedInstance.account_id_)!)
+        NSWorkspace.shared.open(URL(string: TenonP2pLib.sharedInstance.buy_tenon_ip + "/chongzhi/" + TenonP2pLib.sharedInstance.account_id_)!)
     }
     
     @IBAction func clickCopyPrivateKey(_ sender: Any) {

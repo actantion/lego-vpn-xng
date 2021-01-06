@@ -9,9 +9,9 @@
 import Cocoa
 
 class CountryChoseCell: NSTableCellView {
-    @IBOutlet weak var imgIcon: NSImageView!
-    @IBOutlet weak var lbCountryName: NSTextField!
-    @IBOutlet weak var lbNodes: NSTextField!
+    @IBOutlet  var imgIcon: NSImageView!
+    @IBOutlet  var lbCountryName: NSTextField!
+    @IBOutlet  var lbNodes: NSTextField!
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)

@@ -9,7 +9,7 @@
 import Cocoa
 
 class ImportWindowController: NSWindowController {
-    @IBOutlet weak var inputBox: NSTextField!
+    @IBOutlet  var inputBox: NSTextField!
     
     override func windowDidLoad() {
         super.windowDidLoad()

@@ -9,10 +9,10 @@
 import Cocoa
 
 class TranscationInfoCell: NSTableCellView {
-    @IBOutlet weak var lbDatatime: NSTextField!
-    @IBOutlet weak var lbType: NSTextField!
-    @IBOutlet weak var lbAccount: NSTextField!
-    @IBOutlet weak var lbAmount: NSTextField!
+    @IBOutlet  var lbDatatime: NSTextField!
+    @IBOutlet  var lbType: NSTextField!
+    @IBOutlet  var lbAccount: NSTextField!
+    @IBOutlet  var lbAmount: NSTextField!
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)

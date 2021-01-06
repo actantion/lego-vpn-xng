@@ -91,6 +91,7 @@
 "SETTINGS" = "账号设置";
 "UPGRADE" = "升级更新";
 "Already the latest version." = "已经是最新版本。";
+"There is an updated version, in order to ensure that your network is smooth, download the latest version." = "有更新版本，为了保证你的网络畅通，下载最新版本。";
 "ACCOUNT SETTING" = "账号设置";
 "Private Key" = "安全私钥";
 "Account Address" = "账号地址";
