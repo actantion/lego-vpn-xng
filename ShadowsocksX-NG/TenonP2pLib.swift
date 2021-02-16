@@ -106,7 +106,7 @@ class TenonP2pLib {
     }
     
     func GetVpnNodes(_ country: String, _ route: Bool) -> String {
-        let res = LibP2P.getVpnNodes(country, route) as String
+        let res = LibP2P.getVpnNodes(country, route, false) as String
         return res
     }
     

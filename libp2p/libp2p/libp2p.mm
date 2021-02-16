@@ -112,10 +112,10 @@ NSString* public_key_ = @"000000000000000000000000000000000";
     return lego::client::VpnClient::Instance()->GetSocket();
 }
 
-+(NSString*) GetVpnNodes:(NSString*) country: (Boolean) route {
++(NSString*) GetVpnNodes:(NSString*) country: (Boolean) route: (Boolean) is_vip {
     std::vector<lego::client::VpnServerNodePtr> nodes;
     std::string tmp_country = std::string([country UTF8String]);
-    lego::client::VpnClient::Instance()->GetVpnServerNodes(tmp_country, "", 16, route, nodes);
+    lego::client::VpnClient::Instance()->GetVpnServerNodes(tmp_country, "", 16, route, is_vip, nodes);
     std::string vpn_svr = "";
     for (uint32_t i = 0; i < nodes.size(); ++i) {
         vpn_svr += nodes[i]->ip + ":";

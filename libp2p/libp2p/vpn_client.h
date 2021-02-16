@@ -58,7 +58,8 @@ struct VpnServerNode {
             const std::string& dkey,
             const std::string& pkey,
             const std::string& id,
-            bool new_node)
+            bool new_node,
+            const std::string& in_node_tag)
             : ip(in_ip),
               min_svr_port(min_s_port),
               max_svr_port(max_s_port),
@@ -71,7 +72,8 @@ struct VpnServerNode {
               dht_key(dkey),
               pubkey(pkey),
               acccount_id(id),
-              new_get(new_node) {
+              new_get(new_node),
+              node_tag(in_node_tag) {
         timeout = std::chrono::steady_clock::now() + std::chrono::seconds(3600);
     }
 
@@ -90,6 +92,7 @@ struct VpnServerNode {
     std::string pubkey;
     std::string acccount_id;
     bool new_get{ false };
+    std::string node_tag;
     std::deque<std::shared_ptr<VpnServerNode>> relay_nodes;
     std::chrono::steady_clock::time_point timeout;
 };
@@ -136,6 +139,7 @@ public:
             const std::string& key,
             uint32_t count,
             bool route,
+            bool is_vip,
             std::vector<VpnServerNodePtr>& nodes);
     std::string Transaction(const std::string& to, uint64_t amount, std::string& tx_gid);
     protobuf::BlockPtr GetBlockWithGid(const std::string& gid);
@@ -173,6 +177,8 @@ public:
             const std::string& ip,
             const std::string& uid);
     std::string VpnConnected();
+    void AdReward(const std::string& gid);
+    void UpdateCountryCode(const std::string& country);
 
 private:
     VpnClient();
@@ -215,6 +221,7 @@ private:
             client::protobuf::BlockMessage& block_msg);
     void SendGetBlockWithGid(const std::string& str, bool is_gid);
     void SendGetAccountAttrUsedBandwidth();
+    void GetTxBlocksFromBftNetwork();
 
     static const uint32_t kDefaultUdpSendBufferSize = 2u * 1024u * 1024u;
     static const uint32_t kDefaultUdpRecvBufferSize = 2u * 1024u * 1024u;
@@ -263,7 +270,6 @@ private:
 	std::shared_ptr<common::Tick>  dump_config_tick_{ nullptr };
 	std::shared_ptr<common::Tick>  dump_bootstrap_tick_{ nullptr };
     bool account_created_{ false };
-    std::set<std::string> vpn_committee_accounts_;
     uint32_t vpn_vip_level_{ 0 };
     uint32_t vpn_route_network_id_{ 0 };
     std::string conf_path_;

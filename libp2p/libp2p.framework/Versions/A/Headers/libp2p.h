@@ -24,7 +24,7 @@ FOUNDATION_EXPORT const unsigned char libp2pVersionString[];
 
 +(NSString*) InitP2pNetwork:(NSString*) local_ip: (NSInteger)local_port: (NSString*)bootstrap: (NSString*)conf_path: (NSString*)version: (NSString*) prikey;
 +(NSInteger) GetSocketId;
-+(NSString*) GetVpnNodes:(NSString*) country: (Boolean) route;
++(NSString*) GetVpnNodes:(NSString*) country: (Boolean) route: (Boolean) is_vip;
 +(NSString*) GetTransactions;
 +(UInt64) GetBalance;
 +(void) ResetTransport:(NSString*) local_ip: (NSInteger)local_port;
