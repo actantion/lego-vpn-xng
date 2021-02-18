@@ -1,0 +1,6 @@
+framework module BRLOptionParser {
+  umbrella header "BRLOptionParser-umbrella.h"
+
+  export *
+  module * { export * }
+}
