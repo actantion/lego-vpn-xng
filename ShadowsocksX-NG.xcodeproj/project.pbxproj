@@ -10,6 +10,8 @@
 		1C82DBA81FA96C7500B32551 /* obfs-local in Resources */ = {isa = PBXBuildFile; fileRef = 1C82DBA51FA96C7400B32551 /* obfs-local */; };
 		1C82DBAA1FA96FB600B32551 /* install_simple_obfs.sh in Resources */ = {isa = PBXBuildFile; fileRef = 1C82DBA91FA96F0300B32551 /* install_simple_obfs.sh */; };
 		258E511BA910B0521B24DAB8 /* Pods_ShadowsocksX_NG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 283ED1A8E9B711AC65670031 /* Pods_ShadowsocksX_NG.framework */; };
+		844DC44E25DE33210049BBEF /* HomePageWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DC44C25DE33210049BBEF /* HomePageWindow.swift */; };
+		844DC44F25DE33210049BBEF /* HomePageWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844DC44D25DE33210049BBEF /* HomePageWindow.xib */; };
 		850C4855236140B300C238FF /* JSSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850C4854236140B300C238FF /* JSSwitch.swift */; };
 		850C485E2361B31400C238FF /* TenonMainWindowsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 850C48602361B31400C238FF /* TenonMainWindowsController.xib */; };
 		850C48662361B43000C238FF /* AcountSettingWndController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 850C48682361B43000C238FF /* AcountSettingWndController.xib */; };
@@ -181,6 +183,8 @@
 		50D54926AA21B0D4D8DD9C4F /* Pods-ShadowsocksX-NGUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowsocksX-NGUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowsocksX-NGUITests/Pods-ShadowsocksX-NGUITests.release.xcconfig"; sourceTree = "<group>"; };
 		58907E7F50405104B42CB189 /* Pods-ShadowsocksX-NGUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowsocksX-NGUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowsocksX-NGUITests/Pods-ShadowsocksX-NGUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5B6203C1228FCD3D365814AC /* Pods-ShadowsocksX-NGTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowsocksX-NGTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowsocksX-NGTests/Pods-ShadowsocksX-NGTests.debug.xcconfig"; sourceTree = "<group>"; };
+		844DC44C25DE33210049BBEF /* HomePageWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageWindow.swift; sourceTree = "<group>"; };
+		844DC44D25DE33210049BBEF /* HomePageWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomePageWindow.xib; sourceTree = "<group>"; };
 		850C4854236140B300C238FF /* JSSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSSwitch.swift; sourceTree = "<group>"; };
 		850C485F2361B31400C238FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TenonMainWindowsController.xib; sourceTree = "<group>"; };
 		850C48612361B32900C238FF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TenonMainWindowsController.strings"; sourceTree = "<group>"; };
@@ -366,6 +370,46 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		844DC44425DE329C0049BBEF /* UI2.0 */ = {
+			isa = PBXGroup;
+			children = (
+				844DC44C25DE33210049BBEF /* HomePageWindow.swift */,
+				844DC44D25DE33210049BBEF /* HomePageWindow.xib */,
+			);
+			name = UI2.0;
+			sourceTree = "<group>";
+		};
+		844DC45225DE333B0049BBEF /* ThirdLib */ = {
+			isa = PBXGroup;
+			children = (
+				9B07EFB01D048E900052D9DF /* Support Files */,
+				9B3FFF1F1D0734060019A709 /* Utils.h */,
+				9B3FFF1D1D0732660019A709 /* Utils.m */,
+				9B3FFF0C1D05FEB30019A709 /* Utils.swift */,
+				9B84DAEC2163A72F00DFF068 /* Diagnose.swift */,
+				850C4854236140B300C238FF /* JSSwitch.swift */,
+				9BEEF0771D04FE8A00FC52B3 /* LaunchAgentUtils.swift */,
+				9B3FFF151D072FDE0019A709 /* LaunchAtLoginController.h */,
+				9B3FFF161D072FDE0019A709 /* LaunchAtLoginController.m */,
+				9B0BFFEC1D0460A70040E62B /* MainMenu.xib */,
+				9B3FFF131D0705810019A709 /* Notifications.swift */,
+				9B7725E5232E30C50062299F /* PACURLFormatter.swift */,
+				9B3FFF201D08826E0019A709 /* PACUtils.swift */,
+				9B3FFF501D09DAEA0019A709 /* proxy_conf_helper_version.h */,
+				9B3FFF4D1D09D9D50019A709 /* ProxyConfHelper.h */,
+				9B3FFF4E1D09D9D50019A709 /* ProxyConfHelper.m */,
+				9BA04B211D23D5A5005AAD7F /* ProxyConfTool.h */,
+				9BA04B221D23D5A5005AAD7F /* ProxyConfTool.m */,
+				9BEEF06D1D04DCE400FC52B3 /* ServerProfile.swift */,
+				9BEEF06F1D04DDB100FC52B3 /* ServerProfileManager.swift */,
+				9B5831F41E7302F8009D5B7D /* ShortcutsController.h */,
+				9B5831F51E7302F8009D5B7D /* ShortcutsController.m */,
+				9BB706A61D1B982300551F0E /* SWBApplication.h */,
+				9BB706A51D1B982300551F0E /* SWBApplication.m */,
+			);
+			name = ThirdLib;
+			sourceTree = "<group>";
+		};
 		9B07EFB01D048E900052D9DF /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,36 +458,14 @@
 		9B0BFFE71D0460A70040E62B /* ShadowsocksX-NG */ = {
 			isa = PBXGroup;
 			children = (
-				85134E292341A52F00DCBBBE /* TenonP2pLib.swift */,
-				9BB706A51D1B982300551F0E /* SWBApplication.m */,
-				9BB706A61D1B982300551F0E /* SWBApplication.h */,
 				9B3FFF511D09DBA20019A709 /* ShadowsocksX-NG-Bridging-Header.h */,
-				9B3FFF151D072FDE0019A709 /* LaunchAtLoginController.h */,
-				9B3FFF161D072FDE0019A709 /* LaunchAtLoginController.m */,
-				9B3FFF0B1D05D8B80019A709 /* UI */,
-				9B07EFB01D048E900052D9DF /* Support Files */,
 				9B0BFFE81D0460A70040E62B /* AppDelegate.swift */,
 				9B0BFFEA1D0460A70040E62B /* Assets.xcassets */,
-				9B0BFFEC1D0460A70040E62B /* MainMenu.xib */,
 				9B0BFFEF1D0460A70040E62B /* Info.plist */,
-				9BEEF06D1D04DCE400FC52B3 /* ServerProfile.swift */,
-				9B7725E5232E30C50062299F /* PACURLFormatter.swift */,
-				9BEEF06F1D04DDB100FC52B3 /* ServerProfileManager.swift */,
-				9BEEF0771D04FE8A00FC52B3 /* LaunchAgentUtils.swift */,
-				9B3FFF0C1D05FEB30019A709 /* Utils.swift */,
-				9B3FFF201D08826E0019A709 /* PACUtils.swift */,
-				9B3FFF131D0705810019A709 /* Notifications.swift */,
-				9B3FFF1D1D0732660019A709 /* Utils.m */,
-				9B3FFF1F1D0734060019A709 /* Utils.h */,
-				9B3FFF4D1D09D9D50019A709 /* ProxyConfHelper.h */,
-				9B3FFF4E1D09D9D50019A709 /* ProxyConfHelper.m */,
-				9B3FFF501D09DAEA0019A709 /* proxy_conf_helper_version.h */,
-				9BA04B211D23D5A5005AAD7F /* ProxyConfTool.h */,
-				9BA04B221D23D5A5005AAD7F /* ProxyConfTool.m */,
-				9B5831F41E7302F8009D5B7D /* ShortcutsController.h */,
-				9B5831F51E7302F8009D5B7D /* ShortcutsController.m */,
-				9B84DAEC2163A72F00DFF068 /* Diagnose.swift */,
-				850C4854236140B300C238FF /* JSSwitch.swift */,
+				85134E292341A52F00DCBBBE /* TenonP2pLib.swift */,
+				844DC45225DE333B0049BBEF /* ThirdLib */,
+				9B3FFF0B1D05D8B80019A709 /* UI */,
+				844DC44425DE329C0049BBEF /* UI2.0 */,
 			);
 			path = "ShadowsocksX-NG";
 			sourceTree = "<group>";
@@ -781,6 +803,7 @@
 				9BAA662A23295FAB00F5CC99 /* menu_icon@2x.png in Resources */,
 				9B5AA0AC209C43C200E8B659 /* Credits.rtf in Resources */,
 				9B20804A2326AC460075386C /* kcptun.sh in Resources */,
+				844DC44F25DE33210049BBEF /* HomePageWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -898,6 +921,7 @@
 				9B3FFF141D0705810019A709 /* Notifications.swift in Sources */,
 				9BEEF0701D04DDB100FC52B3 /* ServerProfileManager.swift in Sources */,
 				850C4855236140B300C238FF /* JSSwitch.swift in Sources */,
+				844DC44E25DE33210049BBEF /* HomePageWindow.swift in Sources */,
 				9BEEF06E1D04DCE400FC52B3 /* ServerProfile.swift in Sources */,
 				9B72FB62232782A300C6AAAE /* ImportWindowController.swift in Sources */,
 				9B3FFF0D1D05FEB30019A709 /* Utils.swift in Sources */,
