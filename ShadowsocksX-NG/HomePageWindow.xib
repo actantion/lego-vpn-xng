@@ -178,7 +178,7 @@
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="RLE-oG-nX8">
                                             <rect key="frame" x="6" y="0.0" width="157" height="59"/>
                                             <textFieldCell key="cell" selectable="YES" title="asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf" id="u0J-1H-LfU">
-                                                <font key="font" metaFont="system" size="12"/>
+                                                <font key="font" metaFont="cellTitle"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -226,7 +226,7 @@
                                                 <constraint firstAttribute="height" constant="19" id="vxM-0V-hNc"/>
                                             </constraints>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="私钥" id="ykC-Hh-M94">
-                                                <font key="font" size="15" name=".PingFangSC-Regular"/>
+                                                <font key="font" metaFont="system" size="15"/>
                                                 <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -245,7 +245,7 @@
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Kgf-V0-YGL">
                                             <rect key="frame" x="6" y="0.0" width="157" height="59"/>
                                             <textFieldCell key="cell" selectable="YES" title="asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf" id="bgu-0D-csM">
-                                                <font key="font" metaFont="system" size="12"/>
+                                                <font key="font" metaFont="cellTitle"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -508,12 +508,6 @@
             </connections>
             <point key="canvasLocation" x="-283.5" y="177"/>
         </window>
-        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="kLs-C8-Kcw">
-            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="DeY-0j-CgY"/>
-            <point key="canvasLocation" x="-569" y="87"/>
-        </imageView>
     </objects>
     <resources>
         <image name="black_bg1" width="155" height="61"/>
