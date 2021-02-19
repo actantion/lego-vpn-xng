@@ -30,7 +30,7 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="us" id="I8R-1l-o5F"/>
                 </imageView>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="JT1-aZ-zE9">
-                    <rect key="frame" x="247" y="12" width="70" height="16"/>
+                    <rect key="frame" x="262" y="12" width="70" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="428个节点" id="blP-Eu-hzN">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" white="0.54825773609999995" alpha="1" colorSpace="calibratedWhite"/>
@@ -42,7 +42,7 @@
                 <constraint firstItem="JT1-aZ-zE9" firstAttribute="centerY" secondItem="swW-MK-Yo5" secondAttribute="centerY" id="5PG-kg-oal"/>
                 <constraint firstAttribute="bottom" secondItem="swW-MK-Yo5" secondAttribute="bottom" constant="12" id="Bkf-Ze-6cC"/>
                 <constraint firstItem="grS-37-SMk" firstAttribute="leading" secondItem="swW-MK-Yo5" secondAttribute="trailing" constant="8" symbolic="YES" id="IUj-g9-Fnb"/>
-                <constraint firstAttribute="trailing" secondItem="JT1-aZ-zE9" secondAttribute="trailing" constant="30" id="aW2-l7-r73"/>
+                <constraint firstAttribute="trailing" secondItem="JT1-aZ-zE9" secondAttribute="trailing" constant="15" id="aW2-l7-r73"/>
                 <constraint firstItem="swW-MK-Yo5" firstAttribute="leading" secondItem="LwO-PU-7vd" secondAttribute="leading" constant="8" id="dGJ-pY-gJV"/>
                 <constraint firstItem="grS-37-SMk" firstAttribute="centerY" secondItem="swW-MK-Yo5" secondAttribute="centerY" id="gkP-hG-VKj"/>
                 <constraint firstItem="swW-MK-Yo5" firstAttribute="top" secondItem="LwO-PU-7vd" secondAttribute="top" constant="12" id="yAS-on-S6T"/>
