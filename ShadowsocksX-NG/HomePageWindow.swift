@@ -12,8 +12,9 @@ import Cocoa
 let APP_GREEN_COLOR = NSColor.init(red: 18, green: 181, blue: 170, alpha: 1)
 let APP_BLACK_COLOR = NSColor.init(red: 255, green: 255, blue: 255, alpha: 1)
 
-class HomePageWindow: NSWindowController {
+class HomePageWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSource {
 
+    @IBOutlet weak var vwCountryChose: NSView!
     @IBOutlet weak var vwConnect: NSView!
     @IBOutlet weak var vwEarnCoin: NSView!
     @IBOutlet weak var vwUpdateToPro: NSView!
@@ -23,6 +24,12 @@ class HomePageWindow: NSWindowController {
     @IBOutlet weak var lbLeftDays: NSTextField!
     @IBOutlet weak var lbTenonCoin: NSTextField!
     @IBOutlet weak var lbVersionType: NSTextField!
+    @IBOutlet weak var tableView: NSTableView!
+    
+    var countryCode:[String] = ["America", "Singapore", "Brazil","Germany","Netherlands", "France","Korea", "Japan", "Canada","Australia","Hong Kong", "India", "England", "China"]
+    var countryNodes:[String] = []
+    var iCon:[String] = ["us", "sg", "br","de", "nl", "fr","kr", "jp", "ca","au","hk", "in", "gb", "cn"]
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
@@ -32,8 +39,8 @@ class HomePageWindow: NSWindowController {
             let appVersion = info["CFBundleShortVersionString"] as? String ?? "Unknown"
             self.lbVersion.stringValue = "v\(appVersion)"
         }
-        initView()
         
+        initView()
     }
     
     func initView(){
@@ -44,19 +51,33 @@ class HomePageWindow: NSWindowController {
         self.lbVersionType.stringValue = "专业版"
         self.vwUpdateToPro.isHidden = true
         
+        self.vwConnect.wantsLayer = true
+        self.vwConnect.layer?.backgroundColor = NSColor.init(red: 200, green: 200, blue: 200, alpha: 1).cgColor
         self.vwConnect.layer?.masksToBounds = true
-        self.vwConnect.layer?.cornerRadius = self.vwConnect.frame.width/2
+        self.vwConnect.layer?.cornerRadius = 62.5
         
-//        CALayer *viewLayer = [CALayer layer];
-//         NSView *backgroundView= [[NSView alloc]init];
-//         [backgroundView setWantsLayer:YES];
-//         [backgroundView setLayer:viewLayer];
-//         backgroundView.layer.backgroundColor = [NSColor colorWithRed:0.14 green:0.62 blue:0.93 alpha:1.0].CGColor;
-//         [backgroundView setNeedsDisplay:YES];
-//        let layer = CALayer.init()
-        self.vwConnect.layer?.backgroundColor = NSColor.lightGray.cgColor
-//        self.vwConnect. = NSColor.lightGray
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableColumns[0].width = tableView.frame.size.width
+        tableView.register(NSNib(nibNamed: NSNib.Name(rawValue: "CountryChoseCell"), bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CountryChoseCell"))
+        tableView.reloadData()
     }
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return countryCode.count
+    }
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return 40
+    }
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let cellView:CountryChoseCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CountryChoseCell"), owner: self) as! CountryChoseCell
+        
+        cellView.imgIcon.image = NSImage.init(imageLiteralResourceName:iCon[row])
+        cellView.lbCountryName.stringValue = countryCode[row]
+        cellView.lbNodes.stringValue = countryNodes[row]
+        
+        return cellView
+    }
+    
     @IBAction func clickTB(_ sender: Any) {
         print("点击提币")
     }
