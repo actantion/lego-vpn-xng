@@ -22,6 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     var toastWindowCtrl: ToastWindowController!
     var importWinCtrl: ImportWindowController!
     var tenonWndCtrl:HomePageWindow!
+//    var tenonWndCtrl:TenonMainWindowsController!
     
     @IBOutlet var window: NSWindow!
     @IBOutlet var statusMenu: NSMenu!
@@ -255,6 +256,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             tenonWndCtrl.close()
          }
          tenonWndCtrl = HomePageWindow(windowNibName: .init(rawValue: "HomePageWindow"))
+//        tenonWndCtrl = TenonMainWindowsController(windowNibName: .init(rawValue: "TenonMainWindowsController"))
          tenonWndCtrl.showWindow(self)
          NSApp.activate(ignoringOtherApps: true)
          tenonWndCtrl.window?.makeKeyAndOrderFront(nil)
@@ -389,6 +391,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             tenonWndCtrl.close()
         }
         tenonWndCtrl = HomePageWindow(windowNibName: .init(rawValue: "HomePageWindow"))
+//        tenonWndCtrl = TenonMainWindowsController(windowNibName: .init(rawValue: "TenonMainWindowsController"))
+        
         tenonWndCtrl.showWindow(self)
         NSApp.activate(ignoringOtherApps: true)
         tenonWndCtrl.window?.makeKeyAndOrderFront(nil)

@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Masonry
 
 //let APP_MAIN_COLOR=kRBColor(18, 181, 170);
 let APP_GREEN_COLOR = NSColor.init(red: 18, green: 181, blue: 170, alpha: 1)
@@ -24,11 +25,15 @@ class HomePageWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
     @IBOutlet weak var lbLeftDays: NSTextField!
     @IBOutlet weak var lbTenonCoin: NSTextField!
     @IBOutlet weak var lbVersionType: NSTextField!
+//    @IBOutlet weak var vwTableViewBack: NSView!
+    @IBOutlet weak var vwScrollview: NSScrollView!
     @IBOutlet weak var tableView: NSTableView!
     
-    var countryCode:[String] = ["America", "Singapore", "Brazil","Germany","Netherlands", "France","Korea", "Japan", "Canada","Australia","Hong Kong", "India", "England", "China"]
+//    var tableView: NSTableView!
+    
+    let countryCode:[String] = ["America", "Singapore", "Brazil","Germany","Netherlands", "France","Korea", "Japan", "Canada","Australia","Hong Kong", "India", "England", "China"]
     var countryNodes:[String] = []
-    var iCon:[String] = ["us", "sg", "br","de", "nl", "fr","kr", "jp", "ca","au","hk", "in", "gb", "cn"]
+    let iCon:[String] = ["us", "sg", "br","de", "nl", "fr","kr", "jp", "ca","au","hk", "in", "gb", "cn"]
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -56,9 +61,12 @@ class HomePageWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
         self.vwConnect.layer?.masksToBounds = true
         self.vwConnect.layer?.cornerRadius = 62.5
         
+        for _ in countryCode {
+            countryNodes.append((String)(Int(arc4random_uniform((UInt32)(900))) + 100))
+        }
+        
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.tableColumns[0].width = tableView.frame.size.width
         tableView.register(NSNib(nibNamed: NSNib.Name(rawValue: "CountryChoseCell"), bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CountryChoseCell"))
         tableView.reloadData()
     }
@@ -73,7 +81,7 @@ class HomePageWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
         
         cellView.imgIcon.image = NSImage.init(imageLiteralResourceName:iCon[row])
         cellView.lbCountryName.stringValue = countryCode[row]
-        cellView.lbNodes.stringValue = countryNodes[row]
+        cellView.lbNodes.stringValue = "\(countryNodes[row])个节点"
         
         return cellView
     }
