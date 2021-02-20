@@ -373,16 +373,16 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
         // MARK:connect label
         lbConnect.font = NSFont.systemFont(ofSize: 22)
         progressCircularProgress = CircularProgress(frame: CGRect(x: 43, y: 170, width: 256, height: 256))
-          notConnectProgress = CircularProgress(frame: CGRect(x: 43, y: 170, width: 256, height: 256))
-          notConnectProgress.lineWidth = 6
-          notConnectProgress.color = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1)
+        notConnectProgress = CircularProgress(frame: CGRect(x: 43, y: 170, width: 256, height: 256))
+        notConnectProgress.lineWidth = 6
+        notConnectProgress.color = NSColor(red: 218/255, green: 216/255, blue: 217/255, alpha: 1)
         baseView.addSubview(notConnectProgress)
-          notConnectProgress.isHidden = true
-          connectedProgress = CircularProgress(frame: CGRect(x: 43, y: 170, width: 256, height: 256))
-          connectedProgress.lineWidth = 6
-          connectedProgress.color = NSColor(red: 19/255, green: 244/255, blue: 220/255, alpha: 1)
+        notConnectProgress.isHidden = true
+        connectedProgress = CircularProgress(frame: CGRect(x: 43, y: 170, width: 256, height: 256))
+        connectedProgress.lineWidth = 6
+        connectedProgress.color = NSColor(red: 19/255, green: 244/255, blue: 220/255, alpha: 1)
         baseView.addSubview(connectedProgress)
-          connectedProgress.isHidden = true
+        connectedProgress.isHidden = true
         connectedProgress.wantsLayer = true
         notConnectProgress.wantsLayer = true
         let isOn = UserDefaults.standard.bool(forKey: "ShadowsocksOn")

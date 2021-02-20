@@ -36,6 +36,8 @@ class HomePageWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
     @IBOutlet weak var vwScrollview: NSScrollView!
     @IBOutlet weak var tableView: NSTableView!
     
+    var setWnd:SettingWindow!
+    var earnWnd:EarnCoinWindow!
     var connectCount:Int32 = 5
     var secondTimer:Timer!
     var timer:Timer!
@@ -106,6 +108,13 @@ class HomePageWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
     }
     @IBAction func clickEarnCoin(_ sender: Any) {
         print("点击赚币")
+        if earnWnd != nil {
+            earnWnd.close()
+        }
+        earnWnd = EarnCoinWindow(windowNibName: .init(rawValue: "EarnCoinWindow"))
+        earnWnd.showWindow(self)
+        NSApp.activate(ignoringOtherApps: true)
+        earnWnd.window?.makeKeyAndOrderFront(nil)
     }
     @IBAction func clickUpdateToPro(_ sender: Any) {
         print("点击到专业")
@@ -209,6 +218,12 @@ class HomePageWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
     }
     @IBAction func clickLogo(_ sender: NSButton) {
         print("点击logo")
-        
+        if setWnd != nil {
+            setWnd.close()
+        }
+        setWnd = SettingWindow(windowNibName: .init(rawValue: "SettingWindow"))
+        setWnd.showWindow(self)
+        NSApp.activate(ignoringOtherApps: true)
+        setWnd.window?.makeKeyAndOrderFront(nil)
     }
 }
