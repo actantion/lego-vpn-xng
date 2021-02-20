@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="UIPrivateKeyCell" id="c22-O7-iKe" customClass="UIPrivateKeyCell" customModule="ShadowsocksX_NG" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="335" height="130"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <view id="pXP-jW-6nI">
+                    <rect key="frame" x="0.0" y="2" width="335" height="126"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dhf-9u-Raa">
+                            <rect key="frame" x="13" y="94" width="33" height="17"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="方式" id="NFl-kX-CXF">
+                                <font key="font" metaFont="system" size="14"/>
+                                <color key="textColor" red="0.23921568630000001" green="0.91372549020000005" blue="0.87568537599999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="FXM-Ht-T0p">
+                            <rect key="frame" x="13" y="70" width="309" height="16"/>
+                            <textFieldCell key="cell" selectable="YES" title="asdfasdfasdqwekrjlaksdjflasdfasdfqwer" id="0jn-wM-qKT">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wWh-mq-HR5">
+                            <rect key="frame" x="256" y="8" width="64" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="1C6-57-Jbu"/>
+                                <constraint firstAttribute="width" constant="64" id="ucb-hG-dLn"/>
+                            </constraints>
+                            <buttonCell key="cell" type="bevel" title="Button" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="eoq-fp-Bmh">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <color key="contentTintColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="clickBtn:" target="c22-O7-iKe" id="tge-PK-TiS"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="FXM-Ht-T0p" firstAttribute="leading" secondItem="pXP-jW-6nI" secondAttribute="leading" constant="15" id="Fqk-Se-QHM"/>
+                        <constraint firstItem="dhf-9u-Raa" firstAttribute="top" secondItem="pXP-jW-6nI" secondAttribute="top" constant="15" id="SIC-0d-wdf"/>
+                        <constraint firstItem="dhf-9u-Raa" firstAttribute="leading" secondItem="pXP-jW-6nI" secondAttribute="leading" constant="15" id="UkN-7j-60s"/>
+                        <constraint firstAttribute="trailing" secondItem="FXM-Ht-T0p" secondAttribute="trailing" constant="15" id="e6T-7C-17M"/>
+                        <constraint firstAttribute="bottom" secondItem="wWh-mq-HR5" secondAttribute="bottom" constant="8" id="f3H-r2-wmE"/>
+                        <constraint firstItem="FXM-Ht-T0p" firstAttribute="top" secondItem="dhf-9u-Raa" secondAttribute="bottom" constant="8" symbolic="YES" id="iNR-Cp-ECW"/>
+                        <constraint firstAttribute="trailing" secondItem="wWh-mq-HR5" secondAttribute="trailing" constant="15" id="jna-iY-ZtB"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <connections>
+                <outlet property="btnCopy" destination="wWh-mq-HR5" id="gJm-ZM-AA4"/>
+                <outlet property="lbMethod" destination="dhf-9u-Raa" id="dh3-cr-RZc"/>
+                <outlet property="lbPrivateKey" destination="FXM-Ht-T0p" id="tGP-9W-qeY"/>
+                <outlet property="vwBack" destination="pXP-jW-6nI" id="lty-ss-xvR"/>
+            </connections>
+            <point key="canvasLocation" x="-964" y="226"/>
+        </customView>
+    </objects>
+</document>

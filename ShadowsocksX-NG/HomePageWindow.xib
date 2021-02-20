@@ -333,11 +333,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PnC-zW-CJY">
-                                <rect key="frame" x="0.0" y="0.0" width="169" height="78"/>
+                                <rect key="frame" x="0.0" y="0.0" width="168" height="78"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="topRight" imageScaling="proportionallyDown" image="black_bg2" id="UVf-Ge-iSS"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0ZH-em-Ah1">
-                                <rect key="frame" x="6" y="54" width="157" height="24"/>
+                                <rect key="frame" x="6" y="54" width="156" height="24"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="更高性能·更高质量" id="5fK-Dt-wE8">
                                     <font key="font" size="17" name="PingFangSC-Semibold"/>
                                     <color key="textColor" red="0.070588235289999995" green="0.70980392160000005" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -345,11 +345,11 @@
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LxY-GZ-4iw">
-                                <rect key="frame" x="75" y="15" width="86" height="20"/>
+                                <rect key="frame" x="75" y="15" width="85" height="20"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="update_en" id="DEq-xw-3mU"/>
                             </imageView>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="Wxr-O7-i9P">
-                                <rect key="frame" x="0.0" y="0.0" width="169" height="78"/>
+                                <rect key="frame" x="0.0" y="0.0" width="168" height="78"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="7g7-c5-ffH">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -381,15 +381,15 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p3z-m8-X3g">
-                                <rect key="frame" x="0.0" y="0.0" width="169" height="78"/>
+                                <rect key="frame" x="0.0" y="0.0" width="168" height="78"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="topLeft" imageScaling="proportionallyDown" image="black_bg1" id="J73-L2-Wfo"/>
                             </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kt0-yc-jQc">
-                                <rect key="frame" x="0.0" y="0.0" width="169" height="78"/>
+                                <rect key="frame" x="0.0" y="0.0" width="168" height="78"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="bottomRight" imageScaling="proportionallyDown" image="black_bg4" id="zYr-TL-Rn5"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ceg-zx-zLu">
-                                <rect key="frame" x="117" y="10" width="34" height="21"/>
+                                <rect key="frame" x="116" y="10" width="34" height="21"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="提币" id="Klh-1E-w8s">
                                     <font key="font" size="15" name="PingFangSC-Semibold"/>
                                     <color key="textColor" red="0.070588235289999995" green="0.70980392160000005" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -397,7 +397,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fRp-9S-mGB">
-                                <rect key="frame" x="48" y="51" width="34" height="17"/>
+                                <rect key="frame" x="47" y="51" width="34" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="赚币" id="DF9-4b-wXi">
                                     <font key="font" size="15" name="DINAlternate-Bold"/>
                                     <color key="textColor" red="0.070588235289999995" green="0.70980392160000005" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -419,7 +419,7 @@
                                 </connections>
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="vtY-XE-TzZ">
-                                <rect key="frame" x="101" y="0.0" width="68" height="39"/>
+                                <rect key="frame" x="100" y="0.0" width="68" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="S3P-HZ-xRo"/>
                                     <constraint firstAttribute="width" constant="68" id="pqY-3r-ncg"/>
@@ -634,6 +634,7 @@
                     <constraint firstItem="6ei-pp-WCr" firstAttribute="top" secondItem="xOB-FF-i5w" secondAttribute="bottom" constant="1" id="03o-ln-Z81"/>
                     <constraint firstItem="jpT-Mi-1hg" firstAttribute="leading" secondItem="YDJ-mS-ChS" secondAttribute="leading" id="2C6-UM-s84"/>
                     <constraint firstAttribute="trailing" secondItem="uh0-0c-7pc" secondAttribute="trailing" constant="15" id="763-pD-j1p"/>
+                    <constraint firstItem="aq3-tV-2gz" firstAttribute="trailing" secondItem="D8p-Ef-SbQ" secondAttribute="trailing" id="7TQ-et-kgT"/>
                     <constraint firstItem="xOB-FF-i5w" firstAttribute="centerX" secondItem="FS9-0E-2cb" secondAttribute="centerX" id="8CC-IR-kWY"/>
                     <constraint firstItem="GN3-HJ-EOR" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="15" id="9O0-6a-lkN"/>
                     <constraint firstItem="6ei-pp-WCr" firstAttribute="centerX" secondItem="xOB-FF-i5w" secondAttribute="centerX" id="AWF-3D-8aX"/>
@@ -644,6 +645,7 @@
                     <constraint firstItem="WOh-8V-f7a" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="Byw-6N-NXC"/>
                     <constraint firstItem="Ljc-u3-tdu" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="15" id="I9T-EE-w1X"/>
                     <constraint firstAttribute="bottom" secondItem="WOh-8V-f7a" secondAttribute="bottom" id="L2t-jt-oHC"/>
+                    <constraint firstItem="a6v-dp-7Ro" firstAttribute="trailing" secondItem="D8p-Ef-SbQ" secondAttribute="trailing" id="LeP-iA-DDe"/>
                     <constraint firstItem="YDJ-mS-ChS" firstAttribute="top" secondItem="Ljc-u3-tdu" secondAttribute="top" constant="-8" id="Rl9-W4-vVJ"/>
                     <constraint firstItem="uh0-0c-7pc" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="15" id="S8K-Pf-ozj"/>
                     <constraint firstItem="Ue3-Wn-qoj" firstAttribute="top" secondItem="FS9-0E-2cb" secondAttribute="bottom" constant="40" id="Spg-5j-sU0"/>

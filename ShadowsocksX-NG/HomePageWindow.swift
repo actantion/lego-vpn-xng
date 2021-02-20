@@ -105,6 +105,11 @@ class HomePageWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
     }
     @IBAction func clickTB(_ sender: Any) {
         print("点击提币")
+        var url = URL.init(string: "https://t.me/tenonvpn")
+//        if (TenonP2pLib.sharedInstance.IsVip) {
+//            url = URL.init(string: "https://t.me/tenonvpn_vip")
+//        }
+        NSWorkspace.shared.open(url!)
     }
     @IBAction func clickEarnCoin(_ sender: Any) {
         print("点击赚币")
