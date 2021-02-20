@@ -158,6 +158,8 @@ class HomePageWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
         self.constraintFee.constant += 0.43
         if self.constraintFee.constant >= lbProgressLoading.frame.width {
             resetProgressView()
+            // 点击链接按钮，链接按钮的UI效果
+            ConnectBtn()
         }
     }
     @objc func showSecondProgress() {
@@ -182,8 +184,6 @@ class HomePageWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
     }
     
     func Connect() {
-        // 点击链接按钮，链接按钮的UI效果
-        ConnectBtn()
         // 点击链接按钮，链接进程视图
         ConnectProgressView()
     }
