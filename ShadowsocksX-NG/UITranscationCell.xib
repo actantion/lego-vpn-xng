@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="UITranscationCell" id="c22-O7-iKe" customClass="UITranscationCell" customModule="ShadowsocksX_NG" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="310" height="45"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <view id="RWf-8j-kAq">
+                    <rect key="frame" x="0.0" y="0.0" width="310" height="45"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Utg-HO-R24">
+                            <rect key="frame" x="10" y="15" width="84" height="15"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="1FM-v9-J3X"/>
+                            </constraints>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="time" id="MAL-Qx-iqg">
+                                <font key="font" metaFont="system" size="12"/>
+                                <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MRv-7H-kDQ">
+                            <rect key="frame" x="90" y="15" width="81" height="15"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="77" id="iwf-ZE-ZPu"/>
+                            </constraints>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="type" id="ux5-qW-tg3">
+                                <font key="font" metaFont="system" size="12"/>
+                                <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="faZ-QH-MQz">
+                            <rect key="frame" x="167" y="15" width="75" height="15"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="amount" id="qnP-WE-zNF">
+                                <font key="font" metaFont="system" size="12"/>
+                                <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Djj-8I-iCj">
+                            <rect key="frame" x="238" y="15" width="74" height="15"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="balance" id="vM9-Ja-1V8">
+                                <font key="font" metaFont="system" size="12"/>
+                                <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Djj-8I-iCj" secondAttribute="trailing" id="35U-QP-D6G"/>
+                        <constraint firstItem="Djj-8I-iCj" firstAttribute="leading" secondItem="faZ-QH-MQz" secondAttribute="trailing" id="7jL-ab-x8e"/>
+                        <constraint firstItem="Utg-HO-R24" firstAttribute="leading" secondItem="RWf-8j-kAq" secondAttribute="leading" constant="12" id="JRl-vE-azh"/>
+                        <constraint firstItem="faZ-QH-MQz" firstAttribute="centerY" secondItem="Utg-HO-R24" secondAttribute="centerY" id="N8o-gc-VPH"/>
+                        <constraint firstItem="Djj-8I-iCj" firstAttribute="width" secondItem="faZ-QH-MQz" secondAttribute="width" id="Th0-Bp-dQz"/>
+                        <constraint firstItem="MRv-7H-kDQ" firstAttribute="leading" secondItem="Utg-HO-R24" secondAttribute="trailing" id="dAy-hP-3hI"/>
+                        <constraint firstItem="MRv-7H-kDQ" firstAttribute="centerY" secondItem="Utg-HO-R24" secondAttribute="centerY" id="hNZ-wu-CUK"/>
+                        <constraint firstItem="Utg-HO-R24" firstAttribute="centerY" secondItem="RWf-8j-kAq" secondAttribute="centerY" id="kH3-1d-GXF"/>
+                        <constraint firstItem="faZ-QH-MQz" firstAttribute="leading" secondItem="MRv-7H-kDQ" secondAttribute="trailing" id="s2m-CX-f1D"/>
+                        <constraint firstItem="Djj-8I-iCj" firstAttribute="centerY" secondItem="Utg-HO-R24" secondAttribute="centerY" id="y3Y-oJ-Re1"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <connections>
+                <outlet property="lbAmount" destination="faZ-QH-MQz" id="5i1-1o-WXG"/>
+                <outlet property="lbBanlce" destination="Djj-8I-iCj" id="Sfu-xD-ntZ"/>
+                <outlet property="lbTime" destination="Utg-HO-R24" id="CGS-xw-9hR"/>
+                <outlet property="lbType" destination="MRv-7H-kDQ" id="b0A-e4-eOB"/>
+                <outlet property="vwBack" destination="RWf-8j-kAq" id="Xf8-Kz-JJ6"/>
+            </connections>
+            <point key="canvasLocation" x="-170" y="144.5"/>
+        </customView>
+    </objects>
+</document>

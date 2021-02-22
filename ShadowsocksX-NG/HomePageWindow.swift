@@ -15,6 +15,7 @@ let APP_BLACK_COLOR = NSColor.init(red: 255, green: 255, blue: 255, alpha: 1)
 
 class HomePageWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSource {
 
+    @IBOutlet weak var lbNoNameUser: NSTextField!
     @IBOutlet weak var lbProgressDesc: NSTextField!
     @IBOutlet weak var constraintFee: NSLayoutConstraint!
     @IBOutlet weak var lbProgressFee: NSTextField!
@@ -29,12 +30,17 @@ class HomePageWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
     @IBOutlet weak var vwUpdateToPro: NSView!
     @IBOutlet weak var vwVersionBack: NSScrollView!
     @IBOutlet weak var vwFreeTag: NSView!
+    @IBOutlet weak var lbFreeTagLabel: NSTextField!
     @IBOutlet weak var lbVersion: NSTextField!
     @IBOutlet weak var lbLeftDays: NSTextField!
     @IBOutlet weak var lbTenonCoin: NSTextField!
     @IBOutlet weak var lbVersionType: NSTextField!
     @IBOutlet weak var vwScrollview: NSScrollView!
     @IBOutlet weak var tableView: NSTableView!
+    @IBOutlet weak var lbPrivateKey: NSTextField!
+    @IBOutlet weak var lbHigher: NSTextField!
+    @IBOutlet weak var lbTB: NSTextField!
+    @IBOutlet weak var lbEarn: NSTextField!
     
     var setWnd:SettingWindow!
     var earnWnd:EarnCoinWindow!
@@ -59,13 +65,22 @@ class HomePageWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
         
         initView()
     }
-    
+    func showTenonBalance(){
+        self.lbLeftDays.stringValue = "0" + "left_days".localized
+        self.lbTenonCoin.stringValue = "0 Tenon"
+        self.lbVersionType.stringValue = "Professional".localized
+        self.lbFreeTagLabel.stringValue = "Free".localized
+        self.lbNoNameUser.stringValue = "Anonymous User".localized
+        self.lbPrivateKey.stringValue = "Private key".localized
+        self.lbHigher.stringValue = "Higher performance".localized
+        self.lbTB.stringValue = "Seel out".localized
+        self.lbEarn.stringValue = "Charge flow".localized
+    }
     func initView(){
+        
         self.vwVersionBack.layer?.cornerRadius = 4
         self.vwVersionBack.layer?.masksToBounds = true
-        self.lbLeftDays.stringValue = "0 天后到期"
-        self.lbTenonCoin.stringValue = "0 Tenon"
-        self.lbVersionType.stringValue = "专业版"
+        showTenonBalance()
         self.vwUpdateToPro.isHidden = true
         
         self.vwConnect.wantsLayer = true
@@ -94,7 +109,7 @@ class HomePageWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
         
         cellView.imgIcon.image = NSImage.init(imageLiteralResourceName:iCon[row])
         cellView.lbCountryName.stringValue = countryCode[row]
-        cellView.lbNodes.stringValue = "\(countryNodes[row])个节点"
+        cellView.lbNodes.stringValue = "\(countryNodes[row])"+"nodes".localized
         
         return cellView
     }
@@ -125,9 +140,7 @@ class HomePageWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
         print("点击到专业")
         self.vwEarnCoin.isHidden = false
         self.vwFreeTag.isHidden = false
-        self.lbLeftDays.stringValue = "0 天后到期"
-        self.lbTenonCoin.stringValue = "0 Tenon"
-        self.lbVersionType.stringValue = "专业版"
+        showTenonBalance()
         self.vwUpdateToPro.isHidden = true
         
     }
@@ -146,7 +159,7 @@ class HomePageWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
     }
     func resetConnectBtn() {
         self.vwConnect.layer?.backgroundColor = NSColor.init(red: 200, green: 200, blue: 200, alpha: 1).cgColor
-        self.lbConnect.stringValue = "未连接"
+        self.lbConnect.stringValue = "Disconnect".localized
         self.lbConnect.textColor = NSColor.white
         self.imgConnect.image = NSImage(named: NSImage.Name(rawValue: "no_link_icon"))
         self.imgConnectTag.isHidden = true
@@ -164,7 +177,7 @@ class HomePageWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
         self.lbProgressFee.layer?.cornerRadius = 8
         
         self.constraintFee.constant = 0
-        self.lbProgressDesc.stringValue = "正在为您链接...\(connectCount)s"
+        self.lbProgressDesc.stringValue = "Linking for you".localized + "...\(connectCount)s"
         timer = Timer.scheduledTimer(timeInterval: 0.008, target: self, selector: #selector(showProgress), userInfo: nil, repeats: true)
         secondTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(showSecondProgress), userInfo: nil, repeats: true)
     }
@@ -178,17 +191,17 @@ class HomePageWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
     }
     @objc func showSecondProgress() {
         connectCount -= 1
-        self.lbProgressDesc.stringValue = "正在为您链接...\(connectCount)s"
+        self.lbProgressDesc.stringValue = "Linking for you".localized + "...\(connectCount)s"
     }
     
     func ConnectBtn() {
         self.vwConnect.layer?.backgroundColor = APP_GREEN_COLOR.cgColor
-        self.lbConnect.stringValue = "已链接"
+        self.lbConnect.stringValue = "Connected".localized
         self.lbConnect.textColor = NSColor.black
         self.imgConnect.image = NSImage(named: NSImage.Name(rawValue: "link_icon"))
         self.imgConnectTag.isHidden = false
         self.lbConnectTag.isHidden = false
-        self.lbConnectTag.stringValue = "P2P网络正在保护您的IP和数据隐私"
+        self.lbConnectTag.stringValue = "P2P networks are protecting your IP and data privacy".localized
     }
     func resetConnect() {
         // 点击断开链接，重置链接按钮
@@ -218,8 +231,8 @@ class HomePageWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
         self.vwEarnCoin.isHidden = true
         
         self.lbLeftDays.stringValue = "FREE!"
-        self.lbTenonCoin.stringValue = "免费"
-        self.lbVersionType.stringValue = "社区版本"
+        self.lbTenonCoin.stringValue = "Free".localized
+        self.lbVersionType.stringValue = "Community".localized
     }
     @IBAction func clickLogo(_ sender: NSButton) {
         print("点击logo")

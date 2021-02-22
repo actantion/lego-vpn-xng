@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="UITranscationHeaderCell" id="c22-O7-iKe" customClass="UITranscationHeaderCell" customModule="ShadowsocksX_NG" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="310" height="45"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <view id="Tdx-eo-16j">
+                    <rect key="frame" x="0.0" y="0.0" width="310" height="45"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nes-aE-Xs8">
+                            <rect key="frame" x="13" y="14" width="92" height="17"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="88" id="hdp-wv-w8j"/>
+                            </constraints>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="time" id="hN5-L2-DxN">
+                                <font key="font" metaFont="system" size="14"/>
+                                <color key="textColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PLK-57-WhB">
+                            <rect key="frame" x="101" y="14" width="64" height="17"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="kbS-As-R3p"/>
+                            </constraints>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="type" id="CBR-go-rsM">
+                                <font key="font" metaFont="system" size="14"/>
+                                <color key="textColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c5o-oG-23f">
+                            <rect key="frame" x="161" y="14" width="78" height="17"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="amount" id="Lj2-wp-VFO">
+                                <font key="font" metaFont="system" size="14"/>
+                                <color key="textColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hgr-Fl-jWa">
+                            <rect key="frame" x="235" y="14" width="77" height="17"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="balance" id="2dm-rx-E6e">
+                                <font key="font" metaFont="system" size="14"/>
+                                <color key="textColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Nes-aE-Xs8" firstAttribute="leading" secondItem="Tdx-eo-16j" secondAttribute="leading" constant="15" id="9lZ-y9-NVY"/>
+                        <constraint firstItem="c5o-oG-23f" firstAttribute="centerY" secondItem="Nes-aE-Xs8" secondAttribute="centerY" id="BZX-i0-9FD"/>
+                        <constraint firstItem="c5o-oG-23f" firstAttribute="leading" secondItem="PLK-57-WhB" secondAttribute="trailing" id="IPF-e1-C2I"/>
+                        <constraint firstItem="Nes-aE-Xs8" firstAttribute="centerY" secondItem="Tdx-eo-16j" secondAttribute="centerY" id="Mfi-g3-16w"/>
+                        <constraint firstItem="Hgr-Fl-jWa" firstAttribute="leading" secondItem="c5o-oG-23f" secondAttribute="trailing" id="N2l-od-W5n"/>
+                        <constraint firstItem="Hgr-Fl-jWa" firstAttribute="centerY" secondItem="Nes-aE-Xs8" secondAttribute="centerY" id="Q4Q-bA-Hxp"/>
+                        <constraint firstItem="PLK-57-WhB" firstAttribute="leading" secondItem="Nes-aE-Xs8" secondAttribute="trailing" id="USc-4M-dO3"/>
+                        <constraint firstAttribute="trailing" secondItem="Hgr-Fl-jWa" secondAttribute="trailing" id="czS-aq-KgI"/>
+                        <constraint firstItem="Hgr-Fl-jWa" firstAttribute="width" secondItem="c5o-oG-23f" secondAttribute="width" id="d1B-Zy-2fn"/>
+                        <constraint firstItem="PLK-57-WhB" firstAttribute="centerY" secondItem="Nes-aE-Xs8" secondAttribute="centerY" id="pFI-i8-hJm"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <connections>
+                <outlet property="lbAmount" destination="c5o-oG-23f" id="NIU-rH-8Ei"/>
+                <outlet property="lbBalance" destination="Hgr-Fl-jWa" id="7Ig-Nx-ylf"/>
+                <outlet property="lbTime" destination="Nes-aE-Xs8" id="FFr-2I-4bG"/>
+                <outlet property="lbType" destination="PLK-57-WhB" id="BGQ-F2-q52"/>
+                <outlet property="vwBack" destination="Tdx-eo-16j" id="xXL-vA-NC6"/>
+            </connections>
+            <point key="canvasLocation" x="-173" y="144.5"/>
+        </customView>
+    </objects>
+</document>

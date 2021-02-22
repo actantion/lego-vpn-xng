@@ -14,6 +14,7 @@ enum BaseModelType{
     case UITranscationHeaderType      //交易明细头
     case UITranscationType      //交易明细
     case UISpaceType            //空格
+    case UITipsType // 提示
 }
 
 class UIBaseModel : NSObject{
@@ -23,12 +24,16 @@ class UIBaseModel : NSObject{
     var desc:String = ""
     var mark:String = ""
     var cellHeight:CGFloat = 0.0
-    init(type:BaseModelType = .UISpaceType, title:String = "", subTitle:String = "", desc:String = "", mark:String = "", cellHeight:CGFloat = 0.0) {
+    var color:NSColor = NSColor.clear
+    var dataArray:Array<Any> = []
+    init(type:BaseModelType = .UISpaceType, title:String = "", subTitle:String = "", desc:String = "", mark:String = "", cellHeight:CGFloat = 0.0, color:NSColor = NSColor.clear, dataArray:[Any] = [NSObject]()) {
         self.type = type
         self.title = title
         self.subTitle = subTitle
         self.desc = desc
         self.mark = mark
         self.cellHeight = cellHeight
+        self.color = color
+        self.dataArray = dataArray
     }
 }

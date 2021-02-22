@@ -218,7 +218,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
                 noticeLabel.stringValue = "Agent service is not supported in your country or region.".localized
                 stopConnect()
             }
-//
+            
 //            if TenonP2pLib.sharedInstance.GetBackgroudStatus() == "cnn" {
 //                noticeLabel.stringValue = "Connect p2p vpn network failed.".localized
 //            }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="UITipsCell" id="c22-O7-iKe" customClass="UITipsCell" customModule="ShadowsocksX_NG" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="310" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <view id="OMc-Tm-fnr">
+                    <rect key="frame" x="0.0" y="0.0" width="310" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eIP-Ir-cD2">
+                            <rect key="frame" x="-2" y="11" width="37" height="19"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="方式" id="62v-5V-ihE">
+                                <font key="font" metaFont="system" size="16"/>
+                                <color key="textColor" red="0.23921568630000001" green="0.91372549020000005" blue="0.87568537599999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="eIP-Ir-cD2" firstAttribute="leading" secondItem="OMc-Tm-fnr" secondAttribute="leading" id="UuJ-WM-8uM"/>
+                        <constraint firstItem="eIP-Ir-cD2" firstAttribute="centerY" secondItem="OMc-Tm-fnr" secondAttribute="centerY" id="dj0-KF-0NN"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <connections>
+                <outlet property="lbTips" destination="eIP-Ir-cD2" id="AjZ-Ll-YsD"/>
+            </connections>
+            <point key="canvasLocation" x="-461" y="180"/>
+        </customView>
+    </objects>
+</document>

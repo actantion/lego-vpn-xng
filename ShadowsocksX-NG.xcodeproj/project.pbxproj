@@ -12,6 +12,12 @@
 		258E511BA910B0521B24DAB8 /* Pods_ShadowsocksX_NG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 283ED1A8E9B711AC65670031 /* Pods_ShadowsocksX_NG.framework */; };
 		844DC44E25DE33210049BBEF /* HomePageWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DC44C25DE33210049BBEF /* HomePageWindow.swift */; };
 		844DC44F25DE33210049BBEF /* HomePageWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844DC44D25DE33210049BBEF /* HomePageWindow.xib */; };
+		8484E4B525E33D3500370911 /* UITipsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484E4B425E33D3500370911 /* UITipsCell.swift */; };
+		8484E4BA25E33D4800370911 /* UITipsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8484E4B925E33D4800370911 /* UITipsCell.xib */; };
+		8484E4BE25E33FE000370911 /* UITranscationHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8484E4BD25E33FE000370911 /* UITranscationHeaderCell.xib */; };
+		8484E4C225E33FEA00370911 /* UITranscationHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484E4C125E33FEA00370911 /* UITranscationHeaderCell.swift */; };
+		8484E4C625E3423F00370911 /* UITranscationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484E4C525E3423F00370911 /* UITranscationCell.swift */; };
+		8484E4CA25E3424800370911 /* UITranscationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8484E4C925E3424800370911 /* UITranscationCell.xib */; };
 		848C0AFE25E095B80020EEFF /* SettingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C0AFC25E095B80020EEFF /* SettingWindow.swift */; };
 		848C0AFF25E095B80020EEFF /* SettingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848C0AFD25E095B80020EEFF /* SettingWindow.xib */; };
 		848C0B0525E0994A0020EEFF /* EarnCoinWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C0B0325E0994A0020EEFF /* EarnCoinWindow.swift */; };
@@ -196,6 +202,12 @@
 		5B6203C1228FCD3D365814AC /* Pods-ShadowsocksX-NGTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowsocksX-NGTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowsocksX-NGTests/Pods-ShadowsocksX-NGTests.debug.xcconfig"; sourceTree = "<group>"; };
 		844DC44C25DE33210049BBEF /* HomePageWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageWindow.swift; sourceTree = "<group>"; };
 		844DC44D25DE33210049BBEF /* HomePageWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomePageWindow.xib; sourceTree = "<group>"; };
+		8484E4B425E33D3500370911 /* UITipsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITipsCell.swift; sourceTree = "<group>"; };
+		8484E4B925E33D4800370911 /* UITipsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UITipsCell.xib; sourceTree = "<group>"; };
+		8484E4BD25E33FE000370911 /* UITranscationHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UITranscationHeaderCell.xib; sourceTree = "<group>"; };
+		8484E4C125E33FEA00370911 /* UITranscationHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITranscationHeaderCell.swift; sourceTree = "<group>"; };
+		8484E4C525E3423F00370911 /* UITranscationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITranscationCell.swift; sourceTree = "<group>"; };
+		8484E4C925E3424800370911 /* UITranscationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UITranscationCell.xib; sourceTree = "<group>"; };
 		848C0AFC25E095B80020EEFF /* SettingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWindow.swift; sourceTree = "<group>"; };
 		848C0AFD25E095B80020EEFF /* SettingWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingWindow.xib; sourceTree = "<group>"; };
 		848C0B0325E0994A0020EEFF /* EarnCoinWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarnCoinWindow.swift; sourceTree = "<group>"; };
@@ -455,6 +467,12 @@
 				848C0B1525E0E5430020EEFF /* UIPrivateKeyCell.xib */,
 				848C0B1B25E0F1F70020EEFF /* UISpaceCell.swift */,
 				848C0B2D25E0F9E80020EEFF /* UISpaceCell.xib */,
+				8484E4B425E33D3500370911 /* UITipsCell.swift */,
+				8484E4B925E33D4800370911 /* UITipsCell.xib */,
+				8484E4C525E3423F00370911 /* UITranscationCell.swift */,
+				8484E4C925E3424800370911 /* UITranscationCell.xib */,
+				8484E4C125E33FEA00370911 /* UITranscationHeaderCell.swift */,
+				8484E4BD25E33FE000370911 /* UITranscationHeaderCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -803,6 +821,7 @@
 				9BAA663623295FAC00F5CC99 /* menu_g_icon.png in Resources */,
 				848C0B0625E0994A0020EEFF /* EarnCoinWindow.xib in Resources */,
 				9BAA662E23295FAC00F5CC99 /* menu_p_icon@2x.png in Resources */,
+				8484E4BE25E33FE000370911 /* UITranscationHeaderCell.xib in Resources */,
 				1C82DBAA1FA96FB600B32551 /* install_simple_obfs.sh in Resources */,
 				9B74B5E9232949B100DEA386 /* ImportWindowController.xib in Resources */,
 				9BAA663523295FAC00F5CC99 /* virtual-server-icon-3.png in Resources */,
@@ -816,6 +835,7 @@
 				848C0B2A25E0F34B0020EEFF /* UIMethodCell.xib in Resources */,
 				9B3FFF291D08A1DF0019A709 /* user-rule.txt in Resources */,
 				9BAA663123295FAC00F5CC99 /* menu_m_icon@2x.png in Resources */,
+				8484E4BA25E33D4800370911 /* UITipsCell.xib in Resources */,
 				C6D429971DA75988002A5711 /* stop_privoxy.sh in Resources */,
 				9BAA662F23295FAC00F5CC99 /* menu_icon_disabled@2x.png in Resources */,
 				C8E42A6E1D4F2CAF0074C7EA /* UserRulesController.xib in Resources */,
@@ -849,6 +869,7 @@
 				9BC70EDC1D2E3E3100EDA4CA /* Localizable.strings in Resources */,
 				848C0AFF25E095B80020EEFF /* SettingWindow.xib in Resources */,
 				9B20804B2326AC460075386C /* client in Resources */,
+				8484E4CA25E3424800370911 /* UITranscationCell.xib in Resources */,
 				9B0BFFEE1D0460A70040E62B /* MainMenu.xib in Resources */,
 				D3121C0E23501700007AE9DD /* TranscationInfoCell.xib in Resources */,
 				9B3FFF4C1D09D8F70019A709 /* install_helper.sh in Resources */,
@@ -966,9 +987,11 @@
 				9B7725E6232E30C50062299F /* PACURLFormatter.swift in Sources */,
 				848C0B0B25E0D80E0020EEFF /* UIBaseModel.swift in Sources */,
 				848C0AFE25E095B80020EEFF /* SettingWindow.swift in Sources */,
+				8484E4C625E3423F00370911 /* UITranscationCell.swift in Sources */,
 				848C0B1C25E0F1F70020EEFF /* UISpaceCell.swift in Sources */,
 				9B86459D1E7C2CAD00A84029 /* ProxyInterfacesViewCtrl.swift in Sources */,
 				9B3FFF4F1D09D9D50019A709 /* ProxyConfHelper.m in Sources */,
+				8484E4C225E33FEA00370911 /* UITranscationHeaderCell.swift in Sources */,
 				9B5831F61E7302F8009D5B7D /* ShortcutsController.m in Sources */,
 				9BB706A71D1B982300551F0E /* SWBApplication.m in Sources */,
 				9B3FFF1E1D0732660019A709 /* Utils.m in Sources */,
@@ -985,6 +1008,7 @@
 				9B72FB62232782A300C6AAAE /* ImportWindowController.swift in Sources */,
 				9B3FFF0D1D05FEB30019A709 /* Utils.swift in Sources */,
 				9BEEF0751D04EF3E00FC52B3 /* PreferencesWindowController.swift in Sources */,
+				8484E4B525E33D3500370911 /* UITipsCell.swift in Sources */,
 				9B0BFFE91D0460A70040E62B /* AppDelegate.swift in Sources */,
 				848C0B0525E0994A0020EEFF /* EarnCoinWindow.swift in Sources */,
 				85134E2A2341A52F00DCBBBE /* TenonP2pLib.swift in Sources */,

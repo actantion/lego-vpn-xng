@@ -24,18 +24,53 @@ class EarnCoinWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
         initTableView()
     }
     func initDataArray(){
-        dataArray.append(UIBaseModel(type: .UIPrivateKeyType, title: "保护好私钥", subTitle: "aaasdfasdfasdfasdfasdfasdfqwerqwefasdfasdfasfasdfasdf", mark: "复制"))
+        dataArray.append(UIBaseModel(type: .UIPrivateKeyType, title: "Method one".localized, subTitle: "aaasdfasdfasdfasdfasdfasdfqwerqwefasdfasdfasfasdfasdf", mark: "Copy".localized))
         dataArray.append(UIBaseModel(type: .UISpaceType, cellHeight: 10.0))
-        dataArray.append(UIBaseModel(type: .UIMethodType, title: "方式一", subTitle: "包月", desc: "5 美元", mark: "购买"))
+        dataArray.append(UIBaseModel(type: .UIMethodType, title: "Method two".localized, subTitle: "$9 per month".localized, mark: "Buy".localized))
         dataArray.append(UIBaseModel(type: .UISpaceType, cellHeight: 4.0))
-        dataArray.append(UIBaseModel(type: .UIMethodType, title: "方式二", subTitle: "包季", desc: "12 美元/8折", mark: "购买"))
+        dataArray.append(UIBaseModel(type: .UIMethodType, title: "Method three".localized, subTitle: "$21 per quarter/20% off".localized, mark: "Buy".localized))
         dataArray.append(UIBaseModel(type: .UISpaceType, cellHeight: 4.0))
-        dataArray.append(UIBaseModel(type: .UIMethodType, title: "方式三", subTitle: "包年", desc: "36 美元/6折", mark: "购买"))
+        dataArray.append(UIBaseModel(type: .UIMethodType, title: "Method four".localized, subTitle: "$62 per year /60% off".localized, mark: "Buy".localized))
         dataArray.append(UIBaseModel(type: .UISpaceType, cellHeight: 10.0))
-        dataArray.append(UIBaseModel(type: .UIMethodType, title: "方式四", subTitle: "观看广告获得Tenon", mark: "进入"))
+        dataArray.append(UIBaseModel(type: .UIMethodType, title: "Method five".localized, subTitle: "Watch ads to earn Tenon".localized, mark: "Go".localized))
         dataArray.append(UIBaseModel(type: .UISpaceType, cellHeight: 10.0))
-        dataArray.append(UIBaseModel(type: .UIMethodType, title: "方式五", subTitle: "分享获得Tenon", mark: "分享"))
+        dataArray.append(UIBaseModel(type: .UIMethodType, title: "Method six".localized, subTitle: "Share to earn Tenon".localized, mark: "Share".localized))
         dataArray.append(UIBaseModel(type: .UISpaceType, cellHeight: 20.0))
+        loadTranscation()
+    }
+    func loadTranscation() {
+        let transcation = "02-09 09:30,2,asdfasdfqwerasdfasdf,16,900,0,0;"
+        if transcation.count != 0 {
+            dataArray.append(UIBaseModel(type: .UITipsType, title: "OrderList".localized))
+            dataArray.append(UIBaseModel(type: .UITranscationHeaderType))
+            let array = transcation.components(separatedBy: ";")
+            var idx = 0
+            for oneTransca in array {
+                let transDataArray = oneTransca.components(separatedBy: ",")
+                if transDataArray.count < 4 {
+                    continue
+                }
+                let type = transDataArray[1]
+                var typeValue = ""
+                if Int(type) == 1 {
+                    typeValue = "pay_for_vpn".localized
+                }else if Int(type) == 2 {
+                    typeValue = "transfer_out".localized
+                }else if Int(type) == 3 {
+                    typeValue = "recharge".localized
+                }else if Int(type) == 4 {
+                    typeValue = "transfer_in".localized
+                }else if Int(type) == 5 {
+                    typeValue = "share_reward".localized
+                }else if Int(type) == 6 {
+                    typeValue = "watch_ad_reward".localized
+                }else if Int(type) == 7 {
+                    typeValue = "mining".localized
+                }
+                dataArray.append(UIBaseModel(type: .UITranscationType, color: (idx%2 == 0 ? NSColor.white : APP_GREEN_COLOR), dataArray:[transDataArray[0],typeValue,transDataArray[3],transDataArray[4]]))
+                idx += 1
+            }
+        }
     }
     func initTableView() {
         initDataArray()
@@ -45,7 +80,9 @@ class EarnCoinWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
         tableView.register(NSNib(nibNamed: NSNib.Name(rawValue: "UIPrivateKeyCell"), bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "UIPrivateKeyCell"))
         tableView.register(NSNib(nibNamed: NSNib.Name(rawValue: "UISpaceCell"), bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "UISpaceCell"))
         tableView.register(NSNib(nibNamed: NSNib.Name(rawValue: "UIMethodCell"), bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "UIMethodCell"))
-        
+        tableView.register(NSNib(nibNamed: NSNib.Name(rawValue: "UITipsCell"), bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "UITipsCell"))
+        tableView.register(NSNib(nibNamed: NSNib.Name(rawValue: "UITranscationHeaderCell"), bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "UITranscationHeaderCell"))
+        tableView.register(NSNib(nibNamed: NSNib.Name(rawValue: "UITranscationCell"), bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "UITranscationCell"))
         tableView.reloadData()
     }
     func initView(){
@@ -66,7 +103,7 @@ class EarnCoinWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
         }else if model.type == .UISpaceType {
             return model.cellHeight
         }else if model.type == .UITranscationHeaderType {
-            return 44
+            return 45
         }else{
             return 40
         }
@@ -87,9 +124,23 @@ class EarnCoinWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
                 print("点击按钮")
             }
             return cellView
+        }else if model.type == .UITipsType {
+            let cellView:UITipsCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "UITipsCell"), owner: self) as! UITipsCell
+            cellView.setModel(model: model)
+            return cellView
+        }else if model.type == .UITranscationHeaderType {
+            let cellView:UITranscationHeaderCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "UITranscationHeaderCell"), owner: self) as! UITranscationHeaderCell
+            cellView.setModel(model: model)
+            return cellView
+        }else if model.type == .UITranscationType {
+            let cellView:UITranscationCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "UITranscationCell"), owner: self) as! UITranscationCell
+            cellView.setModel(model: model)
+            return cellView
         }else{
             let cellView:UISpaceCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "UISpaceCell"), owner: self) as! UISpaceCell
             return cellView
         }
+        
+        
     }
 }

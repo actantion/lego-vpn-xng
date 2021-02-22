@@ -14,10 +14,16 @@
                 <outlet property="imgConnectTag" destination="xOB-FF-i5w" id="GXQ-GV-CTd"/>
                 <outlet property="lbConnect" destination="JwU-be-i0L" id="ddi-Wg-r0U"/>
                 <outlet property="lbConnectTag" destination="6ei-pp-WCr" id="6Us-Co-4aF"/>
+                <outlet property="lbEarn" destination="fRp-9S-mGB" id="fSx-hq-1vH"/>
+                <outlet property="lbFreeTagLabel" destination="wnp-yX-Hzb" id="dFh-ps-nvQ"/>
+                <outlet property="lbHigher" destination="0ZH-em-Ah1" id="xvz-r5-nlf"/>
                 <outlet property="lbLeftDays" destination="NPh-31-cTS" id="AOS-m9-3QW"/>
+                <outlet property="lbNoNameUser" destination="g1p-sk-tQl" id="U5I-hq-p8x"/>
+                <outlet property="lbPrivateKey" destination="nGg-H4-BQ4" id="VvE-3R-GUL"/>
                 <outlet property="lbProgressDesc" destination="o4R-h1-qTA" id="5GJ-35-YBp"/>
                 <outlet property="lbProgressFee" destination="NRA-cq-haC" id="kbx-zd-08O"/>
                 <outlet property="lbProgressLoading" destination="kie-2P-LT3" id="bNA-xo-COg"/>
+                <outlet property="lbTB" destination="Ceg-zx-zLu" id="Sg2-xt-JDy"/>
                 <outlet property="lbTenonCoin" destination="Fbt-Jd-Axb" id="dd0-4M-TFg"/>
                 <outlet property="lbVersion" destination="jpT-Mi-1hg" id="dkA-Bs-wOr"/>
                 <outlet property="lbVersionType" destination="7cf-MZ-frI" id="gaE-ql-ySr"/>
