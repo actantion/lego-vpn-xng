@@ -132,6 +132,7 @@ class SettingWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSourc
     @IBAction func clickSkype(_ sender: Any) {
         print("点击Skype")
     }
+//    #define NSLocalizedString(key, comment) [[NSBundle mainBundle] localizedStringForKey:(key) value:@"" table:nil]
     func initView(){
         vwChoseLanguage.wantsLayer = true
         vwChoseLanguage.layer?.cornerRadius = 22.5

@@ -10,6 +10,17 @@ import Foundation
 
 extension String {
     var localized: String {
+//            UserDefaults.standard.set(row, forKey: "APP_LANGUAGE")
+        let language = UserDefaults.standard.integer(forKey: "APP_LANGUAGE")
+        if language == 0 {
+            // 中文
+            let data = "zh-Hans"
+            let bdl = Bundle.main.path(forResource: data, ofType: "lproj")
+            
+        }else{
+            // 英文
+            let data = "en"
+        }
         return NSLocalizedString(self, tableName: "Localizable", comment: "")
     }
     

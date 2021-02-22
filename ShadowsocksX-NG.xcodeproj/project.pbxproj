@@ -208,6 +208,7 @@
 		8484E4C125E33FEA00370911 /* UITranscationHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITranscationHeaderCell.swift; sourceTree = "<group>"; };
 		8484E4C525E3423F00370911 /* UITranscationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITranscationCell.swift; sourceTree = "<group>"; };
 		8484E4C925E3424800370911 /* UITranscationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UITranscationCell.xib; sourceTree = "<group>"; };
+		8484E54A25E393AA00370911 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		848C0AFC25E095B80020EEFF /* SettingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWindow.swift; sourceTree = "<group>"; };
 		848C0AFD25E095B80020EEFF /* SettingWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingWindow.xib; sourceTree = "<group>"; };
 		848C0B0325E0994A0020EEFF /* EarnCoinWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarnCoinWindow.swift; sourceTree = "<group>"; };
@@ -223,11 +224,9 @@
 		850C485F2361B31400C238FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TenonMainWindowsController.xib; sourceTree = "<group>"; };
 		850C48612361B32900C238FF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TenonMainWindowsController.strings"; sourceTree = "<group>"; };
 		850C48632361B32E00C238FF /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/TenonMainWindowsController.strings; sourceTree = "<group>"; };
-		850C48652361B33000C238FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TenonMainWindowsController.strings; sourceTree = "<group>"; };
 		850C48672361B43000C238FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AcountSettingWndController.xib; sourceTree = "<group>"; };
 		850C486A2361B43800C238FF /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/AcountSettingWndController.strings; sourceTree = "<group>"; };
 		850C486C2361B43900C238FF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AcountSettingWndController.strings"; sourceTree = "<group>"; };
-		850C486E2361B43900C238FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AcountSettingWndController.strings; sourceTree = "<group>"; };
 		85134E242341A41800DCBBBE /* libp2p.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libp2p.framework; path = libp2p/libp2p.framework; sourceTree = "<group>"; };
 		85134E292341A52F00DCBBBE /* TenonP2pLib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TenonP2pLib.swift; sourceTree = "<group>"; };
 		8539C2CA23542EA000ACC3D8 /* CircularProgress.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CircularProgress.framework; path = libp2p/CircularProgress.framework; sourceTree = "<group>"; };
@@ -772,7 +771,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				English,
-				en,
 				Base,
 				"zh-Hans",
 			);
@@ -1061,7 +1059,6 @@
 				850C485F2361B31400C238FF /* Base */,
 				850C48612361B32900C238FF /* zh-Hans */,
 				850C48632361B32E00C238FF /* English */,
-				850C48652361B33000C238FF /* en */,
 			);
 			name = TenonMainWindowsController.xib;
 			sourceTree = "<group>";
@@ -1072,7 +1069,6 @@
 				850C48672361B43000C238FF /* Base */,
 				850C486A2361B43800C238FF /* English */,
 				850C486C2361B43900C238FF /* zh-Hans */,
-				850C486E2361B43900C238FF /* en */,
 			);
 			name = AcountSettingWndController.xib;
 			sourceTree = "<group>";
@@ -1091,6 +1087,7 @@
 			children = (
 				9B172A6B1D0ADDDD00B87B9A /* Base */,
 				9B172A6D1D0ADDE800B87B9A /* zh-Hans */,
+				8484E54A25E393AA00370911 /* English */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
