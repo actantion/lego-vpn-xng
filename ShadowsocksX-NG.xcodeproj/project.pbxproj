@@ -38,6 +38,7 @@
 		8539C2CC23542EA000ACC3D8 /* CircularProgress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539C2CA23542EA000ACC3D8 /* CircularProgress.framework */; };
 		8539C2CD23542EA000ACC3D8 /* CircularProgress.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8539C2CA23542EA000ACC3D8 /* CircularProgress.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8562D82423580568003E290A /* tenon_local in Resources */ = {isa = PBXBuildFile; fileRef = 8562D82323580568003E290A /* tenon_local */; };
+		85D42F7425E80A9300A2E0D5 /* CallOutOfBandwidth.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85D42F7225E80A9200A2E0D5 /* CallOutOfBandwidth.xib */; };
 		9B0BFFE91D0460A70040E62B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BFFE81D0460A70040E62B /* AppDelegate.swift */; };
 		9B0BFFEB1D0460A70040E62B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B0BFFEA1D0460A70040E62B /* Assets.xcassets */; };
 		9B0BFFEE1D0460A70040E62B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B0BFFEC1D0460A70040E62B /* MainMenu.xib */; };
@@ -231,6 +232,8 @@
 		85134E292341A52F00DCBBBE /* TenonP2pLib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TenonP2pLib.swift; sourceTree = "<group>"; };
 		8539C2CA23542EA000ACC3D8 /* CircularProgress.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CircularProgress.framework; path = libp2p/CircularProgress.framework; sourceTree = "<group>"; };
 		8562D82323580568003E290A /* tenon_local */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = tenon_local; path = "ShadowsocksX-NG/ss-local/tenon_local"; sourceTree = "<group>"; };
+		85D42F7125E80A9200A2E0D5 /* CallOutOfBandwidth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallOutOfBandwidth.swift; sourceTree = "<group>"; };
+		85D42F7225E80A9200A2E0D5 /* CallOutOfBandwidth.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CallOutOfBandwidth.xib; sourceTree = "<group>"; };
 		9B07EFA61D048BBB0052D9DF /* ss-local */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ss-local"; sourceTree = "<group>"; };
 		9B0BFFE51D0460A70040E62B /* ShadowsocksX-NG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ShadowsocksX-NG.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B0BFFE81D0460A70040E62B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -413,6 +416,8 @@
 				848C0AFC25E095B80020EEFF /* SettingWindow.swift */,
 				848C0AFD25E095B80020EEFF /* SettingWindow.xib */,
 				848C0B0325E0994A0020EEFF /* EarnCoinWindow.swift */,
+				85D42F7125E80A9200A2E0D5 /* CallOutOfBandwidth.swift */,
+				85D42F7225E80A9200A2E0D5 /* CallOutOfBandwidth.xib */,
 				848C0B0425E0994A0020EEFF /* EarnCoinWindow.xib */,
 			);
 			name = UI2.0;
@@ -862,6 +867,7 @@
 				848C0B2E25E0F9E80020EEFF /* UISpaceCell.xib in Resources */,
 				1C82DBA81FA96C7500B32551 /* obfs-local in Resources */,
 				9B7297EC214DA88A00FD24AA /* ShareServerProfilesWindowController.xib in Resources */,
+				85D42F7425E80A9300A2E0D5 /* CallOutOfBandwidth.xib in Resources */,
 				9B3FFF271D0898EB0019A709 /* gfwlist.txt in Resources */,
 				C6D429931DA75988002A5711 /* install_privoxy.sh in Resources */,
 				9BC70EDC1D2E3E3100EDA4CA /* Localizable.strings in Resources */,

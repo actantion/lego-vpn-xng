@@ -21,9 +21,9 @@ class UITranscationHeaderCell: NSTableCellView {
         // Drawing code here.
     }
     func setModel(model:UIBaseModel){
-        lbTime.stringValue = "Transaction time".localized
-        lbType.stringValue = "Type".localized
-        lbAmount.stringValue = "volume of trade".localized
+        lbTime.stringValue = "time".localized
+        lbType.stringValue = "type".localized
+        lbAmount.stringValue = "amount".localized
         lbBalance.stringValue = "Balance".localized
         vwBack.wantsLayer = true
         vwBack.layer?.backgroundColor = APP_GREEN_COLOR.cgColor

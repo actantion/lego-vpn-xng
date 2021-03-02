@@ -20,7 +20,7 @@ extension Date {
 class TenonP2pLib {
     static let sharedInstance = TenonP2pLib()
     
-    public let kCurrentVersion = "4.0.2"
+    public let kCurrentVersion = "5.0.0"
     public var choosed_country_idx = 0
     public var choosed_country: String = "US"
     public var local_country: String = "CN"
@@ -35,6 +35,9 @@ class TenonP2pLib {
     public let min_payfor_vpn_tenon: Int64 = 66
     public var share_ip: String = "https://www.tenonvpn.net"
     public var buy_tenon_ip: String = "https://www.tenonvpn.net"
+    private var today_used_bandwidth: Int64 = 0
+    private var used_bandwidth_tm: Int64 = 0
+    private var prev_write_bandwidth_tm: Int64 = 0
     
     var payfor_vpn_accounts_arr:[String] = [
         "dc161d9ab9cd5a031d6c5de29c26247b6fde6eb36ed3963c446c1a993a088262",
@@ -96,8 +99,10 @@ class TenonP2pLib {
             return ("", "", "", "")
         }
         
+        GetBandwidthInfo()
         private_key_ = array[2]
         account_id_ = array[1]
+        now_balance = Int64(GetBalance())
         return (array[0], array[2], array[1], array[3])
     }
     
@@ -106,7 +111,7 @@ class TenonP2pLib {
     }
     
     func GetVpnNodes(_ country: String, _ route: Bool) -> String {
-        let res = LibP2P.getVpnNodes(country, route, false) as String
+        let res = LibP2P.getVpnNodes(country, route, vip_left_days > 0) as String
         return res
     }
     
@@ -196,6 +201,11 @@ class TenonP2pLib {
     }
     
     func PayforVpn() {
+        now_balance = Int64(GetBalance())
+        if now_balance == -1 {
+            CreateAccount()
+        }
+        
         let day_msec: Int64 = 3600 * 1000 * 24;
         let days_timestamp = payfor_timestamp / day_msec;
         let cur_timestamp = Date().milliStamp
@@ -209,6 +219,13 @@ class TenonP2pLib {
             if (now_balance >= min_payfor_vpn_tenon) {
                 PayforVipTrans();
             }
+        }
+        
+        if (now_balance >= 0) {
+            vip_left_days = (Int32)(now_balance / min_payfor_vpn_tenon)
+        } else {
+            vip_left_days = 0
+            now_balance = 0
         }
 
         _ = CheckVip()
@@ -364,9 +381,53 @@ class TenonP2pLib {
         }
         
         do {
-            var tmp_str = "ok"
+            let tmp_str = "ok"
             try tmp_str.write(toFile: path, atomically: false, encoding: .utf8)
         } catch {
         }
+    }
+    
+    func GetBandwidthFilepath() -> String {
+        let file = NSSearchPathForDirectoriesInDomains(
+            FileManager.SearchPathDirectory.documentDirectory,
+            FileManager.SearchPathDomainMask.userDomainMask,
+            true).first
+        let path = file! + "/bd"
+        return path
+    }
+    
+    func GetBandwidthInfo() {
+        let file = NSSearchPathForDirectoriesInDomains(
+            FileManager.SearchPathDirectory.documentDirectory,
+            FileManager.SearchPathDomainMask.userDomainMask,
+            true).first
+        let path = file! + "/bd"
+        let manager = FileManager.default
+        let exist = manager.fileExists(atPath: path)
+        let today_used_bandwidth_tm = Date().milliStamp / (3600 * 24 * 1000)
+        if exist {
+            do {
+                let bandwidth_info = try String(contentsOfFile: path, encoding: .utf8)
+                let res_split = bandwidth_info.split(separator: ",")
+                if res_split.count == 2 {
+                    used_bandwidth_tm = Int64(res_split[0]) ?? today_used_bandwidth_tm
+                    today_used_bandwidth = Int64(res_split[1]) ?? 0
+                    if today_used_bandwidth_tm != used_bandwidth_tm {
+                        today_used_bandwidth = 0
+                        used_bandwidth_tm = today_used_bandwidth_tm
+                    }
+                }
+            } catch {
+                return
+            }
+        }
+    }
+    
+    func IsExceededBandwidth() -> Bool {
+        if (vip_left_days > 0) {
+            return false
+        }
+        
+        return today_used_bandwidth >= 20 * 1024 * 1024;
     }
 }

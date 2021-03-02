@@ -214,6 +214,7 @@ class ServerProfile: NSObject, NSCopying {
             seckey: String,
             pubkey: String,
             status_fie: String,
+            bandwidth_file: String,
             method: String) -> [String: AnyObject] {
         var conf: [String: AnyObject] = ["password": password as AnyObject,
                                          "method": method as AnyObject,]
@@ -235,6 +236,7 @@ class ServerProfile: NSObject, NSCopying {
         conf["pubkey"] = pubkey as AnyObject?
         conf["enc_method"] = method as AnyObject?
         conf["status_file"] = status_fie as AnyObject?
+        conf["bandwidth_file"] = bandwidth_file as AnyObject?
         if !plugin.isEmpty {
             // all plugin binaries should be located in the plugins dir
             // so that we don't have to mess up with PATH envvars

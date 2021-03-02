@@ -24,24 +24,24 @@ class EarnCoinWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
         initTableView()
     }
     func initDataArray(){
-        dataArray.append(UIBaseModel(type: .UIPrivateKeyType, title: "Method one".localized, subTitle: "aaasdfasdfasdfasdfasdfasdfqwerqwefasdfasdfasfasdfasdf", mark: "Copy".localized))
+        dataArray.append(UIBaseModel(type: .UIPrivateKeyType, title: "Transfer to your account".localized, subTitle: TenonP2pLib.sharedInstance.account_id_, mark: "Copy".localized))
         dataArray.append(UIBaseModel(type: .UISpaceType, cellHeight: 10.0))
-        dataArray.append(UIBaseModel(type: .UIMethodType, title: "Method two".localized, subTitle: "$9 per month".localized, mark: "Buy".localized))
+        dataArray.append(UIBaseModel(type: .UIMethodType1, title: "Way 1".localized, subTitle: "MONTHLY                    $5".localized, mark: "Buy".localized))
         dataArray.append(UIBaseModel(type: .UISpaceType, cellHeight: 4.0))
-        dataArray.append(UIBaseModel(type: .UIMethodType, title: "Method three".localized, subTitle: "$21 per quarter/20% off".localized, mark: "Buy".localized))
+        dataArray.append(UIBaseModel(type: .UIMethodType2, title: "Way 2".localized, subTitle: "QUARTERLY                  $12 / -20%".localized, mark: "Buy".localized))
         dataArray.append(UIBaseModel(type: .UISpaceType, cellHeight: 4.0))
-        dataArray.append(UIBaseModel(type: .UIMethodType, title: "Method four".localized, subTitle: "$62 per year /60% off".localized, mark: "Buy".localized))
+        dataArray.append(UIBaseModel(type: .UIMethodType3, title: "Way 3".localized, subTitle: "ANNUAL           $36 / -40%".localized, mark: "Buy".localized))
         dataArray.append(UIBaseModel(type: .UISpaceType, cellHeight: 10.0))
-        dataArray.append(UIBaseModel(type: .UIMethodType, title: "Method five".localized, subTitle: "Watch ads to earn Tenon".localized, mark: "Go".localized))
+        dataArray.append(UIBaseModel(type: .UIMethodType4, title: "Way 4".localized, subTitle: "Share to earn".localized, mark: "Share".localized))
         dataArray.append(UIBaseModel(type: .UISpaceType, cellHeight: 10.0))
-        dataArray.append(UIBaseModel(type: .UIMethodType, title: "Method six".localized, subTitle: "Share to earn Tenon".localized, mark: "Share".localized))
+        dataArray.append(UIBaseModel(type: .UIMethodType5, title: "Way 5".localized, subTitle: "Mining".localized, mark: "GO".localized))
         dataArray.append(UIBaseModel(type: .UISpaceType, cellHeight: 20.0))
         loadTranscation()
     }
     func loadTranscation() {
-        let transcation = "02-09 09:30,2,asdfasdfqwerasdfasdf,16,900,0,0;"
+        let transcation = TenonP2pLib.sharedInstance.GetTransactions()
         if transcation.count != 0 {
-            dataArray.append(UIBaseModel(type: .UITipsType, title: "OrderList".localized))
+            dataArray.append(UIBaseModel(type: .UITipsType, title: "History".localized))
             dataArray.append(UIBaseModel(type: .UITranscationHeaderType))
             let array = transcation.components(separatedBy: ";")
             var idx = 0
@@ -53,21 +53,21 @@ class EarnCoinWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
                 let type = transDataArray[1]
                 var typeValue = ""
                 if Int(type) == 1 {
-                    typeValue = "pay_for_vpn".localized
+                    typeValue = "To VPN".localized
                 }else if Int(type) == 2 {
-                    typeValue = "transfer_out".localized
+                    typeValue = "Trans Out".localized
                 }else if Int(type) == 3 {
                     typeValue = "recharge".localized
                 }else if Int(type) == 4 {
-                    typeValue = "transfer_in".localized
+                    typeValue = "Tran In".localized
                 }else if Int(type) == 5 {
-                    typeValue = "share_reward".localized
+                    typeValue = "Share Reward".localized
                 }else if Int(type) == 6 {
-                    typeValue = "watch_ad_reward".localized
+                    typeValue = "Ad Reward".localized
                 }else if Int(type) == 7 {
-                    typeValue = "mining".localized
+                    typeValue = "Mining".localized
                 }
-                dataArray.append(UIBaseModel(type: .UITranscationType, color: (idx%2 == 0 ? NSColor.white : APP_GREEN_COLOR), dataArray:[transDataArray[0],typeValue,transDataArray[3],transDataArray[4]]))
+                dataArray.append(UIBaseModel(type: .UITranscationType, color: (idx%2 == 0 ? APP_BLACK_COLOR2 : APP_BLACK_COLOR1), dataArray:[transDataArray[0],typeValue,transDataArray[2],transDataArray[3]]))
                 idx += 1
             }
         }
@@ -87,6 +87,8 @@ class EarnCoinWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
     }
     func initView(){
         // 中英文转
+        lbEarnCoin.stringValue = "Earn".localized
+        lbNotice.stringValue = "Tips: To ensure security, please keep your private key and don’t tell anyone to ensure your account is safe".localized
     }
     func selectionShouldChange(in tableView: NSTableView) -> Bool {
         return false
@@ -98,7 +100,15 @@ class EarnCoinWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
         let model = dataArray[row]
         if model.type == .UIPrivateKeyType {
             return 130
-        }else if model.type == .UIMethodType {
+        }else if model.type == .UIMethodType1 {
+            return 60
+        }else if model.type == .UIMethodType2 {
+            return 60
+        }else if model.type == .UIMethodType3 {
+            return 60
+        }else if model.type == .UIMethodType4 {
+            return 60
+        }else if model.type == .UIMethodType5 {
             return 60
         }else if model.type == .UISpaceType {
             return model.cellHeight
@@ -108,20 +118,75 @@ class EarnCoinWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSour
             return 40
         }
     }
+    
+    func copyStringToPasteboard(string: String) {
+        let pboard = NSPasteboard.general
+        pboard.declareTypes([.string], owner: nil)
+        pboard.setString(string, forType: .string)
+    }
+   
+    func showCopySuccessAlert() {
+        let a: NSAlert = NSAlert()
+        a.messageText = "success".localized
+        a.informativeText = "copy success".localized
+        a.addButton(withTitle: "OK".localized)
+        a.alertStyle = NSAlert.Style.warning
+
+        a.beginSheetModal(for: self.window!, completionHandler: { (modalResponse: NSApplication.ModalResponse) -> Void in
+            if(modalResponse == NSApplication.ModalResponse.alertFirstButtonReturn){
+                
+            }
+        })
+    }
+    
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let model = dataArray[row]
         if model.type == .UIPrivateKeyType {
             let cellView:UIPrivateKeyCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "UIPrivateKeyCell"), owner: self) as! UIPrivateKeyCell
             cellView.setModel(model: dataArray[row])
             cellView.clickBlockCopy = {
-                print("拷贝私钥")
+                self.copyStringToPasteboard(string: TenonP2pLib.sharedInstance.account_id_)
+                self.showCopySuccessAlert()
             }
             return cellView
-        }else if model.type == .UIMethodType {
+        }else if model.type == .UIMethodType1 {
             let cellView:UIMethodCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "UIMethodCell"), owner: self) as! UIMethodCell
             cellView.setModel(model: model)
             cellView.clickBlock = {
-                print("点击按钮")
+                let url = URL.init(string: "https://www.tenonvpn.net/pp_one_month/" + TenonP2pLib.sharedInstance.account_id_)
+                NSWorkspace.shared.open(url!)
+            }
+            return cellView
+        }else if model.type == .UIMethodType2 {
+            let cellView:UIMethodCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "UIMethodCell"), owner: self) as! UIMethodCell
+            cellView.setModel(model: model)
+            cellView.clickBlock = {
+                let url = URL.init(string: "https://www.tenonvpn.net/pp_six_month/" + TenonP2pLib.sharedInstance.account_id_)
+                NSWorkspace.shared.open(url!)
+            }
+            return cellView
+        }else if model.type == .UIMethodType3 {
+            let cellView:UIMethodCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "UIMethodCell"), owner: self) as! UIMethodCell
+            cellView.setModel(model: model)
+            cellView.clickBlock = {
+                let url = URL.init(string: "https://www.tenonvpn.net/pp_one_year/" + TenonP2pLib.sharedInstance.account_id_)
+                NSWorkspace.shared.open(url!)
+            }
+            return cellView
+        }else if model.type == .UIMethodType4 {
+            let cellView:UIMethodCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "UIMethodCell"), owner: self) as! UIMethodCell
+            cellView.setModel(model: model)
+            cellView.clickBlock = {
+                self.copyStringToPasteboard(string: "https://www.tenonvpn.net?id=" + TenonP2pLib.sharedInstance.account_id_)
+                self.showCopySuccessAlert()
+            }
+            return cellView
+        }else if model.type == .UIMethodType5 {
+            let cellView:UIMethodCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "UIMethodCell"), owner: self) as! UIMethodCell
+            cellView.setModel(model: model)
+            cellView.clickBlock = {
+                let url = URL.init(string: "https://github.com/tenondvpn/tenonvpn-join")
+                NSWorkspace.shared.open(url!)
             }
             return cellView
         }else if model.type == .UITipsType {

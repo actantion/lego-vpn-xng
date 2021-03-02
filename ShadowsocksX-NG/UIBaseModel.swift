@@ -10,7 +10,11 @@ import Foundation
 
 enum BaseModelType{
     case UIPrivateKeyType       //保护好私钥
-    case UIMethodType           //方法1，2，3
+    case UIMethodType1           //方法1，2，3
+    case UIMethodType2           //方法1，2，3
+    case UIMethodType3           //方法1，2，3
+    case UIMethodType4           //方法1，2，3
+    case UIMethodType5           //方法1，2，3
     case UITranscationHeaderType      //交易明细头
     case UITranscationType      //交易明细
     case UISpaceType            //空格

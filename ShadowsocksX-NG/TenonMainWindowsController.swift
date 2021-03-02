@@ -286,7 +286,7 @@ class TenonMainWindowsController: NSWindowController,NSTableViewDelegate,NSTable
 //        }
         
         if TenonP2pLib.sharedInstance.vip_left_days >= 0 {
-            vipStatusLable.stringValue = "VIP due in ".localized + (String)(TenonP2pLib.sharedInstance.vip_left_days) + "days".localized
+            vipStatusLable.stringValue = "VIP ".localized + (String)(TenonP2pLib.sharedInstance.vip_left_days) + " DAYS".localized
 //            vipButton.isHidden = false
 //            noVipButton.isHidden = true
         }

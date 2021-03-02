@@ -19,6 +19,14 @@ class SettingWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSourc
     @IBOutlet weak var tableVpnManager: NSTableView!
     @IBOutlet weak var lbProxyModel: NSTextField!
     @IBOutlet weak var lbRouteType: NSTextField!
+    
+    @IBOutlet weak var SettingsText: NSTextField!
+    @IBOutlet weak var joinNodeText: NSTextField!
+    @IBOutlet weak var thirdJoinDescText: NSTextField!
+    @IBOutlet weak var emailTitleText: NSTextField!
+    @IBOutlet weak var websiteText: NSTextField!
+    @IBOutlet weak var tgGroupText: NSTextField!
+    
     var dataLanguageArray = [UIBaseModel]()
     var dataVpnManagerArray = [UIBaseModel]()
     override func windowDidLoad() {
@@ -31,8 +39,8 @@ class SettingWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSourc
         scrollLanguage.isHidden = true
         scrollVpnManager.isHidden = true
         
-        dataLanguageArray.append(UIBaseModel(type: .UITipsType, title: "中文"))
-        dataLanguageArray.append(UIBaseModel(type: .UITipsType, title: "English"))
+        dataLanguageArray.append(UIBaseModel(type: .UITipsType, title: "global_route".localized))
+        dataLanguageArray.append(UIBaseModel(type: .UITipsType, title: "smart_route".localized))
         
         dataVpnManagerArray.append(UIBaseModel(type: .UITipsType, title: "global_route".localized))
         dataVpnManagerArray.append(UIBaseModel(type: .UITipsType, title: "smart_route".localized))
@@ -134,6 +142,13 @@ class SettingWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSourc
     }
 //    #define NSLocalizedString(key, comment) [[NSBundle mainBundle] localizedStringForKey:(key) value:@"" table:nil]
     func initView(){
+        SettingsText.stringValue = "Settings".localized
+        joinNodeText.stringValue = "Join Node".localized
+        thirdJoinDescText.stringValue = "join_desc".localized
+        emailTitleText.stringValue = "email".localized
+        websiteText.stringValue = "Site".localized
+        tgGroupText.stringValue = "TG".localized
+        
         vwChoseLanguage.wantsLayer = true
         vwChoseLanguage.layer?.cornerRadius = 22.5
         vwChoseLanguage.layer?.masksToBounds = true
@@ -142,12 +157,12 @@ class SettingWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSourc
         vwVpnModel.layer?.cornerRadius = 22.5
         vwVpnModel.layer?.masksToBounds = true
         
-        lbTItleChoseLanguage.stringValue = "Language".localized
+        lbTItleChoseLanguage.stringValue = "proxy pattern".localized
         let language = UserDefaults.standard.integer(forKey: "APP_LANGUAGE")
         if language == 1 {
-            lbChosedLanguage.stringValue = "English"
+            lbChosedLanguage.stringValue = "smart_route".localized
         }else{
-            lbChosedLanguage.stringValue = "中文"
+            lbChosedLanguage.stringValue = "global_route".localized
         }
         
         lbProxyModel.stringValue = "proxy pattern".localized
