@@ -6,18 +6,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="EarnCoinWindow" customModule="ShadowsocksX_NG" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="WithdrawCoinWindow" customModule="ShadowsocksX_NG" customModuleProvider="target">
             <connections>
-                <outlet property="lbEarnCoin" destination="YFq-PJ-ZAz" id="Ykv-YV-LFE"/>
-                <outlet property="lbNotice" destination="PAi-iI-yzQ" id="dT9-Yo-spq"/>
-                <outlet property="tableView" destination="e5w-Kb-qWl" id="rYg-3V-Oz8"/>
+                <outlet property="tableView" destination="ZIh-5q-VfX" id="Rhz-kf-6GZ"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="EarnCoin" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="375" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2048" height="1127"/>
@@ -25,56 +23,56 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6KH-7Q-wH7">
-                        <rect key="frame" x="18" y="556" width="91" height="24"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="TenonVPN" id="NHy-5E-0NU">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MIU-11-wqh">
+                        <rect key="frame" x="18" y="548" width="91" height="24"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="TenonVPN" id="FhB-4h-ibb">
                             <font key="font" size="20" name="DINAlternate-Bold"/>
                             <color key="textColor" red="0.070588235289999995" green="0.70980392160000005" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YFq-PJ-ZAz">
-                        <rect key="frame" x="23" y="494" width="64" height="42"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="赚币" id="TB0-Lc-rVS">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Au-HU-FiW">
+                        <rect key="frame" x="23" y="486" width="124" height="42"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="提现流量" id="kIA-kh-Xch">
                             <font key="font" size="30" name="PingFangSC-Semibold"/>
                             <color key="textColor" red="0.70303951340000004" green="0.70303951340000004" blue="0.70303951340000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PAi-iI-yzQ">
-                        <rect key="frame" x="18" y="447" width="339" height="32"/>
-                        <textFieldCell key="cell" selectable="YES" title="提示：为了保障安全，请保存好您的私钥，不要告诉任何人，确保您的账户安全" id="e4F-Lb-Kxl">
-                            <font key="font" metaFont="system"/>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="O3H-Ee-Vsy">
+                        <rect key="frame" x="18" y="439" width="339" height="32"/>
+                        <textFieldCell key="cell" selectable="YES" title="提示：最少可提100 Tenon。为了保障安全，请保存好您的私钥，不要告诉任何人，确保您的账户安全" id="6vP-ig-H1q">
+                            <font key="font" size="13" name=".PingFangSC-Regular"/>
                             <color key="textColor" red="0.23921568630000001" green="0.91372549020000005" blue="0.87568537599999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="allowed" translatesAutoresizingMaskIntoConstraints="NO" id="SPx-UQ-POv">
-                        <rect key="frame" x="15" y="20" width="345" height="427"/>
-                        <clipView key="contentView" drawsBackground="NO" id="9yo-2Z-Ebl">
-                            <rect key="frame" x="0.0" y="0.0" width="345" height="427"/>
+                    <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="allowed" translatesAutoresizingMaskIntoConstraints="NO" id="acZ-TO-lOI">
+                        <rect key="frame" x="15" y="20" width="345" height="418"/>
+                        <clipView key="contentView" drawsBackground="NO" id="c8P-Ls-w1k">
+                            <rect key="frame" x="0.0" y="0.0" width="345" height="418"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="e5w-Kb-qWl">
-                                    <rect key="frame" x="0.0" y="0.0" width="345" height="427"/>
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="ZIh-5q-VfX" customClass="EditableTableView" customModule="ShadowsocksX_NG" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="345" height="418"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="286" minWidth="55" maxWidth="1000" id="fnr-Au-kKI">
+                                        <tableColumn width="286" minWidth="55" maxWidth="1000" id="Nz6-4t-dpk">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="0cW-5e-bnI">
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="Li8-D1-BsE">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="selectedMenuItemTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView id="bJc-hs-OiI">
+                                                <tableCellView id="zp7-eW-dR1">
                                                     <rect key="frame" x="11" y="1" width="295" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </tableCellView>
@@ -85,34 +83,34 @@
                             </subviews>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="a2U-eb-hEs">
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="oyK-Uh-tui">
                             <rect key="frame" x="-100" y="-100" width="223" height="15"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="D2P-DU-6T3">
+                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="AOK-M8-gIP">
                             <rect key="frame" x="-100" y="-100" width="15" height="102"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="6KH-7Q-wH7" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="82E-yB-qOj"/>
-                    <constraint firstItem="SPx-UQ-POv" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="15" id="E8W-q1-eb8"/>
-                    <constraint firstItem="6KH-7Q-wH7" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="SR3-Dh-z2g"/>
-                    <constraint firstItem="SPx-UQ-POv" firstAttribute="top" secondItem="PAi-iI-yzQ" secondAttribute="bottom" id="SSd-IH-6Uh"/>
-                    <constraint firstItem="YFq-PJ-ZAz" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="25" id="SjQ-hr-EZ1"/>
-                    <constraint firstAttribute="trailing" secondItem="PAi-iI-yzQ" secondAttribute="trailing" constant="20" id="WXL-25-O5w"/>
-                    <constraint firstItem="PAi-iI-yzQ" firstAttribute="top" secondItem="YFq-PJ-ZAz" secondAttribute="bottom" constant="15" id="b66-eb-ETb"/>
-                    <constraint firstItem="YFq-PJ-ZAz" firstAttribute="top" secondItem="6KH-7Q-wH7" secondAttribute="bottom" constant="20" id="lSa-Jb-qaJ"/>
-                    <constraint firstAttribute="bottom" secondItem="SPx-UQ-POv" secondAttribute="bottom" constant="20" symbolic="YES" id="nSM-d4-P6W"/>
-                    <constraint firstItem="PAi-iI-yzQ" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="xHF-vz-aJ7"/>
-                    <constraint firstAttribute="trailing" secondItem="SPx-UQ-POv" secondAttribute="trailing" constant="15" id="zg0-Vy-IqS"/>
+                    <constraint firstAttribute="trailing" secondItem="acZ-TO-lOI" secondAttribute="trailing" constant="15" id="0D7-JQ-6v0"/>
+                    <constraint firstItem="O3H-Ee-Vsy" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="1Rt-26-1xM"/>
+                    <constraint firstItem="MIU-11-wqh" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="B31-UC-fat"/>
+                    <constraint firstItem="acZ-TO-lOI" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="15" id="C5J-iF-hNe"/>
+                    <constraint firstItem="7Au-HU-FiW" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="25" id="GWS-Rl-rhx"/>
+                    <constraint firstAttribute="trailing" secondItem="O3H-Ee-Vsy" secondAttribute="trailing" constant="20" symbolic="YES" id="SMZ-7c-fwT"/>
+                    <constraint firstItem="acZ-TO-lOI" firstAttribute="top" secondItem="O3H-Ee-Vsy" secondAttribute="bottom" constant="1" id="cfR-7I-lEU"/>
+                    <constraint firstItem="MIU-11-wqh" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="28" id="m8E-E8-L1W"/>
+                    <constraint firstItem="7Au-HU-FiW" firstAttribute="top" secondItem="MIU-11-wqh" secondAttribute="bottom" constant="20" id="nT2-SA-oai"/>
+                    <constraint firstItem="O3H-Ee-Vsy" firstAttribute="top" secondItem="7Au-HU-FiW" secondAttribute="bottom" constant="15" id="rYK-vD-xlU"/>
+                    <constraint firstAttribute="bottom" secondItem="acZ-TO-lOI" secondAttribute="bottom" constant="20" symbolic="YES" id="zv8-cw-6eb"/>
                 </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="-403" y="186"/>
+            <point key="canvasLocation" x="-101.5" y="144"/>
         </window>
     </objects>
 </document>

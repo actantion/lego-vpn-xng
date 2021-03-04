@@ -29,6 +29,11 @@
 		848C0B2625E0F3400020EEFF /* UIMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C0B2525E0F3400020EEFF /* UIMethodCell.swift */; };
 		848C0B2A25E0F34B0020EEFF /* UIMethodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848C0B2925E0F34B0020EEFF /* UIMethodCell.xib */; };
 		848C0B2E25E0F9E80020EEFF /* UISpaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848C0B2D25E0F9E80020EEFF /* UISpaceCell.xib */; };
+		84961E0325F074A400633208 /* WithdrawCoinWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84961E0125F074A400633208 /* WithdrawCoinWindow.swift */; };
+		84961E0425F074A400633208 /* WithdrawCoinWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84961E0225F074A400633208 /* WithdrawCoinWindow.xib */; };
+		84961E0825F078C200633208 /* UIWithdrawCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84961E0725F078C200633208 /* UIWithdrawCell.swift */; };
+		84961E0C25F078D300633208 /* UIWithdrawCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84961E0B25F078D300633208 /* UIWithdrawCell.xib */; };
+		84961E1025F0839300633208 /* EditableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84961E0F25F0839300633208 /* EditableTableView.swift */; };
 		850C4855236140B300C238FF /* JSSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850C4854236140B300C238FF /* JSSwitch.swift */; };
 		850C485E2361B31400C238FF /* TenonMainWindowsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 850C48602361B31400C238FF /* TenonMainWindowsController.xib */; };
 		850C48662361B43000C238FF /* AcountSettingWndController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 850C48682361B43000C238FF /* AcountSettingWndController.xib */; };
@@ -221,6 +226,11 @@
 		848C0B2525E0F3400020EEFF /* UIMethodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMethodCell.swift; sourceTree = "<group>"; };
 		848C0B2925E0F34B0020EEFF /* UIMethodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIMethodCell.xib; sourceTree = "<group>"; };
 		848C0B2D25E0F9E80020EEFF /* UISpaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UISpaceCell.xib; sourceTree = "<group>"; };
+		84961E0125F074A400633208 /* WithdrawCoinWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawCoinWindow.swift; sourceTree = "<group>"; };
+		84961E0225F074A400633208 /* WithdrawCoinWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawCoinWindow.xib; sourceTree = "<group>"; };
+		84961E0725F078C200633208 /* UIWithdrawCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWithdrawCell.swift; sourceTree = "<group>"; };
+		84961E0B25F078D300633208 /* UIWithdrawCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIWithdrawCell.xib; sourceTree = "<group>"; };
+		84961E0F25F0839300633208 /* EditableTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTableView.swift; sourceTree = "<group>"; };
 		850C4854236140B300C238FF /* JSSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSSwitch.swift; sourceTree = "<group>"; };
 		850C485F2361B31400C238FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TenonMainWindowsController.xib; sourceTree = "<group>"; };
 		850C48612361B32900C238FF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TenonMainWindowsController.strings"; sourceTree = "<group>"; };
@@ -409,16 +419,19 @@
 		844DC44425DE329C0049BBEF /* UI2.0 */ = {
 			isa = PBXGroup;
 			children = (
-				848C0B0E25E0DC7C0020EEFF /* View */,
-				848C0B0925E0D7F40020EEFF /* UIBaseModel */,
+				85D42F7125E80A9200A2E0D5 /* CallOutOfBandwidth.swift */,
+				85D42F7225E80A9200A2E0D5 /* CallOutOfBandwidth.xib */,
+				848C0B0325E0994A0020EEFF /* EarnCoinWindow.swift */,
+				848C0B0425E0994A0020EEFF /* EarnCoinWindow.xib */,
 				844DC44C25DE33210049BBEF /* HomePageWindow.swift */,
 				844DC44D25DE33210049BBEF /* HomePageWindow.xib */,
 				848C0AFC25E095B80020EEFF /* SettingWindow.swift */,
 				848C0AFD25E095B80020EEFF /* SettingWindow.xib */,
-				848C0B0325E0994A0020EEFF /* EarnCoinWindow.swift */,
-				85D42F7125E80A9200A2E0D5 /* CallOutOfBandwidth.swift */,
-				85D42F7225E80A9200A2E0D5 /* CallOutOfBandwidth.xib */,
-				848C0B0425E0994A0020EEFF /* EarnCoinWindow.xib */,
+				848C0B0925E0D7F40020EEFF /* UIBaseModel */,
+				848C0B0E25E0DC7C0020EEFF /* View */,
+				84961E0125F074A400633208 /* WithdrawCoinWindow.swift */,
+				84961E0225F074A400633208 /* WithdrawCoinWindow.xib */,
+				84961E0F25F0839300633208 /* EditableTableView.swift */,
 			);
 			name = UI2.0;
 			sourceTree = "<group>";
@@ -477,6 +490,8 @@
 				8484E4C925E3424800370911 /* UITranscationCell.xib */,
 				8484E4C125E33FEA00370911 /* UITranscationHeaderCell.swift */,
 				8484E4BD25E33FE000370911 /* UITranscationHeaderCell.xib */,
+				84961E0725F078C200633208 /* UIWithdrawCell.swift */,
+				84961E0B25F078D300633208 /* UIWithdrawCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -827,6 +842,7 @@
 				8484E4BE25E33FE000370911 /* UITranscationHeaderCell.xib in Resources */,
 				1C82DBAA1FA96FB600B32551 /* install_simple_obfs.sh in Resources */,
 				9B74B5E9232949B100DEA386 /* ImportWindowController.xib in Resources */,
+				84961E0C25F078D300633208 /* UIWithdrawCell.xib in Resources */,
 				9BAA663523295FAC00F5CC99 /* virtual-server-icon-3.png in Resources */,
 				9B9CBCAF1E263B1600FC61AA /* libpcre.1.dylib in Resources */,
 				B5A2AB03221A72EC003F77B7 /* v2ray-plugin in Resources */,
@@ -846,6 +862,7 @@
 				9BEEF06A1D04D4D500FC52B3 /* start_ss_local.sh in Resources */,
 				9B3546731E802B1200B510B4 /* ToastWindowController.xib in Resources */,
 				9B7725EA232E54A20062299F /* menu_e_icon.png in Resources */,
+				84961E0425F074A400633208 /* WithdrawCoinWindow.xib in Resources */,
 				9BAA662923295FAB00F5CC99 /* menu_p_icon.png in Resources */,
 				C6D429941DA75988002A5711 /* privoxy in Resources */,
 				C6D429991DA76FBC002A5711 /* privoxy.template.config in Resources */,
@@ -990,6 +1007,7 @@
 				9B3FFF171D072FDE0019A709 /* LaunchAtLoginController.m in Sources */,
 				9B7725E6232E30C50062299F /* PACURLFormatter.swift in Sources */,
 				848C0B0B25E0D80E0020EEFF /* UIBaseModel.swift in Sources */,
+				84961E0825F078C200633208 /* UIWithdrawCell.swift in Sources */,
 				848C0AFE25E095B80020EEFF /* SettingWindow.swift in Sources */,
 				8484E4C625E3423F00370911 /* UITranscationCell.swift in Sources */,
 				848C0B1C25E0F1F70020EEFF /* UISpaceCell.swift in Sources */,
@@ -1009,10 +1027,12 @@
 				850C4855236140B300C238FF /* JSSwitch.swift in Sources */,
 				844DC44E25DE33210049BBEF /* HomePageWindow.swift in Sources */,
 				9BEEF06E1D04DCE400FC52B3 /* ServerProfile.swift in Sources */,
+				84961E0325F074A400633208 /* WithdrawCoinWindow.swift in Sources */,
 				9B72FB62232782A300C6AAAE /* ImportWindowController.swift in Sources */,
 				9B3FFF0D1D05FEB30019A709 /* Utils.swift in Sources */,
 				9BEEF0751D04EF3E00FC52B3 /* PreferencesWindowController.swift in Sources */,
 				8484E4B525E33D3500370911 /* UITipsCell.swift in Sources */,
+				84961E1025F0839300633208 /* EditableTableView.swift in Sources */,
 				9B0BFFE91D0460A70040E62B /* AppDelegate.swift in Sources */,
 				848C0B0525E0994A0020EEFF /* EarnCoinWindow.swift in Sources */,
 				85134E2A2341A52F00DCBBBE /* TenonP2pLib.swift in Sources */,

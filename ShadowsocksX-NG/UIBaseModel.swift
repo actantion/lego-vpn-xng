@@ -18,7 +18,8 @@ enum BaseModelType{
     case UITranscationHeaderType      //交易明细头
     case UITranscationType      //交易明细
     case UISpaceType            //空格
-    case UITipsType // 提示
+    case UITipsType             // 提示
+    case UIWithdrawType         // 提现
 }
 
 class UIBaseModel : NSObject{

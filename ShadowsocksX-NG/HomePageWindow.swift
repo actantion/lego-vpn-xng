@@ -60,6 +60,7 @@ class HomePageWindow: NSWindowController, NSWindowDelegate, NSTableViewDelegate,
 
     var setWnd:SettingWindow!
     var earnWnd:EarnCoinWindow!
+    var withdrawWnd:WithdrawCoinWindow!
     var connectCount:Int32 = 5
     var secondTimer:Timer!
     var timer:Timer!
@@ -300,11 +301,18 @@ class HomePageWindow: NSWindowController, NSWindowDelegate, NSTableViewDelegate,
     
     @IBAction func clickTB(_ sender: Any) {
         print("点击提币")
-        var url = URL.init(string: "https://www.tenonvpn.net/block_server")
+//        var url = URL.init(string: "https://www.tenonvpn.net/block_server")
 //        if (TenonP2pLib.sharedInstance.IsVip) {
 //            url = URL.init(string: "https://t.me/tenonvpn_vip")
 //        }
-        NSWorkspace.shared.open(url!)
+//        NSWorkspace.shared.open(url!)
+        if withdrawWnd != nil {
+            withdrawWnd.close()
+        }
+        withdrawWnd = WithdrawCoinWindow(windowNibName: .init(rawValue: "WithdrawCoinWindow"))
+        withdrawWnd.showWindow(self)
+        NSApp.activate(ignoringOtherApps: true)
+        withdrawWnd.window?.makeKeyAndOrderFront(nil)
     }
     @IBAction func clickEarnCoin(_ sender: Any) {
         print("点击赚币")
