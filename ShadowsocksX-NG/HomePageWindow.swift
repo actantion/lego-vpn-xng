@@ -92,15 +92,16 @@ class HomePageWindow: NSWindowController, NSWindowDelegate, NSTableViewDelegate,
     
 
     func windowWillClose(_ aNotification: Notification) {
-        UserDefaults.standard.set(false, forKey: "ShadowsocksOn")
-        let use_st: Int32 = 1
-        SyncSSLocal(choosed_country: TenonP2pLib.sharedInstance.choosed_country,
-                local_country: TenonP2pLib.sharedInstance.local_country,
-                smart_route:use_st)
-
-        ProxyConfHelper.disableProxy()
-        NSApplication.shared.terminate(self)
-        _exit(0)
+//        UserDefaults.standard.set(false, forKey: "ShadowsocksOn")
+//        let use_st: Int32 = 1
+//        SyncSSLocal(choosed_country: TenonP2pLib.sharedInstance.choosed_country,
+//                local_country: TenonP2pLib.sharedInstance.local_country,
+//                smart_route:use_st)
+//
+//        ProxyConfHelper.disableProxy()
+//        NSApplication.shared.terminate(self)
+//        _exit(0)
+        self.window?.orderOut(nil)
     }
     
 

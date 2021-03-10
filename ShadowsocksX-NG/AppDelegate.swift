@@ -253,7 +253,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     @objc func togglePopover(_ sender: AnyObject) {
          if tenonWndCtrl != nil {
-            tenonWndCtrl.close()
+//            tenonWndCtrl.close()
+            tenonWndCtrl.window?.orderFront(nil)
+            return
          }
          tenonWndCtrl = HomePageWindow(windowNibName: .init(rawValue: "HomePageWindow"))
 //        tenonWndCtrl = TenonMainWindowsController(windowNibName: .init(rawValue: "TenonMainWindowsController"))
