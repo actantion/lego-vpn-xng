@@ -26,7 +26,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>CFBundleURLIconFile</key>
-			<string>menu_icon@2x</string>
+			<string>menu_g_icon@2x</string>
 			<key>CFBundleURLName</key>
 			<string>shadowsocks</string>
 			<key>CFBundleURLSchemes</key>

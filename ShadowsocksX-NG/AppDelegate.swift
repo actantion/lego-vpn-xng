@@ -147,7 +147,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             ])
         
         statusItem = NSStatusBar.system.statusItem(withLength: AppDelegate.StatusItemIconWidth)
-        let image : NSImage = NSImage(named: NSImage.Name(rawValue: "menu_icon"))!
+        let image : NSImage = NSImage(named: NSImage.Name(rawValue: "menu_g_icon"))!
         image.isTemplate = false
         statusItem.image = image
         statusItem.action = #selector(togglePopover)
@@ -586,7 +586,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                 statusItem.image?.isTemplate = false
 
         } else {
-            statusItem.image = NSImage(named: NSImage.Name(rawValue: "menu_icon_disabled"))
+            statusItem.image = NSImage(named: NSImage.Name(rawValue: "menu_g_icon"))
             statusItem.image?.isTemplate = false
         }
     }
@@ -598,13 +598,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             runningStatusMenuItem.title = "Shadowsocks: On".localized
             runningStatusMenuItem.image = NSImage(named: NSImage.Name(rawValue: "NSStatusAvailable"))
             toggleRunningMenuItem.title = "Turn Shadowsocks Off".localized
-            let image = NSImage(named: NSImage.Name(rawValue: "menu_icon"))
+            let image = NSImage(named: NSImage.Name(rawValue: "menu_g_icon"))
             statusItem.image = image
         } else {
             runningStatusMenuItem.title = "Shadowsocks: Off".localized
             toggleRunningMenuItem.title = "Turn Shadowsocks On".localized
             runningStatusMenuItem.image = NSImage(named: NSImage.Name(rawValue: "NSStatusNone"))
-            let image = NSImage(named: NSImage.Name(rawValue: "menu_icon_disabled"))
+            let image = NSImage(named: NSImage.Name(rawValue: "menu_g_icon"))
             statusItem.image = image
         }
         statusItem.image?.isTemplate = false
