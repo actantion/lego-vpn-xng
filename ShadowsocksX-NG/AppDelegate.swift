@@ -47,7 +47,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     @IBOutlet  var hudWindow: NSPanel!
     @IBOutlet  var panelView: NSView!
     @IBOutlet  var isNameTextField: NSTextField!
-
+    
+    
     let kProfileMenuItemIndexBase = 100
 
     var statusItem: NSStatusItem!
@@ -240,7 +241,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         print ("main window is on: \(UserDefaults.standard.bool(forKey: "ShadowsocksOn"))")
         togglePopover(self)
     }
-    
+//    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+//            return true
+//        }
     @objc func showPopover(_ sender: AnyObject) {
         if statusItem.button != nil {
              print("hello show dialog now.")
@@ -250,27 +253,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     @objc func closePopover(_ sender: AnyObject) {
          print("hello hide dialog now.")
     }
-//    NSMenu *menu = [[NSMenu alloc] initWithTitle:@"dock menu"];
-//        NSMenuItem *item1 = [[NSMenuItem alloc] initWithTitle:@"item 1" action:@selector(menuClick) keyEquivalent:@""];
-//        item1.target = self;
-//        NSMenuItem *item2 = [[NSMenuItem alloc] initWithTitle:@"item 2" action:@selector(menuClick) keyEquivalent:@""];
-//        item2.target = self;
-//        
-//        [menu addItem:item1];
-//        [menu addItem:item2];
-//        
-//        // 添加二级菜单
-//        NSMenu *menu2 = [[NSMenu alloc] initWithTitle:@"sub menu"];
-//        NSMenuItem *itemA = [[NSMenuItem alloc] initWithTitle:@"itemA" action:@selector(menuClick) keyEquivalent:@""];
-//        itemA.target = self;
-//        NSMenuItem *itemB = [[NSMenuItem alloc] initWithTitle:@"itemB" action:@selector(menuClick) keyEquivalent:@""];
-//        itemB.target = self;
-//        [menu2 addItem:itemA];
-//        [menu2 addItem:itemB];
-//        // 二级菜单放在指定item上
-//        [menu setSubmenu:menu2 forItem:item2];
-//        
-//        return menu;
+    
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         if flag == false {
             tenonWndCtrl.window?.orderFront(nil)
@@ -279,13 +262,21 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         return !flag
     }
     func applicationDockMenu(_ sender: NSApplication) -> NSMenu? {
-       let viewMenu = NSMenu(title: "ViewMenu")
-       let viewItem = NSMenuItem(title: "first ", action:#selector(clickMenu), keyEquivalent: "p")
+       let viewMenu = NSMenu(title: "TenonVPN")
+       let viewItem = NSMenuItem(title: "退出TenonVPN", action:#selector(clickExit), keyEquivalent: "p")
        viewMenu.addItem(viewItem)
        return viewMenu
     }
-    @objc func clickMenu() {
-        print("menu click")
+    @objc func clickExit() {
+        UserDefaults.standard.set(false, forKey: "ShadowsocksOn")
+        let use_st: Int32 = 1
+        SyncSSLocal(choosed_country: TenonP2pLib.sharedInstance.choosed_country,
+                    local_country: TenonP2pLib.sharedInstance.local_country,
+                    smart_route:use_st)
+        
+        ProxyConfHelper.disableProxy()
+        NSApplication.shared.terminate(self)
+        _exit(0)
     }
     @objc func togglePopover(_ sender: AnyObject) {
          if tenonWndCtrl != nil {
