@@ -250,7 +250,43 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     @objc func closePopover(_ sender: AnyObject) {
          print("hello hide dialog now.")
     }
-    
+//    NSMenu *menu = [[NSMenu alloc] initWithTitle:@"dock menu"];
+//        NSMenuItem *item1 = [[NSMenuItem alloc] initWithTitle:@"item 1" action:@selector(menuClick) keyEquivalent:@""];
+//        item1.target = self;
+//        NSMenuItem *item2 = [[NSMenuItem alloc] initWithTitle:@"item 2" action:@selector(menuClick) keyEquivalent:@""];
+//        item2.target = self;
+//        
+//        [menu addItem:item1];
+//        [menu addItem:item2];
+//        
+//        // 添加二级菜单
+//        NSMenu *menu2 = [[NSMenu alloc] initWithTitle:@"sub menu"];
+//        NSMenuItem *itemA = [[NSMenuItem alloc] initWithTitle:@"itemA" action:@selector(menuClick) keyEquivalent:@""];
+//        itemA.target = self;
+//        NSMenuItem *itemB = [[NSMenuItem alloc] initWithTitle:@"itemB" action:@selector(menuClick) keyEquivalent:@""];
+//        itemB.target = self;
+//        [menu2 addItem:itemA];
+//        [menu2 addItem:itemB];
+//        // 二级菜单放在指定item上
+//        [menu setSubmenu:menu2 forItem:item2];
+//        
+//        return menu;
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        if flag == false {
+            tenonWndCtrl.window?.orderFront(nil)
+            return true
+        }
+        return !flag
+    }
+    func applicationDockMenu(_ sender: NSApplication) -> NSMenu? {
+       let viewMenu = NSMenu(title: "ViewMenu")
+       let viewItem = NSMenuItem(title: "first ", action:#selector(clickMenu), keyEquivalent: "p")
+       viewMenu.addItem(viewItem)
+       return viewMenu
+    }
+    @objc func clickMenu() {
+        print("menu click")
+    }
     @objc func togglePopover(_ sender: AnyObject) {
          if tenonWndCtrl != nil {
 //            tenonWndCtrl.close()
