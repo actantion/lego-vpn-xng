@@ -25,7 +25,7 @@ class TenonP2pLib {
     public var choosed_country: String = "US"
     public var local_country: String = "CN"
     public var use_smart_route: Int32 = 1
-    private let bootstrap: String = "id:42.51.39.113:9001,id:42.51.33.89:9001,id:42.51.41.173:9001, id:113.17.169.103:9001,id:113.17.169.105:9001,id:113.17.169.106:9001,id:113.17.169.93:9001,id:113.17.169.94:9001,id:113.17.169.95:9001,id:216.108.227.52:9001,id:216.108.231.102:9001,id:216.108.231.103:9001,id:216.108.231.105:9001,id:216.108.231.19:9001,id:3.12.73.217:9001,id:3.137.186.226:9001,id:3.22.68.200:9001,id:3.138.121.98:9001,id:18.188.190.127:9001,"
+    private let bootstrap: String = "id:42.51.33.89:9001,id:42.51.41.173:9001, id:113.17.169.103:9001,id:113.17.169.105:9001,id:113.17.169.106:9001,id:113.17.169.93:9001,id:113.17.169.94:9001,id:113.17.169.95:9001,id:216.108.227.52:9001,id:216.108.231.102:9001,id:216.108.231.103:9001,id:216.108.231.105:9001,id:216.108.231.19:9001,id:3.12.73.217:9001,id:3.137.186.226:9001,id:3.22.68.200:9001,id:3.138.121.98:9001,id:18.188.190.127:9001,"
     
     public var payfor_timestamp: Int64 = 0
     public var payfor_amount: Int64 = 0
@@ -80,7 +80,6 @@ class TenonP2pLib {
     func InitP2pNetwork (
             _ local_ip: String,
             _ local_port: Int) -> (local_country: String, prikey: String, account_id: String, def_route: String) {
-        //return ("", "", "", "")
         let file = NSSearchPathForDirectoriesInDomains(
             FileManager.SearchPathDirectory.documentDirectory,
             FileManager.SearchPathDomainMask.userDomainMask,

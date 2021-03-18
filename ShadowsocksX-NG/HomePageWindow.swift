@@ -88,6 +88,7 @@ class HomePageWindow: NSWindowController, NSWindowDelegate, NSTableViewDelegate,
         initView()
         choosyCountryClicked = false
         requestData()
+        print("windowDidLoad ok.")
     }
     
 
@@ -302,18 +303,15 @@ class HomePageWindow: NSWindowController, NSWindowDelegate, NSTableViewDelegate,
     
     @IBAction func clickTB(_ sender: Any) {
         print("点击提币")
-//        var url = URL.init(string: "https://www.tenonvpn.net/block_server")
-//        if (TenonP2pLib.sharedInstance.IsVip) {
-//            url = URL.init(string: "https://t.me/tenonvpn_vip")
+        let url = URL.init(string: "https://www.tenonvpn.net/block_server")
+        NSWorkspace.shared.open(url!)
+//        if withdrawWnd != nil {
+//            withdrawWnd.close()
 //        }
-//        NSWorkspace.shared.open(url!)
-        if withdrawWnd != nil {
-            withdrawWnd.close()
-        }
-        withdrawWnd = WithdrawCoinWindow(windowNibName: .init(rawValue: "WithdrawCoinWindow"))
-        withdrawWnd.showWindow(self)
-        NSApp.activate(ignoringOtherApps: true)
-        withdrawWnd.window?.makeKeyAndOrderFront(nil)
+//        withdrawWnd = WithdrawCoinWindow(windowNibName: .init(rawValue: "WithdrawCoinWindow"))
+//        withdrawWnd.showWindow(self)
+//        NSApp.activate(ignoringOtherApps: true)
+//        withdrawWnd.window?.makeKeyAndOrderFront(nil)
     }
     @IBAction func clickEarnCoin(_ sender: Any) {
         print("点击赚币")

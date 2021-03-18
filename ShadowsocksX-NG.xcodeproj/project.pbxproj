@@ -1245,7 +1245,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0.1;
+				CURRENT_PROJECT_VERSION = 5.0.1;
 				DEVELOPMENT_TEAM = 6F3LP697WK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1266,7 +1266,7 @@
 					"$(SRCROOT)/libp2p/lib/",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 5.0.1;
 				OTHER_LDFLAGS = (
 					"-lclient",
 					"-linit",
@@ -1327,7 +1327,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0.1;
+				CURRENT_PROJECT_VERSION = 5.0.1;
 				DEVELOPMENT_TEAM = 6F3LP697WK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1348,7 +1348,7 @@
 					"$(SRCROOT)/libp2p/lib/",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 5.0.1;
 				OTHER_LDFLAGS = (
 					"-lclient",
 					"-linit",
