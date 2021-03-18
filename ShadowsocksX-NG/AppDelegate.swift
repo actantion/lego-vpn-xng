@@ -275,7 +275,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                     smart_route:use_st)
         
         ProxyConfHelper.disableProxy()
-        NSApplication.shared.terminate(self)
+//        NSApplication.shared.terminate(self)
         _exit(0)
     }
     @objc func togglePopover(_ sender: AnyObject) {
