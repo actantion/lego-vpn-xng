@@ -120,7 +120,10 @@ class TenonP2pLib {
     }
     
     func GetBalance() -> UInt64 {
-        let res = LibP2P.getBalance() as UInt64
+        var res = LibP2P.getBalance() as UInt64
+        if res == 18446744073709551615 {
+            res = 0
+        }
         return res
     }
     
