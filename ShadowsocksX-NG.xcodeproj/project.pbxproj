@@ -491,7 +491,6 @@
 				9B5AA0A9209C41EC00E8B659 /* ss-local */,
 				1C82DBA31FA96C7400B32551 /* simple-obfs */,
 				9B5AA0AA209C42A900E8B659 /* privoxy */,
-				9B172A6C1D0ADDDD00B87B9A /* Localizable.strings */,
 				9B3FFF4B1D09D8F70019A709 /* install_helper.sh */,
 				9B3FFF281D08A1DF0019A709 /* user-rule.txt */,
 				9B3FFF261D0898EB0019A709 /* gfwlist.txt */,
@@ -505,6 +504,7 @@
 		9B0BFFDC1D0460A70040E62B = {
 			isa = PBXGroup;
 			children = (
+				9B172A6C1D0ADDDD00B87B9A /* Localizable.strings */,
 				8562D82323580568003E290A /* tenon_local */,
 				9B5831FA1E73098F009D5B7D /* README.md */,
 				9B172A601D0ADA5B00B87B9A /* genstrings.py */,

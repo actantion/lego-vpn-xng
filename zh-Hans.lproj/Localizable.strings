@@ -205,7 +205,7 @@
 "Enter private key"="输入私钥";
 "Enter the 64-bit private key"="输入64位私钥";
 "OK"="确定";
-"Cancel"="取消"
+"Cancel"="取消";
 "nodes"="个节点";
 "Linking for you"="正在为您链接";
 "About"="产品说明  |";
@@ -245,4 +245,4 @@
 "TG"="TG群";
 "Tips: To ensure security, please keep your private key and don’t tell anyone to ensure your account is safe"="提示：为了保障安全，请保存好您的私钥，不要告诉任何人，确保您的账户安全";
 "Support"="服务支出";
-"Input new private key"="输入新的私钥"
+"Input new private key"="输入新的私钥";
