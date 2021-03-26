@@ -80,9 +80,15 @@ class SettingWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSourc
     
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool{
         print("row = \(row)")
+        if row == 1 {
+            ProxyConfHelper.enableSmartRouting()
+        } else {
+            ProxyConfHelper.disableSmartRouting()
+        }
+        
         if tableLanguage == tableView {
             let defaults = UserDefaults.standard
-            defaults.set(row, forKey: "APP_LANGUAGE")
+            defaults.set(row, forKey: "APP_VPN_MANGUAGER")
             scrollLanguage.isHidden = true
         }else{
             let defaults = UserDefaults.standard
@@ -140,7 +146,7 @@ class SettingWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSourc
     @IBAction func clickSkype(_ sender: Any) {
         print("点击Skype")
     }
-//    #define NSLocalizedString(key, comment) [[NSBundle mainBundle] localizedStringForKey:(key) value:@"" table:nil]
+    
     func initView(){
         SettingsText.stringValue = "Settings".localized
         joinNodeText.stringValue = "Join Node".localized
@@ -150,7 +156,7 @@ class SettingWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSourc
         tgGroupText.stringValue = "TG".localized
         
         vwChoseLanguage.wantsLayer = true
-        vwChoseLanguage.layer?.cornerRadius = 22.5
+        vwChoseLanguage.layer?.cornerRadius = 2.5
         vwChoseLanguage.layer?.masksToBounds = true
         
         vwVpnModel.wantsLayer = true
@@ -158,7 +164,7 @@ class SettingWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSourc
         vwVpnModel.layer?.masksToBounds = true
         
         lbTItleChoseLanguage.stringValue = "proxy pattern".localized
-        let language = UserDefaults.standard.integer(forKey: "APP_LANGUAGE")
+        let language = UserDefaults.standard.integer(forKey: "APP_VPN_MANGUAGER")
         if language == 1 {
             lbChosedLanguage.stringValue = "smart_route".localized
         }else{
@@ -170,8 +176,10 @@ class SettingWindow: NSWindowController,NSTableViewDelegate,NSTableViewDataSourc
         print("proxy = \(proxy)")
         if proxy == 1 {
             lbRouteType.stringValue = "smart_route".localized
+            ProxyConfHelper.enableSmartRouting()
         }else{
             lbRouteType.stringValue = "global_route".localized
+            ProxyConfHelper.disableSmartRouting()
         }
     }
 }

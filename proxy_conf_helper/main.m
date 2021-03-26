@@ -65,7 +65,7 @@ int main(int argc, const char * argv[])
     NSError *error = nil;
     if (![options parseArgc:argc argv:argv error:&error]) {
         const char * message = error.localizedDescription.UTF8String;
-        fprintf(stderr, "%s: %s\n", argv[0], message);
+        fprintf(stderr, "ddddddd %s: %s\n", argv[0], message);
         exit(EXIT_FAILURE);
     }
     
@@ -82,7 +82,7 @@ int main(int argc, const char * argv[])
             return 1;
         }
     } else {
-        printf("%s", [kProxyConfHelperVersion UTF8String]);
+        printf("dddddd11111 %s", [kProxyConfHelperVersion UTF8String]);
         return 0;
     }
     

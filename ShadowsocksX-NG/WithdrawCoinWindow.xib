@@ -42,7 +42,7 @@
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="O3H-Ee-Vsy">
                         <rect key="frame" x="18" y="439" width="339" height="32"/>
                         <textFieldCell key="cell" selectable="YES" title="提示：最少可提100 Tenon。为了保障安全，请保存好您的私钥，不要告诉任何人，确保您的账户安全" id="6vP-ig-H1q">
-                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                            <font key="font" metaFont="system"/>
                             <color key="textColor" red="0.23921568630000001" green="0.91372549020000005" blue="0.87568537599999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>

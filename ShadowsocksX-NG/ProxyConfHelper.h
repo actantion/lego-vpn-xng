@@ -24,4 +24,8 @@
 
 + (void)startMonitorPAC;
 
++ (void)enableSmartRouting;
+
++ (void)disableSmartRouting;
+
 @end

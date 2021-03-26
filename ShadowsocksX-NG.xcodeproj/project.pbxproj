@@ -42,6 +42,8 @@
 		85134E2A2341A52F00DCBBBE /* TenonP2pLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85134E292341A52F00DCBBBE /* TenonP2pLib.swift */; };
 		8539C2CC23542EA000ACC3D8 /* CircularProgress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539C2CA23542EA000ACC3D8 /* CircularProgress.framework */; };
 		8539C2CD23542EA000ACC3D8 /* CircularProgress.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8539C2CA23542EA000ACC3D8 /* CircularProgress.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		854ABF57260E12C100AB3053 /* PrivateKeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854ABF55260E12C100AB3053 /* PrivateKeyWindow.swift */; };
+		854ABF58260E12C100AB3053 /* PrivateKeyWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 854ABF56260E12C100AB3053 /* PrivateKeyWindow.xib */; };
 		8562D82423580568003E290A /* tenon_local in Resources */ = {isa = PBXBuildFile; fileRef = 8562D82323580568003E290A /* tenon_local */; };
 		85D42F7425E80A9300A2E0D5 /* CallOutOfBandwidth.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85D42F7225E80A9200A2E0D5 /* CallOutOfBandwidth.xib */; };
 		9B0BFFE91D0460A70040E62B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BFFE81D0460A70040E62B /* AppDelegate.swift */; };
@@ -231,6 +233,8 @@
 		85134E242341A41800DCBBBE /* libp2p.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libp2p.framework; path = libp2p/libp2p.framework; sourceTree = "<group>"; };
 		85134E292341A52F00DCBBBE /* TenonP2pLib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TenonP2pLib.swift; sourceTree = "<group>"; };
 		8539C2CA23542EA000ACC3D8 /* CircularProgress.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CircularProgress.framework; path = libp2p/CircularProgress.framework; sourceTree = "<group>"; };
+		854ABF55260E12C100AB3053 /* PrivateKeyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeyWindow.swift; sourceTree = "<group>"; };
+		854ABF56260E12C100AB3053 /* PrivateKeyWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivateKeyWindow.xib; sourceTree = "<group>"; };
 		8562D82323580568003E290A /* tenon_local */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = tenon_local; path = "ShadowsocksX-NG/ss-local/tenon_local"; sourceTree = "<group>"; };
 		85D42F7125E80A9200A2E0D5 /* CallOutOfBandwidth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallOutOfBandwidth.swift; sourceTree = "<group>"; };
 		85D42F7225E80A9200A2E0D5 /* CallOutOfBandwidth.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CallOutOfBandwidth.xib; sourceTree = "<group>"; };
@@ -412,6 +416,8 @@
 				84961E0125F074A400633208 /* WithdrawCoinWindow.swift */,
 				84961E0225F074A400633208 /* WithdrawCoinWindow.xib */,
 				84961E0F25F0839300633208 /* EditableTableView.swift */,
+				854ABF55260E12C100AB3053 /* PrivateKeyWindow.swift */,
+				854ABF56260E12C100AB3053 /* PrivateKeyWindow.xib */,
 			);
 			name = UI2.0;
 			sourceTree = "<group>";
@@ -798,6 +804,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8562D82423580568003E290A /* tenon_local in Resources */,
+				854ABF58260E12C100AB3053 /* PrivateKeyWindow.xib in Resources */,
 				9B5D132A2154A62600F99F03 /* install_kcptun.sh in Resources */,
 				9B7297E7214D69C300FD24AA /* libmbedcrypto.2.12.0.dylib in Resources */,
 				9BCB1D6C20A15B0E005BABE7 /* libsodium.23.dylib in Resources */,
@@ -1003,6 +1010,7 @@
 				9B3546721E802B1200B510B4 /* ToastWindowController.swift in Sources */,
 				848C0B2625E0F3400020EEFF /* UIMethodCell.swift in Sources */,
 				848C0B1025E0E4FA0020EEFF /* UIPrivateKeyCell.swift in Sources */,
+				854ABF57260E12C100AB3053 /* PrivateKeyWindow.swift in Sources */,
 				C8E42A6C1D4F270A0074C7EA /* UserRulesController.swift in Sources */,
 				D3121C2623507191007AE9DD /* CountryChoseCell.swift in Sources */,
 			);

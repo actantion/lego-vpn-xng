@@ -61,6 +61,7 @@ class HomePageWindow: NSWindowController, NSWindowDelegate, NSTableViewDelegate,
     var setWnd:SettingWindow!
     var earnWnd:EarnCoinWindow!
     var withdrawWnd:WithdrawCoinWindow!
+    var prikeyWnd:PrivateKeyWindow!
     var connectCount:Int32 = 5
     var secondTimer:Timer!
     var timer:Timer!
@@ -168,6 +169,13 @@ class HomePageWindow: NSWindowController, NSWindowDelegate, NSTableViewDelegate,
     }
     
     @IBAction func onEditAccount(_ sender: Any) {
+        if prikeyWnd != nil {
+            prikeyWnd.close()
+        }
+        prikeyWnd = PrivateKeyWindow(windowNibName: .init(rawValue: "PrivateKeyWindow"))
+        prikeyWnd.showWindow(self)
+        NSApp.activate(ignoringOtherApps: true)
+        prikeyWnd.window?.makeKeyAndOrderFront(nil)
     }
     
     @IBAction func onPrivateKeyEdit(_ sender: Any) {
@@ -453,6 +461,17 @@ class HomePageWindow: NSWindowController, NSWindowDelegate, NSTableViewDelegate,
         
         resetProgressView()
         ConnectBtn()
+        
+        if UserDefaults.standard.object(forKey: "APP_VPN_MANGUAGER") == nil {
+            UserDefaults.standard.setValue("0", forKey: "APP_VPN_MANGUAGER")
+        }
+        
+        let proxy = UserDefaults.standard.integer(forKey: "APP_VPN_MANGUAGER")
+        if proxy == 1 {
+            ProxyConfHelper.enableSmartRouting()
+        }else{
+            ProxyConfHelper.disableSmartRouting()
+        }
     }
     
     func showOutbandwidthAlert() {
@@ -508,13 +527,13 @@ class HomePageWindow: NSWindowController, NSWindowDelegate, NSTableViewDelegate,
     
     @IBAction func clickLogo(_ sender: NSButton) {
         print("点击logo")
-//        if setWnd != nil {
-//            setWnd.close()
-//        }
-//        setWnd = SettingWindow(windowNibName: .init(rawValue: "SettingWindow"))
-//        setWnd.showWindow(self)
-//        NSApp.activate(ignoringOtherApps: true)
-//        setWnd.window?.makeKeyAndOrderFront(nil)
+        if setWnd != nil {
+            setWnd.close()
+        }
+        setWnd = SettingWindow(windowNibName: .init(rawValue: "SettingWindow"))
+        setWnd.showWindow(self)
+        NSApp.activate(ignoringOtherApps: true)
+        setWnd.window?.makeKeyAndOrderFront(nil)
     }
     
     @objc func requestData() {

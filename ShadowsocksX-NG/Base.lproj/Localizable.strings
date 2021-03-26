@@ -187,6 +187,7 @@
 "Enter private key"="Enter private key";
 "Enter the 64-bit private key"="Enter the 64-bit private key钥";
 "OK"="OK";
+"Cancel"="Cancel"
 "nodes"="nodes";
 "Linking for you"="Linking for you";
 "About"="About     |";
@@ -240,3 +241,4 @@ Third-party node access, one-click startup, and access to the decentralized Teno
 "TG"="TG";
 "Tips: To ensure security, please keep your private key and don’t tell anyone to ensure your account is safe"="Tips: To ensure security, please keep your private key and don’t tell anyone to ensure your account is safe";
 "Support"="Support";
+"Input new private key"="Input new private key"
