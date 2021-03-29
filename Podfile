@@ -6,7 +6,7 @@ target 'proxy_conf_helper' do
   use_frameworks!
 
   # Pods for proxy_conf_helper
-  pod 'BRLOptionParser', '~> 0.3.1'
+#  pod 'BRLOptionParser', '~> 0.3.1'
 end
 
 target 'ShadowsocksX-NG' do

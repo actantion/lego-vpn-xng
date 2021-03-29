@@ -14,7 +14,7 @@
 
 // A library for parsing command line.
 // https://github.com/stephencelis/BRLOptionParser
-#import <BRLOptionParser/BRLOptionParser.h>
+#import "BRLOptionParser.h"
 
 
 int main(int argc, const char * argv[])

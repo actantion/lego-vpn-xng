@@ -29,6 +29,8 @@
 		848C0B2625E0F3400020EEFF /* UIMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C0B2525E0F3400020EEFF /* UIMethodCell.swift */; };
 		848C0B2A25E0F34B0020EEFF /* UIMethodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848C0B2925E0F34B0020EEFF /* UIMethodCell.xib */; };
 		848C0B2E25E0F9E80020EEFF /* UISpaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848C0B2D25E0F9E80020EEFF /* UISpaceCell.xib */; };
+		848CA8F52611BD8000BFBD2E /* BRLOptionParser.h in Sources */ = {isa = PBXBuildFile; fileRef = 848CA8C42611B50D00BFBD2E /* BRLOptionParser.h */; };
+		848CA8F62611BD8000BFBD2E /* BRLOptionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 848CA8C62611B50D00BFBD2E /* BRLOptionParser.m */; };
 		84961E0325F074A400633208 /* WithdrawCoinWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84961E0125F074A400633208 /* WithdrawCoinWindow.swift */; };
 		84961E0425F074A400633208 /* WithdrawCoinWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84961E0225F074A400633208 /* WithdrawCoinWindow.xib */; };
 		84961E0825F078C200633208 /* UIWithdrawCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84961E0725F078C200633208 /* UIWithdrawCell.swift */; };
@@ -218,6 +220,8 @@
 		848C0B2525E0F3400020EEFF /* UIMethodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMethodCell.swift; sourceTree = "<group>"; };
 		848C0B2925E0F34B0020EEFF /* UIMethodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIMethodCell.xib; sourceTree = "<group>"; };
 		848C0B2D25E0F9E80020EEFF /* UISpaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UISpaceCell.xib; sourceTree = "<group>"; };
+		848CA8C42611B50D00BFBD2E /* BRLOptionParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRLOptionParser.h; sourceTree = "<group>"; };
+		848CA8C62611B50D00BFBD2E /* BRLOptionParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRLOptionParser.m; sourceTree = "<group>"; };
 		84961E0125F074A400633208 /* WithdrawCoinWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawCoinWindow.swift; sourceTree = "<group>"; };
 		84961E0225F074A400633208 /* WithdrawCoinWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawCoinWindow.xib; sourceTree = "<group>"; };
 		84961E0725F078C200633208 /* UIWithdrawCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWithdrawCell.swift; sourceTree = "<group>"; };
@@ -577,6 +581,8 @@
 		9B3FFF451D09CD3B0019A709 /* proxy_conf_helper */ = {
 			isa = PBXGroup;
 			children = (
+				848CA8C42611B50D00BFBD2E /* BRLOptionParser.h */,
+				848CA8C62611B50D00BFBD2E /* BRLOptionParser.m */,
 				9B3FFF461D09CD3B0019A709 /* main.m */,
 			);
 			path = proxy_conf_helper;
@@ -1027,6 +1033,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				848CA8F52611BD8000BFBD2E /* BRLOptionParser.h in Sources */,
+				848CA8F62611BD8000BFBD2E /* BRLOptionParser.m in Sources */,
 				9B3FFF471D09CD3B0019A709 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
