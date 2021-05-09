@@ -57,7 +57,7 @@ class HomePageWindow: NSWindowController, NSWindowDelegate, NSTableViewDelegate,
     @IBOutlet weak var aboutProduction: NSTextField!
     @IBOutlet weak var serviceSupport: NSTextField!
     
-
+    var payforVpnWnd:PayForVpn!
     var setWnd:SettingWindow!
     var earnWnd:EarnCoinWindow!
     var withdrawWnd:WithdrawCoinWindow!
@@ -69,11 +69,13 @@ class HomePageWindow: NSWindowController, NSWindowDelegate, NSTableViewDelegate,
     var isSelect: Bool = false
     var choosyCountryClicked = false
     var privateKeyShowed = false
+    var shown_upgrade_url:String = ""
+    
     @IBOutlet weak var shareButtoon: NSButton!
     
-    let countryCode:[String] = ["United States", "Singapore", "Brazil","Germany","Netherlands", "France","Korea", "Japan", "Canada","Australia","Hong Kong", "India", "England", "China"]
+    let countryCode:[String] = ["Automatic", "United States", "Singapore", "Brazil","Germany","Netherlands", "France","Korea", "Japan", "Canada","Australia","Hong Kong", "India", "England", "China"]
     var countryNodes:[String] = []
-    let iCon:[String] = ["us", "sg", "br","de", "nl", "fr","kr", "jp", "ca","au","hk", "in", "gb", "cn"]
+    let iCon:[String] = ["aa", "us", "sg", "br","de", "nl", "fr","kr", "jp", "ca","au","hk", "in", "gb", "cn"]
     
 
     override func windowDidLoad() {
@@ -110,6 +112,8 @@ class HomePageWindow: NSWindowController, NSWindowDelegate, NSTableViewDelegate,
     
     func getCountryShort(countryCode:String) -> String {
         switch countryCode {
+        case "Automatic":
+            return "AA"
         case "America":
             return "US"
         case "Singapore":
@@ -232,7 +236,7 @@ class HomePageWindow: NSWindowController, NSWindowDelegate, NSTableViewDelegate,
         self.vwConnect.layer?.masksToBounds = true
         self.vwConnect.layer?.cornerRadius = 62.5
         resetConnect()
-        countryName.stringValue = "United States".localized
+        countryName.stringValue = "Automatic".localized
         aboutProduction.stringValue = "About".localized
         serviceSupport.stringValue = "Support".localized
         
@@ -436,6 +440,45 @@ class HomePageWindow: NSWindowController, NSWindowDelegate, NSTableViewDelegate,
         ProxyConfHelper.disableProxy()
     }
     
+    func dialogOKCancel(question: String, text: String) -> Bool {
+        let alert: NSAlert = NSAlert()
+        alert.messageText = question
+        alert.informativeText = text
+        alert.alertStyle = NSAlert.Style.warning
+        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: "Cancel")
+        let res = alert.runModal()
+        if res == NSApplication.ModalResponse.alertFirstButtonReturn {
+            return true
+        }
+        return false
+    }
+    
+    func autoShowUpgrade() {
+        let version_str = TenonP2pLib.sharedInstance.CheckVersion()
+        let plats = version_str.split(separator: ",")
+        var down_url: String = "";
+        for item in plats {
+            let item_split = item.split(separator: ";")
+            if (item_split[0] == "mac") {
+                if (item_split[1].count > TenonP2pLib.sharedInstance.kCurrentVersion.count ||
+                        item_split[1] > TenonP2pLib.sharedInstance.kCurrentVersion) {
+                    if (shown_upgrade_url != item_split[1]) {
+                        down_url = String(item_split[2])
+                        shown_upgrade_url = String(item_split[1])
+                    }
+                }
+            }
+        }
+
+        if (!down_url.isEmpty) {
+            let res: Bool = dialogOKCancel(question: "", text: "There is an updated version, in order to ensure that your network is smooth, download the latest version.".localized)
+            if (res) {
+                NSWorkspace.shared.open(URL(string: down_url)!)
+            }
+        }
+    }
+    
     func Connect() {
         // 点击链接按钮，链接进程视图
         ConnectProgressView()
@@ -484,8 +527,8 @@ class HomePageWindow: NSWindowController, NSWindowDelegate, NSTableViewDelegate,
 
         a.beginSheetModal(for: self.window!, completionHandler: { (modalResponse: NSApplication.ModalResponse) -> Void in
             if(modalResponse == NSApplication.ModalResponse.alertFirstButtonReturn){
-                let url = URL.init(string: "https://www.tenonvpn.net/pp_one_month/" + TenonP2pLib.sharedInstance.account_id_)
-                NSWorkspace.shared.open(url!)
+                self.clickEarnCoin("")
+                
             }
         })
     }
@@ -581,6 +624,7 @@ class HomePageWindow: NSWindowController, NSWindowDelegate, NSTableViewDelegate,
             isConnect = false
         }
         
+        self.autoShowUpgrade()
         self.perform(#selector(requestData), with: nil, afterDelay: 3)
     }
 }

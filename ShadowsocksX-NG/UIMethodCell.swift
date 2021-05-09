@@ -14,13 +14,15 @@ class UIMethodCell: NSTableCellView {
     @IBOutlet weak var lbTitle: NSTextField!
     @IBOutlet weak var lbSubTitle: NSTextField!
     @IBOutlet weak var btnMethod: NSButton!
+    @IBOutlet weak var aliPayButton: NSButton!
     var clickBlock:VoidBlock!
+    var clickAli:VoidBlock!
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
         // Drawing code here.
     }
-    func setModel(model:UIBaseModel) {
+    func setModel(model:UIBaseModel, showAliPay: Bool) {
         vwBack.wantsLayer = true
         vwBack.layer?.masksToBounds = true
         vwBack.layer?.cornerRadius = 16
@@ -31,12 +33,28 @@ class UIMethodCell: NSTableCellView {
         btnMethod.layer?.cornerRadius = 18
         btnMethod.layer?.backgroundColor = APP_GREEN_COLOR.cgColor
         
+        aliPayButton.wantsLayer = true
+        aliPayButton.layer?.masksToBounds = true
+        aliPayButton.layer?.cornerRadius = 18
+        aliPayButton.layer?.backgroundColor = APP_GREEN_COLOR.cgColor
+        
         lbMethod.stringValue = model.title
         lbTitle.stringValue = model.subTitle
         lbSubTitle.stringValue = model.desc
         btnMethod.title = model.mark
+        if (!showAliPay) {
+            aliPayButton.isHidden = true
+        } else {
+            aliPayButton.title = "AliPay".localized
+            btnMethod.title = "PayPal"
+        }
     }
     @IBAction func clickBtn(_ sender: Any) {
         clickBlock?()
     }
+    @IBAction func clickAliPay(_ sender: Any) {
+        clickAli?()
+    }
+    
 }
+

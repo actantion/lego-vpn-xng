@@ -42,6 +42,8 @@
 		85134E262341A41800DCBBBE /* libp2p.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85134E242341A41800DCBBBE /* libp2p.framework */; };
 		85134E272341A41800DCBBBE /* libp2p.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85134E242341A41800DCBBBE /* libp2p.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		85134E2A2341A52F00DCBBBE /* TenonP2pLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85134E292341A52F00DCBBBE /* TenonP2pLib.swift */; };
+		85334F2726198BDA00104AA1 /* PayForVpn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85334F2526198BDA00104AA1 /* PayForVpn.swift */; };
+		85334F2826198BDA00104AA1 /* PayForVpn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85334F2626198BDA00104AA1 /* PayForVpn.xib */; };
 		8539C2CC23542EA000ACC3D8 /* CircularProgress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8539C2CA23542EA000ACC3D8 /* CircularProgress.framework */; };
 		8539C2CD23542EA000ACC3D8 /* CircularProgress.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8539C2CA23542EA000ACC3D8 /* CircularProgress.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		854ABF57260E12C100AB3053 /* PrivateKeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854ABF55260E12C100AB3053 /* PrivateKeyWindow.swift */; };
@@ -236,6 +238,8 @@
 		850C486C2361B43900C238FF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AcountSettingWndController.strings"; sourceTree = "<group>"; };
 		85134E242341A41800DCBBBE /* libp2p.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libp2p.framework; path = libp2p/libp2p.framework; sourceTree = "<group>"; };
 		85134E292341A52F00DCBBBE /* TenonP2pLib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TenonP2pLib.swift; sourceTree = "<group>"; };
+		85334F2526198BDA00104AA1 /* PayForVpn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayForVpn.swift; sourceTree = "<group>"; };
+		85334F2626198BDA00104AA1 /* PayForVpn.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayForVpn.xib; sourceTree = "<group>"; };
 		8539C2CA23542EA000ACC3D8 /* CircularProgress.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CircularProgress.framework; path = libp2p/CircularProgress.framework; sourceTree = "<group>"; };
 		854ABF55260E12C100AB3053 /* PrivateKeyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeyWindow.swift; sourceTree = "<group>"; };
 		854ABF56260E12C100AB3053 /* PrivateKeyWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivateKeyWindow.xib; sourceTree = "<group>"; };
@@ -422,6 +426,8 @@
 				84961E0F25F0839300633208 /* EditableTableView.swift */,
 				854ABF55260E12C100AB3053 /* PrivateKeyWindow.swift */,
 				854ABF56260E12C100AB3053 /* PrivateKeyWindow.xib */,
+				85334F2526198BDA00104AA1 /* PayForVpn.swift */,
+				85334F2626198BDA00104AA1 /* PayForVpn.xib */,
 			);
 			name = UI2.0;
 			sourceTree = "<group>";
@@ -845,6 +851,7 @@
 				C6D429991DA76FBC002A5711 /* privoxy.template.config in Resources */,
 				850C485E2361B31400C238FF /* TenonMainWindowsController.xib in Resources */,
 				9BEEF06B1D04D4D500FC52B3 /* stop_ss_local.sh in Resources */,
+				85334F2826198BDA00104AA1 /* PayForVpn.xib in Resources */,
 				848C0B1625E0E5430020EEFF /* UIPrivateKeyCell.xib in Resources */,
 				9B3FFF341D08CEF70019A709 /* SWBQRCodeWindowController.xib in Resources */,
 				9B3FFF231D088E8D0019A709 /* abp.js in Resources */,
@@ -992,6 +999,7 @@
 				9B3FFF1E1D0732660019A709 /* Utils.m in Sources */,
 				9B7297EA214D7C6B00FD24AA /* ShareServerProfilesWindowController.swift in Sources */,
 				D379186D23516E26008AA813 /* TranscationModel.swift in Sources */,
+				85334F2726198BDA00104AA1 /* PayForVpn.swift in Sources */,
 				9B3FFF321D08CEE40019A709 /* SWBQRCodeWindowController.m in Sources */,
 				D3121C0A23501700007AE9DD /* AcountSettingWndController.swift in Sources */,
 				9B3FFF211D08826E0019A709 /* PACUtils.swift in Sources */,
@@ -1261,7 +1269,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 5.0.2;
+				CURRENT_PROJECT_VERSION = 5.0.5;
 				DEVELOPMENT_TEAM = 6F3LP697WK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1282,7 +1290,7 @@
 					"$(SRCROOT)/libp2p/lib/",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 5.0.2;
+				MARKETING_VERSION = 5.0.5;
 				OTHER_LDFLAGS = (
 					"-lclient",
 					"-linit",
@@ -1343,7 +1351,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 5.0.2;
+				CURRENT_PROJECT_VERSION = 5.0.5;
 				DEVELOPMENT_TEAM = 6F3LP697WK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1364,7 +1372,7 @@
 					"$(SRCROOT)/libp2p/lib/",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 5.0.2;
+				MARKETING_VERSION = 5.0.5;
 				OTHER_LDFLAGS = (
 					"-lclient",
 					"-linit",

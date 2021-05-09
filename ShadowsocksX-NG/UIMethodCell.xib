@@ -10,11 +10,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView identifier="UIMethodCell" id="c22-O7-iKe" customClass="UIMethodCell" customModule="ShadowsocksX_NG" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="310" height="60"/>
+            <rect key="frame" x="0.0" y="0.0" width="381" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <view id="bdG-eu-rtq">
-                    <rect key="frame" x="0.0" y="0.0" width="310" height="60"/>
+                    <rect key="frame" x="0.0" y="0.0" width="381" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GRt-PZ-Fsk">
@@ -37,7 +37,7 @@
                             </textFieldCell>
                         </textField>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YPt-CB-yuV">
-                            <rect key="frame" x="231" y="12" width="64" height="36"/>
+                            <rect key="frame" x="302" y="12" width="64" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="TZw-4B-v0a"/>
                                 <constraint firstAttribute="width" constant="64" id="ahd-JC-dco"/>
@@ -59,6 +59,21 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
+                        <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KhT-lV-51R">
+                            <rect key="frame" x="235" y="13" width="64" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="Wai-iV-cuN"/>
+                                <constraint firstAttribute="width" constant="64" id="qaH-UB-NVA"/>
+                            </constraints>
+                            <buttonCell key="cell" type="bevel" title="AliPay" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="ncg-hb-aiK">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <color key="contentTintColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="clickAliPay:" target="c22-O7-iKe" id="huR-wB-4wV"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="GRt-PZ-Fsk" firstAttribute="centerY" secondItem="bdG-eu-rtq" secondAttribute="centerY" id="6G7-Fa-eQQ"/>
@@ -74,13 +89,14 @@
                 </view>
             </subviews>
             <connections>
+                <outlet property="aliPayButton" destination="KhT-lV-51R" id="ddk-9p-dpP"/>
                 <outlet property="btnMethod" destination="YPt-CB-yuV" id="fk2-ky-hqk"/>
                 <outlet property="lbMethod" destination="GRt-PZ-Fsk" id="I1H-ns-YhK"/>
                 <outlet property="lbSubTitle" destination="bqe-fu-93e" id="6f6-sL-1sc"/>
                 <outlet property="lbTitle" destination="6YX-aQ-e0y" id="zxh-5W-oId"/>
                 <outlet property="vwBack" destination="bdG-eu-rtq" id="KQP-gS-r5S"/>
             </connections>
-            <point key="canvasLocation" x="-247" y="108"/>
+            <point key="canvasLocation" x="-211.5" y="108"/>
         </customView>
     </objects>
 </document>

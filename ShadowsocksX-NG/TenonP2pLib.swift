@@ -20,9 +20,9 @@ extension Date {
 class TenonP2pLib {
     static let sharedInstance = TenonP2pLib()
     
-    public let kCurrentVersion = "5.0.0"
+    public let kCurrentVersion = "5.0.5"
     public var choosed_country_idx = 0
-    public var choosed_country: String = "US"
+    public var choosed_country: String = "AA"
     public var local_country: String = "CN"
     public var use_smart_route: Int32 = 1
     private let bootstrap: String = "id:42.51.33.89:9001,id:42.51.41.173:9001, id:113.17.169.103:9001,id:113.17.169.105:9001,id:113.17.169.106:9001,id:113.17.169.93:9001,id:113.17.169.94:9001,id:113.17.169.95:9001,id:216.108.227.52:9001,id:216.108.231.102:9001,id:216.108.231.103:9001,id:216.108.231.105:9001,id:216.108.231.19:9001,id:3.12.73.217:9001,id:3.137.186.226:9001,id:3.22.68.200:9001,id:3.138.121.98:9001,id:18.188.190.127:9001,"
@@ -38,6 +38,9 @@ class TenonP2pLib {
     private var today_used_bandwidth: Int64 = 0
     private var used_bandwidth_tm: Int64 = 0
     private var prev_write_bandwidth_tm: Int64 = 0
+    
+    public var choosePayForAmount = 35;
+    public var choosePayForHanbiAmount = 0;
     
     var payfor_vpn_accounts_arr:[String] = [
         "dc161d9ab9cd5a031d6c5de29c26247b6fde6eb36ed3963c446c1a993a088262",
